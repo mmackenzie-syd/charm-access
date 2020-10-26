@@ -1,0 +1,45 @@
+
+/* Collection */
+.collections {
+    border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+.collections__title {
+    font-size: 3rem;
+    margin-top: 7rem;
+}
+
+.collections__breadcrumb {
+    display: flex;
+}
+
+.collections__breadcrumb-item {
+    display: inline-block;
+    font-size: 1.4rem;
+    margin-right: 1rem;
+}
+
+.collections__grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+}
+.collections__grid-item {
+
+}
+
+.collections__img {
+    //border: 1px solid rgba(0,0,0,0.15);
+    padding: 1rem;
+    background-color: #f1f1f1;
+}
+
+.collections__description {
+    font-size: 1.6rem;
+}
+
+.collections__price {
+    font-size: 1.8rem;
+    color: #4f4f4f;
+}
