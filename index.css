@@ -31,6 +31,10 @@ body {
 
 .row.right { justify-content: flex-end; }
 
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+
 .col-1 { width: 8.33%; }
 .col-2 { width: 16.67%; }
 .col-3 { width: 25%; }
@@ -67,6 +71,12 @@ body {
 .padding-left-3 { padding-left: 3rem; }
 .padding-left-4 { padding-left: 4rem; }
 .padding-left-5 { padding-left: 5rem; }
+
+.padding-right-1 { padding-right: 1rem; }
+.padding-right-2 { padding-right: 2rem; }
+.padding-right-3 { padding-right: 3rem; }
+.padding-right-4 { padding-right: 4rem; }
+.padding-right-5 { padding-right: 5rem; }
 
 /* Common */
 h1 {
@@ -126,6 +136,10 @@ h3 {
 .icon {
     display:inline-block;
     vertical-align:middle;
+}
+
+.link {
+    text-decoration: underline;
 }
 
 a {
