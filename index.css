@@ -285,15 +285,6 @@ footer {
 }
 
 /* Testimonials */
-.grid-testimonial-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-column-gap: 3rem;
-}
-.grid-testimonial-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0,0,0,0.15);
-}
 .testimonial {
     margin: 0 auto;
     line-height: 1.6;
