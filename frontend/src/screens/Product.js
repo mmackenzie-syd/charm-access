@@ -25,7 +25,7 @@ function Product() {
                     <h2 className="product__title margin-bottom-1">Silver earrings broach "Kitz-kitsyunya"</h2>
                     <h3 className="product__brand-title margin-bottom-2">Charm Accessories</h3>
                     <div className="product__price margin-bottom-4">$300.00</div>
-                    <div className="custom-select margin-bottom-3" style={{width: '100%'}}>
+                    <div className="margin-bottom-3" style={{width: '100%'}}>
                         <Selector callback={onQty}/>
                     </div>
                     <button className="btn-secondary btn-full-width margin-bottom-2">Add to Shopping Cart</button>
