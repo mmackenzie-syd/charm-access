@@ -4,7 +4,7 @@
 }
 
 .product__img {
-    //border: 1px solid rgba(0,0,0,0.15);
+//border: 1px solid rgba(0,0,0,0.15);
     padding: 1rem;
     background-color: #f1f1f1;
 }
@@ -44,7 +44,7 @@
 }
 
 .select-selected {
-    background-color: #fff; //DodgerBlue;
+    background-color: #fff;
 }
 
 
