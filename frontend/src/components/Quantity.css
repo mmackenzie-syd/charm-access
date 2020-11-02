@@ -1,0 +1,25 @@
+/* numeral up/down */
+.quantity {
+    display: inline-block;
+}
+.quantity__value {
+    font-size: 1.4rem;
+    margin-left: .8rem;
+    margin-right: .8rem;
+    text-align: center;
+    line-height: 2.6rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    display: inline-block;
+}
+
+.quantity__btn {
+    font-size: 2.2rem;
+    line-height: 2.2rem;
+    background-color: #fff;
+    vertical-align: middle;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.15);
+}

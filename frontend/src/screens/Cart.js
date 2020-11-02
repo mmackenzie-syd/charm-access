@@ -1,6 +1,12 @@
+import React from 'react';
 import './Cart.css';
+import Quantity from "../components/Quantity";
 
 function Cart() {
+    const onQty = (qty, i) => {
+        console.log('qty', i, ':', qty);
+    }
+
     return (
         <main className="cart margin-top-2 margin-bottom-1">
             <section className="margin-top-2">
@@ -33,9 +39,7 @@ function Cart() {
                     <div className="col-2 text-center"><p className="table__p">$350.00</p></div>
                     <div className="col-2">
                         <div className="row center">
-                            <div className="square">-</div>
-                            <div className="square square-number">1</div>
-                            <div className="square">+</div>
+                            <Quantity callback={(e) => onQty(e, 1)} />
                         </div>
                     </div>
                     <div className="col-2 text-right"><p className="table__p">$700.00</p></div>
@@ -55,9 +59,7 @@ function Cart() {
                     <div className="col-2 text-center"><p className="table__p">$350.00</p></div>
                     <div className="col-2">
                         <div className="row center">
-                            <div className="square">-</div>
-                            <div className="square square-number">1</div>
-                            <div className="square">+</div>
+                            <Quantity callback={(e) => onQty(e, 2)} />
                         </div>
                     </div>
                     <div className="col-2 text-right"><p className="table__p">$700.00</p></div>
