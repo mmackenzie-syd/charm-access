@@ -1,6 +1,11 @@
+import React from 'react';
 import './Product.css';
+import Selector from "../components/Selector";
 
 function Product() {
+    const onQty = (value) => {
+        console.log('quantity', value);
+    };
     return (
         <main className="product margin-top-2 margin-bottom-1">
             <section className="margin-top-2 margin-bottom-3">
@@ -21,20 +26,7 @@ function Product() {
                     <h3 className="product__brand-title margin-bottom-2">Charm Accessories</h3>
                     <div className="product__price margin-bottom-4">$300.00</div>
                     <div className="custom-select margin-bottom-3" style={{width: '100%'}}>
-                        <span className="custom-select-label">number</span>
-                        <select>
-                            <option value="0">1</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
+                        <Selector callback={onQty}/>
                     </div>
                     <button className="btn-secondary btn-full-width margin-bottom-2">Add to Shopping Cart</button>
                     <button className="btn-primary btn-full-width">Buy</button>
