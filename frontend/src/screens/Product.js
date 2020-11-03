@@ -1,39 +1,57 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import './Product.css';
 import Selector from "../components/Selector";
+import {detailsProduct} from "../actions/productActions";
 
-function Product() {
+function Product(props) {
+    const dispatch = useDispatch();
+    const productId = props.match.params.id;
+    const productDetails = useSelector(state => state.productDetails);
+    const { loading, error, product } = productDetails;
+    const categoryList = useSelector(state => state.categoryList);
+    const { categories } = categoryList;
+    let category;
+    if (categories && product) {
+        const categorySlug = product.category;
+        category = categories.find(category => (category.slug === categorySlug));
+    }
+
+    useEffect(() => {
+        dispatch(detailsProduct(productId));
+    }, [dispatch, productId]);
+
     const onQty = (value) => {
         console.log('quantity', value);
     };
+    if (loading) {
+        return <div>...loading</div>;
+    }
     return (
         <main className="product margin-top-2 margin-bottom-1">
             <section className="margin-top-2 margin-bottom-3">
                 <ul className="collections__breadcrumb">
                     <li className="collections__breadcrumb-item">Home Page</li>
                     <li className="collections__breadcrumb-item">/</li>
-                    <li className="collections__breadcrumb-item">Silver Earrings</li>
+                    <li className="collections__breadcrumb-item">{category && category.name}</li>
                     <li className="collections__breadcrumb-item">/</li>
-                    <li className="collections__breadcrumb-item">Silver earrings broach Kitz-kitsyunya</li>
+                    <li className="collections__breadcrumb-item">{product.name}</li>
                 </ul>
             </section>
             <section className="row top">
                 <div className="col-6 product__img">
-                    <img src="../../images/products/5.jpg"/>
+                    <img src={product.image}/>
                 </div>
                 <div className="col-6 padding-left-3">
-                    <h2 className="product__title margin-bottom-1">Silver earrings broach "Kitz-kitsyunya"</h2>
+                    <h2 className="product__title margin-bottom-1">{product.name}</h2>
                     <h3 className="product__brand-title margin-bottom-2">Charm Accessories</h3>
-                    <div className="product__price margin-bottom-4">$300.00</div>
+                    <div className="product__price margin-bottom-4">${product.price}</div>
                     <div className="margin-bottom-3" style={{width: '100%'}}>
                         <Selector callback={onQty}/>
                     </div>
                     <button className="btn-secondary btn-full-width margin-bottom-2">Add to Shopping Cart</button>
                     <button className="btn-primary btn-full-width">Buy</button>
-                    <p className="product__description margin-top-4">Silver earrings "Kitz-kitsyunya" - original
-                        earrings are decorated with neat cats, which are placed on minimalistic rings of the original
-                        design. They will give the image of lightness and childlike ease, an ideal choice for those who
-                        love kitties and cats.</p>
+                    <p className="product__description margin-top-4">${product.description}</p>
                     <div className="margin-top-5 product__share">Share this:</div>
                     <div className="margin-top-2">
                         <svg className="icon margin-right-2" width="24" height="24" ariaHidden="true" focusable="false"

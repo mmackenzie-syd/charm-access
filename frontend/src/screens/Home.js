@@ -25,16 +25,16 @@ function Home() {
               <h3 className="margin-bottom-3">Collections</h3>
               <div className="grid-container">
                   <div className="grid-item">
-                      <img src="./images/products/2.jpg" />
+                      <img src="./images/brooch.jpg" />
                   </div>
                   <div className="grid-item">
-                      <img src="./images/products/24.jpg" />
+                      <img src="./images/bracelet.jpg" />
                   </div>
                   <div className="grid-item">
-                      <img src="./images/products/3.jpg" />
+                      <img src="./images/earrings.jpg" />
                   </div>
                   <div className="grid-item">
-                      <img src="./images/products/34.jpg" />
+                      <img src="./images/necklace.jpg" />
                   </div>
               </div>
           </section>

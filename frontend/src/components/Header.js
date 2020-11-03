@@ -1,6 +1,11 @@
 import './Header.css';
 
+import React from 'react'
+import {useSelector} from "react-redux";
+
 function Header() {
+    const categoryList = useSelector(state => state.categoryList);
+    const { categories } = categoryList;
     return (
         <header>
             <div className="row top site-title margin-top-2">
@@ -50,18 +55,17 @@ function Header() {
             <nav className="site-nav margin-top-2">
                 <ul className="row center">
                     <li className="dropdown">
-                        <button className="dropbtn">Jewellery</button>
+                        <div className="dropbtn"><a href={`/collections/jewellery`}>Jewellery</a></div>
                         <div className="dropdown-content">
-                            <a href="/collections">Necklaces</a>
-                            <a href="/collections">Bracelets</a>
-                            <a href="/collections">Rings</a>
-                            <a href="/collections">Earrings</a>
-                            <a href="/collections">Brooches</a>
-                            <a href="/collections">Headware</a>
+                            {
+                                categories && categories.map(category => (
+                                    <a key={category._id} href={`/collections/${category.slug}`}>{category.name}</a>
+                                ))
+                            }
                         </div>
                     </li>
-                    <li><a href="/collections">New Arrivals</a></li>
-                    <li><a href="/collections">Sale</a></li>
+                    <li><a href="/collections/jewellery">New Arrivals</a></li>
+                    <li><a href="/collections/jewellery">Sale</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/shipping">Shipping & Payment</a></li>
                 </ul>
