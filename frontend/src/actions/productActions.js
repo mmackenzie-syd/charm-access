@@ -8,10 +8,10 @@ import {
 } from "../constants/productConstants";
 import Axios from "axios";
 
-export const listProducts = (category) => async (dispatch) => {
+export const listProducts = (category, page) => async (dispatch) => {
     dispatch({type: PRODUCT_LIST_REQUEST});
     try {
-        const { data } = await Axios.get(`/api/products/${category}`);
+        const { data } = await Axios.get(`/api/products/${category}/${page}`);
         dispatch({type: PRODUCT_LIST_SUCCESS, payload: data})
     } catch(error) {
         dispatch({type: PRODUCT_LIST_FAIL, payload: error.message})

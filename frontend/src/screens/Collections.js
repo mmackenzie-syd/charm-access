@@ -6,18 +6,30 @@ import {listProducts} from "../actions/productActions";
 
 function Collections(props) {
     const categorySlug = props.match.params.category;
+    const curPage = props.match.params.page;
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
     const categoryList = useSelector(state => state.categoryList);
     const { categories } = categoryList;
     let category;
     if (categories) {
-        category = categories.find(category => (category.slug === categorySlug));
+        category = (categorySlug === 'jewellery')
+            ? { name: 'Jewellery'}
+            : categories.find(category => (category.slug === categorySlug));
     }
-    const { loading, error, products } = productList;
+    const { loading, error, pageData } = productList;
     useEffect(() => {
-        dispatch(listProducts(categorySlug))
+        dispatch(listProducts(categorySlug, curPage))
     }, []);
+    let products;
+    const pages = [];
+    if (pageData) {
+        products = pageData.products;
+        console.log('page data', pageData)
+        for (let i = 0; i < pageData.pages; i++){
+            pages.push(i + 1);
+        }
+    }
     return (
         <main className="collections margin-top-2 margin-bottom-1" style={{minHeight: '500px'}}>
             <section className="margin-top-2">
@@ -26,7 +38,19 @@ function Collections(props) {
                     <li className="collections__breadcrumb-item">/</li>
                     <li className="collections__breadcrumb-item">{category && category.name}</li>
                 </ul>
-                <h2 className="collections__title margin-bottom-5">{category && category.name}</h2>
+                <div className="row">
+                    <h2 className="collections__title margin-bottom-5">{category && category.name}</h2>
+                    <div className="pagination">
+                        {
+                            pages.map((page) => {
+                                const active = (page === Number(curPage)) ? 'active' : '';
+                                const goTo = `/collections/${categorySlug}/${page}`;
+                                return <a href={goTo} className={active}>{page}</a>;
+                            })
+                        }
+                    </div>
+                </div>
+
             </section>
             { loading
                 ?  <div>...loading</div>
@@ -52,7 +76,6 @@ function Collections(props) {
                     }
                 </section>
             }
-
         </main>
     );
 }

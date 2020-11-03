@@ -22,7 +22,7 @@ function App() {
         <BrowserRouter>
             <Route path="/" component={Home} exact />
             <Route path="/product/:id" component={Product} />
-            <Route path="/collections/:category" component={Collections} exact />
+            <Route path="/collections/:category/:page" component={Collections} exact />
             <Route path="/about" component={About} exact />
             <Route path="/shipping" component={Shipping} exact />
             <Route path="/cart" component={Cart} exact />

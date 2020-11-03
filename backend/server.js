@@ -4,24 +4,25 @@ import data from './data.js';
 const app = express();
 import asyncHandler from 'express-async-handler';
 
-
 //Get collection
+app.get('/api/products/:category/:page', (req, res) => {
+    // paginate
+    const perPage = 6;
+    const { page, category } = req.params;
+    const products = (category === 'jewellery')
+        ? data.products
+        : data.products.filter(product => (product.category === category));
 
-app.get('/api/products/:category', asyncHandler(async(req, res, next) => {
-    const { category } = req.params;
-    if (category === 'jewellery') {
-        res.status(200).send(data.products);
-    } else {
-        const products = data.products.filter(product => (product.category === category));
-        res.status(200).send(products);
-    }
-}));
+    const prodsPerPage = products.slice((page - 1) * perPage, page * perPage);
+
+    const pages = Math.ceil(products.length / perPage);
+
+    res.status(200).send({ products: prodsPerPage, pages });
+});
 
 app.get('/api/categories', asyncHandler(async(req, res, next) => {
     res.status(200).send(data.categories);
 }))
-
-
 
 //Get a single document
 app.get('/api/product/:id', asyncHandler(async(req, res, next) => {

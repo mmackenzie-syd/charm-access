@@ -55,17 +55,17 @@ function Header() {
             <nav className="site-nav margin-top-2">
                 <ul className="row center">
                     <li className="dropdown">
-                        <div className="dropbtn"><a href={`/collections/jewellery`}>Jewellery</a></div>
+                        <div className="dropbtn"><a href={`/collections/jewellery/1`}>Jewellery</a></div>
                         <div className="dropdown-content">
                             {
                                 categories && categories.map(category => (
-                                    <a key={category._id} href={`/collections/${category.slug}`}>{category.name}</a>
+                                    <a key={category._id} href={`/collections/${category.slug}/1`}>{category.name}</a>
                                 ))
                             }
                         </div>
                     </li>
-                    <li><a href="/collections/jewellery">New Arrivals</a></li>
-                    <li><a href="/collections/jewellery">Sale</a></li>
+                    <li><a href="/collections/jewellery/1">New Arrivals</a></li>
+                    <li><a href="/collections/jewellery/1">Sale</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/shipping">Shipping & Payment</a></li>
                 </ul>
