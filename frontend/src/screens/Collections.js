@@ -41,7 +41,7 @@ function Collections(props) {
                 <div className="row">
                     <h2 className="collections__title margin-bottom-5">{category && category.name}</h2>
                     <div className="pagination">
-                        {
+                        {   pages.length > 1 &&
                             pages.map((page) => {
                                 const active = (page === Number(curPage)) ? 'active' : '';
                                 const goTo = `/collections/${categorySlug}/${page}`;
