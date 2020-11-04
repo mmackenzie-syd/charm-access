@@ -68,7 +68,7 @@ function Collections(props) {
                                             <div className="collections__img">
                                                 <img src={product.thumbnail}/>
                                             </div>
-                                            <div className="margin-top-2">
+                                            <div className="margin-top-2 padding-left-3">
                                                 <div className="collections__description">{product.name}</div>
                                                 <div className="margin-top-1 collections__price">${product.price}</div>
                                             </div>

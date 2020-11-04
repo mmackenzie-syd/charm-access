@@ -31,4 +31,8 @@
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #f8ed70;}
+.dropdown:hover .dropbtn {background-color: #ebe7f7;}
+
+.mood__phone {
+    font-size: 3rem;
+}

@@ -25,13 +25,15 @@
     grid-template-columns: 33.33fr 33.33fr 33.33fr;
     grid-column-gap: 3rem;
     grid-row-gap: 3rem;
+    background-color: #f9f9f9;
+    padding: 3rem;
 }
 .collections__grid-item {
     box-sizing: border-box;
 }
 
 .collections__img {
-    padding: 1rem;
+    padding: 3rem;
     background-color: #f1f1f1;
 }
 

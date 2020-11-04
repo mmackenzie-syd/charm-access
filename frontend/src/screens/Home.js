@@ -1,10 +1,11 @@
 import './Home.css';
 import React from 'react';
+import {Link} from "react-router-dom";
 
 function Home() {
   return (
-      <main>
-          <section className="grid-banner-container margin-top-2">
+      <main className="home margin-top-2 margin-bottom-1">
+          <section className="grid-banner-container margin-top-5">
               <div className="grid-banner-1">
                   <img src="./images/banners_for_site_6_720x.jpg"/>
                   <ul className="banner__dots">
@@ -19,41 +20,76 @@ function Home() {
                   <div className="brand-transp">
                       <img src="./images/brand_transp.png"/>
                   </div>
-              </div>
-          </section>
-          <section className="margin-top-3">
-              <h3 className="margin-bottom-3">Collections</h3>
-              <div className="grid-container">
-                  <div className="grid-item">
-                      <img src="./images/brooch.jpg" />
-                  </div>
-                  <div className="grid-item">
-                      <img src="./images/bracelet.jpg" />
-                  </div>
-                  <div className="grid-item">
-                      <img src="./images/earrings.jpg" />
-                  </div>
-                  <div className="grid-item">
-                      <img src="./images/necklace.jpg" />
+                  <div className="row center">
+                      <button className="shop-now">Shop Now</button>
                   </div>
               </div>
           </section>
-          <section className="margin-top-4 info">
-              <div className="margin-bottom-3">Useful information</div>
-              <div className="text-small margin-bottom-3">Everything we have, what we have, we need to take care of.
+          <section className="margin-top-5">
+              <div className="arrivals">New Arrivals</div>
+              <div className="collections__grid margin-top-5">
+                  <div className="collections__grid-item">
+                      <div className="collections__img">
+                          <img src="./images/1.jpg" />
+                      </div>
+                  </div>
+                  <div className="collections__grid-item">
+                      <div className="collections__img">
+                          <img src="./images/2.jpg" />
+                      </div>
+                  </div>
+                  <div className="collections__grid-item">
+                      <div className="collections__img">
+                          <img src="./images/3.jpg" />
+                      </div>
+                  </div>
+                  <div className="collections__grid-item">
+                      <div className="collections__img">
+                          <img src="./images/4.jpg" />
+                      </div>
+                  </div>
+                  <div className="collections__grid-item">
+                      <div className="collections__img">
+                          <img src="./images/5.jpg" />
+                      </div>
+                  </div>
+                  <div className="collections__grid-item">
+                      <div className="collections__img">
+                          <img src="./images/6.jpg" />
+                      </div>
+                  </div>
+              </div>
+          </section>
+          <section className="margin-top-5 info">
+              <div className="margin-bottom-5 info__title">Useful information</div>
+              <div className="margin-bottom-3">Everything we have, what we have, we need to take care of.
                   Heed our jewelry care tips to make them shine and delight you even more.
               </div>
-              <button className="btn-primary">Jewelry Care Blog</button>
+              <button className="btn-primary info__btn">Jewelry Care</button>
           </section>
           <section className="margin-top-4 mood">
-              <img src="./images/banners_for_site_1_1080x.jpg"/>
+              <img className="mood__img" src="./images/banners_for_site_1_1080x.jpg"/>
                   <div className="mood__caption">
-                      <h2>Create your mood with Charm Accessories</h2>
+                      <div>Create your mood with Charm Accessories</div>
+                      <div className="margin-top-3 mood_contact">
+                          <svg className="icon white" width="42" height="42" viewBox="0 0 26 26" version="1.1"
+                               xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                              <g strokeWidth="1">
+                                  <path
+                                      d="M3.5,2 C2.67157288,2 2,2.67157288 2,3.5 L2,22.5 C2,23.3284271 2.67157288,24 3.5,24 L11.5,24 C12.3284271,24 13,23.3284271 13,22.5 L13,3.5 C13,2.67157288 12.3284271,2 11.5,2 L3.5,2 Z M3.5,0 L11.5,0 C13.4329966,0 15,1.56700338 15,3.5 L15,22.5 C15,24.4329966 13.4329966,26 11.5,26 L3.5,26 C1.56700338,26 0,24.4329966 0,22.5 L0,3.5 C0,1.56700338 1.56700338,0 3.5,0 Z"></path>
+                                  <polygon points="14.59375 4 14.59375 6 0.402816772 6 0.402816772 4"></polygon>
+                                  <polygon points="14.59375 17 14.59375 19 0.402816772 19 0.402816772 17"></polygon>
+                                  <path
+                                      d="M8.5,20 C9.05228475,20 9.5,20.4477153 9.5,21 C9.5,21.5522847 9.05228475,22 8.5,22 L6.5,22 C5.94771525,22 5.5,21.5522847 5.5,21 C5.5,20.4477153 5.94771525,20 6.5,20 L8.5,20 Z"></path>
+                              </g>
+                          </svg>
+                          <span className="mood__phone">+060931200777</span>
+                      </div>
                   </div>
           </section>
           <form className="signup margin-top-4">
-              <div className="margin-bottom-3">Sign up to our newsletter</div>
-              <div className="text-small margin-bottom-1">Promotions, new arrivals, discounts.</div>
+              <div className="margin-bottom-3 signup__title">Sign up to our newsletter</div>
+              <div className="margin-bottom-3">Promotions, new arrivals, discounts.</div>
               <div className="row signup__input-wrap">
                   <svg className="icon" width="26" height="26" viewBox="0 -3 26 23" version="1.1"
                        xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -67,30 +103,6 @@ function Home() {
                       <button className="btn-primary signup__submit" type="submit">Send Message</button>
               </div>
           </form>
-          <section className="margin-top-4">
-              <div className="testimonial">
-                  <h3 className="margin-top-5 margin-bottom-3">Testimonials</h3>
-                  <div className="testiminial__text">
-                      <p>Magic! I chose Charm Accessories for all my jewellery for my engagement party.
-                          Katie, owner, was simply amazing, taking special care to ensure a fit and match for all of my
-                          outfits.
-                          The jewellery designs are unique, delicate and striking, not to mention the quality - just
-                          gorgeous. I'm so glad I found her!
-                          <p>My silver shell earrings and matching necklace are my favourite sets ever. I had so many
-                              compliments when wearing them. I just love it!</p>
-                          I will definitely be shopping here again for both myself and my friends - beautiful quality,
-                          great service.
-                      </p>
-                      <p>Thank you Katie for providing such beautiful jewellery for me to wear on a very special day
-                          ...xoxo </p>
-
-                  </div>
-                  <div className="testimonial__signature margin-top-4">
-                      <p>Molly & Richard</p>
-                      <p>Revesby, NSW</p>
-                  </div>
-              </div>
-          </section>
       </main>
     );
 }

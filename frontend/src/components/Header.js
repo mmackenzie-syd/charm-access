@@ -21,7 +21,7 @@ function Header() {
                                 d="M8.5,20 C9.05228475,20 9.5,20.4477153 9.5,21 C9.5,21.5522847 9.05228475,22 8.5,22 L6.5,22 C5.94771525,22 5.5,21.5522847 5.5,21 C5.5,20.4477153 5.94771525,20 6.5,20 L8.5,20 Z"></path>
                         </g>
                     </svg>
-                    <span className="site-title__phone">+380931200324</span>
+                    <span className="site-title__phone">+060931200777</span>
                 </div>
                 <div className="col-4">
                     <a href="/">
