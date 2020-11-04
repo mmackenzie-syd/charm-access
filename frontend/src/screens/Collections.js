@@ -3,7 +3,7 @@ import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {listProducts} from "../actions/productActions";
 import { Link } from "react-router-dom";
-import LoadingCollection from "../components/LoadingCollection";
+import Loading from "../components/Loading";
 
 function Collections(props) {
     const categorySlug = props.match.params.category;
@@ -34,9 +34,6 @@ function Collections(props) {
             pages.push(i + 1);
         }
     }
-
-    const dummyImg = [1, 2, 3, 4, 5, 6];
-
     return (
         <main className="collections margin-top-2 margin-bottom-1" style={{minHeight: '500px'}}>
             <section className="margin-top-2">
@@ -59,7 +56,7 @@ function Collections(props) {
 
             </section>
             { loading
-                ?  <LoadingCollection />
+                ?  <Loading />
                 :  <section className="collections__grid">
                     {
                         (products.length === 0)

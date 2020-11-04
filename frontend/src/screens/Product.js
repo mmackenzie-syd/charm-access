@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import './Product.css';
 import Selector from "../components/Selector";
 import {detailsProduct} from "../actions/productActions";
-import LoadingCollection from "../components/LoadingCollection";
+import Loading from "../components/Loading";
 
 function Product(props) {
     const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function Product(props) {
                 </ul>
             </section>
             { loading
-                ? <div>...loading</div>
+                ? <Loading />
                 : <section className="row top">
                     <div className="col-6 product__img">
                         <img src={product.image}/>

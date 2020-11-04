@@ -1,0 +1,10 @@
+.loading-wrap {
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.loading-img {
+    width: 100px;
+}
