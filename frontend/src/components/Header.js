@@ -24,11 +24,11 @@ function Header() {
                     <span className="site-title__phone">+060931200777</span>
                 </div>
                 <div className="col-4">
-                    <a href="/">
+                    <Link to="/">
                         <div className="site-title__brand">
                             <img src="../../images/brand.png"/>
                         </div>
-                    </a>
+                    </Link>
                 </div>
                 <div className="col-4 row right margin-top-3">
                     <svg className="icon margin-left-1" width="24" height="24" viewBox="-3 -3 23 23" version="1.1"
