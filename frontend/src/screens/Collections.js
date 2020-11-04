@@ -1,8 +1,8 @@
 import './Collections.css';
-
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {listProducts} from "../actions/productActions";
+import { Link } from "react-router-dom";
 
 function Collections(props) {
     const categorySlug = props.match.params.category;
@@ -11,25 +11,29 @@ function Collections(props) {
     const productList = useSelector(state => state.productList);
     const categoryList = useSelector(state => state.categoryList);
     const { categories } = categoryList;
+
     let category;
     if (categories) {
         category = (categorySlug === 'jewellery')
             ? { name: 'Jewellery'}
             : categories.find(category => (category.slug === categorySlug));
     }
+
     const { loading, error, pageData } = productList;
+
     useEffect(() => {
         dispatch(listProducts(categorySlug, curPage))
-    }, []);
+    }, [curPage, categorySlug]);
+
     let products;
     const pages = [];
     if (pageData) {
         products = pageData.products;
-        console.log('page data', pageData)
         for (let i = 0; i < pageData.pages; i++){
             pages.push(i + 1);
         }
     }
+
     return (
         <main className="collections margin-top-2 margin-bottom-1" style={{minHeight: '500px'}}>
             <section className="margin-top-2">
@@ -44,8 +48,7 @@ function Collections(props) {
                         {   pages.length > 1 &&
                             pages.map((page) => {
                                 const active = (page === Number(curPage)) ? 'active' : '';
-                                const goTo = `/collections/${categorySlug}/${page}`;
-                                return <a href={goTo} className={active}>{page}</a>;
+                                return <Link to={`/collections/${categorySlug}/${page}`} className={active}>{page}</Link>
                             })
                         }
                     </div>
@@ -63,7 +66,7 @@ function Collections(props) {
                                     <div key={product._id} className="collections__grid-item">
                                         <a href={`/product/${product._id}`}>
                                             <div className="collections__img">
-                                                <img src={product.image}/>
+                                                <img src={product.thumbnail}/>
                                             </div>
                                             <div className="margin-top-2">
                                                 <div className="collections__description">{product.name}</div>

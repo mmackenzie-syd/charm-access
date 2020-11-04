@@ -16,19 +16,20 @@ function App() {
     useEffect(() => {
         dispatch(listCategories())
     }, []);
+
     return (
-        <Fragment>
-        <Header />
         <BrowserRouter>
-            <Route path="/" component={Home} exact />
-            <Route path="/product/:id" component={Product} />
-            <Route path="/collections/:category/:page" component={Collections} exact />
-            <Route path="/about" component={About} exact />
-            <Route path="/shipping" component={Shipping} exact />
-            <Route path="/cart" component={Cart} exact />
+            <Fragment>
+                <Header />
+                <Route path="/" component={Home} exact />
+                <Route path="/product/:id" component={Product} />
+                <Route path="/collections/:category/:page" component={Collections}  />
+                <Route path="/about" component={About} />
+                <Route path="/shipping" component={Shipping} />
+                <Route path="/cart" component={Cart} />
+                <Footer />
+            </Fragment>
         </BrowserRouter>
-        <Footer />
-        </Fragment>
     );
 }
 

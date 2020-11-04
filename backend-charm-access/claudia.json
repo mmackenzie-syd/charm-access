@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "charm-access-executor",
+    "name": "charm-access",
+    "region": "ap-southeast-2"
+  },
+  "api": {
+    "id": "f2wfwkd82f"
+  }
+}

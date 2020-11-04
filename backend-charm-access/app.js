@@ -1,8 +1,11 @@
 //Imports
-import express from 'express';
-import data from './data.js';
+const express = require('express');
+const data = require('./data.js');
 const app = express();
-import asyncHandler from 'express-async-handler';
+const cors = require('cors');
+const asyncHandler = require('express-async-handler');
+
+app.use(cors());
 
 //Get collection
 app.get('/api/products/:category/:page', (req, res) => {
@@ -39,3 +42,5 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Serve at http://localhost:${port}`);
 });
+
+// module.exports = app;

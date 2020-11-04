@@ -1,11 +1,10 @@
 {
   "name": "charm-access",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch backend --exec node --experimental-modules server.js"
+    "start": "nodemon --watch backend --exec node --experimental-modules app.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +17,8 @@
   },
   "homepage": "https://github.com/mmackenzie-syd/charm-access#readme",
   "dependencies": {
+    "aws-serverless-express": "^3.3.8",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4"
   },

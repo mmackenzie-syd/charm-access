@@ -1,7 +1,7 @@
 import './Header.css';
-
 import React from 'react'
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 function Header() {
     const categoryList = useSelector(state => state.categoryList);
@@ -55,19 +55,21 @@ function Header() {
             <nav className="site-nav margin-top-2">
                 <ul className="row center">
                     <li className="dropdown">
-                        <div className="dropbtn"><a href={`/collections/jewellery/1`}>Jewellery</a></div>
+                        <div className="dropbtn">
+                            <Link to="/collections/jewellery/1">Jewellery</Link>
+                        </div>
                         <div className="dropdown-content">
                             {
                                 categories && categories.map(category => (
-                                    <a key={category._id} href={`/collections/${category.slug}/1`}>{category.name}</a>
+                                <Link key={category._id} to={`/collections/${category.slug}/1`}>{category.name}</Link>
                                 ))
                             }
                         </div>
                     </li>
-                    <li><a href="/collections/jewellery/1">New Arrivals</a></li>
-                    <li><a href="/collections/jewellery/1">Sale</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/shipping">Shipping & Payment</a></li>
+                    <li><Link to="/collections/jewellery/1">New Arrivals</Link></li>
+                    <li><Link to="/collections/jewellery/1">Sale</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/shipping">Shipping & Payment</Link></li>
                 </ul>
             </nav>
         </header>
