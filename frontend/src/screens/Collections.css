@@ -35,6 +35,10 @@
     background-color: #f1f1f1;
 }
 
+.collections__img--light {
+    background-color: #f1f1f1;
+}
+
 .collections__description {
     font-size: 1.6rem;
 }

@@ -3,6 +3,7 @@ import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {listProducts} from "../actions/productActions";
 import { Link } from "react-router-dom";
+import LoadingCollection from "../components/LoadingCollection";
 
 function Collections(props) {
     const categorySlug = props.match.params.category;
@@ -34,6 +35,8 @@ function Collections(props) {
         }
     }
 
+    const dummyImg = [1, 2, 3, 4, 5, 6];
+
     return (
         <main className="collections margin-top-2 margin-bottom-1" style={{minHeight: '500px'}}>
             <section className="margin-top-2">
@@ -56,7 +59,7 @@ function Collections(props) {
 
             </section>
             { loading
-                ?  <div>...loading</div>
+                ?  <LoadingCollection />
                 :  <section className="collections__grid">
                     {
                         (products.length === 0)
@@ -64,7 +67,7 @@ function Collections(props) {
                             : products.map(product => {
                                 return (
                                     <div key={product._id} className="collections__grid-item">
-                                        <a href={`/product/${product._id}`}>
+                                        <Link to={`/product/${product._id}`}>
                                             <div className="collections__img">
                                                 <img src={product.thumbnail}/>
                                             </div>
@@ -72,7 +75,7 @@ function Collections(props) {
                                                 <div className="collections__description">{product.name}</div>
                                                 <div className="margin-top-1 collections__price">${product.price}</div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </div>
                                 );
                             })
