@@ -36,3 +36,22 @@
 .mood__phone {
     font-size: 3rem;
 }
+
+/* Site Title */
+
+.site-title {
+}
+.site-title__phone {
+    font-size: 1.4rem;
+}
+
+.site-title__brand {
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+/* Nav */
+.site-nav li {
+    padding: .8rem 1rem;
+    line-height: 1.6rem;
+}

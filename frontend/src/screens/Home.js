@@ -88,20 +88,24 @@ function Home() {
                   </div>
           </section>
           <form className="signup margin-top-4">
-              <div className="margin-bottom-3 signup__title">Sign up to our newsletter</div>
-              <div className="margin-bottom-3">Promotions, new arrivals, discounts.</div>
-              <div className="row signup__input-wrap">
-                  <svg className="icon" width="26" height="26" viewBox="0 -3 26 23" version="1.1"
-                       xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                      <g strokeWidth="2">
-                          <path d="M0,0 L25,0 L25,17 L0,17 L0,0 Z M2,2 L2,15 L23,15 L23,2 L2,2 Z"></path>
-                          <path
-                              d="M13.0131231,8.89168498 L11.9868769,8.89168498 L12.5,8.5849266 L13.0131231,8.89168498 Z M23.4868769,2.01668498 L24.5131231,3.73331502 L12.5,10.9150734 L0.48687689,3.73331502 L1.51312311,2.01668498 L12.5,8.5849266 L23.4868769,2.01668498 Z"></path>
-                      </g>
-                  </svg>
-                  <input className="signup__input" type="email" id="email" name="email" value="Your e-mail address"/>
-                      <button className="btn-primary signup__submit" type="submit">Send Message</button>
+
+              <div className="signup__form">
+                  <div className="margin-bottom-3 signup__title">Sign up to our newsletter</div>
+                  <div className="margin-bottom-3">Promotions, new arrivals, discounts.</div>
+                  <div className="row signup__input-wrap">
+                      <svg className="icon" width="26" height="26" viewBox="0 -3 26 23" version="1.1"
+                           xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                          <g strokeWidth="2">
+                              <path d="M0,0 L25,0 L25,17 L0,17 L0,0 Z M2,2 L2,15 L23,15 L23,2 L2,2 Z"></path>
+                              <path
+                                  d="M13.0131231,8.89168498 L11.9868769,8.89168498 L12.5,8.5849266 L13.0131231,8.89168498 Z M23.4868769,2.01668498 L24.5131231,3.73331502 L12.5,10.9150734 L0.48687689,3.73331502 L1.51312311,2.01668498 L12.5,8.5849266 L23.4868769,2.01668498 Z"></path>
+                          </g>
+                      </svg>
+                      <input className="signup__input" type="email" id="email" name="email" value="Your e-mail address"/>
+                          <button className="btn-primary signup__submit" type="submit">Send Message</button>
+                  </div>
               </div>
+
           </form>
       </main>
     );

@@ -10,6 +10,7 @@ import Product from "./screens/Product";
 import Cart from "./screens/Cart";
 import {useDispatch, useSelector} from "react-redux";
 import {listCategories} from "./actions/categoryActions";
+import FreeShipping from "./components/FreeShipping";
 
 function App() {
     const dispatch = useDispatch();
@@ -20,14 +21,17 @@ function App() {
     return (
         <BrowserRouter>
             <Fragment>
-                <Header />
-                <Route path="/" component={Home} exact />
-                <Route path="/product/:id" component={Product} />
-                <Route path="/collections/:category/:page" component={Collections}  />
-                <Route path="/about" component={About} />
-                <Route path="/shipping" component={Shipping} />
-                <Route path="/cart" component={Cart} />
+                <FreeShipping />
+                <div className="wrap" >
+                    <Header />
+                    <Route path="/" component={Home} exact />
+                    <Route path="/product/:id" component={Product} />
+                    <Route path="/collections/:category/:page" component={Collections}  />
+                    <Route path="/about" component={About} />
+                    <Route path="/shipping" component={Shipping} />
+                    <Route path="/cart" component={Cart} />
                 <Footer />
+                </div>
             </Fragment>
         </BrowserRouter>
     );

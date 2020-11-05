@@ -52,7 +52,7 @@ function Header() {
                     </a>
                 </div>
             </div>
-            <nav className="site-nav margin-top-2">
+            <nav className="site-nav">
                 <ul className="row center">
                     <li className="dropdown">
                         <div className="dropbtn">
