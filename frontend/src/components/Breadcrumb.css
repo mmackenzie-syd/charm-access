@@ -1,0 +1,13 @@
+
+.breadcrumb {
+    display: flex;
+}
+
+.breadcrumb__item {
+    display: inline-block;
+    font-size: 1.4rem;
+    margin-right: 1rem;
+}
+.breadcrumb__item--last {
+    color: #777;
+}

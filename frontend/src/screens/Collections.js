@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {listProducts} from "../actions/productActions";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
+import Breadcrumb from "../components/Breadcrumb";
 
 function Collections(props) {
     const categorySlug = props.match.params.category;
@@ -34,14 +35,24 @@ function Collections(props) {
             pages.push(i + 1);
         }
     }
+
+    const list = [];
+    let showBreadcrumb = false;
+    if (category && category.name) {
+        list.push({
+            name: 'Home Page',
+            url: '/'
+        });
+        list.push({
+            name: category.name,
+            url: ''
+        });
+        showBreadcrumb = true;
+    }
     return (
         <main className="collections margin-top-2 margin-bottom-1" style={{minHeight: '500px'}}>
             <section className="margin-top-2">
-                <ul className="collections__breadcrumb">
-                    <li className="collections__breadcrumb-item">Home Page</li>
-                    <li className="collections__breadcrumb-item">/</li>
-                    <li className="collections__breadcrumb-item">{category && category.name}</li>
-                </ul>
+                <Breadcrumb list={list} show={showBreadcrumb}/>
                 <div className="row">
                     <h2 className="collections__title margin-bottom-5">{category && category.name}</h2>
                     <div className="pagination">

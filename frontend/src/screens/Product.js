@@ -4,6 +4,7 @@ import './Product.css';
 import Selector from "../components/Selector";
 import {detailsProduct} from "../actions/productActions";
 import Loading from "../components/Loading";
+import Breadcrumb from "../components/Breadcrumb";
 
 function Product(props) {
     const dispatch = useDispatch();
@@ -13,8 +14,9 @@ function Product(props) {
     const categoryList = useSelector(state => state.categoryList);
     const { categories } = categoryList;
     let category;
+    let categorySlug;
     if (categories && product) {
-        const categorySlug = product.category;
+        categorySlug = product.category;
         category = categories.find(category => (category.slug === categorySlug));
     }
 
@@ -26,20 +28,30 @@ function Product(props) {
         console.log('quantity', value);
     };
 
+    const list = [];
+    let showBreadcrumb = false;
+    if (category && category.name) {
+        if (product && product.name) {
+            list.push({
+                name: 'Home Page',
+                url: '/'
+            });
+            list.push({
+                name: category.name,
+                url: `/collections/${categorySlug}/1`
+            });
+            list.push({
+                name: product.name,
+                url: ''
+            });
+            showBreadcrumb = true;
+        }
+    }
+
     return (
         <main className="product margin-top-2 margin-bottom-1" style={{minHeight: '500px'}}>
             <section className="margin-top-2 margin-bottom-3">
-                <ul className="collections__breadcrumb">
-                    {category &&
-                        <Fragment>
-                            <li className="collections__breadcrumb-item">Home Page</li>
-                            <li className="collections__breadcrumb-item">/</li>
-                            <li className="collections__breadcrumb-item">{category.name}</li>
-                            <li className="collections__breadcrumb-item">/</li>
-                            <li className="collections__breadcrumb-item">{product && product.name}</li>
-                        </Fragment>
-                    }
-                </ul>
+                <Breadcrumb list={list} show={showBreadcrumb}/>
             </section>
             { loading
                 ? <Loading />
