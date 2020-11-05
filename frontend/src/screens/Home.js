@@ -2,19 +2,39 @@ import './Home.css';
 import React from 'react';
 import {Link} from "react-router-dom";
 
+import ImageGallery from 'react-image-gallery';
+
+const images = [
+    {
+        original: './images/banner_1.jpg',
+        thumbnail: './images/banner_1.jpg',
+    },
+    {
+        original: './images/banner_2.jpg',
+        thumbnail: './images/banner_2.jpg',
+    },
+    {
+        original: './images/banner_3.jpg',
+        thumbnail: './images/banner_3.jpg',
+    },
+];
+
+
 function Home() {
   return (
       <main className="home margin-top-2 margin-bottom-1">
           <section className="grid-banner-container margin-top-5">
               <div className="grid-banner-1">
-                  <img src="./images/banners_for_site_6_720x.jpg"/>
-                  <ul className="banner__dots">
-                      <li className="banner__dot"></li>
-                      <li className="banner__dot"></li>
-                      <li className="banner__dot"></li>
-                      <li className="banner__dot"></li>
-                      <li className="banner__dot"></li>
-                  </ul>
+                  <ImageGallery
+                      items={images}
+                      showNav={false}
+                      showThumbnails={false}
+                      showFullscreenButton={false}
+                      showBullets={true}
+                      autoPlay={true}
+                      showPlayButton={false}
+                      slideInterval={7000}
+                  />
               </div>
               <div className="grid-banner-2">
                   <div className="brand-transp">
