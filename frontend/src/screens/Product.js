@@ -64,7 +64,7 @@ function Product(props) {
                         <h3 className="product__brand-title margin-bottom-2">Charm Accessories</h3>
                         <div className="product__price margin-bottom-4">${product.price}</div>
                         <div className="margin-bottom-3" style={{width: '100%'}}>
-                            <Selector callback={onQty}/>
+                            <Selector callback={onQty} count={10}/>
                         </div>
                         <button className="btn-secondary btn-full-width margin-bottom-2">Add to Shopping Cart</button>
                         <button className="btn-primary btn-full-width">Buy</button>

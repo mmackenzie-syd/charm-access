@@ -150,6 +150,10 @@
     margin-left: 1rem;
 }
 
+.brand-transp {
+
+}
+
 .grid-banner-container {
     display: grid;
     grid-template-columns: 66.67% auto;
@@ -162,9 +166,18 @@
 }
 
 .brand-transp {
-    width: 70%;
-    margin: 0 auto;
-    padding-top: 35%;
+    width: 350px;
+}
+
+.banner-container {
+    position: relative;
+}
+.banner-caption {
+    position: absolute;
+    left: 100px;
+    top: 15%;
+    padding: 5rem 2rem;
+    border-radius: 3px;
 }
 
 .home__collections {
@@ -176,11 +189,11 @@
     margin-top: 3rem;
     padding: 1.4rem 4.5rem;
     border-radius: 3px;
-    background-color: #937cd4;
+    background-color: transparent;
     display: inline-block;
-    border: 1px solid #fff;
+    border: 2px solid #937cd4;
     font-size: 1.8rem;
-    color: #fff;
+    color: #937cd4;
     font-weight: bold;
 }
 

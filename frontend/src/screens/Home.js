@@ -6,16 +6,16 @@ import ImageGallery from 'react-image-gallery';
 
 const images = [
     {
-        original: './images/banner_1.jpg',
-        thumbnail: './images/banner_1.jpg',
+        original: './images/banner1.jpg',
+        thumbnail: './images/banner1.jpg',
     },
     {
-        original: './images/banner_2.jpg',
-        thumbnail: './images/banner_2.jpg',
+        original: './images/banner2.jpg',
+        thumbnail: './images/banner2.jpg',
     },
     {
-        original: './images/banner_3.jpg',
-        thumbnail: './images/banner_3.jpg',
+        original: './images/banner3.jpg',
+        thumbnail: './images/banner3.jpg',
     },
 ];
 
@@ -23,8 +23,8 @@ const images = [
 function Home() {
   return (
       <main className="home margin-top-2 margin-bottom-1">
-          <section className="grid-banner-container margin-top-5">
-              <div className="grid-banner-1">
+          <section className="margin-top-3">
+              <div className="banner-container">
                   <ImageGallery
                       items={images}
                       showNav={false}
@@ -35,13 +35,13 @@ function Home() {
                       showPlayButton={false}
                       slideInterval={7000}
                   />
-              </div>
-              <div className="grid-banner-2">
-                  <div className="brand-transp">
-                      <img src="./images/brand_transp.png"/>
-                  </div>
-                  <div className="row center">
-                      <button className="shop-now">Shop Now</button>
+                  <div className="banner-caption">
+                      <div className="brand-transp">
+                          <img className="brand-transp-img" src="./images/brand_transp_purple.png"/>
+                      </div>
+                      <div className="row center">
+                          <button className="shop-now">Shop Now</button>
+                      </div>
                   </div>
               </div>
           </section>

@@ -2,6 +2,7 @@ import React, { useState,  useEffect, useRef} from 'react';
 import './Selector.css';
 
 function Selector(props) {
+    const { count } = props;
     const [selectedIndex, setSelectedIndex] = useState( 1);
     const wrapperRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
@@ -20,11 +21,12 @@ function Selector(props) {
         }
     };
 
-    const Options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => {
-        const sameAsSelected = (value === selectedIndex) ? 'same-as-selected' : '';
+    const Options =  [...Array(count).keys()].map((value) => {
+        const idx = value + 1;
+        const sameAsSelected = (idx === selectedIndex) ? 'same-as-selected' : '';
         return (
-            <div className={sameAsSelected} onClick={() => onSelect(value)}>
-                {value}
+            <div className={sameAsSelected} onClick={() => onSelect(idx)}>
+                {idx}
             </div>
         );
     });

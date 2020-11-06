@@ -70,7 +70,7 @@ function Collections(props) {
                 ?  <Loading />
                 :  <section className="collections__grid">
                     {
-                        (products.length === 0)
+                        (products && products.length === 0)
                             ? <div>Non currently available</div>
                             : products.map(product => {
                                 return (
