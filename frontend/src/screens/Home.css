@@ -49,8 +49,13 @@ a:active {
 }
 
 .category__grid-img {
-    filter:brightness(95%);
+    filter:brightness(96%);
 }
+
+.category__grid-img:hover {
+    filter:brightness(90%);
+}
+
 .category__grid-img-container {
     margin-bottom: .6rem;
 }
@@ -66,7 +71,11 @@ a:active {
 }
 
 .arrivals__grid-img {
-    filter:brightness(95%);
+    filter:brightness(96%);
+}
+
+.arrivals__grid-img:hover {
+    filter:brightness(90%);
 }
 
 .arrivals__grid-img-container {
@@ -76,6 +85,12 @@ a:active {
 .price {
     font-weight: 700;
     font-size: 1.5rem;
+}
+
+.accessories {
+}
+.charm {
+
 }
 
 

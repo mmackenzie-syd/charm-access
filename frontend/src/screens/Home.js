@@ -25,8 +25,8 @@ function Home() {
       <main className="home">
           <section className="banner">
             <div className="caption">
-                <h1>niche</h1>
-                <p>A GENERATEPRESS SHOP</p>
+                <h1 className="charm">charm</h1>
+                <p className="accessories">FASHION & ACCESSORIES</p>
                 <hr />
                 <p>An introductory verse to explain your products and services.
                     Niche is a minimalist shop design with a focus on product images.
@@ -45,7 +45,7 @@ function Home() {
                               <img  className="category__grid-img" src="./products/1_thb.jpg" />
                           </Link>
                       </div>
-                      <h2>Clothing&nbsp;<mark>(11)</mark></h2>
+                      <h2>Brooches&nbsp;<mark>(11)</mark></h2>
                   </li>
                   <li className="category__grid-item">
                       <div className="category__grid-img-container">
@@ -53,7 +53,7 @@ function Home() {
                               <img  className="category__grid-img" src="./products/34_thb.jpg" />
                           </Link>
                       </div>
-                      <h2>Music&nbsp;<mark>(7)</mark></h2>
+                      <h2>Bracelets&nbsp;<mark>(7)</mark></h2>
                   </li>
                   <li className="category__grid-item">
                       <div className="category__grid-img-container">
@@ -61,7 +61,7 @@ function Home() {
                               <img  className="category__grid-img" src="./products/29_thb.jpg" />
                           </Link>
                       </div>
-                      <h2>Posters&nbsp;<mark>(5)</mark></h2>
+                      <h2>Earrings&nbsp;<mark>(5)</mark></h2>
                   </li>
               </ul>
           </section>

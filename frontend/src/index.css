@@ -165,7 +165,7 @@ a { text-decoration: none; }
 
 /* unvisited link */
 a:link {
-    color: #0f0f0f;
+    color: #ea5600;
 }
 
 /* visited link */
@@ -175,12 +175,13 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: #ea5600;;
+    color: #ea5600;
+    fill: #ea5600;
 }
 
 /* selected link */
 a:active {
-    color:#ea5600;;
+    color:#ea5600;
 }
 
 

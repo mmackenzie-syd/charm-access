@@ -10,14 +10,14 @@ function Header() {
         <div className="sticky">
             <header className="site row space-between">
                 <div className="site__title">
-                    <Link to="/">niche</Link>
+                    <Link to="/">charm</Link>
                 </div>
                 <nav className="site__nav">
                     <ul className="row right">
                         <li className="site__nav-item"><NavLink to="/" activeClassName='is-active'>HOME</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/collections/jewellery/1">SHOP</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1">BLOG</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/about">ACCOUNT</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1">SHIPPING & PAYMENT</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/about">ABOUT US</NavLink></li>
                         <li className="site__nav-item">
                             <NavLink to="/shipping">
                                 <span className="gp-icon shopping-bag">
