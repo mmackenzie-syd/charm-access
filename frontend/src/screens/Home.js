@@ -24,15 +24,47 @@ function Home() {
   return (
       <main className="home">
           <section className="banner">
+              <ImageGallery
+                  items={images}
+                  showNav={false}
+                  showThumbnails={false}
+                  showFullscreenButton={false}
+                  showBullets={true}
+                  autoPlay={true}
+                  showPlayButton={false}
+                  slideInterval={7000}
+              />
             <div className="caption">
-                <h1 className="charm">charm</h1>
-                <p className="accessories">FASHION & ACCESSORIES</p>
+                {/*
+                <h1 className="">charm</h1>
+                <p className="">FASHION & ACCESSORIES</p>
                 <hr />
                 <p>An introductory verse to explain your products and services.
                     Niche is a minimalist shop design with a focus on product images.
                     Simple with no distractions.
                 </p>
                 <div className="btn-primary"><Link to="">GO SHOP</Link></div>
+                */}
+
+                <div className="brand-transp">
+                    <img className="brand-transp-img" src="./images/brand_transp_purple.png"/>
+                </div>
+                
+                <div className="row center">
+                    <button className="shop-now">Shop Now</button>
+                </div>
+
+                {/*
+                <h1 className="charm">charm</h1>
+                <p className="accessories">&nbsp;accessories</p>
+                <p>An introductory verse to explain your products and services.
+                    Niche is a minimalist shop design with a focus on product images.
+                    Simple with no distractions.
+                </p>
+                <div className="row">
+                    <button className="shop-now">SHOP NOW</button>
+                </div> */}
+
             </div>
           </section>
 

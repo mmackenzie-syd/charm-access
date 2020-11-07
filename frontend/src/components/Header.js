@@ -10,7 +10,9 @@ function Header() {
         <div className="sticky">
             <header className="site row space-between">
                 <div className="site__title">
-                    <Link to="/">charm</Link>
+                    <Link to="/">
+                        <img src="../../images/brand.png"/>
+                    </Link>
                 </div>
                 <nav className="site__nav">
                     <ul className="row right">

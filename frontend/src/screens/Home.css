@@ -1,10 +1,5 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
-.banner {
-    width: 50%;
-    padding-right: 3.2rem;
-    margin-bottom: 9.1rem;
-}
 
 .btn-primary {}
 .btn-primary a {
@@ -49,7 +44,7 @@ a:active {
 }
 
 .category__grid-img {
-    filter:brightness(96%);
+    filter:brightness(96.5%);
 }
 
 .category__grid-img:hover {
@@ -71,7 +66,7 @@ a:active {
 }
 
 .arrivals__grid-img {
-    filter:brightness(96%);
+    filter:brightness(96.5%);
 }
 
 .arrivals__grid-img:hover {
@@ -88,10 +83,46 @@ a:active {
 }
 
 .accessories {
-}
-.charm {
+    font-size: 3.0rem;
 
 }
+.charm {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    border-bottom: 4px solid #111;
+}
+
+.brand-transp {
+    width: 320px;
+    margin: 0 auto;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+.caption {
+    position: absolute;
+    left: 5rem;
+    top: 22%;
+    width: 40%;
+}
+
+
+.shop-now {
+    margin-top: 3rem;
+    padding: 1.4rem 4.5rem;
+    border-radius: 3px;
+    background-color: transparent;
+    display: inline-block;
+    border: 2px solid #937cd4;
+    font-size: 1.8rem;
+    color: #937cd4;
+    font-weight: bold;
+}
+
 
 
 

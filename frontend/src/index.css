@@ -21,7 +21,7 @@ html {
 
 .wrap {
     max-width: 132rem;
-    padding: 8rem 4rem;
+    padding: 0 4rem;
     margin: 0 auto;
 }
 
@@ -175,8 +175,8 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: #ea5600;
-    fill: #ea5600;
+    color: #937cd4;
+    fill: #937cd4;
 }
 
 /* selected link */
