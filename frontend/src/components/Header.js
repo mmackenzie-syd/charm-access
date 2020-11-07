@@ -1,78 +1,72 @@
 import './Header.css';
-import React from 'react'
+import React, {Fragment} from 'react'
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {NavLink, Link} from "react-router-dom";
 
 function Header() {
     const categoryList = useSelector(state => state.categoryList);
     const { categories } = categoryList;
     return (
-        <header>
-            <div className="row top site-title margin-top-2">
-                <div className="col-4 margin-top-3">
-                    <svg className="icon" width="24" height="24" viewBox="0 0 26 26" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                        <g strokeWidth="1">
-                            <path
-                                d="M3.5,2 C2.67157288,2 2,2.67157288 2,3.5 L2,22.5 C2,23.3284271 2.67157288,24 3.5,24 L11.5,24 C12.3284271,24 13,23.3284271 13,22.5 L13,3.5 C13,2.67157288 12.3284271,2 11.5,2 L3.5,2 Z M3.5,0 L11.5,0 C13.4329966,0 15,1.56700338 15,3.5 L15,22.5 C15,24.4329966 13.4329966,26 11.5,26 L3.5,26 C1.56700338,26 0,24.4329966 0,22.5 L0,3.5 C0,1.56700338 1.56700338,0 3.5,0 Z"></path>
-                            <polygon points="14.59375 4 14.59375 6 0.402816772 6 0.402816772 4"></polygon>
-                            <polygon points="14.59375 17 14.59375 19 0.402816772 19 0.402816772 17"></polygon>
-                            <path
-                                d="M8.5,20 C9.05228475,20 9.5,20.4477153 9.5,21 C9.5,21.5522847 9.05228475,22 8.5,22 L6.5,22 C5.94771525,22 5.5,21.5522847 5.5,21 C5.5,20.4477153 5.94771525,20 6.5,20 L8.5,20 Z"></path>
-                        </g>
-                    </svg>
-                    <span className="site-title__phone">+060931200777</span>
+        <div className="sticky">
+            <header className="site row space-between">
+                <div className="site__title">
+                    <Link to="/">niche</Link>
                 </div>
-                <div className="col-4">
-                    <Link to="/">
-                        <div className="site-title__brand">
-                            <img src="../../images/brand.png"/>
-                        </div>
-                    </Link>
-                </div>
-                <div className="col-4 row right margin-top-3">
-                    <svg className="icon margin-left-1" width="24" height="24" viewBox="-3 -3 23 23" version="1.1"
-                         xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                        <g strokeWidth="2">
-                            <polygon
-                                points="18.7071068 17.2928932 17.2928932 18.7071068 12.7628932 14.1771068 14.1771068 12.7628932"></polygon>
-                            <path
-                                d="M8,16 C3.581722,16 0,12.418278 0,8 C0,3.581722 3.581722,0 8,0 C12.418278,0 16,3.581722 16,8 C16,12.418278 12.418278,16 8,16 Z M8,14 C11.3137085,14 14,11.3137085 14,8 C14,4.6862915 11.3137085,2 8,2 C4.6862915,2 2,4.6862915 2,8 C2,11.3137085 4.6862915,14 8,14 Z"></path>
-                        </g>
-                    </svg>
-                    <a href="/cart">
-                        <svg className="icon margin-left-1" width="24" height="24" viewBox="-3 -1 23 25" version="1.1"
-                             xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                            <g strokeWidth="2">
-                                <path
-                                    d="M10.5882353,8 L10.5882353,4.08823529 C10.5882353,2.93493479 9.65330051,2 8.5,2 C7.34669949,2 6.41176471,2.93493479 6.41176471,4.08823529 L6.41176471,8 L2,8 L2,20 L15,20 L15,8 L10.5882353,8 Z M4.41176471,4.08823529 C4.41176471,1.83036529 6.24212999,0 8.5,0 C10.75787,0 12.5882353,1.83036529 12.5882353,4.08823529 L12.5882353,6 L17,6 L17,22 L0,22 L0,6 L4.41176471,6 L4.41176471,4.08823529 Z M5.41176471,6 L4.41176471,7 L4.41176471,6 L5.41176471,6 Z"></path>
-                                <polygon points="4 8 4 6 13 6 13 8"></polygon>
-                            </g>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <nav className="site-nav">
-                <ul className="row center">
-                    <li className="dropdown">
-                        <div className="dropbtn">
-                            <Link to="/collections/jewellery/1">Jewellery</Link>
-                        </div>
-                        <div className="dropdown-content">
-                            {
-                                categories && categories.map(category => (
-                                <Link key={category._id} to={`/collections/${category.slug}/1`}>{category.name}</Link>
-                                ))
-                            }
-                        </div>
-                    </li>
-                    <li><Link to="/collections/jewellery/1">New Arrivals</Link></li>
-                    <li><Link to="/collections/jewellery/1">Sale</Link></li>
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/shipping">Shipping & Payment</Link></li>
-                </ul>
-            </nav>
-        </header>
+                <nav className="site__nav">
+                    <ul className="row right">
+                        <li className="site__nav-item"><NavLink to="/" activeClassName='is-active'>HOME</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1">SHOP</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1">BLOG</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/about">ACCOUNT</NavLink></li>
+                        <li className="site__nav-item">
+                            <NavLink to="/shipping">
+                                <span className="gp-icon shopping-bag">
+                                    <svg viewBox="0 0 518 512" aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                         width="1em" height="1em">
+                                        <g id="Union" transform="matrix(1,0,0,1,2.01969,2)">
+                                            <path
+                                                d="M172,108.5C172,61.832 209.832,24 256.5,24C303.168,24 341,61.832 341,108.5L341,116C341,122.627 346.373,128 353,128C359.628,128 365,122.627 365,116L365,108.5C365,48.577 316.423,0 256.5,0C196.577,0 148,48.577 148,108.5L148,116C148,122.627 153.373,128 160,128C166.628,128 172,122.627 172,116L172,108.5Z"
+                                                style={{fillRule: 'nonzero'}}></path>
+                                            <path
+                                                d="M4.162,145.236C7.195,141.901 11.493,140 16,140L496,140C500.507,140 504.806,141.901 507.838,145.236C510.87,148.571 512.355,153.03 511.928,157.517L482.687,464.551C480.34,489.186 459.65,508 434.903,508L77.097,508C52.35,508 31.66,489.186 29.314,464.551L0.072,157.517C-0.355,153.03 1.13,148.571 4.162,145.236Z"
+                                                style={{fillRule: 'nonzero'}}></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </NavLink>
+                        </li>
+                        <li className="site__nav-item">
+                            <NavLink to="/shipping">
+                                <span className="gp-icon icon-search">
+                                    <svg viewBox="0 0 512 512"
+                                         ariaHidden="true"
+                                         role="img"
+                                         version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg"
+                                         xmlnsXlink="http://www.w3.org/1999/xlink"
+                                         width="1em" height="1em">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                              d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path>
+                                    </svg>
+                                </span>
+                            </NavLink>
+                        </li>
+                        <li className="site__nav-item">
+                            <NavLink to="/shipping">
+                                <span className="gp-icon pro-menu-bars">
+                                    <svg viewBox="0 0 512 512" ariaHidden="true" role="img" version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="1em"
+                                         height="1em">
+                                        <path
+                                            d="M0 96c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24zm0 160c0-13.255 10.745-24 24-24h464c13.255 0 24 10.745 24 24s-10.745 24-24 24H24c-13.255 0-24-10.745-24-24z"></path>
+                                    </svg>
+                                </span>
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
     );
 }
 

@@ -1,224 +1,93 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
-.App {
-  text-align: center;
+.banner {
+    width: 50%;
+    padding-right: 3.2rem;
+    margin-bottom: 9.1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn-primary {}
+.btn-primary a {
+    border-radius: 2.8rem;
+    padding: 1rem 2rem;
+    display: inline-block;
+    color: #ffffff;
+    background-color: #ea5600;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 1.5;
+}
+/* unvisited link */
+.btn-primary a:link {
+    color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* visited link */
+.btn-primary a:visited {
+    color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* mouse over link */
+.btn-primary a:hover {
+    background-color: #ea691e;
 }
 
-.App-link {
-  color: #61dafb;
+/* selected link */
+a:active {
+    color:#fff;;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Info */
-.info {
-    padding: 3rem;
-    background-color: #ebe7f7;
-    text-align: center;
-    font-size: 1.8rem;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-}
-
-.info__title {
-    font-size: 2rem;
-}
-
-.info__btn {
-    font-size: 1.8rem;
-}
-
-/* Collection */
-
-.grid-container {
-    box-sizing: border-box;
+.category__grid {
     display: grid;
     grid-template-columns: 33.33fr 33.33fr 33.33fr;
-    grid-column-gap: 3rem;
-    grid-row-gap: 3rem;
-    background-color: #f9f9f9;
-    padding: 3rem;
-}
-.grid-item {
-    box-sizing: border-box;
-    padding: 2rem;
-    background-color: #f7f7f7;
+    grid-column-gap: 4.5rem;
+    margin-bottom: 7rem;
 }
 
-.grid-item-img {
-    width: 100%;
-    padding: 3rem;
-    background-color: #f1f1f1;
-}
-/* Mood */
-.mood {
-    position: relative;
-    border: 1px solid #f5f5f5;
-}
-.mood__caption {
-    position: absolute;
-    line-height: 2;
-    text-align: center;
-    width: 100%;
-    top: 35%;
-    left: 0;
-    font-size: 4rem;
-    color: #fff;
-    font-weight: lighter;
+.category__grid-item {
 }
 
-.mood__img {
-    opacity: 0.8;
+.category__grid-img {
+    filter:brightness(95%);
+}
+.category__grid-img-container {
+    margin-bottom: .6rem;
 }
 
-/* Signup */
-.signup {
-    padding: 5rem;
-    background: #ebe7f7;
-    color: #3f1313;
-    font-size: 1.8rem;
-}
-.signup__input-wrap {
-    border: 1px solid rgba(63, 19, 19, 0.4);
-    border-radius: 3px;
-    padding: .8rem .8rem .8rem 1.6rem;
-}
-.signup__input {
-    flex-grow: 1;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    background-color: #ebe7f7;
-    border: 0;
-    font-size: 1.8rem;
-}
-.signup__input:focus {
-    outline: none;
-}
-.signup__submit {
-    font-size: 1.8rem;
-}
-
-.signup__title {
-    font-size: 2rem;
-}
-
-
-/* Carousel */
-.banner {
-    position: relative;
-}
-.banner__dots {
-    position: absolute;
-    left: 50%;
-    bottom: 2rem;
-}
-.banner__dot {
-    display: inline-block;
-    border-radius: 50%;
-    width: 8px;
-    height: 8px;
-    border: 2px solid #fff;;
-    margin-left: 1rem;
-}
-
-.brand-transp {
-
-}
-
-.grid-banner-container {
+.arrivals__grid {
     display: grid;
-    grid-template-columns: 66.67% auto;
-}
-.grid-banner-1 {
-    position: relative;
-}
-.grid-banner-2 {
-    background-color: #937cd4;
+    grid-template-columns: 25fr 25fr 25fr 25fr;
+    grid-column-gap: 4.5rem;
+    margin-bottom: 8rem;
 }
 
-.brand-transp {
-    width: 350px;
+.arrivals__grid-item {
 }
 
-.banner-container {
-    position: relative;
-}
-.banner-caption {
-    position: absolute;
-    left: 100px;
-    top: 15%;
-    padding: 5rem 2rem;
-    border-radius: 3px;
+.arrivals__grid-img {
+    filter:brightness(95%);
 }
 
-.home__collections {
-    font-size: 3rem;
+.arrivals__grid-img-container {
+    margin-bottom: .6rem;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 1.5rem;
 }
 
 
-.shop-now {
-    margin-top: 3rem;
-    padding: 1.4rem 4.5rem;
-    border-radius: 3px;
-    background-color: transparent;
-    display: inline-block;
-    border: 2px solid #937cd4;
-    font-size: 1.8rem;
-    color: #937cd4;
-    font-weight: bold;
-}
 
-.home {
-    border-top: 1px solid rgba(0,0,0,0.15);
-}
 
-svg.white {
-    fill: #fff;
-}
 
-.arrivals {
-    font-size: 3rem;
-    text-align: center;
-    color: #4f4f4f;
-}
 
-.signup__form {
-}
 
-.signup__logo {
-    border-right: 1px solid rgba(0,0,0,0.15);
 
-    padding: 5rem;
-}
+
+
+
 
 
 

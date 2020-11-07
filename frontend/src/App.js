@@ -21,17 +21,17 @@ function App() {
     return (
         <BrowserRouter>
             <Fragment>
-                <FreeShipping />
+                <Header />
+                <div className="spacer-header-compensate">&nbsp;</div>
                 <div className="wrap" >
-                    <Header />
                     <Route path="/" component={Home} exact />
                     <Route path="/product/:id" component={Product} />
                     <Route path="/collections/:category/:page" component={Collections}  />
                     <Route path="/about" component={About} />
                     <Route path="/shipping" component={Shipping} />
                     <Route path="/cart" component={Cart} />
-                <Footer />
                 </div>
+                <Footer />
             </Fragment>
         </BrowserRouter>
     );
