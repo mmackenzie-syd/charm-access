@@ -94,7 +94,7 @@ a:active {
 
 .brand-transp {
     width: 320px;
-    width: 280px;
+    width: 290px;
     margin: 0 auto;
 }
 
@@ -103,13 +103,14 @@ a:active {
     width: 100%;
     margin-top: 5rem;
     margin-bottom: 5rem;
+    z-index: -1;
 }
 .caption {
     position: absolute;
     left: 5rem;
-    left: 6rem;
-    top: 22%;
-    width: 40%;
+    left: 7rem;
+    top: 18%;
+    padding: 3rem;
 }
 
 
@@ -125,8 +126,25 @@ a:active {
     font-weight: bold;
 }
 
+.site__nav-banner {
+    max-width: 1280px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    z-index: 100;
+    width: 100%;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+}
+
+.site__nav-item {
+    display: inline-block;
+}
 
 
+.category {
+
+}
 
 
 
