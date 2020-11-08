@@ -94,6 +94,7 @@ a:active {
 
 .brand-transp {
     width: 320px;
+    width: 280px;
     margin: 0 auto;
 }
 
@@ -106,6 +107,7 @@ a:active {
 .caption {
     position: absolute;
     left: 5rem;
+    left: 6rem;
     top: 22%;
     width: 40%;
 }

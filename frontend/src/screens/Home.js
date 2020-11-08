@@ -138,6 +138,42 @@ function Home() {
                       <h2>Ninja Silhouette</h2>
                       <p className="price">$20.00</p>
                   </li>
+                  <li className="arrivals__grid-item">
+                      <div className="arrivals__grid-img-container">
+                          <Link to="">
+                              <img  className="arrivals__grid-img" src="./products/3_thb.jpg" />
+                          </Link>
+                      </div>
+                      <h2>Flying Ninja</h2>
+                      <p className="price">$12.00</p>
+                  </li>
+                  <li className="arrivals__grid-item">
+                      <div className="arrivals__grid-img-container">
+                          <Link to="">
+                              <img  className="arrivals__grid-img" src="./products/4_thb.jpg" />
+                          </Link>
+                      </div>
+                      <h2>Happy Ninja</h2>
+                      <p className="price">$18.00</p>
+                  </li>
+                  <li className="arrivals__grid-item">
+                      <div className="arrivals__grid-img-container">
+                          <Link to="">
+                              <img  className="arrivals__grid-img" src="./products/5_thb.jpg" />
+                          </Link>
+                      </div>
+                      <h2>Happy Ninja</h2>
+                      <p className="price">$35.00</p>
+                  </li>
+                  <li className="arrivals__grid-item">
+                      <div className="arrivals__grid-img-container">
+                          <Link to="">
+                              <img  className="arrivals__grid-img" src="./products/6_thb.jpg" />
+                          </Link>
+                      </div>
+                      <h2>Ninja Silhouette</h2>
+                      <p className="price">$20.00</p>
+                  </li>
               </ul>
           </section>
 
