@@ -1,7 +1,15 @@
 footer {
     font-size: 1.5rem;
     line-height: 1.5;
-    color: #fff;
-    padding: 2rem;
-    background-color: #222222;
+    color: #111;
+    padding: 4rem;
+    padding-bottom: 5rem;
+    background-color: #fff;
+    border-top: 1px solid rgba(0, 0, 0, .2);
+
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #4f4f4f;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }

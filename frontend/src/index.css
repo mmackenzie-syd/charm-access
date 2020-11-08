@@ -34,6 +34,8 @@ html {
 .row.top { align-items: flex-start }
 .row.center { justify-content: center; }
 
+.row.left { justify-content: flex-start }
+
 .row.right { justify-content: flex-end; }
 
 .row.space-between { justify-content: space-between}
@@ -116,6 +118,13 @@ hr {
     background-color: rgba(0,0,0,.1);
     border: 0;
     height: 1px;
+
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .2);
+    width: 100%;
+}
+
+.divider {
+
 }
 
 

@@ -24,7 +24,9 @@
     font-weight: 400;
     text-transform: none;
     color: #000;
-    width:190px;
+    width:185px;
+    margin-top: 0px;
+    margin-bottom:0px;
 }
 
 /* Navigation */
