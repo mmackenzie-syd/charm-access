@@ -16,7 +16,7 @@ function Header() {
                 </div>
                 <nav className="site__nav">
                     <ul className="row right">
-                        <li className="site__nav-item"><NavLink to="/home" activeClassName='is-active'>HOME</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/" activeClassName='is-active' exact>HOME</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/collections/jewellery/1" activeClassName='is-active'>SHOP</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
