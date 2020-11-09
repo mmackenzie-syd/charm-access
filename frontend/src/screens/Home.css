@@ -145,32 +145,36 @@ a:active {
 }
 
 .info__img {
-    opacity: 1;
+    opacity: 0.8;
 
 }
 .info__caption {
     position: absolute;
-    top: 35%;
+    top: 30%;
     width: 100%;
     text-align: center;
     color: #fff;
 }
 
 .info__mood {
-    margin-bottom: 7rem;
-    font-size: 3.2rem;
-    font-weight: 400;
+    font-family: 'Arsenal', sans-serif;
+    margin-bottom: 4rem;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 1.5;
 }
 
 .info__phone {
-    font-size: 2.0rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 500;
     margin-bottom: 3rem;
+    padding-right: 3rem;
 }
 
 .info__shipping {
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 500;
+    padding-right: 3rem;
 }
 
 .info__icon {
@@ -197,8 +201,9 @@ a:active {
     display: inline-block;
     font-size: 12px;
     cursor: pointer;
-    border: 1px solid #e4e4ed;
-    border: 1px solid #ddd;
+    border: 1px solid #f1f1f1;
+    border: 1px solid #ccc;
+    border: 0;
     background: #fff;
     color: #9192a3;
     border-radius: 3px;
@@ -206,7 +211,7 @@ a:active {
 }
 
 .icon-arrow {
-    background: #fff;
+    background: #efefef;
     color: #9192a3;
     color: #ccc;
     color: #fff;

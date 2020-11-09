@@ -50,45 +50,42 @@ function Collections(props) {
         showBreadcrumb = true;
     }
     return (
-        <main className="collections margin-top-2 margin-bottom-1" style={{minHeight: '500px'}}>
-            <section className="margin-top-2">
+        <main className="collections margin-top-2">
+            <section className="row left margin-top-5">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
-                <div className="row">
-                    <h2 className="collections__title margin-bottom-5">{category && category.name}</h2>
-                    <div className="pagination">
-                        {   pages.length > 1 &&
-                            pages.map((page) => {
-                                const active = (page === Number(curPage)) ? 'active' : '';
-                                return <Link to={`/collections/${categorySlug}/${page}`} className={active}>{page}</Link>
-                            })
-                        }
-                    </div>
+            </section>
+            <section className="row  margin-bottom-1 margin-top-1" >
+                <h3 className="">{category && category.name}</h3>
+                <div className="pagination">
+                    {   pages.length > 1 &&
+                        pages.map((page) => {
+                            const active = (page === Number(curPage)) ? 'active' : '';
+                            return <Link to={`/collections/${categorySlug}/${page}`} className={active}>{page}</Link>
+                        })
+                    }
                 </div>
-
             </section>
             { loading
                 ?  <Loading />
-                :  <section className="collections__grid">
+                :  <ul className="arrivals__grid">
                     {
                         (products && products.length === 0)
-                            ? <div>Non currently available</div>
+                            ? <li>Non currently available</li>
                             : products.map(product => {
                                 return (
-                                    <div key={product._id} className="collections__grid-item">
-                                        <Link to={`/product/${product._id}`}>
-                                            <div className="collections__img">
-                                                <img src={product.thumbnail}/>
-                                            </div>
-                                            <div className="margin-top-2 padding-left-3">
-                                                <div className="collections__description">{product.name}</div>
-                                                <div className="margin-top-1 collections__price">${product.price}</div>
-                                            </div>
-                                        </Link>
-                                    </div>
+                                    <li key={product._id} className="arrivals__grid-item">
+                                        <div className="arrivals__grid-img-container">
+                                            <Link to={`/product/${product._id}`}>
+                                                <img  className="arrivals__grid-img" src={product.thumbnail} />
+                                            </Link>
+                                        </div>
+                                        <h2>{product.name}</h2>
+                                        <p className="price">${product.price}</p>
+                                    </li>
                                 );
                             })
                     }
-                </section>
+                </ul>
             }
         </main>
     );

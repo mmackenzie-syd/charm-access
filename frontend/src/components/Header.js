@@ -16,13 +16,13 @@ function Header() {
                 </div>
                 <nav className="site__nav">
                     <ul className="row right">
-                        <li className="site__nav-item"><NavLink to="/" activeClassName='is-active'>HOME</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1">SHOP</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1">SHIPPING & PAYMENT</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/about">ABOUT US</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/home" activeClassName='is-active'>HOME</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1" activeClassName='is-active'>SHOP</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
 
                         <li className="site__nav-item">
-                            <NavLink to="/shipping">
+                            <a>
                                 <span className="gp-icon shopping-bag">
                                     <svg
                                         width="1.1em"
@@ -35,10 +35,10 @@ function Header() {
                                             <path d="M58.4,40.1c-1.1,0-2-0.9-2-2v-2.6c0-3.8-2.6-6.7-6-6.7s-6,2.9-6,6.7v2.6c0,1.1-0.9,2-2,2s-2-0.9-2-2v-2.6  c0-6,4.4-10.7,10-10.7s10,4.7,10,10.7v2.6C60.4,39.2,59.5,40.1,58.4,40.1z"/>
                                     </svg>
                                 </span>
-                            </NavLink>
+                            </a>
                         </li>
                         <li className="site__nav-item">
-                            <NavLink to="/shipping">
+                            <a>
                                 <span className="gp-icon icon-search">
                                     <svg
                                         width="1em"
@@ -53,7 +53,7 @@ function Header() {
                                               d="M208 48c-88.366 0-160 71.634-160 160s71.634 160 160 160 160-71.634 160-160S296.366 48 208 48zM0 208C0 93.125 93.125 0 208 0s208 93.125 208 208c0 48.741-16.765 93.566-44.843 129.024l133.826 134.018c9.366 9.379 9.355 24.575-.025 33.941-9.379 9.366-24.575 9.355-33.941-.025L337.238 370.987C301.747 399.167 256.839 416 208 416 93.125 416 0 322.875 0 208z"></path>
                                     </svg>
                                 </span>
-                            </NavLink>
+                            </a>
                         </li>
                     </ul>
                 </nav>

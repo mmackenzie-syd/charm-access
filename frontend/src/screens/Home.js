@@ -74,23 +74,21 @@ function Home() {
             </div>
           </section>
 
-          <hr />
-
           <section className="category">
-              <div className="row  margin-bottom-2">
+              <div className="row  margin-bottom-1">
                   <h3>By Category</h3>
                   <div>
                       <span className="slider_control icon-arrow">
                           <svg
                               style={{
                                   fill: '#9192a3',
-                                  transform: 'translate(0, .3rem)'
+                                  transform: 'translate(0, .2rem)'
                               }}
                               version="1.1"
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
-                              width="1.2rem"
-                              height="1.2rem"
+                              width="1rem"
+                              height="1rem"
                               x="0px"
                               y="0px"
                               viewBox="0 0 477.175 477.175"
@@ -106,13 +104,13 @@ function Home() {
                           <svg
                               style={{
                                   fill: '#9192a3',
-                                  transform: 'translate(0, .3rem)'
+                                  transform: 'translate(0, .2rem)'
                               }}
                               version="1.1"
                               xmlns="http://www.w3.org/2000/svg"
                               xmlnsXlink="http://www.w3.org/1999/xlink"
-                              width="1.2rem"
-                              height="1.2rem"
+                              width="1rem"
+                              height="1rem"
                               x="0px"
                               y="0px"
                               viewBox="0 0 477.175 477.175"
@@ -155,7 +153,7 @@ function Home() {
           </section>
 
           <section className="arrivals">
-              <div className="row  margin-bottom-2">
+              <div className="row  margin-bottom-1">
                   <h3>Recent Arrivals</h3>
                   <div>
                       <span className="slider_control icon-arrow">

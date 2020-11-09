@@ -10,7 +10,7 @@ app.use(cors());
 //Get collection
 app.get('/api/products/:category/:page', (req, res) => {
     // paginate
-    const perPage = 6;
+    const perPage = 8;
     const { page, category } = req.params;
     const products = (category === 'jewellery')
         ? data.products
@@ -38,7 +38,7 @@ app.get('/api/product/:id', asyncHandler(async(req, res, next) => {
     }
 }));
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
     console.log(`Serve at http://localhost:${port}`);
 });

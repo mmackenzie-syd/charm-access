@@ -1,53 +1,6 @@
 
 /* Collection */
 .collections {
-    border-top: 1px solid rgba(0,0,0,0.15);
-}
-
-.collections__title {
-    font-size: 3rem;
-    margin-top: 7rem;
-}
-
-.collections__breadcrumb {
-    display: flex;
-}
-
-.collections__breadcrumb-item {
-    display: inline-block;
-    font-size: 1.4rem;
-    margin-right: 1rem;
-}
-
-.collections__grid {
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 33.33fr 33.33fr 33.33fr;
-    grid-column-gap: 3rem;
-    grid-row-gap: 3rem;
-    background-color: #f9f9f9;
-    padding: 3rem;
-}
-.collections__grid-item {
-    box-sizing: border-box;
-}
-
-.collections__img {
-    padding: 3rem;
-    background-color: #f1f1f1;
-}
-
-.collections__img--light {
-    background-color: #f1f1f1;
-}
-
-.collections__description {
-    font-size: 1.6rem;
-}
-
-.collections__price {
-    font-size: 1.8rem;
-    color: #4f4f4f;
 }
 
 .pagination {
@@ -55,19 +8,29 @@
 }
 
 .pagination a {
-    font-size: 1.4rem;
-    color: black;
-    float: left;
-    padding: 8px 14px;
+    line-height: 38px;
+    width: 40px;
+    text-align: center;
+    z-index: 2;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #f1f1f1;
+    border: 1px solid #ccc;
+    border: 0;
+    background: #efefef;
+    color: #4f4f4f;
+    border-radius: 3px;
+    margin-left: .8rem;
     text-decoration: none;
     transition: background-color .3s;
-    border: 1px solid #ddd;
 }
 
 .pagination a.active {
-    background-color: #4f4f4f;
+    background-color: #9886BA;
     color: white;
-    border: 1px solid #4f4f4f;
+    border: 1px solid #9886BA;
+    font-weight: bold;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
