@@ -24,7 +24,7 @@ function Home() {
   return (
       <main className="home">
           <div className="row center free-shipping">
-              FREE SHIPPING AUSTRALIA WIDE ON ORDERS OVER $100
+              <span>FREE SHIPPING AUSTRALIA WIDE ON ORDERS OVER $100</span>
           </div>
           <section className="banner">
               <ImageGallery
@@ -74,8 +74,58 @@ function Home() {
             </div>
           </section>
 
+          <hr />
+
           <section className="category">
-              <h3>By Category</h3>
+              <div className="row  margin-bottom-2">
+                  <h3>By Category</h3>
+                  <div>
+                      <span className="slider_control icon-arrow">
+                          <svg
+                              style={{
+                                  fill: '#9192a3',
+                                  transform: 'translate(0, .3rem)'
+                              }}
+                              version="1.1"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlnsXlink="http://www.w3.org/1999/xlink"
+                              width="1.2rem"
+                              height="1.2rem"
+                              x="0px"
+                              y="0px"
+                              viewBox="0 0 477.175 477.175"
+                              xmlSpace="preserve">
+                              <g>
+                                  <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                                       c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"
+                                  />
+                              </g>
+                          </svg>
+                      </span>
+                      <span className="slider_control icon-arrow">
+                          <svg
+                              style={{
+                                  fill: '#9192a3',
+                                  transform: 'translate(0, .3rem)'
+                              }}
+                              version="1.1"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlnsXlink="http://www.w3.org/1999/xlink"
+                              width="1.2rem"
+                              height="1.2rem"
+                              x="0px"
+                              y="0px"
+                              viewBox="0 0 477.175 477.175"
+                              xmlSpace="preserve">
+                              <g>
+                                  <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
+                                      c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z
+                                  "/>
+                              </g>
+                          </svg>
+                      </span>
+                  </div>
+              </div>
               <ul className="category__grid">
                   <li className="category__grid-item">
                       <div className="category__grid-img-container">
@@ -105,8 +155,57 @@ function Home() {
           </section>
 
           <section className="arrivals">
-              <h3>Recent Arrivals</h3>
-              <div className="spacer">&nbsp;</div>
+              <div className="row  margin-bottom-2">
+                  <h3>Recent Arrivals</h3>
+                  <div>
+                      <span className="slider_control icon-arrow">
+                          <svg
+                              style={{
+                                  fill: '#9192a3',
+                                  transform: 'translate(0, .3rem)'
+                              }}
+                              version="1.1"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlnsXlink="http://www.w3.org/1999/xlink"
+                              width="1.2rem"
+                              height="1.2rem"
+                              x="0px"
+                              y="0px"
+                              viewBox="0 0 477.175 477.175"
+                              xmlSpace="preserve">
+                              <g>
+                                  <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                                       c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"
+                                  />
+                              </g>
+                          </svg>
+                      </span>
+                      <span className="slider_control icon-arrow">
+                          <svg
+                              style={{
+                                  fill: '#9192a3',
+                                  transform: 'translate(0, .3rem)'
+                              }}
+                              version="1.1"
+                              xmlns="http://www.w3.org/2000/svg"
+                              xmlnsXlink="http://www.w3.org/1999/xlink"
+                              width="1.2rem"
+                              height="1.2rem"
+                              x="0px"
+                              y="0px"
+                              viewBox="0 0 477.175 477.175"
+                              xmlSpace="preserve">
+                              <g>
+                                  <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
+                                      c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z
+                                  "/>
+                              </g>
+                          </svg>
+                      </span>
+                  </div>
+              </div>
+
+              {/*  <div className="spacer">&nbsp;</div> */}
               <ul className="arrivals__grid">
                   <li className="arrivals__grid-item">
                       <div className="arrivals__grid-img-container">
@@ -155,15 +254,15 @@ function Home() {
                 <div className="info__mood">
                     Create your mood with Charm Accessories
                 </div>
-                <div className="row left info__phone">
+                <div className="row center info__phone">
                     <span className="">
                         <svg version="1.1"
                             xmlns="http://www.w3.org/2000/svg"
                             xmlnsXlink="http://www.w3.org/1999/xlink"
                             x="0px"
                             y="0px"
-                            width="36px"
-                            height="36px"
+                            width="28px"
+                            height="28px"
                             style={{fill: '#fff'}}
                             viewBox="0 0 512 512"
                             xmlSpace="preserve">
@@ -180,12 +279,12 @@ function Home() {
                     </span>
                     &nbsp;+061421013777 &nbsp;&nbsp; 10AM - 8PM
                 </div>
-                <div className="row left info__shipping">
+                <div className="row center info__shipping">
                     <span className="info__icon">
                         <svg version="1.0"
                              xmlns="http://www.w3.org/2000/svg"
-                             width="52px"
-                             height="52px"
+                             width="42px"
+                             height="42px"
                              viewBox="0 0 1280.000000 789.000000"
                              preserveAspectRatio="xMidYMid meet">
                             <g transform="translate(0.000000,789.000000) scale(0.100000,-0.100000)"
