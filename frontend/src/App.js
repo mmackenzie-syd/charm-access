@@ -13,11 +13,6 @@ import {listCategories} from "./actions/categoryActions";
 import FreeShipping from "./components/FreeShipping";
 
 function App() {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(listCategories())
-    }, []);
-
     return (
         <BrowserRouter>
             <Fragment>
