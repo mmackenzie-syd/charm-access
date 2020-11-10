@@ -69,23 +69,24 @@ function Collections(props) {
             </section>
 
             {
-               products &&
-                    <ul className="arrivals__grid">
-                        {
-                            products.map(product =>
-                                <li key={product._id} className="arrivals__grid-item">
-                                    <div className="arrivals__grid-img-container" >
-                                        <Link to={`/product/${product._id}`}>
-                                            <img  className="arrivals__grid-img" src={placeholder} />
-                                            <img  className="arrivals__grid-img absolute" src={product.thumbnail} />
-                                        </Link>
-                                    </div>
-                                    <h2>{product.name}</h2>
-                                    <p className="price">${product.price}</p>
-                                </li>
-                            )
-                        }
-                    </ul>
+                products &&
+                <ul className="arrivals__grid">
+                    { isLoading && <Loading isLoading={isLoading}/> }
+                    {
+                        products.map(product =>
+                            <li key={product._id} className="arrivals__grid-item">
+                                <div className="arrivals__grid-img-container" >
+                                    <Link to={`/product/${product._id}`}>
+                                        <img  className="arrivals__grid-img" src={placeholder} />
+                                        <img  className="arrivals__grid-img absolute" src={product.thumbnail} />
+                                    </Link>
+                                </div>
+                                <h2>{product.name}</h2>
+                                <p className="price">${product.price}</p>
+                            </li>
+                        )
+                    }
+                </ul>
             }
         </main>
 

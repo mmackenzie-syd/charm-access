@@ -12,7 +12,7 @@ function Breadcrumb(props) {
         <ul className="breadcrumb">
             {
                 list.reduce((arr, item, index) => {
-                    arr.push(<li className={(index < maxIndex) ? "breadcrumb__item" : "breadcrumb__item breadcrumb__item--last" }>
+                    arr.push(<li key={`breadcrumb-${index}`} className={(index < maxIndex) ? "breadcrumb__item" : "breadcrumb__item breadcrumb__item--last" }>
                         {
                             index < maxIndex
                                 ? <Link to={item.url}>{item.name}</Link>
@@ -20,7 +20,7 @@ function Breadcrumb(props) {
                         }
                     </li>);
                     if (index < maxIndex) {
-                        arr.push(<li className="breadcrumb__item">/</li>);
+                        arr.push(<li key={`backslash-${index}`}  className="breadcrumb__item">/</li>);
                     }
                     return arr;
                 }, [])
