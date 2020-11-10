@@ -3,6 +3,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 import ImageGallery from 'react-image-gallery';
+import {useHistory} from "react-router";
 
 const images = [
     {
@@ -21,6 +22,12 @@ const images = [
 
 
 function Home() {
+    let history = useHistory();
+
+    const handleShopNow = () => {
+        history.push("/collections/shop/1");
+    }
+
   return (
       <main className="home">
           <div className="row center free-shipping">
@@ -57,7 +64,7 @@ function Home() {
 
                 </div>
                 <div className="row center">
-                    <button className="shop-now">Shop Now</button>
+                    <button className="shop-now" onClick={handleShopNow}>Shop Now</button>
                 </div>
 
                 {/*
