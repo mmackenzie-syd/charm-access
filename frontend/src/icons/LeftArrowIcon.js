@@ -1,0 +1,35 @@
+import React from "react";
+
+function LeftArrowIcon(props) {
+    const fill = props.fill || '#111';
+    const width = props.width || '2.4rem';
+    const height = props.height || '2.4rem';
+    const offset = props.offset || 0;
+    const className = props.className || '';
+    return (
+        <span className={className}>
+            <svg
+                width={width}
+                height={height}
+                style={{
+                    fill: fill,
+                    transform: `translate(0, ${offset})`
+                }}
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                x="0px"
+                y="0px"
+                viewBox="0 0 477.175 477.175"
+                xmlSpace="preserve">
+                  <g>
+                      <path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                           c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"
+                      />
+                  </g>
+              </svg>
+        </span>
+    );
+}
+
+export default LeftArrowIcon;
