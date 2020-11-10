@@ -1,43 +1,10 @@
 import './Header.css';
-import React, {Fragment, useState} from 'react'
-import {useSelector} from "react-redux";
+import React, {Fragment, useContext, useState} from 'react'
 import {NavLink, Link, useLocation} from "react-router-dom";
+import {CategoriesContext} from "../providers/CategoriesProvider";
 
 function Header(props) {
-
-    const categories = [
-        {
-            _id: '1',
-            slug: 'necklaces',
-            name: 'Necklaces',
-        },
-        {
-            _id: '2',
-            slug: 'bracelets',
-            name: 'Bracelets',
-        },
-        {
-            _id: '3',
-            slug: 'brooches',
-            name: 'Brooches',
-        },
-        {
-            _id: '4',
-            slug: 'earrings',
-            name: 'Earrings',
-        },
-        {
-            _id: '5',
-            slug: 'rings',
-            name: 'Rings',
-        },
-        {
-            _id: '6',
-            slug: 'headware',
-            name: 'Headwear',
-        }
-    ];
-
+    const {categories} = useContext(CategoriesContext);
     const location = useLocation();
     const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
 

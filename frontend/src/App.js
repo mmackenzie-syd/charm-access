@@ -12,11 +12,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {listCategories} from "./actions/categoryActions";
 import FreeShipping from "./components/FreeShipping";
 
+import {CategoriesProvider} from './providers/CategoriesProvider';
+
 function App() {
     return (
 
         <BrowserRouter>
-            <Header />
+            <CategoriesProvider>
+                <Header />
+            </CategoriesProvider>
             <Fragment>
                 <div className="spacer-header-compensate">&nbsp;</div>
                 <div className="wrap" >
