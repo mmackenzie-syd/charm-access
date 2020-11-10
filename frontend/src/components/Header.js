@@ -2,6 +2,7 @@ import './Header.css';
 import React, {Fragment, useContext, useState} from 'react'
 import {NavLink, Link, useLocation} from "react-router-dom";
 import {CategoriesContext} from "../providers/CategoriesProvider";
+import BagIcon from "../icons/BagIcon";
 
 function Header(props) {
     const {categories} = useContext(CategoriesContext);
@@ -41,6 +42,7 @@ function Header(props) {
 
                         <li className="site__nav-item">
                             <a>
+                                <BagIcon width={'1.1rem'} height={'1.1rem'} fill={'#4f4f4f'} />
                                 <span className="gp-icon shopping-bag">
                                     <svg
                                         width="1.1em"
