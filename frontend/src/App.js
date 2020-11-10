@@ -16,12 +16,9 @@ import {CategoriesProvider} from './providers/CategoriesProvider';
 
 function App() {
     return (
-
         <BrowserRouter>
             <CategoriesProvider>
                 <Header />
-            </CategoriesProvider>
-            <Fragment>
                 <div className="spacer-header-compensate">&nbsp;</div>
                 <div className="wrap" >
                     <Route path="/" component={Home} exact />
@@ -32,7 +29,7 @@ function App() {
                     <Route path="/cart" component={Cart} />
                 </div>
                 <Footer />
-            </Fragment>
+            </CategoriesProvider>
         </BrowserRouter>
     );
 }

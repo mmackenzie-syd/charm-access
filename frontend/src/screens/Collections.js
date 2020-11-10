@@ -1,5 +1,5 @@
 import './Collections.css';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import {listProducts} from "../actions/productActions";
@@ -9,8 +9,10 @@ import Breadcrumb from "../components/Breadcrumb";
 import Axios from "axios";
 
 import placeholder from './placeholder.png';
+import {CategoriesContext} from "../providers/CategoriesProvider";
 
 function Collections(props) {
+    const {categories} = useContext(CategoriesContext);
     const categorySlug = props.match.params.category;
     const curPage = Number(props.match.params.page);
 
@@ -35,9 +37,7 @@ function Collections(props) {
     }, [curPage, categorySlug]);
 
     const pages = data ? [...Array(data.pages).keys()].map(key => key + 1) : [];
-
     const products = data ? data.products : [];
-    const categories = data ? data.categories : [];
 
     let category;
     if (categories) {

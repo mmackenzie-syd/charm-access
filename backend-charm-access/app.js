@@ -20,7 +20,7 @@ app.get('/api/products/:category/:page', (req, res) => {
 
     const pages = Math.ceil(products.length / perPage);
 
-    res.status(200).send({ products: prodsPerPage, pages, categories: data.categories });
+    res.status(200).send({ products: prodsPerPage, pages });
 });
 
 app.get('/api/categories', asyncHandler(async(req, res, next) => {
