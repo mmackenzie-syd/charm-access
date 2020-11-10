@@ -45,17 +45,6 @@ function Home() {
                   slideInterval={7000}
               />
             <div className="caption">
-                {/*
-                <h1 className="">charm</h1>
-                <p className="">FASHION & ACCESSORIES</p>
-                <hr />
-                <p>An introductory verse to explain your products and services.
-                    Niche is a minimalist shop design with a focus on product images.
-                    Simple with no distractions.
-                </p>
-                <div className="btn-primary"><Link to="">GO SHOP</Link></div>
-                */}
-
                 <div className="brand-transp">
                     <img className="brand-transp-img" src="./images/brand_transp_purple.png"/>
                 </div>
@@ -66,18 +55,6 @@ function Home() {
                 <div className="row center">
                     <button className="shop-now" onClick={handleShopNow}>Shop Now</button>
                 </div>
-
-                {/*
-                <h1 className="charm">charm</h1>
-                <p className="accessories">&nbsp;accessories</p>
-                <p>An introductory verse to explain your products and services.
-                    Niche is a minimalist shop design with a focus on product images.
-                    Simple with no distractions.
-                </p>
-                <div className="row">
-                    <button className="shop-now">SHOP NOW</button>
-                </div> */}
-
             </div>
           </section>
 
@@ -134,7 +111,7 @@ function Home() {
               <ul className="category__grid">
                   <li className="category__grid-item">
                       <div className="category__grid-img-container">
-                          <Link to="">
+                          <Link to="/collections/brooches/1">
                               <img  className="category__grid-img" src="./products/1_thb.jpg" />
                           </Link>
                       </div>
@@ -142,7 +119,7 @@ function Home() {
                   </li>
                   <li className="category__grid-item">
                       <div className="category__grid-img-container">
-                          <Link to="">
+                          <Link to="/collections/bracelets/1">
                               <img  className="category__grid-img" src="./products/34_thb.jpg" />
                           </Link>
                       </div>
@@ -150,7 +127,7 @@ function Home() {
                   </li>
                   <li className="category__grid-item">
                       <div className="category__grid-img-container">
-                          <Link to="">
+                          <Link to="/collections/earrings/1">
                               <img  className="category__grid-img" src="./products/29_thb.jpg" />
                           </Link>
                       </div>
