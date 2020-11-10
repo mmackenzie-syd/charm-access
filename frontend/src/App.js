@@ -14,14 +14,15 @@ import FreeShipping from "./components/FreeShipping";
 
 function App() {
     return (
+
         <BrowserRouter>
+            <Header />
             <Fragment>
-                <Header />
                 <div className="spacer-header-compensate">&nbsp;</div>
                 <div className="wrap" >
                     <Route path="/" component={Home} exact />
                     <Route path="/product/:id" component={Product} />
-                    <Route path="/collections/:category/:page" component={Collections}  />
+                    <Route path="/collections/:category/:page" component={Collections}  exact/>
                     <Route path="/about" component={About} />
                     <Route path="/shipping" component={Shipping} />
                     <Route path="/cart" component={Cart} />

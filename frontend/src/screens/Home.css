@@ -71,6 +71,7 @@ a:active {
 .arrivals__grid-img-container {
     position: relative;
     margin-bottom: .6rem;
+    z-index: 100;
 }
 
 .arrivals__grid-img {

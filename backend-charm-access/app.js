@@ -12,7 +12,7 @@ app.get('/api/products/:category/:page', (req, res) => {
     // paginate
     const perPage = 8;
     const { page, category } = req.params;
-    const products = (category === 'jewellery')
+    const products = (category === 'shop')
         ? data.products
         : data.products.filter(product => (product.category === category));
 

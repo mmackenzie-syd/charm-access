@@ -17,12 +17,19 @@ function Collections(props) {
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
+    let timer;
+
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
             const { data } = await Axios.get(`/api/products/${categorySlug}/${curPage}`);
             setData(data);
             setIsLoading(false);
+            // timer = setTimeout(() => {
+            //     setData(data);
+            //     setIsLoading(false);
+            // }, 1500);
+            // return () => clearTimeout(timer);
         };
         fetchData();
     }, [curPage, categorySlug]);
@@ -30,13 +37,16 @@ function Collections(props) {
     const pages = data ? [...Array(data.pages).keys()].map(key => key + 1) : [];
 
     const products = data ? data.products : [];
+    const categories = data ? data.categories : [];
 
     let category;
-    if (data) {
-        category = (categorySlug === 'jewellery')
-            ? { name: 'Jewellery'}
-            : data.categories.find(category => (category.slug === categorySlug));
+    if (categories) {
+        category = (categorySlug === 'shop')
+            ? { name: 'Shop'}
+            : categories.find(category => (category.slug === categorySlug));
     }
+
+
     const list = [];
     let showBreadcrumb = false;
     if (category && category.name) {
@@ -51,8 +61,13 @@ function Collections(props) {
         showBreadcrumb = true;
     }
 
+    const fixedHeight = (isLoading && !products) ? '700px' : 'auto';
+
     return (
-        <main className="collections margin-top-2">
+        <main className="collections margin-top-2" style={{height: fixedHeight}}>
+            { isLoading &&
+                <Loading isLoading={isLoading} />
+            }
             <section className="row left margin-top-5">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
             </section>
@@ -60,18 +75,17 @@ function Collections(props) {
                 <h3 className="">{category && category.name}</h3>
                 <div className="pagination">
                     {   pages.length > 1 &&
-                    pages.map((page) => {
-                        const active = (page === Number(curPage)) ? 'active' : '';
-                        return <Link key={page} to={`/collections/${categorySlug}/${page}`} className={active}>{page}</Link>
-                    })
+                        pages.map((page) => {
+                            const active = (page === Number(curPage)) ? 'active' : '';
+                            return <Link key={page} to={`/collections/${categorySlug}/${page}`} className={active}>{page}</Link>
+                        })
                     }
                 </div>
             </section>
-
             {
+
                 products &&
                 <ul className="arrivals__grid">
-                    { isLoading && <Loading isLoading={isLoading}/> }
                     {
                         products.map(product =>
                             <li key={product._id} className="arrivals__grid-item">

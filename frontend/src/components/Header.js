@@ -1,11 +1,46 @@
 import './Header.css';
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import {useSelector} from "react-redux";
-import {NavLink, Link} from "react-router-dom";
+import {NavLink, Link, useLocation} from "react-router-dom";
 
-function Header() {
-    const categoryList = useSelector(state => state.categoryList);
-    const { categories } = categoryList;
+function Header(props) {
+
+    const categories = [
+        {
+            _id: '1',
+            slug: 'necklaces',
+            name: 'Necklaces',
+        },
+        {
+            _id: '2',
+            slug: 'bracelets',
+            name: 'Bracelets',
+        },
+        {
+            _id: '3',
+            slug: 'brooches',
+            name: 'Brooches',
+        },
+        {
+            _id: '4',
+            slug: 'earrings',
+            name: 'Earrings',
+        },
+        {
+            _id: '5',
+            slug: 'rings',
+            name: 'Rings',
+        },
+        {
+            _id: '6',
+            slug: 'headware',
+            name: 'Headwear',
+        }
+    ];
+
+    const location = useLocation();
+    const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
+
     return (
         <div className="sticky">
             <header className="site row space-between">
@@ -17,7 +52,23 @@ function Header() {
                 <nav className="site__nav">
                     <ul className="row right">
                         <li className="site__nav-item"><NavLink to="/" activeClassName='is-active' exact>HOME</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/collections/jewellery/1" activeClassName='is-active'>SHOP</NavLink></li>
+                        <li className="site__nav-item dropdown">
+                            <div className="dropbtn">
+                                <NavLink to="/collections/shop/1" className={isShopActive}>Shop</NavLink>
+                            </div>
+                            <div className="dropdown-content">
+                                {
+                                    categories && categories.map(category => (
+                                        <NavLink
+                                            key={category._id}
+                                            to={`/collections/${category.slug}/1`}
+                                        >
+                                            {category.name}
+                                        </NavLink>
+                                    ))
+                                }
+                            </div>
+                        </li>
                         <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
 
