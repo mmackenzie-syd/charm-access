@@ -165,8 +165,9 @@ function Home() {
             </div>
           </section>
 
-          <section className="row center  info__signup-wrap">
-              <div className="col-6 footer__col footer__sign-up">
+          <section className="info__signup-wrap">
+              <div className="row center">
+                <div className="col-6 footer__col footer__sign-up">
                   <form id="footersignupform" className="s-form form--footer">
                       <p className=" footer__heading u-bold u-uppercase">Become a vip</p>
                       <p className="u-semi-bold">Be the first to know about special offers and&nbsp;updates.</p>
@@ -183,6 +184,7 @@ function Home() {
                       <div id="footer-error-wrapper" className="is-hidden"></div>
                   </form>
                   <div className="clear"></div>
+              </div>
               </div>
           </section>
           <div className="spacer"></div>

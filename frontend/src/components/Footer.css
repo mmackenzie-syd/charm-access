@@ -12,3 +12,31 @@ footer {
     color: #4f4f4f;
     letter-spacing: 1px;
 }
+
+.footer__phone {
+}
+
+
+/* social media */
+
+.social-media {
+
+}
+
+.social-icons__img {
+    width: 100%;
+}
+
+.social-icons {
+    margin-right: 5rem;
+}
+.social-icons__img-wrap {
+    margin: 0;
+    display: inline-block;
+    display: inline-block;
+    width: 2.8rem;
+    margin-left: 1.5rem;
+    line-height: 1rem;
+}
+
+
