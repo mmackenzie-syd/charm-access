@@ -13,13 +13,59 @@ function Header(props) {
 
     return (
         <div className="sticky">
-            <header className="site row space-between">
-                <div className="site__title">
-                    <Link to="/">
-                        <img src="../../images/brand.png"/>
-                    </Link>
+            <header className="site row">
+                <div className="row left">
+                    <div className="site__title">
+                        <Link to="/">
+                            <img src="../../images/brand.png"/>
+                        </Link>
+                    </div>
+                    <ul className="row site__nav">
+                        <li className="site__nav-item dropdown">
+                            <div className="dropbtn">
+                                <NavLink to="/collections/shop/1" className={isShopActive}>Shop</NavLink>
+                            </div>
+                            <div className="dropdown-content">
+                                {
+                                    categories && categories.map(category => (
+                                        <NavLink
+                                            key={category._id}
+                                            to={`/collections/${category.slug}/1`}
+                                        >
+                                            {category.name}
+                                        </NavLink>
+                                    ))
+                                }
+                            </div>
+                        </li>
+                        <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
+                        <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
+                    </ul>
                 </div>
-                <nav className="site__nav">
+                <div className="row right">
+                    <div className="search-container">
+                        <form>
+                            <input type="text" placeholder="Search.." name="search" />
+                            <button type="submit">
+                                <SearchIcon width={'1em'} height={'1em'} fill={'#111'}/>
+                            </button>
+                        </form>
+                    </div>
+                    <div className="site__nav-item">
+                        <a>
+                            <BagIcon width={'3.2rem'} height={'3.2rem'} fill={'#111'} offset={'-.1rem'}/>
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+    );
+}
+
+export default Header;
+
+
+/*  <nav className="site__nav">
                     <ul className="row right">
                         <li className="site__nav-item"><NavLink to="/" activeClassName='is-active' exact>HOME</NavLink></li>
                         <li className="site__nav-item dropdown">
@@ -54,9 +100,4 @@ function Header(props) {
                         </li>
                     </ul>
                 </nav>
-            </header>
-        </div>
-    );
-}
-
-export default Header;
+ */

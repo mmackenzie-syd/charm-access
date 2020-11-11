@@ -30,6 +30,8 @@
     margin-left: -2.4rem;
 }
 
+
+
 /* Navigation */
 .site__nav-item {
     font-weight: 400;
@@ -37,7 +39,7 @@
     font-size: 1.6rem;
     padding-left: 1.6rem;
     padding-right: 1.6rem;
-    line-height: 2rem;
+    line-height: 3.2rem;
 }
 
 .site__nav-item:last-child {
@@ -108,6 +110,36 @@ a:active {
 
 a.is-active {
     color: #937cd4;
+}
+
+/* Search */
+
+.site .search-container {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.site input[type=text] {
+    margin-left: 2px;
+    padding: 8px;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.site .search-container button {
+    float: right;
+    padding: 8px 14px;
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+    background: #ddd;
+    background-color: #fff;
+    font-size: 1.8rem;
+    border: none;
+    cursor: pointer;
+}
+
+.site .search-container button:hover {
+    background: #ccc;
 }
 
 
