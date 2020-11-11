@@ -122,20 +122,23 @@ a.is-active {
 .site input[type=text] {
     margin-left: 2px;
     padding: 8px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border: none;
+    margin: 5px;
 }
 
 .site .search-container button {
     float: right;
     padding: 8px 14px;
-    border-bottom-right-radius: 3px;
-    border-top-right-radius: 3px;
-    background: #ddd;
-    background-color: #fff;
+    padding-left: 14px;
+    padding-right: 13px;
+    border-radius: 3px;
+    background-color: #efefef;
     font-size: 1.8rem;
+    line-height: 2rem;
     border: none;
     cursor: pointer;
+    margin: 3px;
 }
 
 .site .search-container button:hover {

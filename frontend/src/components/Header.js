@@ -47,7 +47,12 @@ function Header(props) {
                         <form>
                             <input type="text" placeholder="Search.." name="search" />
                             <button type="submit">
-                                <SearchIcon width={'1em'} height={'1em'} fill={'#111'}/>
+                                <SearchIcon
+                                    width={'1.5rem'}
+                                    height={'1.5rem'}
+                                    offset={'.1rem'}
+                                    fill={'#999'}
+                                />
                             </button>
                         </form>
                     </div>
