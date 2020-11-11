@@ -145,7 +145,6 @@ function Home() {
                   </li>
               </ul>
           </section>
-
           <section className="info">
             <div className="info__img-container">
                 <img className="info__img" src="./images/banners_for_site_1_1080x.jpg"/>
@@ -158,12 +157,35 @@ function Home() {
                     <PhoneIcon width={'2.8rem'} height={'2.8rem'}  fill={'#fff'} />
                     &nbsp;+061421013777 &nbsp;&nbsp; 10AM - 8PM
                 </div>
-                <div className="row center info__shipping">
+                <div className="row center info__shipping margin-bottom-5">
                     <KangarooIcon width={'4.2rem'} height={'4.2rem'} fill={'#fff'} className={'info__kangaroo'}/>
                     Australia Post Delivery Rates Apply
                 </div>
+
+                <section className="row center  info__signup-wrap margin-bottom-5">
+                    <div className="col-6 footer__col footer__sign-up">
+                        <form id="footersignupform" className="s-form form--footer">
+                            <p className=" footer__heading u-bold u-uppercase">Become a vip</p>
+                            <p className="u-semi-bold">Be the first to know about special offers and&nbsp;updates.</p>
+
+                            <input type="hidden" id="csrftoken" name="csrftoken"
+                                   value="jHECa7neQMKbSudI6xZ16366o54gryO2lI5mBUpzLmM=" />
+                            <div className="s-input-wrap">
+                                <div className="s-input" data-label="Email">
+                                    <input type="email" id="footersignupemail" placeholder="Enter your email address" />
+                                </div>
+
+                                <button id="footersignupbutton" className="s-button s-button--primary">Sign Up</button>
+                            </div>
+                            <div id="footer-error-wrapper" className="is-hidden"></div>
+                        </form>
+                        <div className="clear"></div>
+                    </div>
+                </section>
+
             </div>
           </section>
+
 
       </main>
     );

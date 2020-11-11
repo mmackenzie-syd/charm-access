@@ -116,23 +116,6 @@ a:active {
     width: 40%;
 }
 
-/*
-.shop-now {
-    margin-top: 3rem;
-    padding: 1.4rem 4.5rem;
-    border-radius: 3px;
-    background-color: transparent;
-    background-color: #9886BA;
-    display: inline-block;
-    border: 2px solid #937cd4;
-    border: 2px solid #9886BA;
-    font-size: 1.8rem;
-
-    font-weight: bold;
-
-}
-*/
-
 .shop-now {
     background-color: #9886BA; /* purple */
     border-radius: 3px;
@@ -178,7 +161,7 @@ a:active {
 }
 .info__caption {
     position: absolute;
-    top: 30%;
+    top: 22%;
     width: 100%;
     text-align: center;
     color: #fff;
@@ -246,9 +229,151 @@ a:active {
     lineHeight: 3.8rem;
 }
 
+/* signup - from angus and coote */
+
+.form--footer {
+    font-size: 14px;
+    line-height: 1.57143;
+    max-width: 440px;
+    max-width: 740px;
+    margin: auto;
+}
+
+.form--footer p {
+    margin-top: 0px;
+    margin-bottom: calc(12px * 2);
+}
+.footer__heading {
+    font-family: "Nunito",sans-serif;
+    font-size: 14px;
+    line-height: 1.57143;
+}
+.u-uppercase {
+    text-transform: uppercase;
+}
+.u-bold {
+    font-weight: normal;
+    font-weight: 700 !important;
+}
+
+.s-input-wrap {
+    clear: both;
+}
+
+.s-input-wrap .s-input, .s-input-wrap {
+    width: calc(100% - 148px);
+    margin-bottom: 0px;
+    float: left;
+}
+.s-input {
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 0 0 12px;
+}
+
+.s-input-wrap .s-button {
+    width: 140px;
+    float: right;
+}
+
+input[type="email"] {
+    transition: border-color 0.2s ease;
+    border: 1px solid #bbb;
+    padding: 0px 16px;
+    width: 100%;
+    text-align: left;
+    border-radius: 2px;
+    height: calc(28px + 20px - 2px);
+}
+a, input, select, button, textarea {
+    outline: 0;
+}
+input {
+    line-height: normal;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
 
 
+.footer__sign-up {
+    flex-grow: 2;
 
 
+}
+
+.footer__col {
+    flex: 1;
+}
+.footer__col {
+    padding: calc(16px * 3) 16px 40px 16px;
+    padding:  1rem;
+}
+
+.s-button--primary {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+
+    border-color: #9886BA;
+    background: #9886BA;
+}
+.s-button {
+    font-weight: normal;
+    font-weight: 700 !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    padding: 0 calc(16px / 2);
+    font-size: 14px;
+    line-height: calc(28px + 20px - 2px);
+    height: calc(28px + 20px - 2px);
+    transition: background .3s, color .3s, border-color .3s;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+input, select, button, textarea {
+    outline: 0;
+}
+
+
+.signup {
+    text-align: left;
+    border: 1px solid red;
+}
+
+.s-input-wrap:after {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.clear {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.info__signup-wrap {
+    text-align: left;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-top: -1.5rem;
+    width: 600px;
+    padding: 2rem 3rem;
+    padding-left: 6rem;
+}
+
+.u-semi-bold {
+    font-weight: 400;
+}
 
 

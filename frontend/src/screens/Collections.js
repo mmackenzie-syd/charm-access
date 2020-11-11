@@ -7,9 +7,14 @@ import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import Axios from "axios";
-
 import placeholder from './placeholder.png';
-import {CategoriesContext} from "../providers/CategoriesProvider";
+import { CategoriesContext } from "../providers/CategoriesProvider";
+
+
+import config from "../config";
+
+const { api } = config;
+
 
 function Collections(props) {
     const {categories} = useContext(CategoriesContext);
@@ -24,7 +29,8 @@ function Collections(props) {
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-            const { data } = await Axios.get(`/api/products/${categorySlug}/${curPage}`);
+             const { data } = await Axios.get(`/api/products/${categorySlug}/${curPage}`);
+            // const { data } = await Axios.get(`${api}/products/${category}/${curPage}`);
             setData(data);
             setIsLoading(false);
             // timer = setTimeout(() => {
