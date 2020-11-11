@@ -12,6 +12,7 @@ function Footer() {
                     <span>&nbsp;+061421013777 &nbsp;&nbsp; 10AM - 8PM</span>
                 </div>
                 <div className="row center social-icons">
+                    <div className="follow-us">Follow us</div>
                     <div className="social-icons__img-wrap">
                         <img className="social-icons__img" src="./images/facebook.png" />
                     </div>
