@@ -162,31 +162,30 @@ function Home() {
                     Australia Post Delivery Rates Apply
                 </div>
 
-                <section className="row center  info__signup-wrap margin-bottom-5">
-                    <div className="col-6 footer__col footer__sign-up">
-                        <form id="footersignupform" className="s-form form--footer">
-                            <p className=" footer__heading u-bold u-uppercase">Become a vip</p>
-                            <p className="u-semi-bold">Be the first to know about special offers and&nbsp;updates.</p>
-
-                            <input type="hidden" id="csrftoken" name="csrftoken"
-                                   value="jHECa7neQMKbSudI6xZ16366o54gryO2lI5mBUpzLmM=" />
-                            <div className="s-input-wrap">
-                                <div className="s-input" data-label="Email">
-                                    <input type="email" id="footersignupemail" placeholder="Enter your email address" />
-                                </div>
-
-                                <button id="footersignupbutton" className="s-button s-button--primary">Sign Up</button>
-                            </div>
-                            <div id="footer-error-wrapper" className="is-hidden"></div>
-                        </form>
-                        <div className="clear"></div>
-                    </div>
-                </section>
-
             </div>
           </section>
 
+          <section className="row center  info__signup-wrap">
+              <div className="col-6 footer__col footer__sign-up">
+                  <form id="footersignupform" className="s-form form--footer">
+                      <p className=" footer__heading u-bold u-uppercase">Become a vip</p>
+                      <p className="u-semi-bold">Be the first to know about special offers and&nbsp;updates.</p>
 
+                      <input type="hidden" id="csrftoken" name="csrftoken"
+                             value="jHECa7neQMKbSudI6xZ16366o54gryO2lI5mBUpzLmM=" />
+                      <div className="s-input-wrap">
+                          <div className="s-input" data-label="Email">
+                              <input type="email" id="footersignupemail" placeholder="Enter your email address" />
+                          </div>
+
+                          <button id="footersignupbutton" className="s-button s-button--primary">Sign Up</button>
+                      </div>
+                      <div id="footer-error-wrapper" className="is-hidden"></div>
+                  </form>
+                  <div className="clear"></div>
+              </div>
+          </section>
+          <div className="spacer"></div>
       </main>
     );
 }

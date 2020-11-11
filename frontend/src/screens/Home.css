@@ -161,7 +161,7 @@ a:active {
 }
 .info__caption {
     position: absolute;
-    top: 22%;
+    top: 30%;
     width: 100%;
     text-align: center;
     color: #fff;
@@ -364,12 +364,16 @@ input, select, button, textarea {
 .info__signup-wrap {
     text-align: left;
     border: 1px solid #fff;
-    border-radius: 3px;
+    border: 0;
     margin: 0 auto;
-    margin-top: -1.5rem;
-    width: 600px;
-    padding: 2rem 3rem;
-    padding-left: 6rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: #efefef;
+}
+
+.spacer {
+    height: 3rem;
+    width: 100%;
 }
 
 .u-semi-bold {
