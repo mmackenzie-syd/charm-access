@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import './Categories.css';
+import './Arrivals.css';
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import {Link} from "react-router-dom";
 import placeholder from '../screens/placeholder.png';
 import Slide from "./Slide.js"
 
-function Categories() {
+function Arrivals() {
     const ref = useRef(null);
     const [slideWidth, setSlideWidth] = useState(1000);
     const [offset, setOffset] = useState(0);
@@ -32,42 +32,76 @@ function Categories() {
         }
     }, [ref]);
 
-    const categories = [
+    const arrivals = [
         {
-            id: 1,
-            name: 'Brooches',
-            qty: 11,
-            image: './products/1_thb.jpg'
+            _id: '1',
+            name: 'Rose Bouquet Brooch',
+            category: 'brooches',
+            image: '/products/1.jpg',
+            thumbnail: '/products/1_thb.jpg',
+            price: 120,
         },
         {
-            id: 2,
-            name: 'Bracelets',
-            qty: 7,
-            image: './products/2_thb.jpg'
+            _id: '2',
+            name: 'Rose Butterfly Brooch',
+            category: 'brooches',
+            image: '/products/2.jpg',
+            thumbnail: '/products/2_thb.jpg',
+            price: 120,
         },
         {
-            id: 3,
-            name: 'Earrings',
-            qty: 5,
-            image: './products/3_thb.jpg'
+            _id: '3',
+            name: 'Single Rose Brooch',
+            category: 'brooches',
+            image: '/products/3.jpg',
+            thumbnail: '/products/3_thb.jpg',
+            price: 120,
         },
         {
-            id: 4,
-            name: 'Necklaces',
-            qty: 11,
-            image: './products/1_thb.jpg'
+            _id: '4',
+            name: 'White Butterfly Brooch',
+            category: 'brooches',
+            image: '/products/4.jpg',
+            thumbnail: '/products/4_thb.jpg',
+            price: 120,
         },
         {
-            id: 5,
-            name: 'Rings',
-            qty: 7,
-            image: './products/2_thb.jpg'
-        }
+            _id: '5',
+            name: 'Elephant Brooch',
+            category: 'brooches',
+            image: '/products/5.jpg',
+            thumbnail: '/products/5_thb.jpg',
+            price: 120,
+        },
+        {
+            _id: '6',
+            name: 'Blue Topaz Butterfly Brooch',
+            category: 'brooches',
+            image: '/products/6.jpg',
+            thumbnail: '/products/6_thb.jpg',
+            price: 120,
+        },
+        {
+            _id: '7',
+            name: 'Puppy Dog Brooch',
+            category: 'brooches',
+            image: '/products/7.jpg',
+            thumbnail: '/products/7_thb.jpg',
+            price: 120,
+        },
+        {
+            _id: '8',
+            name: 'Lilly Flower  Brooch',
+            category: 'brooches',
+            image: '/products/8.jpg',
+            thumbnail: '/products/8_thb.jpg',
+            price: 120,
+        },
     ];
 
-    const perSlide = 3;
-    let numberOfSlides = Math.floor(categories.length / perSlide);
-    if (categories.length % perSlide > 0) {
+    const perSlide = 4;
+    let numberOfSlides = Math.floor(arrivals.length / perSlide);
+    if (arrivals.length % perSlide > 0) {
         numberOfSlides = numberOfSlides + 1;
         console.log('numberOfSlides', numberOfSlides)
     }
@@ -89,9 +123,9 @@ function Categories() {
     }
 
     return (
-        <section className="category">
+        <section className="arrivals">
             <div className="row  margin-bottom-1">
-                <h3>By Category</h3>
+                <h3>Recent Arrivals</h3>
                 <div>
                     <span onClick={handleLeft}>
                         <LeftArrowIcon
@@ -115,31 +149,33 @@ function Categories() {
             </div>
             <div className="slide-container" ref={ref}>
                 {/* added hidden dummy item so that slide container has a height */}
-                <ul className="category__grid hidden" >
-                    <li className="category__grid-item">
-                        <div className="category__grid-img-container">
+                <ul className="arrivals__grid hidden" >
+                    <li className="arrivals__grid-item">
+                        <div className="arrivals__grid-img-container">
                             <Link to="">
-                                <img  className="category__grid-img" src={placeholder} />
+                                <img  className="arrivals__grid-img" src={placeholder} />
                             </Link>
                         </div>
-                        <h2>&nbsp;<mark>&nbsp;</mark></h2>
+                        <h2>&nbsp;</h2>
+                        <p className="price">&nbsp;</p>
                     </li>
                 </ul>
                 {
                     slides.map(slide => {
-                        const categoriesPerSlide = categories.slice((slide - 1) * perSlide, slide * perSlide);
+                        const arrivalsPerSlide = arrivals.slice((slide - 1) * perSlide, slide * perSlide);
                         return(
                             <Slide x={(slide - 1) * slideWidth + offset} key={slide} i={slide} width={slideWidth} isSliding={isSliding}>
-                                <ul className="category__grid" >
+                                <ul className="arrivals__grid" >
                                     {
-                                        categoriesPerSlide.map(category => (
-                                            <li key={category.id} className="category__grid-item">
-                                                <div className="category__grid-img-container">
-                                                    <Link to="/collections/brooches/1">
-                                                        <img  className="category__grid-img" src={category.image} />
+                                        arrivalsPerSlide.map(arrival => (
+                                            <li key={arrival._id} className="arrivals__grid-item">
+                                                <div className="arrivals__grid-img-container">
+                                                    <Link to="">
+                                                        <img  className="arrivals__grid-img" src={arrival.thumbnail} />
                                                     </Link>
                                                 </div>
-                                                <h2>{category.name}&nbsp;<mark>({category.qty})</mark></h2>
+                                                <h2>{arrival.name}</h2>
+                                                <p className="price">${arrival.price}</p>
                                             </li>
                                         ))
                                     }
@@ -153,4 +189,4 @@ function Categories() {
     );
 }
 
-export default Categories;
+export default Arrivals;

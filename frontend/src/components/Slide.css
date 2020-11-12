@@ -6,7 +6,6 @@
 }
 .slide {
     position: absolute;
-    transition: all .5s ease-in-out;
 }
 
 .hidden {

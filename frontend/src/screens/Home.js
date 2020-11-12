@@ -9,6 +9,7 @@ import KangarooIcon from "../icons/KangarooIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import Categories from "../components/Categories";
+import Arrivals from "../components/Arrivals";
 
 const images = [
     {
@@ -24,7 +25,6 @@ const images = [
         thumbnail: './images/banner3.jpg',
     },
 ];
-
 
 function Home() {
     let history = useHistory();
@@ -64,54 +64,7 @@ function Home() {
           </section>
 
           <Categories />
-          <div className="clear"></div>
-          <section className="arrivals">
-              <div className="row  margin-bottom-1">
-                  <h3>Recent Arrivals</h3>
-                  <div>
-                      <LeftArrowIcon className={'slider_control icon-arrow'} width={'1.2rem'} height={'1.2rem'} fill={'#9192a3'} offset={'.3rem'} />
-                      <RightArrowIcon className={'slider_control icon-arrow'} width={'1.2rem'} height={'1.2rem'} fill={'#9192a3'} offset={'.3rem'} />
-                  </div>
-              </div>
-              <ul className="arrivals__grid">
-                  <li className="arrivals__grid-item">
-                      <div className="arrivals__grid-img-container">
-                          <Link to="">
-                              <img  className="arrivals__grid-img" src="./products/3_thb.jpg" />
-                          </Link>
-                      </div>
-                      <h2>Flying Ninja</h2>
-                      <p className="price">$12.00</p>
-                  </li>
-                  <li className="arrivals__grid-item">
-                      <div className="arrivals__grid-img-container">
-                          <Link to="">
-                              <img  className="arrivals__grid-img" src="./products/4_thb.jpg" />
-                          </Link>
-                      </div>
-                      <h2>Happy Ninja</h2>
-                      <p className="price">$18.00</p>
-                  </li>
-                  <li className="arrivals__grid-item">
-                      <div className="arrivals__grid-img-container">
-                          <Link to="">
-                              <img  className="arrivals__grid-img" src="./products/5_thb.jpg" />
-                          </Link>
-                      </div>
-                      <h2>Happy Ninja</h2>
-                      <p className="price">$35.00</p>
-                  </li>
-                  <li className="arrivals__grid-item">
-                      <div className="arrivals__grid-img-container">
-                          <Link to="">
-                              <img  className="arrivals__grid-img" src="./products/6_thb.jpg" />
-                          </Link>
-                      </div>
-                      <h2>Ninja Silhouette</h2>
-                      <p className="price">$20.00</p>
-                  </li>
-              </ul>
-          </section>
+          <Arrivals />
           <section className="info">
             <div className="info__img-container">
                 <img className="info__img" src="./images/banners_for_site_1_1080x.jpg"/>
