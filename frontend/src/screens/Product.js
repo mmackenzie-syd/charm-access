@@ -69,9 +69,9 @@ function Product(props) {
                         </div>
                         <button className="add-shop-cart btn-full-width margin-bottom-3">Add to Shopping Cart</button>
                         <button className="buy btn-full-width">Buy</button>
-                        <p className="product__description margin-top-4">${product.description}</p>
+                        <p className="product__description margin-top-4">{product.description}</p>
                         <div className="product__share-container">
-                            <div className="product__share margin-bottom-2">Share this:</div>
+                            <div className="product__share margin-bottom-2">Share this</div>
                             <div className="social-icons">
                                 <div className="social-icons__img-wrap">
                                     <img className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />

@@ -30,8 +30,7 @@
 }
 
 .product__share {
-    font-size: 1.4rem;
-    margin-left: 3rem;
+    font-size: 1.5rem;
 }
 
 
@@ -58,7 +57,7 @@
 
 .buy:hover {
     background-color: #bca9df;
-    color: #e9e9e9;
+    color: #f7f7f7;
     border: 2px solid #bca9df;
 }
 
@@ -77,6 +76,6 @@
 
 .add-shop-cart:hover {
     background-color: #bca9df;
-    color: #e9e9e9;
+    color: #f7f7f7;
     border: 2px solid #bca9df;
 }

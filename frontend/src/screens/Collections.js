@@ -12,6 +12,9 @@ import { CategoriesContext } from "../providers/CategoriesProvider";
 
 
 import config from "../config";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
+import RightArrowIcon from "../icons/RightArrowIcon";
+import {useHistory} from "react-router";
 
 const { api } = config;
 
@@ -69,6 +72,21 @@ function Collections(props) {
 
     const fixedHeight = (isLoading && !products) ? '700px' : 'auto';
 
+    let history = useHistory();
+
+    const handleLeftPageClick = () => {
+        if ((Number(curPage) - 1) > 0) {
+            history.push(`/collections/${categorySlug}/${Number(curPage) - 1}`);
+        }
+    }
+
+    const handleRightPageClick = () => {
+        console.log('pages', pages)
+        if ((Number(curPage) + 1) <= pages.length) {
+            history.push(`/collections/${categorySlug}/${Number(curPage) + 1}`);
+        }
+    }
+
     return (
         <main className="collections margin-top-2" style={{height: fixedHeight}}>
             { isLoading &&
@@ -80,11 +98,33 @@ function Collections(props) {
             <section className="row  margin-bottom-1 margin-top-1" >
                 <h3 className="">{category && category.name}</h3>
                 <div className="pagination">
+                    { pages.length > 1 &&
+                        <span onClick={handleLeftPageClick}>
+                            <LeftArrowIcon
+                                className={'slider_control icon-arrow white-background'}
+                                width={'1.2rem'}
+                                height={'1.2rem'}
+                                fill={'#9192a3'}
+                                offset={'.3rem'}
+                            />
+                        </span>
+                    }
                     {   pages.length > 1 &&
                         pages.map((page) => {
                             const active = (page === Number(curPage)) ? 'active' : '';
                             return <Link key={page} to={`/collections/${categorySlug}/${page}`} className={active}>{page}</Link>
                         })
+                    }
+                    { pages.length > 1 &&
+                        <span onClick={handleRightPageClick}>
+                            <RightArrowIcon
+                                className={'slider_control icon-arrow white-background'}
+                                width={'1.2rem'}
+                                height={'1.2rem'}
+                                fill={'#9192a3'}
+                                offset={'.3rem'}
+                            />
+                        </span>
                     }
                 </div>
             </section>
