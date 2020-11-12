@@ -75,6 +75,8 @@ function Categories() {
 
     let  maxOffset = -1 * (slides.length - 1);
 
+
+
     const handleLeft = () => {
         setIsSliding(true);
         if (offset < 0) {
@@ -88,6 +90,9 @@ function Categories() {
         }
     }
 
+    let leftArrowClass = (offset < 0) ? 'slider_control icon-arrow' : 'slider_control icon-arrow icon-arrow-disabled';
+    let rightArrowClass = (offset > maxOffset * slideWidth) ? 'slider_control icon-arrow' : 'slider_control icon-arrow icon-arrow-disabled';
+
     return (
         <section className="category">
             <div className="row  margin-bottom-1">
@@ -95,19 +100,17 @@ function Categories() {
                 <div>
                     <span onClick={handleLeft}>
                         <LeftArrowIcon
-                            className={'slider_control icon-arrow slider_control_disabled'}
+                            className={leftArrowClass}
                             width={'1.2rem'}
                             height={'1.2rem'}
-                            fill={'#9192a3'}
                             offset={'.3rem'}
                         />
                     </span>
                     <span onClick={handleRight}>
                         <RightArrowIcon
-                            className={'slider_control icon-arrow'}
+                            className={rightArrowClass}
                             width={'1.2rem'}
                             height={'1.2rem'}
-                            fill={'#9192a3'}
                             offset={'.3rem'}
                         />
                     </span>

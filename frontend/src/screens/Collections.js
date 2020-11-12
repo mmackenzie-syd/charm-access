@@ -97,7 +97,7 @@ function Collections(props) {
             </section>
             <section className="row  margin-bottom-1 margin-top-1" >
                 <h3 className="">{category && category.name}</h3>
-                <div className="pagination">
+                <div className="pagination margin-bottom-1">
                     { pages.length > 1 &&
                         <span onClick={handleLeftPageClick}>
                             <LeftArrowIcon

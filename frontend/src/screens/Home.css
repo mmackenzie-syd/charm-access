@@ -169,10 +169,16 @@ a:active {
 
 .icon-arrow {
     background: #efefef;
+    background: #ccc;
     color: #9192a3;
     color: #ccc;
-    color: #fff;
+    color: #111;
     lineHeight: 3.8rem;
+    fill: #111;
+}
+
+.icon-arrow-disabled {
+    opacity: 40%;
 }
 
 /* signup - from angus and coote */

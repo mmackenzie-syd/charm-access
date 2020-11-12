@@ -122,6 +122,9 @@ function Arrivals() {
         }
     }
 
+    let leftArrowClass = (offset < 0) ? 'slider_control icon-arrow' : 'slider_control icon-arrow icon-arrow-disabled';
+    let rightArrowClass = (offset > maxOffset * slideWidth) ? 'slider_control icon-arrow' : 'slider_control icon-arrow icon-arrow-disabled';
+
     return (
         <section className="arrivals">
             <div className="row  margin-bottom-1">
@@ -129,7 +132,7 @@ function Arrivals() {
                 <div>
                     <span onClick={handleLeft}>
                         <LeftArrowIcon
-                            className={'slider_control icon-arrow slider_control_disabled'}
+                            className={leftArrowClass}
                             width={'1.2rem'}
                             height={'1.2rem'}
                             fill={'#9192a3'}
@@ -138,7 +141,7 @@ function Arrivals() {
                     </span>
                     <span onClick={handleRight}>
                         <RightArrowIcon
-                            className={'slider_control icon-arrow'}
+                            className={rightArrowClass}
                             width={'1.2rem'}
                             height={'1.2rem'}
                             fill={'#9192a3'}

@@ -64,18 +64,16 @@
 .add-shop-cart {
     font-weight: 600;
     border: none;
-    background: #efefef;
-    color: #999;
+    background: #ccc;
+    color: #4f4f4f;
     position: relative;
     overflow: hidden;
     padding: 1.4rem 2.5rem;
     font-size: 1.6rem;
     border-radius: 3px;
-    border: 2px solid #efefef;
+    border: 2px solid #ccc;
 }
 
 .add-shop-cart:hover {
-    background-color: #bca9df;
-    color: #f7f7f7;
-    border: 2px solid #bca9df;
+    opacity: 40%;
 }

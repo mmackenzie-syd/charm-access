@@ -12,7 +12,6 @@ function RightArrowIcon(props) {
                 width={width}
                 height={height}
                 style={{
-                    fill: fill,
                     transform: `translate(0, ${offset})`
                 }}
                 version="1.1"
