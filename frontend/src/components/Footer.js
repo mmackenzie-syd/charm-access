@@ -13,13 +13,13 @@ function Footer() {
                 <div className="row center social-icons">
                     <div className="follow-us">Follow us</div>
                     <div className="social-icons__img-wrap">
-                        <img className="social-icons__img" src="./images/facebook.png" />
+                        <img className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
                     </div>
                     <div className="social-icons__img-wrap">
-                        <img className="social-icons__img" src="./images/instagram.png" />
+                        <img className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
                     </div>
                     <div className="social-icons__img-wrap">
-                        <img className="social-icons__img" src="./images/youtube.png" />
+                        <img className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
                     </div>
                 </div>
 

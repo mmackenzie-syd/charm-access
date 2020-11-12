@@ -30,6 +30,7 @@ footer {
 .social-icons {
     margin-left: 3rem;
 }
+
 .social-icons__img-wrap {
     margin: 0;
     display: inline-block;
@@ -39,7 +40,14 @@ footer {
     line-height: 1rem;
 }
 
+.social-icons__img-wrap:last-child {
+    margin-right: 0;
+}
+
 .follow-us {
+    font-size: 1.4rem !important;
+    font-weight: 400;
+    color: #4f4f4f;
     margin-right: 2rem;
 }
 
