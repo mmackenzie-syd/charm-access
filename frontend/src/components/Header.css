@@ -6,9 +6,11 @@
     top: 0;
     width: 100%;
     background-color: #fff;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 .spacer-header-compensate {
-    line-height: 6rem;
+    line-height: 7rem;
 }
 
 
@@ -117,32 +119,33 @@ a.is-active {
 .site .search-container {
     border: 1px solid #ddd;
     border-radius: 3px;
+    padding-top:.1rem;
+    padding-bottom: .1rem;
 }
 
 .site input[type=text] {
-    margin-left: 2px;
     padding: 8px;
     font-size: 1.4rem;
     border: none;
-    margin: 5px;
+    line-height: 2rem;
+    margin: 0rem .5rem 0rem .5rem;
+    width: 15rem;
 }
 
 .site .search-container button {
     float: right;
-    padding: 8px 14px;
-    padding-left: 14px;
-    padding-right: 13px;
+    padding: 8px 13px 8px 14px;
     border-radius: 3px;
-    background-color: #efefef;
+    background-color: #fff;
     font-size: 1.8rem;
     line-height: 2rem;
     border: none;
     cursor: pointer;
-    margin: 3px;
+    margin: 0px;
 }
 
 .site .search-container button:hover {
-    background: #ccc;
+
 }
 
 

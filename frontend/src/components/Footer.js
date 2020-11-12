@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './Footer.css';
-import BagIcon from "../icons/BagIcon";
 import PhoneIcon from "../icons/PhoneIcon";
 
 function Footer() {

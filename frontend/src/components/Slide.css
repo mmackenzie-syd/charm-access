@@ -1,0 +1,16 @@
+/* slides */
+
+.slide-container {
+    position: relative;
+    overflow: hidden;
+}
+.slide {
+    position: absolute;
+    transition: all .5s ease-in-out;
+}
+
+.hidden {
+    position: relative;
+    z-index: -1;
+    visibility: hidden;
+}

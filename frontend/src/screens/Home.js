@@ -8,6 +8,7 @@ import PhoneIcon from "../icons/PhoneIcon";
 import KangarooIcon from "../icons/KangarooIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
+import Categories from "../components/Categories";
 
 const images = [
     {
@@ -62,42 +63,8 @@ function Home() {
             </div>
           </section>
 
-          <section className="category">
-              <div className="row  margin-bottom-1">
-                  <h3>By Category</h3>
-                  <div>
-                      <LeftArrowIcon className={'slider_control icon-arrow'} width={'1.2rem'} height={'1.2rem'} fill={'#9192a3'} offset={'.3rem'} />
-                      <RightArrowIcon className={'slider_control icon-arrow'} width={'1.2rem'} height={'1.2rem'} fill={'#9192a3'} offset={'.3rem'} />
-                  </div>
-              </div>
-              <ul className="category__grid">
-                  <li className="category__grid-item">
-                      <div className="category__grid-img-container">
-                          <Link to="/collections/brooches/1">
-                              <img  className="category__grid-img" src="./products/1_thb.jpg" />
-                          </Link>
-                      </div>
-                      <h2>Brooches&nbsp;<mark>(11)</mark></h2>
-                  </li>
-                  <li className="category__grid-item">
-                      <div className="category__grid-img-container">
-                          <Link to="/collections/bracelets/1">
-                              <img  className="category__grid-img" src="./products/34_thb.jpg" />
-                          </Link>
-                      </div>
-                      <h2>Bracelets&nbsp;<mark>(7)</mark></h2>
-                  </li>
-                  <li className="category__grid-item">
-                      <div className="category__grid-img-container">
-                          <Link to="/collections/earrings/1">
-                              <img  className="category__grid-img" src="./products/29_thb.jpg" />
-                          </Link>
-                      </div>
-                      <h2>Earrings&nbsp;<mark>(5)</mark></h2>
-                  </li>
-              </ul>
-          </section>
-
+          <Categories />
+          <div className="clear"></div>
           <section className="arrivals">
               <div className="row  margin-bottom-1">
                   <h3>Recent Arrivals</h3>

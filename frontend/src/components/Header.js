@@ -44,13 +44,13 @@ function Header() {
                 <div className="row right">
                     <div className="search-container">
                         <form>
-                            <input type="text" placeholder="Search.." name="search" />
+                            <input type="text" placeholder="Search..." name="search" />
                             <button type="submit">
                                 <SearchIcon
                                     width={'1.5rem'}
                                     height={'1.5rem'}
                                     offset={'.1rem'}
-                                    fill={'#999'}
+                                    fill={'#4f4f4f'}
                                 />
                             </button>
                         </form>
