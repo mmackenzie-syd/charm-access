@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
 import React from "react";
-import './ArrivalsImage.css';
+import './ArrivalsSlide.css';
 
-const ArrivalsImage = (props) => {
+const ArrivalsSlide = (props) => {
     const { items: arrivals } = props;
     return (
         <ul className="arrivals__grid" >
@@ -23,4 +23,4 @@ const ArrivalsImage = (props) => {
     );
 }
 
-export default ArrivalsImage;
+export default ArrivalsSlide;

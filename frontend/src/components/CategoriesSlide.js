@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
 import React from "react";
-import './CategoriesImage.css';
+import './CategoriesSlide.css';
 
-const CategoriesImage = (props) => {
+const CategoriesSlide = (props) => {
     const { items: categories } = props;
     return (
         <ul className="category__grid" >
@@ -22,4 +22,4 @@ const CategoriesImage = (props) => {
     );
 }
 
-export default CategoriesImage;
+export default CategoriesSlide;

@@ -7,8 +7,8 @@ import { useHistory } from "react-router";
 import PhoneIcon from "../icons/PhoneIcon";
 import KangarooIcon from "../icons/KangarooIcon";
 import Slider from "../components/Slider";
-import CategoriesImage from "../components/CategoriesImage";
-import ArrivalsImage from "../components/ArrivalsImage";
+import CategoriesSlide from "../components/CategoriesSlide";
+import ArrivalsSlide from "../components/ArrivalsSlide";
 
 const categoriesData = [
     {
@@ -108,6 +108,38 @@ const arrivalsData = [
         thumbnail: '/products/8_thb.jpg',
         price: 120,
     },
+    {
+        _id: '9',
+        name: 'Rose Bouquet Brooch',
+        category: 'brooches',
+        image: '/products/1.jpg',
+        thumbnail: '/products/1_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '10',
+        name: 'Rose Butterfly Brooch',
+        category: 'brooches',
+        image: '/products/2.jpg',
+        thumbnail: '/products/2_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '11',
+        name: 'Single Rose Brooch',
+        category: 'brooches',
+        image: '/products/3.jpg',
+        thumbnail: '/products/3_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '12',
+        name: 'White Butterfly Brooch',
+        category: 'brooches',
+        image: '/products/4.jpg',
+        thumbnail: '/products/4_thb.jpg',
+        price: 120,
+    },
 ];
 
 const arrivalsPerSlide = 4;
@@ -166,10 +198,10 @@ function Home() {
             </div>
           </section>
            <section className="category">
-               <Slider caption={'By Category'} items={categoriesData} perSlide={categoriesPerSlide} displayImage={CategoriesImage}/>
+               <Slider caption={'By Category'} items={categoriesData} perSlide={categoriesPerSlide} displayImage={CategoriesSlide}/>
            </section>
           <section className="arrivals">
-              <Slider caption={'Recent Arrivals'} items={arrivalsData} perSlide={arrivalsPerSlide} displayImage={ArrivalsImage}/>
+              <Slider caption={'Recent Arrivals'} items={arrivalsData} perSlide={arrivalsPerSlide} displayImage={ArrivalsSlide}/>
           </section>
 
           <section className="info">
