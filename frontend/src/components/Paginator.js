@@ -32,6 +32,11 @@ function Paginator(props) {
         endPage = curPage;
     }
 
+    if (maxPage < perDisplay) {
+        startPage = 1;
+        endPage = maxPage;
+    }
+
     let leftArrowClass = (curPage === 1) ? 'slider_control icon-arrow icon-arrow-disabled' : 'slider_control icon-arrow';
     let rightArrowClass = (curPage === maxPage) ? 'slider_control icon-arrow icon-arrow-disabled' : 'slider_control icon-arrow';
 
