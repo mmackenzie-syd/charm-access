@@ -7,8 +7,8 @@ import { useHistory } from "react-router";
 import PhoneIcon from "../icons/PhoneIcon";
 import KangarooIcon from "../icons/KangarooIcon";
 import Slider from "../components/Slider";
-import Arrivals from "../components/Arrivals";
 import CategoriesImage from "../components/CategoriesImage";
+import ArrivalsImage from "../components/ArrivalsImage";
 
 const categoriesData = [
     {
@@ -42,6 +42,75 @@ const categoriesData = [
         image: './products/2_thb.jpg'
     }
 ];
+
+const arrivalsData = [
+    {
+        _id: '1',
+        name: 'Rose Bouquet Brooch',
+        category: 'brooches',
+        image: '/products/1.jpg',
+        thumbnail: '/products/1_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '2',
+        name: 'Rose Butterfly Brooch',
+        category: 'brooches',
+        image: '/products/2.jpg',
+        thumbnail: '/products/2_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '3',
+        name: 'Single Rose Brooch',
+        category: 'brooches',
+        image: '/products/3.jpg',
+        thumbnail: '/products/3_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '4',
+        name: 'White Butterfly Brooch',
+        category: 'brooches',
+        image: '/products/4.jpg',
+        thumbnail: '/products/4_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '5',
+        name: 'Elephant Brooch',
+        category: 'brooches',
+        image: '/products/5.jpg',
+        thumbnail: '/products/5_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '6',
+        name: 'Blue Topaz Butterfly Brooch',
+        category: 'brooches',
+        image: '/products/6.jpg',
+        thumbnail: '/products/6_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '7',
+        name: 'Puppy Dog Brooch',
+        category: 'brooches',
+        image: '/products/7.jpg',
+        thumbnail: '/products/7_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '8',
+        name: 'Lilly Flower  Brooch',
+        category: 'brooches',
+        image: '/products/8.jpg',
+        thumbnail: '/products/8_thb.jpg',
+        price: 120,
+    },
+];
+
+const arrivalsPerSlide = 4;
 
 const categoriesPerSlide = 3;
 
@@ -97,10 +166,12 @@ function Home() {
             </div>
           </section>
            <section className="category">
-               <Slider items={categoriesData} perSlide={categoriesPerSlide} displayImage={CategoriesImage}/>
+               <Slider caption={'By Category'} items={categoriesData} perSlide={categoriesPerSlide} displayImage={CategoriesImage}/>
            </section>
+          <section className="arrivals">
+              <Slider caption={'Recent Arrivals'} items={arrivalsData} perSlide={arrivalsPerSlide} displayImage={ArrivalsImage}/>
+          </section>
 
-          <Arrivals />
           <section className="info">
             <div className="info__img-container">
                 <img className="info__img" src="./images/banners_for_site_1_1080x.jpg"/>

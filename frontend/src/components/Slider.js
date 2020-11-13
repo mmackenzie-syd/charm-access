@@ -4,7 +4,7 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import Slide from "./Slide.js"
 
 function Slider(props) {
-    const { items, perSlide, displayImage: DisplayImage } = props;
+    const { caption, items, perSlide, displayImage: DisplayImage } = props;
     const ref = useRef(null);
     const [slideWidth, setSlideWidth] = useState(1000);
     const [offset, setOffset] = useState(0);
@@ -61,7 +61,7 @@ function Slider(props) {
     return (
         <Fragment>
             <div className="row  margin-bottom-1">
-                <h3>By Category</h3>
+                <h3>{caption}</h3>
                 <div>
                     <span onClick={handleLeft}>
                         <LeftArrowIcon
