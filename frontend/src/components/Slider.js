@@ -1,12 +1,10 @@
-import React, {useEffect, useRef, useState} from 'react';
-import './Categories.css';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
-import {Link} from "react-router-dom";
-import placeholder from '../screens/placeholder.png';
 import Slide from "./Slide.js"
 
-function Categories() {
+function Slider(props) {
+    const { items, perSlide, displayImage: DisplayImage } = props;
     const ref = useRef(null);
     const [slideWidth, setSlideWidth] = useState(1000);
     const [offset, setOffset] = useState(0);
@@ -33,42 +31,9 @@ function Categories() {
         }
     }, [ref]);
 
-    const categories = [
-        {
-            id: 1,
-            name: 'Brooches',
-            qty: 11,
-            image: './products/1_thb.jpg'
-        },
-        {
-            id: 2,
-            name: 'Bracelets',
-            qty: 7,
-            image: './products/2_thb.jpg'
-        },
-        {
-            id: 3,
-            name: 'Earrings',
-            qty: 5,
-            image: './products/3_thb.jpg'
-        },
-        {
-            id: 4,
-            name: 'Necklaces',
-            qty: 11,
-            image: './products/1_thb.jpg'
-        },
-        {
-            id: 5,
-            name: 'Rings',
-            qty: 7,
-            image: './products/2_thb.jpg'
-        }
-    ];
 
-    const perSlide = 3;
-    let numberOfSlides = Math.floor(categories.length / perSlide);
-    if (categories.length % perSlide > 0) {
+    let numberOfSlides = Math.floor(items.length / perSlide);
+    if (items.length % perSlide > 0) {
         numberOfSlides = numberOfSlides + 1;
     }
     const slides = [...Array(numberOfSlides).keys()].map(key => key + 1);
@@ -94,7 +59,7 @@ function Categories() {
     let rightArrowClass = (offset > maxOffset * slideWidth) ? 'slider_control icon-arrow' : 'slider_control icon-arrow icon-arrow-disabled';
 
     return (
-        <section className="category">
+        <Fragment>
             <div className="row  margin-bottom-1">
                 <h3>By Category</h3>
                 <div>
@@ -118,35 +83,15 @@ function Categories() {
             </div>
             <div className="slide-container" ref={ref}>
                 {/* added hidden dummy item so that slide container has a height */}
-                <ul className="category__grid hidden" >
-                    <li className="category__grid-item">
-                        <div className="category__grid-img-container">
-                            <Link to="">
-                                <img  className="category__grid-img" src={placeholder} />
-                            </Link>
-                        </div>
-                        <h2>&nbsp;<mark>&nbsp;</mark></h2>
-                    </li>
-                </ul>
+                <div className="hidden">
+                    <DisplayImage items={[items[0]]} />
+                </div>
                 {
                     slides.map(slide => {
-                        const categoriesPerSlide = categories.slice((slide - 1) * perSlide, slide * perSlide);
+                        const itemsPerSlide = items.slice((slide - 1) * perSlide, slide * perSlide);
                         return(
                             <Slide x={(slide - 1) * slideWidth + offset} key={slide} i={slide} width={slideWidth} isSliding={isSliding}>
-                                <ul className="category__grid" >
-                                    {
-                                        categoriesPerSlide.map(category => (
-                                            <li key={category.id} className="category__grid-item">
-                                                <div className="category__grid-img-container">
-                                                    <Link to="/collections/brooches/1">
-                                                        <img  className="category__grid-img" src={category.image} />
-                                                    </Link>
-                                                </div>
-                                                <h2>{category.name}&nbsp;<mark>({category.qty})</mark></h2>
-                                            </li>
-                                        ))
-                                    }
-                                </ul>
+                                <DisplayImage items={itemsPerSlide} />
                             </Slide>
                         );
                     })
@@ -162,8 +107,8 @@ function Categories() {
                     })
                 }
             </ul>
-        </section>
+        </Fragment>
     );
 }
 
-export default Categories;
+export default Slider;

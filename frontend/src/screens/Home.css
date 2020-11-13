@@ -349,3 +349,7 @@ input, select, button, textarea {
     border: 1px solid #9886BA;
     background-color: #9886BA;
 }
+
+.category {
+    margin-bottom: 7rem;
+}

@@ -6,10 +6,44 @@ import ImageGallery from 'react-image-gallery';
 import { useHistory } from "react-router";
 import PhoneIcon from "../icons/PhoneIcon";
 import KangarooIcon from "../icons/KangarooIcon";
-import RightArrowIcon from "../icons/RightArrowIcon";
-import LeftArrowIcon from "../icons/LeftArrowIcon";
-import Categories from "../components/Categories";
+import Slider from "../components/Slider";
 import Arrivals from "../components/Arrivals";
+import CategoriesImage from "../components/CategoriesImage";
+
+const categoriesData = [
+    {
+        id: 1,
+        name: 'Brooches',
+        qty: 11,
+        image: './products/1_thb.jpg'
+    },
+    {
+        id: 2,
+        name: 'Bracelets',
+        qty: 7,
+        image: './products/2_thb.jpg'
+    },
+    {
+        id: 3,
+        name: 'Earrings',
+        qty: 5,
+        image: './products/3_thb.jpg'
+    },
+    {
+        id: 4,
+        name: 'Necklaces',
+        qty: 11,
+        image: './products/1_thb.jpg'
+    },
+    {
+        id: 5,
+        name: 'Rings',
+        qty: 7,
+        image: './products/2_thb.jpg'
+    }
+];
+
+const categoriesPerSlide = 3;
 
 const images = [
     {
@@ -62,8 +96,10 @@ function Home() {
                 </div>
             </div>
           </section>
+           <section className="category">
+               <Slider items={categoriesData} perSlide={categoriesPerSlide} displayImage={CategoriesImage}/>
+           </section>
 
-          <Categories />
           <Arrivals />
           <section className="info">
             <div className="info__img-container">
