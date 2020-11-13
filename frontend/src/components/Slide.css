@@ -13,3 +13,23 @@
     z-index: -1;
     visibility: hidden;
 }
+
+.slider-dots {
+    margin-top: 1rem;
+    text-align: center;
+}
+.slider-dot {
+    display: inline-block;
+    width: 1.9rem;
+    height: 1.9rem;
+    border: 1px solid #ccc;
+    margin-right: .4rem;
+    margin-left: .4rem;
+    border-radius: 50%;
+    background-color: #ccc;
+    opacity: 40%;
+}
+
+.slider-dot-active {
+    opacity: 100%;
+}

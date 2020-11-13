@@ -11,6 +11,7 @@ function Arrivals() {
     const [slideWidth, setSlideWidth] = useState(1000);
     const [offset, setOffset] = useState(0);
     const [isSliding, setIsSliding] = useState(false);
+    const [activeSlide, setActiveSlide] = useState(1);
 
     useEffect(() => {
         // detect window resize and get slide width again
@@ -113,12 +114,14 @@ function Arrivals() {
         setIsSliding(true);
         if (offset < 0) {
             setOffset(offset + slideWidth );
+            setActiveSlide(activeSlide - 1);
         }
     }
     const handleRight = () => {
         setIsSliding(true);
         if (offset > maxOffset * slideWidth ) {
             setOffset(offset - slideWidth );
+            setActiveSlide(activeSlide + 1);
         }
     }
 
@@ -188,6 +191,16 @@ function Arrivals() {
                     })
                 }
             </div>
+            <ul className="slider-dots">
+                {
+                    slides.map(slide => {
+                        const sliderDotsClass = (slide === activeSlide) ? 'slider-dot slider-dot-active' : 'slider-dot';
+                        return (
+                            <li key={slide} className={sliderDotsClass}>&nbsp;</li>
+                        )
+                    })
+                }
+            </ul>
         </section>
     );
 }
