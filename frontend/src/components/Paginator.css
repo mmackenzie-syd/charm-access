@@ -27,7 +27,7 @@
     background-color: #9886BA;
     color: white;
     border: 1px solid #9886BA;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}

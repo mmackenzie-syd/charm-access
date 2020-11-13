@@ -10,7 +10,6 @@ import { CategoriesContext } from "../providers/CategoriesProvider";
 import config from "../config";
 const { api } = config;
 
-
 function Collections(props) {
     const {categories} = useContext(CategoriesContext);
     const categorySlug = props.match.params.category;
@@ -37,7 +36,7 @@ function Collections(props) {
         fetchData();
     }, [curPage, categorySlug]);
 
-    const pages = data ? [...Array(data.pages).keys()].map(key => key + 1) : [];
+    const pages = data ? data.pages : 0;
     const products = data ? data.products : [];
 
     let category;
