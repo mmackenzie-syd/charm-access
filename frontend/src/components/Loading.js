@@ -2,7 +2,6 @@
 
 import React, {Fragment, useEffect, useState} from 'react';
 import './Loading.css';
-import loading from './loading.gif';
 
 function Loading(props) {
     const delay = props.delay ? props.delay : 1000;
@@ -22,7 +21,7 @@ function Loading(props) {
     }
     return (
         <div className="loading-wrap">
-            <img src={loading} className="loading-img"/>
+            <img className="oading-img" src={`${process.env.PUBLIC_URL}/images/loading.gif`} />
         </div>
     );
 }
