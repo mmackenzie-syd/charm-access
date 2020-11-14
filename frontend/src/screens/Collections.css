@@ -12,5 +12,11 @@
 
 
 .collections__page-numbers {
+    font-size: 1.4rem;
+}
+
+.fixed-width-ch {
     text-align: center;
+    display: inline-block;
+    width: 2rem;
 }

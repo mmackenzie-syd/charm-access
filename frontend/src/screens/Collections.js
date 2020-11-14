@@ -68,11 +68,22 @@ function Collections(props) {
             { isLoading &&
                 <Loading isLoading={isLoading} />
             }
-            <section className="row left margin-top-5">
+            <section className="row  margin-top-5">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
+                <div className="collections__page-numbers">
+                    { (pages > 0)
+                        ? <div>
+                            <span>Page</span>
+                            <span className="fixed-width-ch">{curPage}</span>
+                            <span>of {pages}</span>
+                          </div>
+                        : <span>&nbsp;</span>
+                    }
+                </div>
             </section>
-            <section className="row  margin-bottom-1 margin-top-1" >
+            <section className="row margin-bottom-1 margin-top-1" >
                 <h3 className="">{category && category.name}</h3>
+
                 <Paginator pages={pages} curPage={curPage} url={ `/collections/${categorySlug}`} />
             </section>
             {
@@ -95,9 +106,9 @@ function Collections(props) {
                 </ul>
             }
             <section className="margin-top-1 margin-bottom-5">
-                <div className="collections__page-numbers">
+                <div className="row center">
                     { (pages > 0)
-                        ? <span>Page {curPage} of {pages}</span>
+                        ? <span className="">Page {curPage} of {pages}</span>
                         : <span>&nbsp;</span>
                     }
                 </div>
