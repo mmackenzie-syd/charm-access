@@ -94,6 +94,14 @@ function Collections(props) {
                     }
                 </ul>
             }
+            <section className="margin-top-1 margin-bottom-5">
+                <div className="collections__page-numbers">
+                    { (pages > 0)
+                        ? <span>Page {curPage} of {pages}</span>
+                        : <span>&nbsp;</span>
+                    }
+                </div>
+            </section>
         </main>
 
     );
