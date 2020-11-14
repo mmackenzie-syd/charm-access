@@ -23,6 +23,9 @@ function Paginator(props) {
             history.push(`${url}/${curPage + 1}`);
         }
     }
+    const handlePageClick = (page) => {
+        history.push(`${url}/${page}`);
+    }
 
     let startPage = Math.floor((curPage -1) / perDisplay) * perDisplay + 1;
     let endPage = startPage  + perDisplay - 1;
@@ -37,38 +40,38 @@ function Paginator(props) {
         endPage = maxPage;
     }
 
-    let leftArrowClass = (curPage === 1) ? 'slider_control icon-arrow icon-arrow-disabled' : 'slider_control icon-arrow';
-    let rightArrowClass = (curPage === maxPage) ? 'slider_control icon-arrow icon-arrow-disabled' : 'slider_control icon-arrow';
+    let leftArrowDisabled = (curPage === 1) ? 'leftArrowDisabled' : '';
+    let rightArrowDisabled = (curPage === maxPage) ? 'rightArrowDisabled' : '';
 
     const pagesToDisplay = (pages === 0) ? [] : pagesArray.slice((startPage - 1), endPage);
 
     return (
         <div className="pagination margin-bottom-1">
             { pagesToDisplay.length > 1 &&
-                <span onClick={handleLeftPageClick}>
+                <button className={`page-btn ${leftArrowDisabled}`}  onClick={handleLeftPageClick}>
                     <LeftArrowIcon
-                        className={leftArrowClass}
                         width={'1.2rem'}
                         height={'1.2rem'}
                         offset={'.3rem'}
                     />
-                </span>
+                </button>
             }
             {   pagesToDisplay.length > 1 &&
-            pagesToDisplay.map((page) => {
-                const active = (page === Number(curPage)) ? 'active' : '';
-                return <Link key={page} to={`${url}/${page}`} className={active}>{page}</Link>
-            })
+                pagesToDisplay.map((page) => {
+                    const active = (page === Number(curPage)) ? 'active' : '';
+                    return (
+                        <button className={`page-btn ${active}`} onClick={() => handlePageClick(page)}>
+                            {page}
+                        </button>)})
             }
             { pagesToDisplay.length > 1 &&
-                <span onClick={handleRightPageClick}>
+                <button className={`page-btn ${rightArrowDisabled}`} onClick={handleRightPageClick}>
                     <RightArrowIcon
-                        className={rightArrowClass}
                         width={'1.2rem'}
                         height={'1.2rem'}
                         offset={'.3rem'}
                     />
-                </span>
+                </button>
             }
         </div>
     );

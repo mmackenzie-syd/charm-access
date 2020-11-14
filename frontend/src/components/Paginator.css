@@ -1,10 +1,5 @@
 
-.pagination {
-    display: inline-block;
-}
-
-
-.pagination a {
+.page-btn {
     line-height: 38px;
     width: 40px;
     text-align: center;
@@ -23,17 +18,17 @@
     transition: background-color .3s;
 }
 
-.pagination a.active {
+.page-btn.active {
     background-color: #9886BA;
     color: white;
     border: 1px solid #9886BA;
     font-weight: 600;
 }
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
-
-
-.white-background {
-    border: 1px solid #efefef;
+.leftArrowDisabled {
+    opacity: 40%;
 }
 
+.rightArrowDisabled {
+    opacity: 40%;
+}
