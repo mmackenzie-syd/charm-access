@@ -81,7 +81,7 @@ function Collections(props) {
                     }
                 </div>
             </section>
-            <section className="row margin-bottom-1 margin-top-1" >
+            <section className="row margin-bottom-1 margin-top-1" style={{height: '5rem'}} >
                 <h3 className="">{category && category.name}</h3>
 
                 <Paginator pages={pages} curPage={curPage} url={ `/collections/${categorySlug}`} />
