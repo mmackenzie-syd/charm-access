@@ -1,6 +1,6 @@
 
 .cart {
-    border-top: 1px solid rgba(0,0,0,0.15);
+    margin-bottom: 8rem;
 }
 .cart__title {
     font-size: 2.5rem;
@@ -13,7 +13,9 @@
 }
 
 .table__img {
-    border: 1px solid rgba(0,0,0,0.15);
+    border: 5px solid rgba(0,0,0,0.15);
+    border: 6px solid #f1f1f1;;
+   /* filter:brightness(96.5%); */
 }
 
 .table__p {
@@ -35,10 +37,10 @@
 .table__delete-cross {
     position: absolute;
     text-decoration: none;
-    left: 0;
-    top: 0;
+    left:.2rem;
+    top:.2rem;
     font-weight: 400;
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     color: #4f4f4f;
 }
 
@@ -60,4 +62,27 @@
 
 .cart__total-price {
     font-size: 2rem;
+}
+
+.delete {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.table__delete-cross:hover {
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.cart__continue {
+    font-size: 1.4rem;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.cart__total {
+    text-align: right;
 }

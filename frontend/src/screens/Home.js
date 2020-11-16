@@ -220,7 +220,6 @@ function Home() {
                     <KangarooIcon width={'4.2rem'} height={'4.2rem'} fill={'#fff'} className={'info__kangaroo'}/>
                     Australia Post Delivery Rates Apply
                 </div>
-
             </div>
           </section>
 

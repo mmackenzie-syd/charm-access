@@ -2,6 +2,7 @@
 .page-btn {
     line-height: 38px;
     width: 40px;
+    height: 40px;
     text-align: center;
     z-index: 2;
     display: inline-block;
@@ -9,11 +10,11 @@
     cursor: pointer;
     border: 1px solid #f1f1f1;
     border: 1px solid #ccc;
-    border: 1px solid #efefef;
+    border: 1px solid #ccc;
     background: #ccc;
     color: #111;
     border-radius: 3px;
-    margin-left: .8rem;
+    margin-left: .5rem;
     text-decoration: none;
     transition: background-color .3s;
 }
@@ -31,4 +32,8 @@
 
 .rightArrowDisabled {
     opacity: 40%;
+}
+
+.page-btn:hover {
+    opacity: 60%;
 }

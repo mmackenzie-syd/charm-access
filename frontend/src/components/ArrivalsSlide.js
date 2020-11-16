@@ -14,8 +14,12 @@ const ArrivalsSlide = (props) => {
                                 <img  className="arrivals__grid-img" src={arrival.thumbnail} />
                             </Link>
                         </div>
-                        <h2>{arrival.name}</h2>
-                        <p className="price">${arrival.price}</p>
+                        <div className="row bottom margin-bottom-2">
+                            <div>
+                                <h2>{arrival.name}</h2>
+                                <p className="price">${arrival.price}</p>
+                            </div>
+                        </div>
                     </li>
                 ))
             }

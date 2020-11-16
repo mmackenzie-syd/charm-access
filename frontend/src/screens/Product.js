@@ -6,6 +6,8 @@ import {detailsProduct} from "../actions/productActions";
 import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import {CategoriesContext} from "../providers/CategoriesProvider";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
+import RightArrowIcon from "../icons/RightArrowIcon";
 
 function Product(props) {
     const {categories} = useContext(CategoriesContext);
@@ -61,7 +63,25 @@ function Product(props) {
                         <div>
                             <Breadcrumb list={list} show={showBreadcrumb}/>
                         </div>
-                        <h2 className="product__title margin-bottom-1">{product.name}</h2>
+                        <div className="row  margin-bottom-1">
+                            <h2 className="product__title">{product.name}</h2>
+                            <div>
+                                <button className={`page-btn`}>
+                                    <LeftArrowIcon
+                                        width={'1.2rem'}
+                                        height={'1.2rem'}
+                                        offset={'.3rem'}
+                                    />
+                                </button>
+                                <button className={`page-btn`}>
+                                    <RightArrowIcon
+                                        width={'1.2rem'}
+                                        height={'1.2rem'}
+                                        offset={'.3rem'}
+                                    />
+                                </button>
+                            </div>
+                        </div>
                         <h3 className="product__brand-title margin-bottom-2">Charm Accessories</h3>
                         <div className="product__price margin-bottom-4">${product.price}</div>
                         <div className="margin-bottom-3" style={{width: '100%'}}>

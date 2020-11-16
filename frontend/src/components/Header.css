@@ -149,3 +149,31 @@ a.is-active {
 }
 
 
+.cart-container {
+    position: relative;
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+.cartInactive {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 1;
+}
+
+.cartActive {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.cartInactive:hover {
+    opacity: 0;
+}
+
+.cartActive:hover {
+    opacity: 1;
+}
+

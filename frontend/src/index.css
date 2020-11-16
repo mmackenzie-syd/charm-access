@@ -36,7 +36,8 @@ html {
     justify-content: space-between;
     align-items: center;
 }
-.row.top { align-items: flex-start }
+.row.top { align-items: flex-start; }
+.row.bottom { align-items: flex-end; }
 .row.center { justify-content: center; }
 
 .row.left { justify-content: flex-start }

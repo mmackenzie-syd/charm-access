@@ -2,13 +2,27 @@ import './Header.css';
 import React, {Fragment, useContext, useState} from 'react'
 import {NavLink, Link, useLocation} from "react-router-dom";
 import {CategoriesContext} from "../providers/CategoriesProvider";
-import BagIcon from "../icons/BagIcon";
 import SearchIcon from "../icons/SearchIcon";
+import CartIcon from "../icons/CartIcon";
+import CartIconPurple from "../icons/CartIconPurple";
 
 function Header() {
     const {categories} = useContext(CategoriesContext);
     const location = useLocation();
     const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
+
+    const [outline, setOutline]=useState('#111');
+    const [background, setBackground]=useState('transparent');
+
+    const handleMouseOver = () => {
+        setOutline('#9886BA');
+        setBackground('#9886BA');
+    }
+
+    const handleMouseOut = () => {
+        setOutline('#111');
+        setBackground('transparent');
+    }
 
     return (
         <div className="sticky">
@@ -56,9 +70,22 @@ function Header() {
                         </form>
                     </div>
                     <div className="site__nav-item">
-                        <a>
-                            <BagIcon width={'3.2rem'} height={'3.2rem'} fill={'#111'} offset={'-.1rem'}/>
-                        </a>
+                        <NavLink to="/cart" activeClassName='is-active'>
+                            <div className="cart-container">
+                                <CartIcon
+                                    className={"cartInactive"}
+                                    width={'3.2rem'}
+                                    height={'3.2rem'}
+                                    offset={'-.1rem'}
+                                />
+                                <CartIconPurple
+                                    className={"cartActive"}
+                                    width={'3.2rem'}
+                                    height={'3.2rem'}
+                                    offset={'-.1rem'}
+                                />
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
             </header>

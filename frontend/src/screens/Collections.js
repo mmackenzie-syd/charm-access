@@ -8,6 +8,8 @@ import Axios from "axios";
 import placeholder from './placeholder.png';
 import { CategoriesContext } from "../providers/CategoriesProvider";
 import config from "../config";
+import CartPlusIcon from "../icons/CartPlusIcon";
+import CartIcon from "../icons/CartIcon";
 const { api } = config;
 
 function Collections(props) {
@@ -98,8 +100,12 @@ function Collections(props) {
                                         <img  className="arrivals__grid-img absolute" src={product.thumbnail} />
                                     </Link>
                                 </div>
-                                <h2>{product.name}</h2>
-                                <p className="price">${product.price}</p>
+                                <div className="row bottom margin-bottom-2">
+                                    <div>
+                                        <h2>{product.name}</h2>
+                                        <p className="price">${product.price}</p>
+                                    </div>
+                                </div>
                             </li>
                         )
                     }
