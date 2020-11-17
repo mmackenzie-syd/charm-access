@@ -7,22 +7,9 @@ import CartIcon from "../icons/CartIcon";
 import CartIconPurple from "../icons/CartIconPurple";
 
 function Header() {
-    const {categories} = useContext(CategoriesContext);
+    const {categories, callback, count} = useContext(CategoriesContext);
     const location = useLocation();
     const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
-
-    const [outline, setOutline]=useState('#111');
-    const [background, setBackground]=useState('transparent');
-
-    const handleMouseOver = () => {
-        setOutline('#9886BA');
-        setBackground('#9886BA');
-    }
-
-    const handleMouseOut = () => {
-        setOutline('#111');
-        setBackground('transparent');
-    }
 
     return (
         <div className="sticky">
@@ -54,6 +41,10 @@ function Header() {
                         <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
                     </ul>
+                    <div>
+                        <button onClick={callback} style={{width: '120px'}}>+</button>
+                        {count}
+                    </div>
                 </div>
                 <div className="row right">
                     <div className="search-container">
@@ -70,6 +61,7 @@ function Header() {
                         </form>
                     </div>
                     <div className="site__nav-item">
+
                         <NavLink to="/cart" activeClassName='is-active'>
                             <div className="cart-container">
                                 <CartIcon
