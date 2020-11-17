@@ -10,6 +10,7 @@ import { CategoriesContext } from "../providers/CategoriesProvider";
 import config from "../config";
 import CartPlusIcon from "../icons/CartPlusIcon";
 import CartIcon from "../icons/CartIcon";
+import {useHistory} from "react-router";
 const { api } = config;
 
 function Collections(props) {
@@ -20,12 +21,14 @@ function Collections(props) {
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
+    let history = useHistory();
+
     let timer;
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-             const { data } = await Axios.get(`/api/products/${categorySlug}/${curPage}`);
+            const { data } = await Axios.get(`/api/products/${categorySlug}/${curPage}`);
             // const { data } = await Axios.get(`${api}/products/${category}/${curPage}`);
             setData(data);
             setIsLoading(false);
@@ -37,6 +40,7 @@ function Collections(props) {
         };
         fetchData();
     }, [curPage, categorySlug]);
+
 
     const pages = data ? data.pages : 0;
     const products = data ? data.products : [];
@@ -65,6 +69,25 @@ function Collections(props) {
 
     const fixedHeight = (isLoading && !products) ? '700px' : 'auto';
 
+
+    const url=`/collections/${categorySlug}`;
+
+    const handlePageClick = (page) => {
+        history.push(`${url}/${page}`);
+    }
+
+    const handleLeftPageClick = () => {
+        if ((curPage - 1) > 0) {
+            history.push(`${url}/${curPage - 1}`);
+        }
+    }
+
+    const handleRightPageClick = () => {
+        if ((curPage + 1) <= pages) {
+            history.push(`${url}/${curPage + 1}`);
+        }
+    }
+
     return (
         <main className="collections margin-top-2" style={{height: fixedHeight}}>
             { isLoading &&
@@ -86,7 +109,13 @@ function Collections(props) {
             <section className="row margin-bottom-1 margin-top-1" style={{height: '5rem'}} >
                 <h3 className="">{category && category.name}</h3>
 
-                <Paginator pages={pages} curPage={curPage} url={ `/collections/${categorySlug}`} />
+                <Paginator
+                    pages={pages}
+                    curPage={curPage}
+                    pageClick={handlePageClick}
+                    leftPageClick={handleLeftPageClick}
+                    rightPageClick={handleRightPageClick}
+                />
             </section>
             {
                 products &&

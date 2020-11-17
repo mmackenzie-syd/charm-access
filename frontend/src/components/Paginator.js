@@ -1,30 +1,23 @@
 import React from 'react';
-import {useHistory} from "react-router";
 import './Paginator.css';
 import LeftArrowIcon from "../icons/LeftArrowIcon";
-import {Link} from "react-router-dom";
 import RightArrowIcon from "../icons/RightArrowIcon";
 
 function Paginator(props) {
-    const { curPage, pages, url } = props;
+    const { curPage, pages } = props;
     const pagesArray = (pages === 0) ? [] : [...Array(pages).keys()].map(key => key + 1);
     const perDisplay = 3;
     const maxPage = pagesArray.length;
-    let history = useHistory();
 
     const handleLeftPageClick = () => {
-        if ((curPage - 1) > 0) {
-            history.push(`${url}/${curPage - 1}`);
-        }
+        props.leftPageClick();
     }
 
     const handleRightPageClick = () => {
-        if ((curPage + 1) <= maxPage) {
-            history.push(`${url}/${curPage + 1}`);
-        }
+        props.rightPageClick();
     }
     const handlePageClick = (page) => {
-        history.push(`${url}/${page}`);
+        props.pageClick(page)
     }
 
     let startPage = Math.floor((curPage -1) / perDisplay) * perDisplay + 1;
