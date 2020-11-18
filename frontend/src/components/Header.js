@@ -41,10 +41,6 @@ function Header() {
                         <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
                     </ul>
-                    <div>
-                        <button onClick={callback} style={{width: '120px'}}>+</button>
-                        {count}
-                    </div>
                 </div>
                 <div className="row right">
                     <div className="search-container">
