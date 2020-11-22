@@ -5,6 +5,7 @@ import {CategoriesContext} from "../providers/CategoriesProvider";
 import SearchIcon from "../icons/SearchIcon";
 import CartIcon from "../icons/CartIcon";
 import CartIconPurple from "../icons/CartIconPurple";
+import BagIcon from "../icons/BagIcon";
 
 function Header() {
     const {categories, callback, count} = useContext(CategoriesContext);
@@ -60,7 +61,7 @@ function Header() {
 
                         <NavLink to="/cart" activeClassName='is-active'>
                             <div className="cart-container">
-                                <CartIcon
+                                <BagIcon
                                     className={"cartInactive"}
                                     width={'3.2rem'}
                                     height={'3.2rem'}
