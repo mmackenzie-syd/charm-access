@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +9,7 @@ body {
     font-size: 1.6rem;
     color: #080a1c;
     line-height: 1.5rem;
-    font-family: "Montserrat", sans-serif;
+    font-family: "MaisonNeue-Medium", sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -25,8 +26,8 @@ html {
 
 
 .wrap {
-    max-width: 132rem;
-    padding: 0 4rem;
+    max-width: 120rem;
+    padding: 0 1.5rem;
     margin: 0 auto;
 }
 
@@ -103,20 +104,31 @@ h1 {
 }
 
 h2 {
-    font-weight: 400;
     text-transform: none;
-    font-size: 14px;
     line-height: 1.2em;
     padding-top: .7rem;
     padding-bottom: .7rem;
-    color: #606060;
+    color: #000000;
+
+    font-family: "MaisonNeue-Medium", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 0 10px;
+    letter-spacing: 1.2px;
 }
 
 h3 {
     font-weight: 400;
-    font-size: 2.4rem;
-    margin-bottom: 2rem;
-    line-height: 2.4rem;
+
+    font-size: 28px;
+    letter-spacing: 0.5px;
+
+    margin-top: 24px;
+    margin-bottom: 12px;
+
+    font-family: "MaisonNeue-Medium", serif;
+    line-height: 1.3;
+    color: #000000
 }
 
 hr {

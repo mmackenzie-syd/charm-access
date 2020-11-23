@@ -170,9 +170,6 @@ function Home() {
 
   return (
       <main className="home">
-          <div className="row center free-shipping">
-              <span>FREE SHIPPING AUSTRALIA WIDE ON ORDERS OVER $100</span>
-          </div>
           <section className="banner">
               <ImageGallery
                   items={images}

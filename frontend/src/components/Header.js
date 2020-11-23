@@ -13,12 +13,11 @@ function Header() {
     const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
 
     return (
-        <div className="sticky">
             <header className="site row">
                 <div className="row left">
                     <div className="site__title">
                         <Link to="/">
-                            <img src="../../images/brand.png"/>
+                            <img className="site__logo" src="../../images/brand.png"/>
                         </Link>
                     </div>
                     <ul className="row site__nav">
@@ -45,40 +44,28 @@ function Header() {
                 </div>
                 <div className="row right">
                     <div className="search-container">
-                        <form>
-                            <input type="text" placeholder="Search..." name="search" />
-                            <button type="submit">
-                                <SearchIcon
-                                    width={'1.5rem'}
-                                    height={'1.5rem'}
-                                    offset={'.1rem'}
-                                    fill={'#4f4f4f'}
-                                />
-                            </button>
-                        </form>
+
                     </div>
                     <div className="site__nav-item">
-
                         <NavLink to="/cart" activeClassName='is-active'>
                             <div className="cart-container">
-                                <BagIcon
+                                <CartIcon
                                     className={"cartInactive"}
                                     width={'3.2rem'}
                                     height={'3.2rem'}
                                     offset={'-.1rem'}
                                 />
-                                <CartIconPurple
+                                {/*      <CartIconPurple
                                     className={"cartActive"}
                                     width={'3.2rem'}
                                     height={'3.2rem'}
                                     offset={'-.1rem'}
-                                />
+                                /> */}
                             </div>
                         </NavLink>
                     </div>
                 </div>
             </header>
-        </div>
     );
 }
 

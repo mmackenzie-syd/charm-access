@@ -16,7 +16,6 @@ function App() {
         <BrowserRouter>
             <CategoriesProvider>
                 <Header />
-                <div className="spacer-header-compensate">&nbsp;</div>
                 <div className="wrap" >
                     <Route path="/" component={Home} exact />
                     <Route path="/product/:id" component={Product} />

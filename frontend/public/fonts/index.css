@@ -1,0 +1,21 @@
+/* fonts */
+@font-face {
+    font-family: 'MaisonNeue-Medium';
+    src: url('MaisonNeue-Medium.eot?#iefix') format('embedded-opentype'),
+    url('MaisonNeue-Medium.woff') format('woff'),
+    url('MaisonNeue-Medium.ttf')  format('truetype'),
+    url('MaisonNeue-Medium.svg#MaisonNeue-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'MaisonNeue-Mono';
+    src: url('MaisonNeue-Mono.eot?#iefix') format('embedded-opentype'),
+    url('MaisonNeue-Mono.woff') format('woff'),
+    url('MaisonNeue-Mono.ttf')  format('truetype'),
+    url('MaisonNeue-Mono.svg#MaisonNeue-Mono') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
