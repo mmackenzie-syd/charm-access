@@ -55,7 +55,9 @@ function Product(props) {
         <main className="product margin-top-5" style={{minHeight: '500px'}}>
             { loading
                 ? <Loading />
-                : <section className="row top">
+                :
+                <>
+                <section className="row top">
                     <div className="col-6 product__img">
                         <img src={product.image}/>
                     </div>
@@ -106,6 +108,7 @@ function Product(props) {
                         </div>
                     </div>
                 </section>
+                </>
             }
         </main>
     );

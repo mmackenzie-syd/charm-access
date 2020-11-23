@@ -43,25 +43,23 @@ function Header() {
                         <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
                     </ul>
                 </div>
-                <div className="row right">
-                    <div className="search-container">
-                        <form>
-                            <input type="text" placeholder="Search..." name="search" />
-                            <button type="submit">
+                <div className="row right" style={{marginRight: '-.5rem'}}>
+                    <div className="site__nav-item" style={{paddingRight: 0}}>
+                        <NavLink to="/cart" activeClassName='is-active'>
+                            <div className="search-containers">
                                 <SearchIcon
-                                    width={'1.5rem'}
-                                    height={'1.5rem'}
-                                    offset={'.1rem'}
-                                    fill={'#4f4f4f'}
+                                    className={"cartInactive"}
+                                    width={'2.6rem'}
+                                    height={'2.6rem'}
+                                    offset={'.4rem'}
                                 />
-                            </button>
-                        </form>
+                            </div>
+                        </NavLink>
                     </div>
                     <div className="site__nav-item">
-
                         <NavLink to="/cart" activeClassName='is-active'>
                             <div className="cart-container">
-                                <BagIcon
+                                <CartIcon
                                     className={"cartInactive"}
                                     width={'3.2rem'}
                                     height={'3.2rem'}

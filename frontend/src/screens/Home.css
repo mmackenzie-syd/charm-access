@@ -48,11 +48,17 @@ a:active {
     margin: 0 auto;
 }
 
+.home {
+
+}
+.image-bgd {}
+
 .banner {
     position: relative;
     width: 100%;
     margin-top: 3rem;
     margin-bottom: 5rem;
+    background-color: #9886BA;
 }
 .caption {
     position: absolute;
@@ -65,7 +71,6 @@ a:active {
 .shop-now {
     background-color: #9886BA; /* purple */
     border-radius: 3px;
-    border: none;
     color: #fff;
     text-align: center;
     text-decoration: none;

@@ -170,10 +170,8 @@ function Home() {
 
   return (
       <main className="home">
-          <div className="row center free-shipping">
-              <span>FREE SHIPPING AUSTRALIA WIDE ON ORDERS OVER $100</span>
-          </div>
           <section className="banner">
+              <div className="image-bgd">
               <ImageGallery
                   items={images}
                   showNav={false}
@@ -184,6 +182,7 @@ function Home() {
                   showPlayButton={false}
                   slideInterval={7000}
               />
+              </div>
             <div className="caption">
                 <div className="brand-transp">
                     <img className="brand-transp-img" src="./images/brand_transp_purple.png"/>
