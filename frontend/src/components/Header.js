@@ -25,14 +25,14 @@ function Header() {
                     <ul className="row site__nav">
                         <li className="site__nav-item dropdown">
                             <div className="dropbtn">
-                                <NavLink to="/collections/shop/1" className={isShopActive}>Shop</NavLink>
+                                <NavLink to="/products/shop/1" className={isShopActive}>Shop</NavLink>
                             </div>
                             <div className="dropdown-content">
                                 {
                                     categories && categories.map(category => (
                                         <NavLink
                                             key={category._id}
-                                            to={`/collections/${category.slug}/1`}
+                                            to={`/products/${category.slug}/1`}
                                         >
                                             {category.name}
                                         </NavLink>

@@ -1,4 +1,4 @@
-import './Collections.css';
+import './Products.css';
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
@@ -9,7 +9,7 @@ import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import { getProducts } from "../state/apiActions";
 
-function Collections(props) {
+function Products(props) {
     const dispatch = useDispatch();
     const categoriesApi = useSelector(state => state.categoriesApi);
     const categorySlug = props.match.params.category;
@@ -46,7 +46,7 @@ function Collections(props) {
     const fixedHeight = (isLoading && !products) ? '700px' : 'auto';
 
 
-    const url=`/collections/${categorySlug}`;
+    const url=`/products/${categorySlug}`;
 
     const handlePageClick = (page) => {
         history.push(`${url}/${page}`);
@@ -129,4 +129,4 @@ function Collections(props) {
     );
 }
 
-export default Collections;
+export default Products;

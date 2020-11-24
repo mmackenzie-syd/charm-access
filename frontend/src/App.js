@@ -4,7 +4,7 @@ import Home from './screens/Home';
 import About from './screens/About';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Collections from "./screens/Collections";
+import Products from "./screens/Products";
 import Shipping from "./screens/Shipping";
 import Product from "./screens/Product";
 import Cart from "./screens/Cart";
@@ -23,7 +23,7 @@ function App() {
             <div className="wrap" >
                 <Route path="/" component={Home} exact />
                 <Route path="/product/:id" component={Product} />
-                <Route path="/collections/:category/:page" component={Collections} />
+                <Route path="/products/:category/:page" component={Products} />
                 <Route path="/about" component={About} />
                 <Route path="/shipping" component={Shipping} />
                 <Route path="/cart" component={Cart} />
