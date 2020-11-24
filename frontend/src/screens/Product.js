@@ -57,11 +57,7 @@ function Product(props) {
 
     let existingProduct = products.find(product => (product._id === id));
 
-    let product = existingProduct;
-
-    if (!existingProduct && data) {
-        product = data;
-    }
+    const product = (!existingProduct && data) ? data : existingProduct;
 
     let category;
     let categorySlug;

@@ -19,8 +19,8 @@ function Products(props) {
     const { loading: isLoading, error, data } = productsApi;
     const { data: categories } = categoriesApi;
 
-    const products = data ? data.products : {};
-    const pages = data ? products.pages : 0;
+    const products = data ? data.products : [];
+    const pages = data ? data.pages : 0;
 
     let history = useHistory();
 
@@ -30,7 +30,12 @@ function Products(props) {
 
     const list = [];
     let showBreadcrumb = false;
-    const category = categories.find(category => category.slug === categorySlug) || '';
+
+    let category;
+    if (categoriesApi && categoriesApi.data) {
+        categoriesApi.data.find(category => category.slug === categorySlug)
+    }
+
     if (category && category.name) {
         list.push({
             name: 'Home Page',
