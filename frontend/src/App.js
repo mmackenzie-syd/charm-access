@@ -8,12 +8,14 @@ import Collections from "./screens/Collections";
 import Shipping from "./screens/Shipping";
 import Product from "./screens/Product";
 import Cart from "./screens/Cart";
-import {getCategories} from "./actions/apiActions";
+import {getCategories, getProducts} from "./actions/apiActions";
 import {useDispatch} from "react-redux";
 
 function App() {
+    // preload
     const dispatch = useDispatch();
     dispatch(getCategories());
+    dispatch(getProducts('shop', 1))
     return (
         <BrowserRouter>
             <Header />
