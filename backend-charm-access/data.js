@@ -1,6 +1,11 @@
 const data = {
     categories: [
         {
+            _id: '0',
+            slug: 'shop',
+            name: 'Shop',
+        },
+        {
             _id: '1',
             slug: 'necklaces',
             name: 'Necklaces',

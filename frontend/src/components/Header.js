@@ -1,14 +1,15 @@
 import './Header.css';
-import React, {Fragment, useContext, useState} from 'react'
+import React from 'react'
 import {NavLink, Link, useLocation} from "react-router-dom";
-import {CategoriesContext} from "../providers/CategoriesProvider";
 import SearchIcon from "../icons/SearchIcon";
 import CartIcon from "../icons/CartIcon";
 import CartIconPurple from "../icons/CartIconPurple";
-import BagIcon from "../icons/BagIcon";
+import {useSelector} from "react-redux";
 
 function Header() {
-    const {categories, callback, count} = useContext(CategoriesContext);
+    const categoriesApi = useSelector(state => state.categoriesApi);
+    const { data } = categoriesApi;
+    const categories = data ? data.filter(category => category.slug !== 'shop') : [];
     const location = useLocation();
     const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
 

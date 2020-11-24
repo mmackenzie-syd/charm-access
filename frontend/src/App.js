@@ -8,25 +8,25 @@ import Collections from "./screens/Collections";
 import Shipping from "./screens/Shipping";
 import Product from "./screens/Product";
 import Cart from "./screens/Cart";
-
-import {CategoriesProvider} from './providers/CategoriesProvider';
+import {getCategories} from "./actions/apiActions";
+import {useDispatch} from "react-redux";
 
 function App() {
+    const dispatch = useDispatch();
+    dispatch(getCategories());
     return (
         <BrowserRouter>
-            <CategoriesProvider>
-                <Header />
-                <div className="spacer-header-compensate">&nbsp;</div>
-                <div className="wrap" >
-                    <Route path="/" component={Home} exact />
-                    <Route path="/product/:id" component={Product} />
-                    <Route path="/collections/:category/:page" component={Collections} />
-                    <Route path="/about" component={About} />
-                    <Route path="/shipping" component={Shipping} />
-                    <Route path="/cart" component={Cart} />
-                </div>
-                <Footer />
-            </CategoriesProvider>
+            <Header />
+            <div className="spacer-header-compensate">&nbsp;</div>
+            <div className="wrap" >
+                <Route path="/" component={Home} exact />
+                <Route path="/product/:id" component={Product} />
+                <Route path="/collections/:category/:page" component={Collections} />
+                <Route path="/about" component={About} />
+                <Route path="/shipping" component={Shipping} />
+                <Route path="/cart" component={Cart} />
+            </div>
+            <Footer />
         </BrowserRouter>
     );
 }

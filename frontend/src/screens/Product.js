@@ -2,19 +2,21 @@ import React, {Fragment, useContext, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './Product.css';
 import Selector from "../components/Selector";
-import {detailsProduct} from "../actions/productActions";
 import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
-import {CategoriesContext} from "../providers/CategoriesProvider";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
+import {getProduct} from "../actions/apiActions";
 
 function Product(props) {
-    const {categories} = useContext(CategoriesContext);
     const dispatch = useDispatch();
-    const productId = props.match.params.id;
-    const productDetails = useSelector(state => state.productDetails);
-    const { loading, error, product } = productDetails;
+    const id = props.match.params.id;
+    const categoriesApi = useSelector(state => state.categoriesApi);
+    const productApi = useSelector(state => state.productApi);
+    const { loading, error, data: product } = productApi;
+    const { categories } = categoriesApi;
+
+    console.log('productapi', productApi)
 
     let category;
     let categorySlug;
@@ -24,8 +26,8 @@ function Product(props) {
     }
 
     useEffect(() => {
-        dispatch(detailsProduct(productId));
-    }, [dispatch, productId]);
+        dispatch(getProduct(id));
+    }, [dispatch, id]);
 
     const onQty = (value) => {
         console.log('quantity', value);
@@ -55,7 +57,7 @@ function Product(props) {
         <main className="product margin-top-5" style={{minHeight: '500px'}}>
             { loading
                 ? <Loading />
-                :
+                : product &&
                 <>
                 <section className="row top">
                     <div className="col-6 product__img">

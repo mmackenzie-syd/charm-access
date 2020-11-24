@@ -1,48 +1,36 @@
 import './Collections.css';
-import React, {useContext, useEffect, useReducer, useState} from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import Paginator from "../components/Paginator";
-import Axios from "axios";
 import placeholder from './placeholder.png';
-import { CategoriesContext } from "../providers/CategoriesProvider";
-import config from "../config";
-import CartPlusIcon from "../icons/CartPlusIcon";
-import CartIcon from "../icons/CartIcon";
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {detailsProduct, listProducts} from "../actions/productActions";
-const { api } = config;
+import { getProducts } from "../actions/apiActions";
 
 function Collections(props) {
     const dispatch = useDispatch();
-    const {categories} = useContext(CategoriesContext);
+    const categoriesApi = useSelector(state => state.categoriesApi);
     const categorySlug = props.match.params.category;
     const curPage = Number(props.match.params.page);
 
-    const productList = useSelector(state => state.productList);
-    const { loading: isLoading, error, pageData: data } = productList;
-
-
-    let history = useHistory();
-
-    useEffect(() => {
-        dispatch(listProducts(categorySlug, curPage));
-    }, [curPage, categorySlug]);
+    const productsApi = useSelector(state => state.productsApi);
+    const { loading: isLoading, error, data } = productsApi;
+    const { data: categories } = categoriesApi;
 
     const pages = data ? data.pages : 0;
     const products = data ? data.products : [];
 
-    let category;
-    if (categories) {
-        category = (categorySlug === 'shop')
-            ? { name: 'Shop'}
-            : categories.find(category => (category.slug === categorySlug));
-    }
+    let history = useHistory();
+
+    useEffect(() => {
+        dispatch(getProducts(categorySlug, curPage));
+    }, [categorySlug, curPage]);
 
     const list = [];
     let showBreadcrumb = false;
+    const category = categories.find(category => category.slug === categorySlug) || '';
     if (category && category.name) {
         list.push({
             name: 'Home Page',
