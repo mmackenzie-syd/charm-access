@@ -7,6 +7,45 @@ import Breadcrumb from "../components/Breadcrumb";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import {getProduct} from "../actions/apiActions";
+import ArrivalsSlide from "../components/ArrivalsSlide";
+
+
+const arrivalsData = [
+    {
+        _id: '1',
+        name: 'Rose Bouquet Brooch',
+        category: 'brooches',
+        image: '/products/1.jpg',
+        thumbnail: '/products/1_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '2',
+        name: 'Rose Butterfly Brooch',
+        category: 'brooches',
+        image: '/products/2.jpg',
+        thumbnail: '/products/2_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '3',
+        name: 'Single Rose Brooch',
+        category: 'brooches',
+        image: '/products/3.jpg',
+        thumbnail: '/products/3_thb.jpg',
+        price: 120,
+    },
+    {
+        _id: '4',
+        name: 'White Butterfly Brooch',
+        category: 'brooches',
+        image: '/products/4.jpg',
+        thumbnail: '/products/4_thb.jpg',
+        price: 120,
+    },
+];
+
+const arrivalsPerSlide = 4;
 
 function Product(props) {
     const dispatch = useDispatch();
@@ -15,8 +54,6 @@ function Product(props) {
     const productApi = useSelector(state => state.productApi);
     const { loading, error, data: product } = productApi;
     const { categories } = categoriesApi;
-
-    console.log('productapi', productApi)
 
     let category;
     let categorySlug;
@@ -109,6 +146,10 @@ function Product(props) {
                             </div>
                         </div>
                     </div>
+                </section>
+                <section className="arrivals margin-top-5">
+                    <h3>Similar Items</h3>
+                    <ArrivalsSlide items={arrivalsData} />
                 </section>
                 </>
             }
