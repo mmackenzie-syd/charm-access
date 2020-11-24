@@ -6,7 +6,7 @@ import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
-import {getProduct} from "../actions/apiActions";
+import {getProduct} from "../state/apiActions";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 
 

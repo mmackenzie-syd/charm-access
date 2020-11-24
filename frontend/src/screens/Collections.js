@@ -7,7 +7,7 @@ import Paginator from "../components/Paginator";
 import placeholder from './placeholder.png';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import { getProducts } from "../actions/apiActions";
+import { getProducts } from "../state/apiActions";
 
 function Collections(props) {
     const dispatch = useDispatch();

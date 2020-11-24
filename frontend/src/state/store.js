@@ -4,7 +4,7 @@ import {
     categoriesReducer,
     productReducer,
     productsReducer
-} from "./reducers/apiReducers";
+} from "./apiReducers";
 
 const initialState = {};
 const reducer = combineReducers({
