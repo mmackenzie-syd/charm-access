@@ -15,7 +15,7 @@
 
 
 .site {
-    width: 132rem;
+    max-width: 132rem;
 
     padding-left: 4rem;
     padding-right: 4rem;

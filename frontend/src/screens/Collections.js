@@ -1,5 +1,5 @@
 import './Collections.css';
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useReducer, useState} from 'react';
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
@@ -13,13 +13,37 @@ import CartIcon from "../icons/CartIcon";
 import {useHistory} from "react-router";
 const { api } = config;
 
+const initialState = {
+    isLoading: false,
+    data: {},
+    error: {}
+};
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'REQUEST':
+            return { ...state, isLoading: true };
+        case 'SUCCESS':
+            return { isLoading: false, data: action.payload };
+        case 'FAIL':
+            return { isLoading: false, error: action.payload };
+        default:
+            return state;
+    }
+}
+
+
 function Collections(props) {
     const {categories} = useContext(CategoriesContext);
     const categorySlug = props.match.params.category;
     const curPage = Number(props.match.params.page);
 
-    const [data, setData] = useState({});
-    const [isLoading, setIsLoading] = useState(false);
+    // const [data, setData] = useState({});
+    // const [isLoading, setIsLoading] = useState(false);
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    const { data, isLoading } = state;
 
     let history = useHistory();
 
@@ -27,11 +51,10 @@ function Collections(props) {
 
     useEffect(() => {
         const fetchData = async () => {
-            setIsLoading(true);
+            dispatch({ type: 'REQUEST'})
             const { data } = await Axios.get(`/api/products/${categorySlug}/${curPage}`);
             // const { data } = await Axios.get(`${api}/products/${category}/${curPage}`);
-            setData(data);
-            setIsLoading(false);
+            dispatch({ type: 'SUCCESS', payload: data });
             // timer = setTimeout(() => {
             //     setData(data);
             //     setIsLoading(false);
