@@ -45,15 +45,23 @@ const arrivalsData = [
     },
 ];
 
-const arrivalsPerSlide = 4;
-
 function Product(props) {
     const dispatch = useDispatch();
     const id = props.match.params.id;
     const categoriesApi = useSelector(state => state.categoriesApi);
+    const productsApi = useSelector(state => state.productsApi);
     const productApi = useSelector(state => state.productApi);
-    const { loading, error, data: product } = productApi;
+    const { loading, error, data } = productApi;
     const { categories } = categoriesApi;
+    const products = (productsApi && productsApi.data) ? productsApi.data.products : [];
+
+    let existingProduct = products.find(product => (product._id === id));
+
+    let product = existingProduct;
+
+    if (!existingProduct && data) {
+        product = data;
+    }
 
     let category;
     let categorySlug;
@@ -63,7 +71,9 @@ function Product(props) {
     }
 
     useEffect(() => {
-        dispatch(getProduct(id));
+        if (!existingProduct) {
+            dispatch(getProduct(id));
+        }
     }, [dispatch, id]);
 
     const onQty = (value) => {

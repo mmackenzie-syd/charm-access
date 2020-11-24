@@ -19,8 +19,8 @@ function Products(props) {
     const { loading: isLoading, error, data } = productsApi;
     const { data: categories } = categoriesApi;
 
-    const pages = data ? data.pages : 0;
-    const products = data ? data.products : [];
+    const products = data ? data.products : {};
+    const pages = data ? products.pages : 0;
 
     let history = useHistory();
 
