@@ -17,7 +17,6 @@ function Products(props) {
 
     const productsApi = useSelector(state => state.productsApi);
     const { loading: isLoading, error, data } = productsApi;
-    const { data: categories } = categoriesApi;
 
     const products = data ? data.products : [];
     const pages = data ? data.pages : 0;
@@ -30,10 +29,10 @@ function Products(props) {
 
     const list = [];
     let showBreadcrumb = false;
-
     let category;
+
     if (categoriesApi && categoriesApi.data) {
-        categoriesApi.data.find(category => category.slug === categorySlug)
+        category = categoriesApi.data.find(category => category.slug === categorySlug)
     }
 
     if (category && category.name) {
