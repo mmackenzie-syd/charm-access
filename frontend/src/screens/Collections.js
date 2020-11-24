@@ -11,59 +11,25 @@ import config from "../config";
 import CartPlusIcon from "../icons/CartPlusIcon";
 import CartIcon from "../icons/CartIcon";
 import {useHistory} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {detailsProduct, listProducts} from "../actions/productActions";
 const { api } = config;
 
-const initialState = {
-    isLoading: false,
-    data: {},
-    error: {}
-};
-
-function reducer(state, action) {
-    switch (action.type) {
-        case 'REQUEST':
-            return { ...state, isLoading: true };
-        case 'SUCCESS':
-            return { isLoading: false, data: action.payload };
-        case 'FAIL':
-            return { isLoading: false, error: action.payload };
-        default:
-            return state;
-    }
-}
-
-
 function Collections(props) {
+    const dispatch = useDispatch();
     const {categories} = useContext(CategoriesContext);
     const categorySlug = props.match.params.category;
     const curPage = Number(props.match.params.page);
 
-    // const [data, setData] = useState({});
-    // const [isLoading, setIsLoading] = useState(false);
+    const productList = useSelector(state => state.productList);
+    const { loading: isLoading, error, pageData: data } = productList;
 
-    const [state, dispatch] = useReducer(reducer, initialState);
-
-    const { data, isLoading } = state;
 
     let history = useHistory();
 
-    let timer;
-
     useEffect(() => {
-        const fetchData = async () => {
-            dispatch({ type: 'REQUEST'})
-            const { data } = await Axios.get(`/api/products/${categorySlug}/${curPage}`);
-            // const { data } = await Axios.get(`${api}/products/${category}/${curPage}`);
-            dispatch({ type: 'SUCCESS', payload: data });
-            // timer = setTimeout(() => {
-            //     setData(data);
-            //     setIsLoading(false);
-            // }, 1500);
-            // return () => clearTimeout(timer);
-        };
-        fetchData();
+        dispatch(listProducts(categorySlug, curPage));
     }, [curPage, categorySlug]);
-
 
     const pages = data ? data.pages : 0;
     const products = data ? data.products : [];
@@ -74,7 +40,6 @@ function Collections(props) {
             ? { name: 'Shop'}
             : categories.find(category => (category.slug === categorySlug));
     }
-
 
     const list = [];
     let showBreadcrumb = false;
