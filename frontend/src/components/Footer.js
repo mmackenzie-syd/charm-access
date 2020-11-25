@@ -25,7 +25,7 @@ function Footer() {
                     </div>
                     <div className="vendor-login-wrap">
                         <span>Vendor Login </span>
-                        <Link to="/sigin">
+                        <Link to="/login">
                             <LoginIcon width={'2.6rem'} height={'2.6rem'} />
                         </Link>
                     </div>

@@ -30,19 +30,167 @@
         Learn how to configure a non-root public URL by running `npm run build`.
       -->
     <title>Charm Accesories</title>
+      <style>
+          /* Full-width input fields */
+          input[type=text],
+          input[type=password] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              display: inline-block;
+              border: 1px solid #ccc;
+              box-sizing: border-box;
+              margin-bottom: 2rem;
+              border-radius: .3rem;
+          }
+
+          input[type=password] {
+              margin-bottom: 3rem;
+          }
+
+          /* Set a style for all buttons */
+
+          .primary {
+              background-color: #9886BA; /* purple */
+              border-radius: 3px;
+              color: #fff;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 1.8rem;
+              font-weight: 600;
+              padding: 1.4rem 4.5rem;
+              transition-duration: 0.4s;
+              cursor: pointer;
+              border: 2px solid #9886BA;
+              outline: none;
+              width: 100%;
+          }
+
+          primary:hover {
+              opacity: 0.8;
+          }
+
+          /* Center the image and position the close button */
+          .imgcontainer {
+              text-align: center;
+              margin: 24px 0 12px 0;
+              position: relative;
+          }
+
+          img.avatar {
+              width: 60%;
+              /* border-radius: 50%; */
+              /* filter: grayscale(100%); */
+          }
+
+          .container {
+              padding: 1rem 3rem 6rem 3rem;
+          }
+
+          span.psw {
+              float: right;
+              padding-top: 16px;
+          }
+
+          /* The Modal (background) */
+          .modal {
+              display: none; /* Hidden by default */
+              position: fixed; /* Stay in place */
+              z-index: 3000; /* Sit on top */
+              left: 0;
+              top: 0;
+              width: 100%; /* Full width */
+              height: 100%; /* Full height */
+              overflow: auto; /* Enable scroll if needed */
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+              padding-top: 60px;
+          }
+
+          /* Modal Content/Box */
+          .modal-content {
+              background-color: #fefefe;
+              margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+              border: 1px solid #888;
+              width: 80%; /* Could be more or less, depending on screen size */
+              max-width: 50rem;
+          }
+
+          /* The Close Button (x) */
+          .close {
+              position: absolute;
+              right: 25px;
+              top: 0;
+              color: #000;
+              font-size: 35px;
+              font-weight: bold;
+          }
+
+          .close:hover,
+          .close:focus {
+              color: red;
+              cursor: pointer;
+          }
+
+          /* Add Zoom Animation */
+          .animate {
+              -webkit-animation: animatezoom 0.6s;
+              animation: animatezoom 0.6s
+          }
+
+          @-webkit-keyframes animatezoom {
+              from {-webkit-transform: scale(0)}
+              to {-webkit-transform: scale(1)}
+          }
+
+          @keyframes animatezoom {
+              from {transform: scale(0)}
+              to {transform: scale(1)}
+          }
+
+          /* Change styles for span and cancel button on extra small screens */
+          @media screen and (max-width: 300px) {
+              span.psw {
+                  display: block;
+                  float: none;
+              }
+          }
+      </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <h2>Modal Login Form</h2>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; margin-bottom: 30px">Login</button>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="id01" class="modal">
+        <form class="modal-content animate" method="post">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="/images/about.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+                <button type="submit" class="primary">Login</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
   </body>
 </html>
