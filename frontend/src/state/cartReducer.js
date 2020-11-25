@@ -4,8 +4,8 @@ import {
     UPDATE_CART,
 } from "./cartConstants";
 
-const initialState = localStorage.getItem('cartItems')
-    ? JSON.parse(localStorage.getItem('cartItems'))
+const initialState = localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
     : {
         addedIds: [],
         quantityById: {},
@@ -78,7 +78,7 @@ export const cartReducer = (state = initialState, action) => {
         quantityById: quantityById(state.quantityById, action),
         productById: productById(state.productById, action),
     }
-    localStorage.setItem('cartItems', JSON.stringify(newState));
+    localStorage.setItem('cart', JSON.stringify(newState));
     return newState;
 }
 
