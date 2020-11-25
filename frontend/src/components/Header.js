@@ -13,6 +13,18 @@ function Header() {
     const location = useLocation();
     const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
 
+    const cart = useSelector(state => state.cart);
+    const { items } = cart;
+
+    let qty = 0;
+
+    if (items) {
+        qty = items.reduce((acc, item)  => {
+            acc = item.qty + acc;
+            return acc;
+        }, 0)
+    }
+
     return (
         <div className="sticky">
             <header className="site row">
@@ -60,6 +72,9 @@ function Header() {
                     <div className="site__nav-item">
                         <NavLink to="/cart" activeClassName='is-active'>
                             <div className="cart-container">
+                                { items && (items.length !== 0) &&
+                                    <div className="qty">{qty}</div>
+                                }
                                 <CartIcon
                                     className={"cartInactive"}
                                     width={'3.2rem'}
