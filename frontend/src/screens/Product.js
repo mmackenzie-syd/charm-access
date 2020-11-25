@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './Product.css';
 import Selector from "../components/Selector";
@@ -49,6 +49,7 @@ const arrivalsData = [
 function Product(props) {
     const dispatch = useDispatch();
     const id = props.match.params.id;
+    const [qty, setQty] = useState(1);
     const categoriesApi = useSelector(state => state.categoriesApi);
     const productsApi = useSelector(state => state.productsApi);
     const productApi = useSelector(state => state.productApi);
@@ -74,7 +75,7 @@ function Product(props) {
     }, [dispatch, id, existingProduct]);
 
     const onQty = (value) => {
-        console.log('quantity', value);
+       setQty(value);
     };
 
     const list = [];
@@ -98,7 +99,8 @@ function Product(props) {
     }
 
     const handleAddToCart = () => {
-        dispatch(addToCart(product, 1));
+        dispatch(addToCart({...product, qty}));
+        props.history.goBack();
     }
 
     return (

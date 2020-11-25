@@ -1,9 +1,9 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from "./cartConstants";
 
-export const addToCart = (product, qty) => async (dispatch) => {
+export const addToCart = (item) => async (dispatch) => {
     dispatch({
         type: ADD_TO_CART,
-        payload: { ...product, qty }
+        payload: item
     });
 };
 

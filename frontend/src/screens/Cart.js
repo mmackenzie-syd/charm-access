@@ -1,21 +1,28 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './Cart.css';
 import Quantity from "../components/Quantity";
 import Breadcrumb from "../components/Breadcrumb";
-import {useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {addToCart} from "../state/cartActions";
+import Message from "../components/Message";
 
 function Cart() {
+    const dispatch = useDispatch();
+    const onPlusBtn = (item) => {
+        const qty = item.qty + 1;
+        dispatch(addToCart({...item, qty}));
+    }
 
+    const onSubBtn = (item) => {
+        const qty = item.qty - 1;
+        if (qty > 0) {
+            dispatch(addToCart({...item, qty}));
+        }
+    }
 
     const cart = useSelector(state => state.cart);
-
     const { items } = cart;
-
-    console.log('cart', cart);
-
-    const onQty = (qty, i) => {
-        console.log('qty', i, ':', qty);
-    }
 
     return (
         <main className="cart margin-top-3">
@@ -31,13 +38,20 @@ function Cart() {
             </section>
             <div className="row">
                 <section className="table">
-                    <div className="row table__heading">
-                        <div className="col-2 padding-right-3">Product</div>
-                        <div className="col-4">Description</div>
-                        <div className="col-2">Price</div>
-                        <div className="col-2 row">Quantity</div>
-                        <div className="col-2 row right">Sub-total</div>
-                    </div>
+                    {items && (items.length !== 0) &&
+                        <div className="row table__heading">
+                            <div className="col-2 padding-right-3">Product</div>
+                            <div className="col-4">Description</div>
+                            <div className="col-2">Price</div>
+                            <div className="col-2 row">Quantity</div>
+                            <div className="col-2 row right">Sub-total</div>
+                        </div>
+                    }
+                    { items && (items.length === 0) &&
+                        <div>
+                            Your Cart is empty.
+                        </div>
+                    }
                     { items && items.map( (item) => {
                         const { name, price, qty } = item;
                         const subTotal = qty * Number(price);
@@ -57,7 +71,11 @@ function Cart() {
                                 </div>
                                 <div className="col-2">
                                     <div className="row">
-                                        <Quantity callback={(e) => onQty(e, 1)}/>
+                                        <Quantity
+                                            value={qty}
+                                            onSubBtn={() => onSubBtn(item)}
+                                            onPlusBtn={() => onPlusBtn(item)}
+                                        />
                                     </div>
                                 </div>
                                 <div className="col-2 row right">

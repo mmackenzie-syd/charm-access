@@ -2,21 +2,7 @@ import React, { useState } from 'react';
 import './Quantity.css';
 
 function Quantity(props) {
-    const [value, setValue] = useState(1);
-
-    const onPlusBtn = () => {
-        const newValue = value + 1;
-        setValue(newValue);
-        props.callback(value)
-    }
-
-    const onSubBtn = () => {
-        const newValue = value - 1;
-        if (newValue > 0) {
-            setValue(newValue);
-            props.callback(newValue)
-        }
-    }
+    const { value, onSubBtn, onPlusBtn} = props;
     return (
         <div className="quantity">
             <button onClick={onSubBtn} className="quantity__btn">-</button>
