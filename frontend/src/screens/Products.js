@@ -8,6 +8,7 @@ import placeholder from './placeholder.png';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import { getProducts } from "../state/apiActions";
+import Message from "../components/Message";
 
 function Products(props) {
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function Products(props) {
 
     useEffect(() => {
         dispatch(getProducts(categorySlug, curPage));
-    }, [categorySlug, curPage]);
+    }, [dispatch, categorySlug, curPage]);
 
     const list = [];
     let showBreadcrumb = false;
@@ -70,6 +71,7 @@ function Products(props) {
 
     return (
         <main className="collections margin-top-2" style={{height: fixedHeight}}>
+            { error && <Message variant="danger">{error}</Message> }
             { isLoading &&
                 <Loading isLoading={isLoading} />
             }
@@ -101,18 +103,18 @@ function Products(props) {
                 products &&
                 <ul className="arrivals__grid">
                     {
-                        products.map(product =>
-                            <li key={product._id} className="arrivals__grid-item">
+                        products.map(({ name, _id, thumbnail, price }) =>
+                            <li key={_id} className="arrivals__grid-item">
                                 <div className="arrivals__grid-img-container" >
-                                    <Link to={`/product/${product._id}`}>
-                                        <img  className="arrivals__grid-img" src={placeholder} />
-                                        <img  className="arrivals__grid-img absolute" src={product.thumbnail} />
+                                    <Link to={`/product/${_id}`}>
+                                        <img alt="placeholder" className="arrivals__grid-img" src={placeholder} />
+                                        <img  alt={name} className="arrivals__grid-img absolute" src={thumbnail} />
                                     </Link>
                                 </div>
                                 <div className="row bottom margin-bottom-2">
                                     <div>
-                                        <h2>{product.name}</h2>
-                                        <p className="price">${product.price}</p>
+                                        <h2>{name}</h2>
+                                        <p className="price">${price}</p>
                                     </div>
                                 </div>
                             </li>

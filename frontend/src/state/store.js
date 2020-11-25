@@ -5,12 +5,15 @@ import {
     productReducer,
     productsReducer
 } from "./apiReducers";
+import { cartReducer } from "./cartReducer";
 
 const initialState = {};
 const reducer = combineReducers({
     productApi: productReducer,
     productsApi: productsReducer,
-    categoriesApi: categoriesReducer
+    categoriesApi: categoriesReducer,
+    cart: cartReducer
+
 });
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

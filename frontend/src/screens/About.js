@@ -1,15 +1,13 @@
 import './About.css';
-import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
-import Selector from "../components/Selector";
-import React, {Fragment} from "react";
+import React from "react";
 
 function About() {
     return (
         <main className="product margin-top-5" style={{minHeight: '500px'}}>
                 <section className="row top">
                     <div className="col-6 product__img">
-                        <img src={`${process.env.PUBLIC_URL}/images/sydney-med.jpg`}/>
+                        <img alt="Sydney" src={`${process.env.PUBLIC_URL}/images/sydney-med.jpg`}/>
                     </div>
                     <div className="col-6 padding-left-3">
                         <div>
@@ -36,13 +34,13 @@ function About() {
                             <div className="product__share margin-bottom-2">Share this</div>
                             <div className="social-icons">
                                 <div className="social-icons__img-wrap">
-                                    <img className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
+                                    <img alt="facebook" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
                                 </div>
                                 <div className="social-icons__img-wrap">
-                                    <img className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
+                                    <img alt="instagram" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
                                 </div>
                                 <div className="social-icons__img-wrap">
-                                    <img className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
+                                    <img alt="youtube" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
                                 </div>
                             </div>
                         </div>

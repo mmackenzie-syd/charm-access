@@ -1,7 +1,6 @@
 import './Shipping.css';
 import Breadcrumb from "../components/Breadcrumb";
 import React from "react";
-import Paginator from "../components/Paginator";
 
 function Shipping() {
     return (

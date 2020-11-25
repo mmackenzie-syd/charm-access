@@ -3,21 +3,21 @@ import React from "react";
 import './ArrivalsSlide.css';
 
 const ArrivalsSlide = (props) => {
-    const { items: arrivals } = props;
+    const { items: products } = props;
     return (
         <ul className="arrivals__grid" >
             {
-                arrivals.map(arrival => (
-                    <li key={arrival._id} className="arrivals__grid-item">
+                products.map(({name, _id, thumbnail, price}) => (
+                    <li key={_id} className="arrivals__grid-item">
                         <div className="arrivals__grid-img-container">
-                            <Link to="">
-                                <img  className="arrivals__grid-img" src={arrival.thumbnail} />
+                            <Link to={`/product/${_id}`}>
+                                <img  alt={name} className="arrivals__grid-img" src={thumbnail} />
                             </Link>
                         </div>
                         <div className="row bottom margin-bottom-2">
                             <div>
-                                <h2>{arrival.name}</h2>
-                                <p className="price">${arrival.price}</p>
+                                <h2>{name}</h2>
+                                <p className="price">${price}</p>
                             </div>
                         </div>
                     </li>

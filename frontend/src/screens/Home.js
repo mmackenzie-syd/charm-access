@@ -1,7 +1,5 @@
 import './Home.css';
 import React from 'react';
-import { Link } from "react-router-dom";
-
 import ImageGallery from 'react-image-gallery';
 import { useHistory } from "react-router";
 import PhoneIcon from "../icons/PhoneIcon";
@@ -165,7 +163,7 @@ function Home() {
     let history = useHistory();
 
     const handleShopNow = () => {
-        history.push("/collections/shop/1");
+        history.push("/products/shop/1");
     }
 
   return (
@@ -185,7 +183,7 @@ function Home() {
               </div>
             <div className="caption">
                 <div className="brand-transp">
-                    <img className="brand-transp-img" src="./images/brand_transp_purple.png"/>
+                    <img alt="brand" className="brand-transp-img" src="./images/brand_transp_purple.png"/>
                 </div>
                 <div>
                     <p className="brand-p">Beautiful and charming fashion accessories at an affordable price.</p>
@@ -205,7 +203,7 @@ function Home() {
 
           <section className="info">
             <div className="info__img-container">
-                <img className="info__img" src="./images/banners_for_site_1_1080x.jpg"/>
+                <img alt="mood" className="info__img" src="./images/banners_for_site_1_1080x.jpg"/>
             </div>
             <div className="info__caption">
                 <div className="info__mood">

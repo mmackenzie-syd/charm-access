@@ -2,8 +2,17 @@ import React from 'react';
 import './Cart.css';
 import Quantity from "../components/Quantity";
 import Breadcrumb from "../components/Breadcrumb";
+import {useSelector} from "react-redux";
 
 function Cart() {
+
+
+    const cart = useSelector(state => state.cart);
+
+    const { items } = cart;
+
+    console.log('cart', cart);
+
     const onQty = (qty, i) => {
         console.log('qty', i, ':', qty);
     }
@@ -29,47 +38,34 @@ function Cart() {
                         <div className="col-2 row">Quantity</div>
                         <div className="col-2 row right">Sub-total</div>
                     </div>
-                    <div className="row top table__item">
-                        <div className="col-2 padding-right-3">
-                            <div className="table__img">
-                                <img src="./images/1.jpg"/>
-                            </div>
-                        </div>
-                        <div className="col-4">
-                            <p className="table__p"><span className="">Silver earrings "Double ring"</span></p>
-                            <div className="table__delete"><span className="table__delete-cross">&#10005;</span> <span
-                                className="delete">Delete</span></div>
-                        </div>
-                        <div className="col-2 text-center"><p className="table__p">$350.00</p></div>
-                        <div className="col-2">
-                            <div className="row">
-                                <Quantity callback={(e) => onQty(e, 1)} />
-                            </div>
-                        </div>
-                        <div className="col-2 row right"><p className="table__p">$700.00</p></div>
-                    </div>
-                    <div className="row top table__item">
-                        <div className="col-2 padding-right-3">
-                            <div className="table__img">
-                                <img src="./images/2.jpg"/>
-                            </div>
-                        </div>
-                        <div className="col-4">
-                            <p className="table__p"><span
-                                className="">Silver earrings broach "Kitz-kitsyunya"</span></p>
-                            <div className="table__delete"><span className="table__delete-cross">&#10005;</span> <span
-                                className="delete">Delete</span></div>
-                        </div>
-                        <div className="col-2 text-center"><p className="table__p">$350.00</p></div>
-                        <div className="col-2">
-                            <div className="row">
-                                <Quantity callback={(e) => onQty(e, 2)} />
-                            </div>
-                        </div>
-                        <div className="col-2 row right">
-                            <p className="table__p ">$700.00</p>
-                        </div>
-                    </div>
+                    { items && items.map( (item) => {
+                        const { name, price, qty } = item;
+                        const subTotal = qty * Number(price);
+                        return <div className="row top table__item">
+                                <div className="col-2 padding-right-3">
+                                    <div className="table__img">
+                                        <img alt={name} src={item.image}/>
+                                    </div>
+                                </div>
+                                <div className="col-4">
+                                    <p className="table__p"><span className="">{name}</span></p>
+                                    <div className="table__delete"><span className="table__delete-cross">&#10005;</span> <span
+                                        className="delete">Delete</span></div>
+                                </div>
+                                <div className="col-2 text-center">
+                                    <p className="table__p">${price}</p>
+                                </div>
+                                <div className="col-2">
+                                    <div className="row">
+                                        <Quantity callback={(e) => onQty(e, 1)}/>
+                                    </div>
+                                </div>
+                                <div className="col-2 row right">
+                                    <p className="table__p">${subTotal}</p>
+                                </div>
+                            </div>;
+                        })
+                    }
                 </section>
             </div>
             <section className="cart__total">

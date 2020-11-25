@@ -4,21 +4,10 @@ import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 
 function Paginator(props) {
-    const { curPage, pages } = props;
+    const { curPage, pages, leftPageClick, rightPageClick, pageClick } = props;
     const pagesArray = (pages === 0) ? [] : [...Array(pages).keys()].map(key => key + 1);
     const perDisplay = 3;
     const maxPage = pagesArray.length;
-
-    const handleLeftPageClick = () => {
-        props.leftPageClick();
-    }
-
-    const handleRightPageClick = () => {
-        props.rightPageClick();
-    }
-    const handlePageClick = (page) => {
-        props.pageClick(page)
-    }
 
     let startPage = Math.floor((curPage -1) / perDisplay) * perDisplay + 1;
     let endPage = startPage  + perDisplay - 1;
@@ -41,7 +30,7 @@ function Paginator(props) {
     return (
         <div className="pagination margin-bottom-1">
             { pagesToDisplay.length > 1 &&
-                <button className={`page-btn ${leftArrowDisabled}`}  onClick={handleLeftPageClick}>
+                <button className={`page-btn ${leftArrowDisabled}`}  onClick={leftPageClick}>
                     <LeftArrowIcon
                         width={'1.2rem'}
                         height={'1.2rem'}
@@ -53,12 +42,12 @@ function Paginator(props) {
                 pagesToDisplay.map((page) => {
                     const active = (page === Number(curPage)) ? 'active' : '';
                     return (
-                        <button className={`page-btn ${active}`} onClick={() => handlePageClick(page)}>
+                        <button key={page} className={`page-btn ${active}`} onClick={() => pageClick(page)}>
                             {page}
                         </button>)})
             }
             { pagesToDisplay.length > 1 &&
-                <button className={`page-btn ${rightArrowDisabled}`} onClick={handleRightPageClick}>
+                <button className={`page-btn ${rightArrowDisabled}`} onClick={rightPageClick}>
                     <RightArrowIcon
                         width={'1.2rem'}
                         height={'1.2rem'}

@@ -19,7 +19,7 @@ function Header() {
                 <div className="row left">
                     <div className="site__title">
                         <Link to="/">
-                            <img src="../../images/brand.png"/>
+                            <img alt="brand" src="../../images/brand.png"/>
                         </Link>
                     </div>
                     <ul className="row site__nav">

@@ -1,7 +1,6 @@
 import React from "react";
 
 function RightArrowIcon(props) {
-    const fill = props.fill || '#111';
     const width = props.width || '2.4rem';
     const height = props.height || '2.4rem';
     const offset = props.offset || 0;
