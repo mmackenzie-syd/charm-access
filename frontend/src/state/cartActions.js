@@ -12,6 +12,7 @@ export const updateCart = (productId, qty) => async (dispatch) => {
         type: UPDATE_CART,
         payload: { productId, qty }
     });
+
 };
 
 export const removeFromCart = (_id) => async (dispatch) => {

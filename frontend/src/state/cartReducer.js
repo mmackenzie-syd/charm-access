@@ -4,11 +4,13 @@ import {
     UPDATE_CART,
 } from "./cartConstants";
 
-const initialState = {
-    addedIds: [],
-    quantityById: {},
-    productById: {}
-}
+const initialState = localStorage.getItem('cartItems')
+    ? JSON.parse(localStorage.getItem('cartItems'))
+    : {
+        addedIds: [],
+        quantityById: {},
+        productById: {}
+    };
 
 const addedIds = (state = initialState.addedIds, action) => {
     switch (action.type) {
@@ -71,10 +73,12 @@ const productById = (state = initialState.productById, action) => {
 }
 
 export const cartReducer = (state = initialState, action) => {
-    return {
+    const newState = {
         addedIds: addedIds(state.addedIds, action),
         quantityById: quantityById(state.quantityById, action),
         productById: productById(state.productById, action),
     }
+    localStorage.setItem('cartItems', JSON.stringify(newState));
+    return newState;
 }
 
