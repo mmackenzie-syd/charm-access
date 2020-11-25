@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import './Cart.css';
 import Quantity from "../components/Quantity";
 import Breadcrumb from "../components/Breadcrumb";
@@ -65,7 +64,7 @@ function Cart() {
                         const { name, price, image } = productById[id];
                         const qty = quantityById[id];
                         const subTotal = qty * Number(price);
-                        return <div className="row top table__item">
+                        return <div key={id} className="row top table__item">
                                 <div className="col-2 padding-right-3">
                                     <div className="table__img">
                                         <img alt={name} src={image}/>

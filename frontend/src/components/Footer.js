@@ -1,13 +1,15 @@
 import React from 'react';
 import './Footer.css';
 import PhoneIcon from "../icons/PhoneIcon";
+import LoginIcon from "../icons/LoginIcon";
+import {Link} from "react-router-dom";
 
 function Footer() {
     return (
         <footer >
             <div className="margin-bottom-3 social-media">
                 <div className="row center footer__phone  margin-bottom-3">
-                    <PhoneIcon width={'2.8rem'} height={'2.8rem'}  offset={'0.3rem'} fill={'#4f4f4f'} />
+                    <PhoneIcon width={'2.8rem'} height={'2.8rem'}  offset={'0.3rem'} />
                     <span>&nbsp;+061421013777 &nbsp;&nbsp; 10AM - 8PM</span>
                 </div>
                 <div className="row center social-icons">
@@ -20,6 +22,12 @@ function Footer() {
                     </div>
                     <div className="social-icons__img-wrap">
                         <img alt="youtube" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
+                    </div>
+                    <div className="vendor-login-wrap">
+                        <span>Vendor Login </span>
+                        <Link to="/sigin">
+                            <LoginIcon width={'2.6rem'} height={'2.6rem'} />
+                        </Link>
                     </div>
                 </div>
 
