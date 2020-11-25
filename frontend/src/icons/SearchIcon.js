@@ -1,7 +1,6 @@
 import React from "react";
 
 function SearchIcon(props) {
-    const fill = props.fill || '#111';
     const width = props.width || '2.4rem';
     const height = props.height || '2.4rem';
     const offset = props.offset || 0;
@@ -12,7 +11,6 @@ function SearchIcon(props) {
                 width={width}
                 height={height}
                 style={{
-                    fill: fill,
                     transform: `translate(0, ${offset})`
                 }}
                 viewBox="0 0 512 512"

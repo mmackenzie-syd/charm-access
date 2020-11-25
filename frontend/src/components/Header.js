@@ -57,37 +57,27 @@ function Header() {
                     </ul>
                 </div>
                 <div className="row right" style={{marginRight: '-.5rem'}}>
-                    <div className="site__nav-item" style={{paddingRight: 0}}>
+                    <div className="site__nav-item search-icon-container">
                         <NavLink to="/cart" activeClassName='is-active'>
-                            <div className="search-containers">
-                                <SearchIcon
-                                    className={"cartInactive"}
-                                    width={'2.6rem'}
-                                    height={'2.6rem'}
-                                    offset={'.4rem'}
-                                />
-                            </div>
+                            <SearchIcon
+                                className={"search-icon"}
+                                width={'2.6rem'}
+                                height={'2.6rem'}
+                                offset={'.4rem'}
+                            />
                         </NavLink>
                     </div>
-                    <div className="site__nav-item">
+                    <div className="site__nav-item cart-icon-container">
                         <NavLink to="/cart" activeClassName='is-active'>
-                            <div className="cart-container">
-                                { items && (items.length !== 0) &&
-                                    <div className="qty">{qty}</div>
-                                }
-                                <CartIcon
-                                    className={"cartInactive"}
-                                    width={'3.2rem'}
-                                    height={'3.2rem'}
-                                    offset={'-.1rem'}
-                                />
-                                <CartIconPurple
-                                    className={"cartActive"}
-                                    width={'3.2rem'}
-                                    height={'3.2rem'}
-                                    offset={'-.1rem'}
-                                />
-                            </div>
+                            { items && (items.length !== 0) &&
+                                <div className="qty">{qty}</div>
+                            }
+                            <CartIcon
+                                className={"cart-icon"}
+                                width={'3.2rem'}
+                                height={'3.2rem'}
+                                offset={'-.1rem'}
+                            />
                         </NavLink>
                     </div>
                 </div>

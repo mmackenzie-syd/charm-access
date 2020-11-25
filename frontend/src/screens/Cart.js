@@ -86,16 +86,21 @@ function Cart() {
                     }
                 </section>
             </div>
-            <section className="cart__total">
-                <h3 className="product__brand-title inline-block margin-right-2 margin-bottom-2 margin-top-1">Cart total:</h3>
-                <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">$1,000.00</h3>
-            </section>
-            <section className="row end margin-top-1">
-                <div></div>
-                <div className="col-3">
-                    <button className="add-shop-cart btn-full-width">Checkout</button>
-                </div>
-            </section>
+            { items && items.length !== 0 &&
+                <>
+                    <section className="cart__total">
+                        <h3 className="product__brand-title inline-block margin-right-2 margin-bottom-2 margin-top-1">Cart
+                            total:</h3>
+                        <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">$1,000.00</h3>
+                    </section>
+                        <section className="row end margin-top-1">
+                        <div></div>
+                        <div className="col-3">
+                        <button className="add-shop-cart btn-full-width">Checkout</button>
+                        </div>
+                    </section>
+                </>
+            }
         </main>
     );
 }

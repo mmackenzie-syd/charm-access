@@ -149,39 +149,28 @@ a.is-active {
 
 }
 
-.search-containers {
+.search-icon-container {
     position: relative;
     width: 3.2rem;
     height: 3.2rem;
-    padding-right: 0 !important;
+    margin-right:1rem;
 }
 
-.cart-container {
+.cart-icon-container {
     position: relative;
     width: 3.2rem;
     height: 3.2rem;
 }
 
-.cartInactive {
+.search-icon {
     position: absolute;
     left: 0;
     top: 0;
-    opacity: 1;
 }
-
-.cartActive {
+.cart-icon {
     position: absolute;
     left: 0;
     top: 0;
-    opacity: 0;
-}
-
-.cartInactive:hover {
-    opacity: 0;
-}
-
-.cartActive:hover {
-    opacity: 1;
 }
 
 .qty {
