@@ -4,34 +4,33 @@ import './Cart.css';
 import Quantity from "../components/Quantity";
 import Breadcrumb from "../components/Breadcrumb";
 import { useDispatch, useSelector } from "react-redux";
-import {removeFromCart, updateCartQty} from "../state/cartActions";
+import {removeFromCart, updateCart} from "../state/cartActions";
 
 function Cart() {
     const dispatch = useDispatch();
-    const onPlusBtn = (item) => {
-        const qty = item.qty + 1;
-        dispatch(updateCartQty(item._id, qty));
+    const cart = useSelector(state => state.cart);
+    const { addedIds, quantityById, productById } = cart;
+    let total = 0;
+    if (addedIds) {
+        total = addedIds.reduce((acc, id) => {
+            acc = quantityById[id] * Number(productById[id].price) + acc;
+            return acc;
+        }, 0);
     }
 
-    const onSubBtn = (item) => {
-        const qty = item.qty - 1;
-        if (qty > 0) {
-            dispatch(updateCartQty(item._id, qty));
+    const onPlusBtn = (id, qty) => {
+        dispatch(updateCart(id, qty + 1));
+    }
+
+    const onSubBtn = (id, qty) => {
+        const updatedQty = qty - 1;
+        if (updatedQty > 0) {
+            dispatch(updateCart(id, updatedQty));
         }
     }
 
     const handleDelete = (id) => {
         dispatch(removeFromCart(id));
-    }
-
-    const cart = useSelector(state => state.cart);
-    const { items } = cart;
-    let total = 0;
-    if (items) {
-        total = items.reduce((acc, item) => {
-            acc = item.qty * Number(item.price) + acc;
-            return acc;
-        }, 0);
     }
 
     return (
@@ -48,7 +47,7 @@ function Cart() {
             </section>
             <div className="row">
                 <section className="table">
-                    {items && (items.length !== 0) &&
+                    {addedIds && (addedIds.length !== 0) &&
                         <div className="row table__heading">
                             <div className="col-2 padding-right-3">Product</div>
                             <div className="col-4">Description</div>
@@ -57,24 +56,25 @@ function Cart() {
                             <div className="col-2 row right">Sub-total</div>
                         </div>
                     }
-                    { items && (items.length === 0) &&
+                    { addedIds && (addedIds.length === 0) &&
                         <div>
                             Your Cart is empty.
                         </div>
                     }
-                    { items && items.map( (item) => {
-                        const { name, price, qty } = item;
+                    { addedIds && addedIds.map( (id) => {
+                        const { name, price, image } = productById[id];
+                        const qty = quantityById[id];
                         const subTotal = qty * Number(price);
                         return <div className="row top table__item">
                                 <div className="col-2 padding-right-3">
                                     <div className="table__img">
-                                        <img alt={name} src={item.image}/>
+                                        <img alt={name} src={image}/>
                                     </div>
                                 </div>
                                 <div className="col-4">
                                     <p className="table__p"><span className="">{name}</span></p>
                                     <div className="table-delete-container">
-                                        <div className="table-delete" onClick={() => handleDelete(item._id)}>
+                                        <div className="table-delete" onClick={() => handleDelete(id)}>
                                             <span className="table-delete-cross">&#10005;</span> <span
                                             className="delete">Delete</span>
                                         </div>
@@ -87,8 +87,8 @@ function Cart() {
                                     <div className="row">
                                         <Quantity
                                             value={qty}
-                                            onSubBtn={() => onSubBtn(item)}
-                                            onPlusBtn={() => onPlusBtn(item)}
+                                            onSubBtn={() => onSubBtn(id, qty)}
+                                            onPlusBtn={() => onPlusBtn(id, qty)}
                                         />
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@ function Cart() {
                     }
                 </section>
             </div>
-            { items && items.length !== 0 &&
+            { addedIds && addedIds.length !== 0 &&
                 <>
                     <section className="cart__total">
                         <h3 className="product__brand-title inline-block margin-right-2 margin-bottom-2 margin-top-1">Cart

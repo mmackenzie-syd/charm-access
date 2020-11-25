@@ -14,15 +14,13 @@ function Header() {
     const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
 
     const cart = useSelector(state => state.cart);
-    const { items } = cart;
-
-    let qty = 0;
-
-    if (items) {
-        qty = items.reduce((acc, item)  => {
-            acc = item.qty + acc;
+    const { addedIds, quantityById } = cart;
+    let totalItems = 0;
+    if (addedIds) {
+        totalItems = addedIds.reduce((acc, id) => {
+            acc = quantityById[id] + acc;
             return acc;
-        }, 0)
+        }, 0);
     }
 
     return (
@@ -69,8 +67,8 @@ function Header() {
                     </div>
                     <div className="site__nav-item cart-icon-container">
                         <NavLink to="/cart" activeClassName='is-active'>
-                            { items && (items.length !== 0) &&
-                                <div className="qty">{qty}</div>
+                            { addedIds && (addedIds.length !== 0) &&
+                                <div className="qty">{totalItems}</div>
                             }
                             <CartIcon
                                 className={"cart-icon"}

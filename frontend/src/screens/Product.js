@@ -99,7 +99,8 @@ function Product(props) {
     }
 
     const handleAddToCart = () => {
-        dispatch(addToCart({...product, qty}));
+
+        dispatch(addToCart(id, product, qty));
         props.history.goBack();
     }
 
