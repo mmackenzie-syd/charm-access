@@ -4,7 +4,7 @@ import './Cart.css';
 import Quantity from "../components/Quantity";
 import Breadcrumb from "../components/Breadcrumb";
 import { useDispatch, useSelector } from "react-redux";
-import {addToCart} from "../state/cartActions";
+import {addToCart, removeFromCart} from "../state/cartActions";
 import Message from "../components/Message";
 
 function Cart() {
@@ -19,6 +19,10 @@ function Cart() {
         if (qty > 0) {
             dispatch(addToCart({...item, qty}));
         }
+    }
+
+    const handleDelete = (id) => {
+        dispatch(removeFromCart(id));
     }
 
     const cart = useSelector(state => state.cart);
@@ -70,8 +74,12 @@ function Cart() {
                                 </div>
                                 <div className="col-4">
                                     <p className="table__p"><span className="">{name}</span></p>
-                                    <div className="table__delete"><span className="table__delete-cross">&#10005;</span> <span
-                                        className="delete">Delete</span></div>
+                                    <div className="table-delete-container">
+                                        <div className="table-delete" onClick={() => handleDelete(item._id)}>
+                                            <span className="table-delete-cross">&#10005;</span> <span
+                                            className="delete">Delete</span>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="col-2 text-center">
                                     <p className="table__p">${price}</p>

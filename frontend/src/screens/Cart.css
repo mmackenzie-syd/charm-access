@@ -26,15 +26,17 @@
     text-decoration: underline;
 }
 
-
-
-.table__delete {
-    position: relative;
-    padding-left: 2.4rem;
+.table-delete-container {
     margin-top: 1rem;
 }
 
-.table__delete-cross {
+.table-delete {
+    padding-left: 2.4rem;
+    position: relative;
+    display: inline-block;
+}
+
+.table-delete-cross {
     position: absolute;
     text-decoration: none;
     left:.2rem;
@@ -42,6 +44,11 @@
     font-weight: 400;
     font-size: 1.8rem;
     color: #4f4f4f;
+}
+
+.table-delete:hover {
+    cursor: pointer;
+    opacity: 60%;
 }
 
 .table__item {
@@ -68,11 +75,6 @@
     text-transform: uppercase;
     font-size: 1.2rem;
     font-weight: 700;
-}
-
-.table__delete-cross:hover {
-    cursor: pointer;
-    opacity: 60%;
 }
 
 .cart__continue {
