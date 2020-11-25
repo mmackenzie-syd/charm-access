@@ -23,6 +23,13 @@ function Cart() {
 
     const cart = useSelector(state => state.cart);
     const { items } = cart;
+    let total = 0;
+    if (items) {
+        total = items.reduce((acc, item) => {
+            acc = item.qty * Number(item.price) + acc;
+            return acc;
+        }, 0);
+    }
 
     return (
         <main className="cart margin-top-3">
@@ -91,7 +98,7 @@ function Cart() {
                     <section className="cart__total">
                         <h3 className="product__brand-title inline-block margin-right-2 margin-bottom-2 margin-top-1">Cart
                             total:</h3>
-                        <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">$1,000.00</h3>
+                        <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">${total}</h3>
                     </section>
                         <section className="row end margin-top-1">
                         <div></div>
