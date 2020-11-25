@@ -62,8 +62,7 @@ a:active {
 }
 .caption {
     position: absolute;
-    left: 5rem;
-    left: 3rem;
+    right: 3rem;
     top: 18%;
     width: 40%;
 }
