@@ -4,20 +4,19 @@ import './Cart.css';
 import Quantity from "../components/Quantity";
 import Breadcrumb from "../components/Breadcrumb";
 import { useDispatch, useSelector } from "react-redux";
-import {addToCart, removeFromCart} from "../state/cartActions";
-import Message from "../components/Message";
+import {removeFromCart, updateCartQty} from "../state/cartActions";
 
 function Cart() {
     const dispatch = useDispatch();
     const onPlusBtn = (item) => {
         const qty = item.qty + 1;
-        dispatch(addToCart({...item, qty}));
+        dispatch(updateCartQty(item._id, qty));
     }
 
     const onSubBtn = (item) => {
         const qty = item.qty - 1;
         if (qty > 0) {
-            dispatch(addToCart({...item, qty}));
+            dispatch(updateCartQty(item._id, qty));
         }
     }
 
