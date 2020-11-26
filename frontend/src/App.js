@@ -10,6 +10,7 @@ import Product from "./screens/Product";
 import Cart from "./screens/Cart";
 import {getCategories, getProducts} from "./state/apiActions";
 import {useDispatch} from "react-redux";
+import {ModalProvider} from "./context/modalContext";
 
 function App() {
     // preload
@@ -18,19 +19,22 @@ function App() {
     dispatch(getProducts('shop', 1))
     return (
         <BrowserRouter>
-            <Header />
-            <div className="spacer-header-compensate">&nbsp;</div>
-            <div className="wrap" >
-                <Route path="/" component={Home} exact />
-                <Route path="/product/:id" component={Product} />
-                <Route path="/products/:category/:page" component={Products} />
-                <Route path="/about" component={About} />
-                <Route path="/shipping" component={Shipping} />
-                <Route path="/cart" component={Cart} />
-            </div>
-            <Footer />
+            <ModalProvider>
+                <Header />
+                <div className="spacer-header-compensate">&nbsp;</div>
+                <div className="wrap" >
+                    <Route path="/" component={Home} exact />
+                    <Route path="/product/:id" component={Product} />
+                    <Route path="/products/:category/:page" component={Products} />
+                    <Route path="/about" component={About} />
+                    <Route path="/shipping" component={Shipping} />
+                    <Route path="/cart" component={Cart} />
+                </div>
+                <Footer />
+            </ModalProvider>
         </BrowserRouter>
     );
 }
 
 export default App;
+

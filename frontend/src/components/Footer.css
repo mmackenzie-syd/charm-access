@@ -32,11 +32,9 @@ footer {
 }
 
 .social-icons__img-wrap {
-    margin: 0;
-    display: inline-block;
+    margin: 0 1.5rem 0 0;
     display: inline-block;
     width: 2.8rem;
-    margin-right: 1.5rem;
     line-height: 1rem;
 }
 
@@ -56,3 +54,12 @@ footer {
     margin-left: .5rem;
 }
 
+.login-btn {
+    border: 0;
+    background-color: #fff;
+}
+
+.login-btn:hover {
+    cursor: pointer;
+    opacity: 60%;
+}

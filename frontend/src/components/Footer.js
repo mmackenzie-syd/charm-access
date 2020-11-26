@@ -2,9 +2,11 @@ import React from 'react';
 import './Footer.css';
 import PhoneIcon from "../icons/PhoneIcon";
 import LoginIcon from "../icons/LoginIcon";
-import {Link} from "react-router-dom";
+import {ModalContext} from "../context/modalContext";
+import Login from "./Login";
 
 function Footer() {
+    let { handleModal } = React.useContext(ModalContext);
     return (
         <footer >
             <div className="margin-bottom-3 social-media">
@@ -25,12 +27,11 @@ function Footer() {
                     </div>
                     <div className="vendor-login-wrap">
                         <span>Vendor Login </span>
-                        <Link to="/login">
+                        <button className="login-btn" onClick={() => handleModal(<Login />)}>
                             <LoginIcon width={'2.6rem'} height={'2.6rem'} />
-                        </Link>
+                        </button>
                     </div>
                 </div>
-
             </div>
             <div className="row center">&copy; 2020 Charm Accessories &#8729; Built by Mark Mackenzie</div>
         </footer>

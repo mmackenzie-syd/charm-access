@@ -1,0 +1,79 @@
+/* Full-width input fields */
+input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-bottom: 2rem;
+    border-radius: .3rem;
+}
+
+input[type=password] {
+    margin-bottom: 3rem;
+}
+
+/* Set a style for all buttons */
+
+.primary {
+    background-color: #9886BA; /* purple */
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 1.4rem 4.5rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #9886BA;
+    outline: none;
+    width: 100%;
+}
+
+primary:hover {
+    opacity: 0.8;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 60%;
+}
+
+.container {
+    padding: 1rem 3rem 6rem 3rem;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 50rem;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    opacity: 60%;
+    cursor: pointer;
+}
