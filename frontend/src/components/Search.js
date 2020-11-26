@@ -14,13 +14,13 @@ function Search() {
             <div className="search-container">
                 <div className="input-wrap row">
                     <input className="search-input" type="text" placeholder="Search..." required />
-                    <button type="submit" className="search-btn">
+                    {/*  <button type="submit" className="search-btn">
                             <SearchIcon
                                 width={'2rem'}
                                 height={'2rem'}
                                 offset={'.1rem'}
                             />
-                    </button>
+                    </button> */}
                 </div>
 
             </div>
