@@ -57,6 +57,7 @@ footer {
 .login-btn {
     border: 0;
     background-color: #fff;
+    display: inline-block;
 }
 
 .login-btn:hover {

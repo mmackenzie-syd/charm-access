@@ -25,15 +25,16 @@ function Footer() {
                     <div className="social-icons__img-wrap">
                         <img alt="youtube" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
                     </div>
-                    <div className="vendor-login-wrap">
-                        <span>Vendor Login </span>
-                        <button className="login-btn" onClick={() => handleModal(<Login />)}>
-                            <LoginIcon width={'2.6rem'} height={'2.6rem'} />
-                        </button>
-                    </div>
                 </div>
             </div>
-            <div className="row center">&copy; 2020 Charm Accessories &#8729; Built by Mark Mackenzie</div>
+            <div className="row center vendor">
+                <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor Login </div>
+                <div className="vendor-login-wrap">
+                    <button className="login-btn" onClick={() => handleModal(<Login />)}>
+                        <LoginIcon width={'2rem'} height={'2rem'} />
+                    </button>
+                </div>
+            </div>
         </footer>
     );
 }
