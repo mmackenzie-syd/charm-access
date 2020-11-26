@@ -12,7 +12,7 @@ function Search() {
                 <span onClick={() => handleModal('')} className="close" title="Close Modal">&times;</span>
             </div>
             <div className="search-container">
-                <div className="input-wrap">
+                <div className="input-wrap row">
                     <input className="search-input" type="text" placeholder="Search..." required />
                     <button type="submit" className="search-btn">
                             <SearchIcon

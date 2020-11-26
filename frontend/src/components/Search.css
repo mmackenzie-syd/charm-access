@@ -6,6 +6,8 @@
     border: 1px solid #ccc;
     box-sizing: border-box;
     border-radius: .3rem;
+    line-height: 1;
+    font-size: 1.6rem;
 }
 
 /* Set a style for all buttons */
@@ -20,16 +22,15 @@
     border: 0;
     right: .4rem;
     top: .4rem;
-    background-color: #ddd;
-    width: 4.2rem;
-    height: 3.7rem;
-    position: absolute;
+    background-color: #ccc;
+    width: 5.2rem;
+    height: 4.5rem;
     text-decoration: none;
-    transition-duration: 0.4s;
     cursor: pointer;
     outline: none;
     fill: #4f4f4f;
     border-radius: 3px;
+    margin-left: .8rem;
 }
 
 .search-btn:hover {

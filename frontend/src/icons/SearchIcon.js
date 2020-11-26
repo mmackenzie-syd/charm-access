@@ -11,7 +11,8 @@ function SearchIcon(props) {
                 width={width}
                 height={height}
                 style={{
-                    transform: `translate(0, ${offset})`
+                    transform: `translate(0, ${offset})`,
+                    transition: 'none'
                 }}
                 viewBox="0 0 512 512"
                 role="img"
