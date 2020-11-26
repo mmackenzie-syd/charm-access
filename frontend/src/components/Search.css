@@ -1,0 +1,77 @@
+/* Full-width input fields */
+.search-input {
+    margin: 0 !important;
+    padding: 12px 20px !important;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: .3rem;
+}
+
+/* Set a style for all buttons */
+
+.input-wrap {
+    position: relative;
+    padding: 0;
+}
+
+.search-btn {
+    text-align: center;
+    border: 0;
+    right: .4rem;
+    top: .4rem;
+    background-color: #ddd;
+    width: 4.2rem;
+    height: 3.7rem;
+    position: absolute;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    outline: none;
+    fill: #4f4f4f;
+    border-radius: 3px;
+}
+
+.search-btn:hover {
+    opacity: 0.6;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+img.avatar {
+    width: 60%;
+}
+
+.search-container {
+    padding: 3rem;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 50rem;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    opacity: 60%;
+    cursor: pointer;
+}

@@ -4,8 +4,11 @@ import {NavLink, Link, useLocation} from "react-router-dom";
 import SearchIcon from "../icons/SearchIcon";
 import CartIcon from "../icons/CartIcon";
 import {useSelector} from "react-redux";
+import Search from "./Search";
+import {ModalContext} from "../context/modalContext";
 
 function Header() {
+    let { handleModal } = React.useContext(ModalContext);
     const categoriesApi = useSelector(state => state.categoriesApi);
     const { data } = categoriesApi;
     const categories = data ? data.filter(category => category.slug !== 'shop') : [];
@@ -55,14 +58,14 @@ function Header() {
                 </div>
                 <div className="row right" style={{marginRight: '-.5rem'}}>
                     <div className="site__nav-item search-icon-container">
-                        <NavLink to="/cart" activeClassName='is-active'>
+                        <button className="login-btn" onClick={() => handleModal(<Search />)}>
                             <SearchIcon
                                 className={"search-icon"}
                                 width={'2.6rem'}
                                 height={'2.6rem'}
                                 offset={'.4rem'}
                             />
-                        </NavLink>
+                        </button>
                     </div>
                     <div className="site__nav-item cart-icon-container">
                         <NavLink to="/cart" activeClassName='is-active'>
