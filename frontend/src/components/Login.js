@@ -7,8 +7,11 @@ function Login() {
     let { handleModal } = React.useContext(ModalContext);
     return (
         <form className="modal-content animate" method="post">
+            <div className="row top title-container">
+                <h3>Vendor Login</h3>
+                <div onClick={() => handleModal('')} className="close-login">&times;</div>
+            </div>
             <div className="imgcontainer">
-                <span onClick={() => handleModal('')} className="close" title="Close Modal">&times;</span>
                 <img src={`${process.env.PUBLIC_URL}/images/avatar.jpg`} alt="Avatar" className="avatar" />
             </div>
 

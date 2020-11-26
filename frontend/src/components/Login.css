@@ -42,7 +42,6 @@ primary:hover {
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
-    position: relative;
 }
 
 img.avatar {
@@ -63,19 +62,22 @@ img.avatar {
 }
 
 /* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
+.close-login {
     color: #000;
     font-size: 35px;
     font-weight: bold;
+    margin-top: .4rem;
 }
 
-.close:hover,
-.close:focus {
+.close-login:hover,
+.close-login:focus {
     opacity: 60%;
     cursor: pointer;
+}
+
+.title-container {
+    margin: 2rem 3rem 0rem 3rem;
+    border-bottom: 1px solid #ddd;
 }
 
 
