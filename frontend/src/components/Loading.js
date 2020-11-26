@@ -1,7 +1,5 @@
 // https://stackoverflow.com/questions/51602428/react-throttle-debounce-spinner-loading-message-not-show-if-request-is-fas
 
-/* to do - move to react modal ?? */
-
 import React, {Fragment, useEffect, useState} from 'react';
 import './Loading.css';
 
