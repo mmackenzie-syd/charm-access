@@ -13,6 +13,20 @@ productRouter.get('/seed', expressAsyncHandler(async (req, res) => {
     })
 );
 
+
+productRouter.get('/:id', (req, res) => {
+    const { id } = req.params;
+    Product.findById(id).exec((err, product) => {
+        if (err) {
+            res.status(500);
+            return res.send(err);
+        }
+        res.status(200);
+        return res.json(product);
+    });
+});
+
+
 productRouter.get('/:category/:page',  expressAsyncHandler(async (req, res) => {
     // paginate
     const { page, category } = req.params;

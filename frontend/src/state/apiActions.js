@@ -12,5 +12,5 @@ const apiCall = (name, url) => async (dispatch) => {
 }
 
 export const getCategories = () => apiCall(CATEGORIES, '/api/categories');
-export const getProduct = (id) => apiCall(PRODUCT, `/api/product/${id}`);
+export const getProduct = (id) => apiCall(PRODUCT, `/api/products/${id}`);
 export const getProducts = (category, page) => apiCall(PRODUCTS, `/api/products/${category}/${page}`);
