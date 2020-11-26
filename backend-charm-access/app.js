@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const categoryRouter = require('./routers/categoryRouter.js');
 const productRouter = require('./routers/productRouter.js');
 const app = express();
 app.use(express.json());
@@ -11,6 +12,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/charm', {
 });
 
 app.use('/api/products', productRouter);
+app.use('/api/categories', categoryRouter);
 app.get('/', (req, res) => {
     res.send('Server is ready');
 });
