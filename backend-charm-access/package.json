@@ -20,7 +20,8 @@
     "aws-serverless-express": "^3.3.8",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "express-async-handler": "^1.1.4"
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.10.16"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

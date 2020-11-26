@@ -1,9 +1,32 @@
-//Imports
 const express = require('express');
-const data = require('./data.js');
+const mongoose = require('mongoose');
+const productRouter = require('./routers/productRouter.js');
 const app = express();
-const cors = require('cors');
-const asyncHandler = require('express-async-handler');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/charm', {
+    useNewUrlParser: true, // just to get rid of warnings
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+});
+
+app.use('/api/products', productRouter);
+app.get('/', (req, res) => {
+    res.send('Server is ready');
+});
+
+app.use((err, req, res, next) => {
+    res.status(500).send({message: err.message})
+});
+
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+    console.log(`Serve at http://localhost:${port}`);
+});
+
+
+/*
+
 
 app.use(cors());
 
@@ -46,4 +69,4 @@ app.listen(port, () => {
     console.log(`Serve at http://localhost:${port}`);
 });
 
-// module.exports = app;
+ */
