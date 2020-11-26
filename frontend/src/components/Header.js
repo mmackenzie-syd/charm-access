@@ -3,7 +3,6 @@ import React from 'react'
 import {NavLink, Link, useLocation} from "react-router-dom";
 import SearchIcon from "../icons/SearchIcon";
 import CartIcon from "../icons/CartIcon";
-import CartIconPurple from "../icons/CartIconPurple";
 import {useSelector} from "react-redux";
 
 function Header() {
