@@ -16,9 +16,9 @@ function Login() {
             </div>
 
             <div className="container">
-                <label htmlFor="uname"><b>Username</b></label>
+                <label htmlFor="uname" className="login-label">Username:</label>
                 <input type="text" placeholder="Enter Username" name="uname" required />
-                <label htmlFor="psw"><b>Password</b></label>
+                <label htmlFor="psw" className="login-label">Password:</label>
                 <input type="password" placeholder="Enter Password" name="psw" required />
                 <button type="submit" className="primary">Login</button>
             </div>
