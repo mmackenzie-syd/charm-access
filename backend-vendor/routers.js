@@ -1,9 +1,23 @@
 const express = require('express');
 const expressAsyncHandler = require('express-async-handler');
-const Product = require('../models/product.js');
-const data = require('../data/products.js');
+const { Category, Product } = require('./models.js');
+const data = require('../data/categories.js');
 
+// exec returns a promise
+const categoryRouter = express.Router();
 const productRouter = express.Router();
+
+categoryRouter.get('/seed', expressAsyncHandler(async (req, res) => {
+        await Category.remove({});
+        const createdCategories = await Category.insertMany(data);
+        res.send({ createdCategories });
+    })
+);
+
+categoryRouter.get('/',  expressAsyncHandler(async (req, res) => {
+    const categories = await Category.find({});
+    res.send(categories);
+}));
 
 productRouter.get('/seed', expressAsyncHandler(async (req, res) => {
         await Product.remove({});
@@ -11,15 +25,6 @@ productRouter.get('/seed', expressAsyncHandler(async (req, res) => {
         res.send({ createdProducts });
     })
 );
-
-productRouter.get('/arrivals', expressAsyncHandler(async (req, res) => {
-    let products = await Product.find({}).sort({'createdAt': -1}).limit(24).exec();
-    if (products) {
-        res.send(products);
-    } else {
-        res.status(404).send({ message: 'Products Not Found'});
-    }
-}));
 
 productRouter.get('/:id',  expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id)
@@ -48,4 +53,5 @@ productRouter.get('/:category/:page',  expressAsyncHandler(async (req, res) => {
     }
 }));
 
-module.exports = productRouter;
+exports.categoryRouter = categoryRouter;
+exports.productRouter = productRouter;
