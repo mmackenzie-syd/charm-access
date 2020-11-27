@@ -12,6 +12,8 @@ import {getCategories, getProducts} from "./state/apiActions";
 import {useDispatch} from "react-redux";
 import {ModalProvider} from "./context/modalContext";
 import ScrollToTop from "./components/ScrollToTop";
+import EditProducts from "./dashboard/EditProducts";
+import EditCategories from "./dashboard/EditCategories";
 
 function App() {
     // preload
@@ -31,6 +33,9 @@ function App() {
                         <Route path="/about" component={About} />
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />
+                        {/* Protected routes */}
+                        <Route path="/dashboard/products" component={EditProducts} />
+                        <Route path="/dashboard/categories" component={EditCategories} />
                     </div>
                     <Footer />
                 </ModalProvider>
