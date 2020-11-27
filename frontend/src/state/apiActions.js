@@ -1,5 +1,5 @@
 import Axios from "axios";
-import {CATEGORIES, PRODUCT, PRODUCTS} from "./apiConstants";
+import {BY_CATEGORY, CATEGORIES, PRODUCT, PRODUCTS} from "./apiConstants";
 
 const apiCall = (name, url) => async (dispatch) => {
     dispatch({type: `${name}_REQUEST`});
@@ -12,5 +12,6 @@ const apiCall = (name, url) => async (dispatch) => {
 }
 
 export const getCategories = () => apiCall(CATEGORIES, '/api/categories');
+export const getByCategory = () => apiCall(BY_CATEGORY, '/api/categories/bycategory');
 export const getProduct = (id) => apiCall(PRODUCT, `/api/products/${id}`);
 export const getProducts = (category, page) => apiCall(PRODUCTS, `/api/products/${category}/${page}`);

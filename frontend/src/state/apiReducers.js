@@ -1,4 +1,4 @@
-import { CATEGORIES, PRODUCTS, PRODUCT } from './apiConstants'
+import {CATEGORIES, PRODUCTS, PRODUCT, BY_CATEGORY} from './apiConstants'
 
 const apiReducer = (name) => (state = {}, action) => {
     switch (action.type) {
@@ -14,6 +14,7 @@ const apiReducer = (name) => (state = {}, action) => {
 };
 
 export const categoriesReducer = apiReducer(CATEGORIES);
+export const bycategoryReducer = apiReducer(BY_CATEGORY);
 export const productReducer = apiReducer(PRODUCT);
 export const productsReducer = apiReducer(PRODUCTS);
 

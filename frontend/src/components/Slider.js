@@ -31,7 +31,6 @@ function Slider(props) {
         }
     }, [ref]);
 
-
     let numberOfSlides = Math.floor(items.length / perSlide);
     if (items.length % perSlide > 0) {
         numberOfSlides = numberOfSlides + 1;

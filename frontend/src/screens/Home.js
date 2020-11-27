@@ -1,5 +1,5 @@
 import './Home.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import ImageGallery from 'react-image-gallery';
 import { useHistory } from "react-router";
 import PhoneIcon from "../icons/PhoneIcon";
@@ -7,39 +7,8 @@ import KangarooIcon from "../icons/KangarooIcon";
 import Slider from "../components/Slider";
 import CategoriesSlide from "../components/CategoriesSlide";
 import ArrivalsSlide from "../components/ArrivalsSlide";
-
-const categoriesData = [
-    {
-        id: 1,
-        name: 'Brooches',
-        qty: 11,
-        image: './products/1_thb.jpg'
-    },
-    {
-        id: 2,
-        name: 'Bracelets',
-        qty: 7,
-        image: './products/2_thb.jpg'
-    },
-    {
-        id: 3,
-        name: 'Earrings',
-        qty: 5,
-        image: './products/3_thb.jpg'
-    },
-    {
-        id: 4,
-        name: 'Necklaces',
-        qty: 11,
-        image: './products/1_thb.jpg'
-    },
-    {
-        id: 5,
-        name: 'Rings',
-        qty: 7,
-        image: './products/2_thb.jpg'
-    }
-];
+import {useDispatch, useSelector} from "react-redux";
+import {getByCategory, getProducts} from "../state/apiActions";
 
 const arrivalsData = [
     {
@@ -142,8 +111,6 @@ const arrivalsData = [
 
 const arrivalsPerSlide = 4;
 
-const categoriesPerSlide = 3;
-
 const images = [
     {
         original: './images/banner1.jpg',
@@ -161,6 +128,15 @@ const images = [
 
 function Home() {
     let history = useHistory();
+    const dispatch = useDispatch();
+
+    const bycategoryApi = useSelector(state => state.bycategoryApi);
+    const { loading: isLoading, error, data: bycategory } = bycategoryApi;
+    const categoriesPerSlide = 3;
+
+    useEffect(() => {
+        dispatch(getByCategory());
+    }, [dispatch]);
 
     const handleShopNow = () => {
         history.push("/products/shop/1");
@@ -195,8 +171,11 @@ function Home() {
             </div>
           </section>
            <section className="category">
-               <Slider caption={'By Category'} items={categoriesData} perSlide={categoriesPerSlide} displayImage={CategoriesSlide}/>
-           </section>
+               { bycategory &&
+                    <Slider caption={'By Category'} items={bycategory} perSlide={categoriesPerSlide}
+                       displayImage={CategoriesSlide}/>
+               }
+          </section>
           <section className="arrivals">
               <Slider caption={'Recent Arrivals'} items={arrivalsData} perSlide={arrivalsPerSlide} displayImage={ArrivalsSlide}/>
           </section>

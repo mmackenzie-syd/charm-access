@@ -33,7 +33,8 @@ productRouter.get('/:category/:page',  expressAsyncHandler(async (req, res) => {
         // no products with this category or page
         res.status(404).send({ message: 'Products not found'});
     } else {
-        const products = await Product.find(query).skip(perPage * (page - 1)).limit(perPage);
+        // exec returns a promise from the chain
+        const products = await Product.find(query).skip(perPage * (page - 1)).limit(perPage).exec();
         res.json({ products, pages });
     }
 }));
