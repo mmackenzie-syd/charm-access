@@ -99,29 +99,26 @@ function Products(props) {
                     rightPageClick={handleRightPageClick}
                 />
             </section>
-            {
-                products &&
-                <ul className="arrivals__grid">
-                    {
-                        products.map(({ name, _id, thumbnail, price }) =>
-                            <li key={_id} className="arrivals__grid-item">
-                                <div className="arrivals__grid-img-container" >
-                                    <Link to={`/product/${_id}`}>
-                                        <img alt="placeholder" className="arrivals__grid-img" src={placeholder} />
-                                        <img  alt={name} className="arrivals__grid-img absolute" src={thumbnail} />
-                                    </Link>
+            <ul className="arrivals__grid">
+                {
+                    products && products.map(({ name, _id, thumbnail, price }) =>
+                        <li key={_id} className="arrivals__grid-item">
+                            <div className="arrivals__grid-img-container" >
+                                <Link to={`/product/${_id}`}>
+                                    <img alt="placeholder" className="arrivals__grid-img" src={placeholder} />
+                                    <img  alt={name} className="arrivals__grid-img absolute" src={thumbnail} />
+                                </Link>
+                            </div>
+                            <div className="row bottom margin-bottom-2">
+                                <div>
+                                    <h2>{name}</h2>
+                                    <p className="price">${price}</p>
                                 </div>
-                                <div className="row bottom margin-bottom-2">
-                                    <div>
-                                        <h2>{name}</h2>
-                                        <p className="price">${price}</p>
-                                    </div>
-                                </div>
-                            </li>
-                        )
-                    }
-                </ul>
-            }
+                            </div>
+                        </li>
+                    )
+                }
+            </ul>
             <section className="margin-top-1 margin-bottom-5">
                 <div className="row center">
                     { (pages > 0)

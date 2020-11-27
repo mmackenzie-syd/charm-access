@@ -14,6 +14,7 @@ import {ModalProvider} from "./context/modalContext";
 import ScrollToTop from "./components/ScrollToTop";
 import EditProducts from "./dashboard/EditProducts";
 import EditCategories from "./dashboard/EditCategories";
+import EditProduct from "./dashboard/EditProduct";
 
 function App() {
     // preload
@@ -34,7 +35,8 @@ function App() {
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />
                         {/* Protected routes */}
-                        <Route path="/dashboard/products" component={EditProducts} />
+                        <Route path="/dashboard/products/:page" component={EditProducts} />
+                        <Route path="/dashboard/product/:id" component={EditProduct} />
                         <Route path="/dashboard/categories" component={EditCategories} />
                     </div>
                     <Footer />
