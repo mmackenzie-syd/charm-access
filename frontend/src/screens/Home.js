@@ -8,108 +8,7 @@ import Slider from "../components/Slider";
 import CategoriesSlide from "../components/CategoriesSlide";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import {useDispatch, useSelector} from "react-redux";
-import {getByCategory, getProducts} from "../state/apiActions";
-
-const arrivalsData = [
-    {
-        _id: '1',
-        name: 'Rose Bouquet Brooch',
-        category: 'brooches',
-        image: '/products/1.jpg',
-        thumbnail: '/products/1_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '2',
-        name: 'Rose Butterfly Brooch',
-        category: 'brooches',
-        image: '/products/2.jpg',
-        thumbnail: '/products/2_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '3',
-        name: 'Single Rose Brooch',
-        category: 'brooches',
-        image: '/products/3.jpg',
-        thumbnail: '/products/3_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '4',
-        name: 'White Butterfly Brooch',
-        category: 'brooches',
-        image: '/products/4.jpg',
-        thumbnail: '/products/4_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '5',
-        name: 'Elephant Brooch',
-        category: 'brooches',
-        image: '/products/5.jpg',
-        thumbnail: '/products/5_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '6',
-        name: 'Blue Topaz Butterfly Brooch',
-        category: 'brooches',
-        image: '/products/6.jpg',
-        thumbnail: '/products/6_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '7',
-        name: 'Puppy Dog Brooch',
-        category: 'brooches',
-        image: '/products/7.jpg',
-        thumbnail: '/products/7_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '8',
-        name: 'Lilly Flower  Brooch',
-        category: 'brooches',
-        image: '/products/8.jpg',
-        thumbnail: '/products/8_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '9',
-        name: 'Rose Bouquet Brooch',
-        category: 'brooches',
-        image: '/products/1.jpg',
-        thumbnail: '/products/1_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '10',
-        name: 'Rose Butterfly Brooch',
-        category: 'brooches',
-        image: '/products/2.jpg',
-        thumbnail: '/products/2_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '11',
-        name: 'Single Rose Brooch',
-        category: 'brooches',
-        image: '/products/3.jpg',
-        thumbnail: '/products/3_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '12',
-        name: 'White Butterfly Brooch',
-        category: 'brooches',
-        image: '/products/4.jpg',
-        thumbnail: '/products/4_thb.jpg',
-        price: 120,
-    },
-];
-
-const arrivalsPerSlide = 4;
+import {getArrivals, getByCategory, getProducts} from "../state/apiActions";
 
 const images = [
     {
@@ -131,11 +30,19 @@ function Home() {
     const dispatch = useDispatch();
 
     const bycategoryApi = useSelector(state => state.bycategoryApi);
-    const { loading: isLoading, error, data: bycategory } = bycategoryApi;
+    const { loading: isLoadingBycategory, errorBycategory, data: bycategory } = bycategoryApi;
     const categoriesPerSlide = 3;
 
     useEffect(() => {
         dispatch(getByCategory());
+    }, [dispatch]);
+
+    const arrivalsApi = useSelector(state => state.arrivalsApi);
+    const { loading: isLoadingArrivals, errorArrivals, data: arrivals } = arrivalsApi;
+    const arrivalsPerSlide = 4;
+
+    useEffect(() => {
+        dispatch(getArrivals());
     }, [dispatch]);
 
     const handleShopNow = () => {
@@ -177,7 +84,10 @@ function Home() {
                }
           </section>
           <section className="arrivals">
-              <Slider caption={'Recent Arrivals'} items={arrivalsData} perSlide={arrivalsPerSlide} displayImage={ArrivalsSlide}/>
+              {arrivals &&
+                <Slider caption={'Recent Arrivals'} items={arrivals} perSlide={arrivalsPerSlide}
+                      displayImage={ArrivalsSlide}/>
+              }
           </section>
 
           <section className="info">

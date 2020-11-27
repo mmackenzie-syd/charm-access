@@ -12,6 +12,15 @@ productRouter.get('/seed', expressAsyncHandler(async (req, res) => {
     })
 );
 
+productRouter.get('/arrivals', expressAsyncHandler(async (req, res) => {
+    let products = await Product.find({}).sort({'createdAt': -1}).limit(24).exec();
+    if (products) {
+        res.send(products);
+    } else {
+        res.status(404).send({ message: 'Products Not Found'});
+    }
+}));
+
 productRouter.get('/:id',  expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id)
     if (product) {
