@@ -11,9 +11,9 @@ function Login() {
                 <h3>Vendor Login</h3>
                 <div onClick={() => handleModal('')} className="close-login">&times;</div>
             </div>
-            <div className="imgcontainer">
+            {/*   <div className="imgcontainer">
                 <img src={`${process.env.PUBLIC_URL}/images/avatar.jpg`} alt="Avatar" className="avatar" />
-            </div>
+            </div> */}
 
             <div className="container">
                 <label htmlFor="uname" className="login-label">Username:</label>
