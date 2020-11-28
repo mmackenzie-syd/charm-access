@@ -46,10 +46,6 @@ function EditProducts(props) {
         });
         showBreadcrumb = true;
     }
-
-    console.log('list', list)
-
-
     const url=`/dashboard/products`;
 
     let history = useHistory();
@@ -68,6 +64,10 @@ function EditProducts(props) {
         if ((curPage + 1) <= pages) {
             history.push(`${url}/${curPage + 1}`);
         }
+    }
+
+    const handleCreate = () => {
+        history.push(`/dashboard/createproduct`);
     }
 
     return (
@@ -166,7 +166,13 @@ function EditProducts(props) {
                             : <span>&nbsp;</span>
                         }
                     </div>
-                    <button className="col-3 save-btn margin-left-1" type="submit">Create</button>
+                    <button
+                        className="col-3 save-btn margin-left-1"
+                        type="button"
+                        onClick={handleCreate}
+                    >
+                        Create
+                    </button>
                 </div>
             </section>
         </div>);

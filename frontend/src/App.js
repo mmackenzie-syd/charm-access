@@ -37,6 +37,7 @@ function App() {
                         {/* Protected routes */}
                         <Route path="/dashboard/products/:page" component={EditProducts} />
                         <Route path="/dashboard/product/:id" component={EditProduct} />
+                        <Route path="/dashboard/createproduct" component={EditProduct} />
                         <Route path="/dashboard/categories" component={EditCategories} />
                     </div>
                     <Footer />

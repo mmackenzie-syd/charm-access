@@ -23,14 +23,17 @@ function EditProduct(props) {
     const [qty, setQty] = useState(0);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState('/images/largeplaceholder.png');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
 
+    console.log('id', id)
+
     useEffect(() => {
-        if (!product) {
+        if (!product && id) {
             dispatch(getProduct(id));
-        } else {
+        }
+        if (product && id) {
             const {
                 name,
                 image,
@@ -62,7 +65,7 @@ function EditProduct(props) {
         <div className="product">
             <main className="product margin-top-5 margin-bottom-5" style={{minHeight: '500px'}}>
                 <div className="row margin-top-1 margin-bottom-2" >
-                    <h3>Edit Product</h3>
+                    <h3>{id ? 'Edit' : 'Create'} Product</h3>
                     <div>
                         <button className={`page-btn`}>
                             <LeftArrowIcon
@@ -154,9 +157,6 @@ function EditProduct(props) {
                             <button className="save-btn btn-full-width margin-left-1" type="submit">Save</button>
 
                         </div>
-
-
-
                     </div>
                 </form>
 
