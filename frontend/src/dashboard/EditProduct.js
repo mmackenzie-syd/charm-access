@@ -84,8 +84,8 @@ function EditProduct(props) {
                     </div>
                 </div>
                 <form className="row top">
-                    <div className="col-6 product__img">
-                        <img alt={name} src={image}/>
+                    <div className="col-6 product__img-wrap">
+                        <img className="product__img" alt={name} src={image}/>
                     </div>
                     <div className="col-6 padding-left-3">
                         <div className="">

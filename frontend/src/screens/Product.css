@@ -4,9 +4,9 @@
 }
 
 .product__img {
-//border: 1px solid rgba(0,0,0,0.15);
-    padding: 1rem;
-    background-color: #f1f1f1;
+/* border: 1px solid rgba(0,0,0,0.15); */
+   /* padding: 1rem; */
+   /* background-color: #f1f1f1; */
 
 }
 .product__title {
@@ -77,4 +77,9 @@
 
 .add-shop-cart:hover {
     opacity: 60%;
+}
+
+
+.product__img {
+    border: 10px solid #f1f1f1;
 }

@@ -111,8 +111,8 @@ function Product(props) {
             { product &&
                 <>
                 <section className="row top">
-                    <div className="col-6 product__img">
-                        <img alt="product.name" src={product.image}/>
+                    <div className="col-6 product__img-wrap">
+                        <img className="product__img" alt="product.name" src={product.image}/>
                     </div>
                     <div className="col-6 padding-left-3">
                         <div>
