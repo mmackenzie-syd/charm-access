@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/charm', {
     useCreateIndex: true,
 });
 
-app.use('/api/vendor', router);
+app.use('/vendor', router);
 app.get('/', (req, res) => {
     res.send('Server is ready');
 });

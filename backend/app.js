@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const api = require('./api.js');
+const vendor = require('./vendor.js');
 const app = express();
 
 app.use(express.json());
@@ -12,6 +13,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/charm', {
 });
 
 app.use('/api/', api);
+app.use('/vendor/', vendor);
 app.get('/', (req, res) => {
     res.send('Server is ready');
 });

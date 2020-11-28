@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './EditProducts.css';
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
-import {getProducts} from "../state/apiActions";
+import {getVendorProducts} from "../state/apiActions";
 import { Link } from "react-router-dom";
 import Quantity from "../components/Quantity";
 import Paginator from "../components/Paginator";
@@ -12,8 +12,8 @@ function EditProducts(props) {
     const dispatch = useDispatch();
     const curPage = Number(props.match.params.page);
 
-    const productsApi = useSelector(state => state.productsApi);
-    const { loading: isLoadingProducts, errorProducts, data } = productsApi;
+    const productsVendor = useSelector(state => state.productsVendor);
+    const { loading: isLoadingProducts, errorProducts, data } = productsVendor;
 
     const products = data ? data.products : [];
     const pages = data ? data.pages : 0;
@@ -21,7 +21,7 @@ function EditProducts(props) {
     console.log('curPage', curPage)
 
     useEffect(() => {
-        dispatch(getProducts('shop', curPage));
+        dispatch(getVendorProducts( curPage));
     }, [dispatch, 'shop', curPage]);
 
     const list = [];
