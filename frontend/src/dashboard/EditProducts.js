@@ -72,7 +72,7 @@ function EditProducts(props) {
 
     return (
         <div className="products">
-            <section className="row margin-bottom-1">
+            <section className="row margin-bottom-2">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
                 <div className="collections__page-numbers">
                     { (pages > 0)

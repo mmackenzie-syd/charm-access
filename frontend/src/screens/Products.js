@@ -70,12 +70,12 @@ function Products(props) {
     }
 
     return (
-        <main className="collections margin-top-2" style={{height: fixedHeight}}>
+        <main className="collections" style={{height: fixedHeight}}>
             { error && <Message variant="danger">{error}</Message> }
             { isLoading &&
                 <Loading isLoading={isLoading} />
             }
-            <section className="row  margin-top-5">
+            <section className="row  margin-top-1 margin-bottom-2">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
                 <div className="collections__page-numbers">
                     { (pages > 0)

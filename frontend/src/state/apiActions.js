@@ -21,5 +21,5 @@ export const getProducts = (category, page) => apiCall(PRODUCTS, `/api/products/
 
 // vendor CRUD
 
-export const getVendorProduct = (id) => apiCall(VENDOR_PRODUCT, `/vendor/products/${id}`);
+export const getVendorProduct = (id) => apiCall(VENDOR_PRODUCT, `/vendor/product/${id}`);
 export const getVendorProducts = (page) => apiCall(VENDOR_PRODUCTS, `/vendor/products/${page}`);

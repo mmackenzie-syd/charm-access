@@ -8,7 +8,7 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import Selector from "../components/Selector";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import {useDispatch, useSelector} from "react-redux";
-import {getProduct} from "../state/apiActions";
+import {getProduct, getVendorProduct} from "../state/apiActions";
 import Quantity from "../components/Quantity";
 import {updateCart} from "../state/cartActions";
 import PlusIcon from "../icons/PlusIcon";
@@ -17,8 +17,8 @@ function EditProduct(props) {
     const dispatch = useDispatch();
     const id = props.match.params.id;
     const categoriesApi = useSelector(state => state.categoriesApi);
-    const productApi = useSelector(state => state.productApi);
-    const { loading, error, data: product } = productApi;
+    const productVendor = useSelector(state => state.productVendor);
+    const { loading, error, data: product } = productVendor;
     const { data: categories } = categoriesApi;
 
     const [qty, setQty] = useState(0);
@@ -30,7 +30,7 @@ function EditProduct(props) {
 
     useEffect(() => {
         if (!product && id) {
-            dispatch(getProduct(id));
+            dispatch(getVendorProduct(id));
         }
         if (product && id) {
             const {
@@ -62,7 +62,7 @@ function EditProduct(props) {
 
     return (
         <div className="product">
-            <main className="product margin-top-5 margin-bottom-5" style={{minHeight: '500px'}}>
+            <main className="product margin-bottom-5" style={{minHeight: '500px'}}>
                 <div className="row margin-top-1 margin-bottom-2" >
                     <h3>{id ? 'Edit' : 'Create'} Product</h3>
                     <div>
