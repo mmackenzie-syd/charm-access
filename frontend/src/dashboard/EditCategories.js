@@ -1,19 +1,24 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import './EditCategories.css';
+import {useSelector} from "react-redux";
 
 function EditCategories(props) {
 
-    const categories = [];
+    const categoriesApi = useSelector(state => state.categoriesApi);
+    const { data: categories } = categoriesApi;
+
     return (
-        <div className="row">
-            <div className="categories">
-                <header className="lg-col-span-12 categories-header">
-                    <h2>Categories</h2>
-                    <button className="categories-header-btn">CREATE</button>
-                    <div className="clear"></div>
-                    <div className="categories-header-divider"></div>
+            <div className="categories margin-bottom-5">
+                <header className="row categories-header space-between">
+                        <h2 className="col-6">Categories</h2>
+                    <button
+                        className="col-3 save-btn margin-left-1"
+                        type="button"
+                    >
+                        Create
+                    </button>
                 </header>
-                <article className="lg-col-span-12">
+                <article className="row">
                     <table className="categories-article-table">
                         <thead>
                         <tr>
@@ -23,27 +28,25 @@ function EditCategories(props) {
                         </tr>
                         </thead>
                         <tbody>
-                        {
-                            categories && categories.map(function(item, index){
-                                return(
-                                    <tr key={ index }>
-                                        <td>
-                                            { item.name }
-                                        </td>
-                                        <td>
-                                            <span className="categories-article-table-link" >Edit</span>
-                                        </td>
-                                        <td>
-                                            <span className="categories-article-table-link" >Delete</span>
-                                        </td>
-                                    </tr>)
-                            })
+                        { categories && categories.map((item, index) => {
+                            return(
+                                <tr key={ index }>
+                                    <td>
+                                        { item.name }
+                                    </td>
+                                    <td>
+                                        <span className="products-table-link">Edit</span>
+                                    </td>
+                                    <td>
+                                        <span className="products-table-link">Delete</span>
+                                    </td>
+                                </tr>)
+                        })
                         }
                         </tbody>
                     </table>
                 </article>
-            </div>
-        </div>);
+            </div>);
 }
 
 export default EditCategories;

@@ -57,7 +57,7 @@ function Header() {
 
                         <li className="site__nav-item dropdown">
                             <div className="dropbtn">
-                                <NavLink to="/products/products/1" className={isShopActive}>Dashboard</NavLink>
+                                <NavLink to="#" className={isShopActive}>Dashboard</NavLink>
                             </div>
                             <div className="dropdown-content">
                                 <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>

@@ -1,29 +1,51 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import './EditCategory.css';
+import {useSelector} from "react-redux";
 
 function EditCategory(props) {
+    const categoriesApi = useSelector(state => state.categoriesApi);
+    const { data: categories } = categoriesApi;
+
+    console.log('categories', categories)
 
     return (
-        <div className="category">
-            <div className="row">
-                <header className="lg-col-span-12 category-header">
-                    <h2>Add Category</h2>
+        <div className="row">
+            <div className="categories">
+                <header className="lg-col-span-12 categories-header">
+                    <h2>Categories</h2>
+                    <button className="categories-header-btn">ADD</button>
                     <div className="clear"></div>
-                    <div className="category-header-divider"></div>
+                    <div className="categories-header-divider"></div>
                 </header>
-            </div>
-            <div className="row">
-                <form className="category-form lg-col-span-12" id="formAdd">
-                    <input type="text" className="category-form-control" />
-                </form>
-            </div>
-            <div className="row">
-                <footer className="category-footer lg-col-span-12">
-                    <div className="clear"></div>
-                    <button className="category-footer-btn pull-right" type="submit" form="formAdd" value="Submit">SAVE</button>
-                    <button className="category-footer-btn pull-right">CANCEL</button>
-                    <div className="clear"></div>
-                </footer>
+                <article className="lg-col-span-12">
+                    <table className="categories-article-table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        { categories && categories.map((item, index) => {
+                            return(
+                                <tr key={ index }>
+                                    <td>
+                                        { item.name }
+                                    </td>
+                                    <td>
+                                        <span className="categories-article-table-link">Edit</span>
+                                    </td>
+                                    <td>
+                                        <span className="categories-article-table-link" >Delete</span>
+                                    </td>
+                                </tr>)
+                            })
+                        }
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </article>
             </div>
         </div>);
 }

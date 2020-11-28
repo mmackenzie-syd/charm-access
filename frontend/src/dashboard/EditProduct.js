@@ -27,8 +27,6 @@ function EditProduct(props) {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
 
-    console.log('id', id)
-
     useEffect(() => {
         if (!product && id) {
             dispatch(getProduct(id));
