@@ -23,36 +23,7 @@
     color: #303030;
     text-transform: capitalize;
 }
-.product-footer-btn {
-    color: #303030;
-    background-color: #ebf0f4;
-    display: inline-block;
-    padding: 5px 12px;
-    margin-bottom: 0;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 20px;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 0px;
-    float: right;
-    width: 100px;
-    margin-left: 5px;
-    margin-top: 25px;
-}
-.product-footer-btn:hover {
-    background-color: #ccc;
-}
+
 /* Form Styling */
 .product-article-group {
     margin-bottom: 15px;
@@ -60,9 +31,9 @@
 .product-article-control {
     display: block;
     width: 100%;
-    padding: 12px 20px;
+    padding: 10px 20px !important;
     font-size: 14px;
-    line-height: 1.42857143;
+    line-height: 1;
     color: #555;
     background-color: #fff;
     background-image: none;
@@ -73,6 +44,7 @@
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin-top: 0 !important;
 }
 label {
     display: inline-block;
@@ -168,4 +140,20 @@ label {
 .product-article-group input[type=number]::-webkit-inner-spin-button,
 .product-article-group input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
+}
+
+.cancel-btn,
+.save-btn {
+    padding: 1.4rem 0 !important;
+    border: 0;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 3px;
+    background-color: #ccc;
+    text-transform: uppercase;
+    color: #4f4f4f;
+}
+
+.cancel-btn {
+    background-color: #efefef;
 }

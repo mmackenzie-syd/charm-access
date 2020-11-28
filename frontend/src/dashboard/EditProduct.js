@@ -15,124 +15,159 @@ import {updateCart} from "../state/cartActions";
 function EditProduct(props) {
     const dispatch = useDispatch();
     const id = props.match.params.id;
-
     const categoriesApi = useSelector(state => state.categoriesApi);
-    const productsApi = useSelector(state => state.productsApi);
     const productApi = useSelector(state => state.productApi);
-    const { loading, error, data } = productApi;
-    const { categories } = categoriesApi;
-    const products = (productsApi && productsApi.data) ? productsApi.data.products : [];
+    const { loading, error, data: product } = productApi;
+    const { data: categories } = categoriesApi;
 
-    let existingProduct = products.find(product => (product._id === id));
-
-    const product = (!existingProduct && data) ? data : existingProduct;
+    const [qty, setQty] = useState(0);
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [image, setImage] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('shop');
 
     useEffect(() => {
-        if (!existingProduct) {
+        if (!product) {
             dispatch(getProduct(id));
+        } else {
+            const {
+                name,
+                image,
+                description,
+                price,
+                inventory,
+                category
+            } = product;
+            setName(name);
+            setImage(image);
+            setDescription(description);
+            setPrice(price);
+            setQty(Number(inventory));
+            setCategory(category);
         }
-    }, [dispatch, id, existingProduct]);
+    }, [dispatch, id, product]);
 
-    const onPlusBtn = (id, qty) => {
-
+    const onPlusBtn = (qty) => {
+        setQty(Number(qty )+ 1);
     }
 
-    const onSubBtn = (id, qty) => {
+    const onSubBtn = (qty) => {
+        if ((qty - 1) >= 0) {
+            setQty(qty - 1);
+        }
     }
 
-    const qty = 1;
     return (
         <div className="product">
             <main className="product margin-top-5 margin-bottom-5" style={{minHeight: '500px'}}>
-                { product &&
-                    <>
-                        <div className="row margin-top-1 margin-bottom-2" >
-                            <h3>Edit Product</h3>
-                            <div>
-                                <button className={`page-btn`}>
-                                    <LeftArrowIcon
-                                        width={'1.2rem'}
-                                        height={'1.2rem'}
-                                        offset={'.3rem'}
-                                    />
-                                </button>
-                                <button className={`page-btn`}>
-                                    <RightArrowIcon
-                                        width={'1.2rem'}
-                                        height={'1.2rem'}
-                                        offset={'.3rem'}
-                                    />
-                                </button>
-                            </div>
+                <div className="row margin-top-1 margin-bottom-2" >
+                    <h3>Edit Product</h3>
+                    <div>
+                        <button className={`page-btn`}>
+                            <LeftArrowIcon
+                                width={'1.2rem'}
+                                height={'1.2rem'}
+                                offset={'.3rem'}
+                            />
+                        </button>
+                        <button className={`page-btn`}>
+                            <RightArrowIcon
+                                width={'1.2rem'}
+                                height={'1.2rem'}
+                                offset={'.3rem'}
+                            />
+                        </button>
+                    </div>
+                </div>
+                <form className="row top">
+                    <div className="col-6 product__img">
+                        <img alt={name} src={image}/>
+                    </div>
+                    <div className="col-6 padding-left-3">
+                        <div className="">
+                            <label>Product Name</label>
+                            <input
+                                type="text"
+                                className="product-article-control"
+                                value={name}
+                                onChange={e => setName(e.target.value)}
+                            />
                         </div>
-                    <form className="row top">
-
-                        <div className="col-6 product__img">
-                            <img alt="product.name" src={product.image}/>
+                        <div className="product-article-group" >
+                            <label>Category</label>
+                            <select
+                                name="category"
+                                className="product-article-control"
+                                value={category}
+                                onChange={e => setCategory(e.target.value)}
+                            >
+                                {
+                                    categories && categories.map(({ name, slug }, index) => {
+                                        return(
+                                            <option key={ index + 1 } value={ slug }>{ name }</option>
+                                        )
+                                    })
+                                }
+                            </select>
                         </div>
-                        <div className="col-6 padding-left-3">
-
-                            <div className="">
-                                <label>Product Name</label>
-                                <input type="text" className="product-article-control" value={product.name} />
-                            </div>
-                            <div className="product-article-group" >
-                                <label>Category</label>
-                                <select name="category" className="product-article-control" >
-                                    <option key={ 0 } value="none">none set</option>
-                                    {
-                                        categories && categories.map((item, index) => {
-                                            return(
-                                                <option key={ index + 1 } value={ item.name }>{ item.name }</option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
-                            <div className="row top space-between">
-                                <div className="col-8 margin-right-5">
-                                    <label>$ Price</label>
-                                    <input type="text" className="product-article-control" value={product.price} />
-                                </div>
-                                <div className="col-4" >
-                                    <label>Inventory</label>
-                                    <div className="margin-top-1">
-                                        <Quantity
-                                            value={qty}
-                                            onSubBtn={() => onSubBtn(id, qty)}
-                                            onPlusBtn={() => onPlusBtn(id, qty)}
-                                        />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div className="margin-bottom-3">
-                                <label>Description</label>
-                                <textarea
-                                    name="message"
+                        <div className="row top space-between">
+                            <div className="col-8 margin-right-5">
+                                <label>$ Price</label>
+                                <input
+                                    type="text"
                                     className="product-article-control"
-                                    rows={5}
-                                    value={product.description}
-                                    style={{textAlign: 'left'}}
-                                ></textarea>
+                                    value={price}
+                                    onChange={e => setPrice(e.target.value)}
+                                />
                             </div>
+                            <div className="col-4" >
+                                <label>#Inventory</label>
+                                <div className="">
+                                    <Quantity
+                                        value={qty}
+                                        onSubBtn={() => onSubBtn(qty)}
+                                        onPlusBtn={() => onPlusBtn(qty)}
+                                    />
+                                </div>
 
-                                <button
-                                    className="add-shop-cart btn-full-width margin-bottom-2"
-                                >
-                                    Cancel
-                                </button>
-                                <button className="buy btn-full-width">Save</button>
+                            </div>
+                        </div>
 
-
+                        <div className="margin-bottom-3">
+                            <label>Description</label>
+                            <textarea
+                                name="message"
+                                className="product-article-control"
+                                cols={60}
+                                rows={10}
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                            ></textarea>
+                        </div>
+                        <div className="row">
+                            <button
+                                className="cancel-btn btn-full-width margin-right-1"
+                            >
+                                Cancel
+                            </button>
+                            <button className="save-btn btn-full-width margin-left-1" type="submit">Save</button>
 
                         </div>
-                    </form>
-                    </>
-                }
+
+
+
+                    </div>
+                </form>
+
+
             </main>
         </div>);
 }
 
 export default EditProduct;
+
+/*
+
+*/
+

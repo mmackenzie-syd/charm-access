@@ -46,7 +46,7 @@ api.get('/categories/',  expressAsyncHandler(async (req, res) => {
 }));
 
 api.get('/products/arrivals', expressAsyncHandler(async (req, res) => {
-    let products = await Product.find({}).sort({'createdAt': -1}).limit(24).exec();
+    let products = await Product.find({}).sort({'createdAt': -1}).limit(12).exec();
     if (products) {
         res.send(products);
     } else {
