@@ -1,5 +1,5 @@
 .products  {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 .products-header-divider {
     width: 100%;
@@ -96,12 +96,13 @@
 }
 /* <--- Links --> */
 .products-table-link {
-    color: #337ab7;
+    color:#9886BA;
+    font-weight: 500;
     text-decoration: none;
 }
 /* mouse over link */
 .products-table-link:hover {
-    color: #234F74;
+    opacity: 60%;
     cursor: pointer;
     text-decoration: underline;
 }
