@@ -54,8 +54,17 @@ function Header() {
                         </li>
                         <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink></li>
+
+                        <li className="site__nav-item dropdown">
+                            <div className="dropbtn">
+                                <NavLink to="/products/products/1" className={isShopActive}>Dashboard</NavLink>
+                            </div>
+                            <div className="dropdown-content">
+                                <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
+                                <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
                 <div className="row right" style={{marginRight: '-.5rem'}}>

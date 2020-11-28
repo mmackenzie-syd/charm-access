@@ -125,7 +125,7 @@ function EditProduct(props) {
                                 />
                             </div>
                             <div className="col-4" >
-                                <label>#Inventory</label>
+                                <label className="margin-left-2">Inventory</label>
                                 <div className="">
                                     <Quantity
                                         value={qty}
