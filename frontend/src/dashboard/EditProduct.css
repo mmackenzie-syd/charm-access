@@ -156,4 +156,37 @@ label {
 
 .cancel-btn {
     background-color: #efefef;
+    margin-right: .5rem;
+}
+.save-btn {
+    margin-left: .5rem;
+}
+.cancel-btn:hover,
+.save-btn:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+.product__img-wrap {
+    position: relative;
+}
+
+.product__img {
+
+}
+
+.plus-img-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+    border: 0;
+    background-color: #ccc;
+}
+
+.plus-img-btn:hover {
+    opacity: 60%;
+    cursor: pointer;
 }

@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getProduct} from "../state/apiActions";
 import Quantity from "../components/Quantity";
 import {updateCart} from "../state/cartActions";
+import PlusIcon from "../icons/PlusIcon";
 
 function EditProduct(props) {
     const dispatch = useDispatch();
@@ -84,6 +85,16 @@ function EditProduct(props) {
                 <form className="row top">
                     <div className="col-6 product__img-wrap">
                         <img className="product__img" alt={name} src={image}/>
+                        <button
+                            className="plus-img-btn"
+                            type="button"
+                        >
+                            <PlusIcon
+                                width={'1.2rem'}
+                                height={'1.2rem'}
+                                className={'create-category'}
+                            />
+                        </button>
                     </div>
                     <div className="col-6 padding-left-3">
                         <div className="">
@@ -148,11 +159,11 @@ function EditProduct(props) {
                         </div>
                         <div className="row">
                             <button
-                                className="cancel-btn btn-full-width margin-right-1"
+                                className="cancel-btn btn-full-width"
                             >
                                 Cancel
                             </button>
-                            <button className="save-btn btn-full-width margin-left-1" type="submit">Save</button>
+                            <button className="save-btn btn-full-width" type="submit">Save</button>
 
                         </div>
                     </div>
