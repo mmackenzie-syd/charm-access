@@ -1,31 +1,82 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import './EditProduct.css';
+import Message from "../components/Message";
+import Loading from "../components/Loading";
+import Breadcrumb from "../components/Breadcrumb";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
+import RightArrowIcon from "../icons/RightArrowIcon";
+import Selector from "../components/Selector";
+import ArrivalsSlide from "../components/ArrivalsSlide";
+import {useDispatch, useSelector} from "react-redux";
+import {getProduct} from "../state/apiActions";
+import Quantity from "../components/Quantity";
+import {updateCart} from "../state/cartActions";
 
 function EditProduct(props) {
-    const categories = [];
+    const dispatch = useDispatch();
+    const id = props.match.params.id;
+
+    const categoriesApi = useSelector(state => state.categoriesApi);
+    const productsApi = useSelector(state => state.productsApi);
+    const productApi = useSelector(state => state.productApi);
+    const { loading, error, data } = productApi;
+    const { categories } = categoriesApi;
+    const products = (productsApi && productsApi.data) ? productsApi.data.products : [];
+
+    let existingProduct = products.find(product => (product._id === id));
+
+    const product = (!existingProduct && data) ? data : existingProduct;
+
+    useEffect(() => {
+        if (!existingProduct) {
+            dispatch(getProduct(id));
+        }
+    }, [dispatch, id, existingProduct]);
+
+    const onPlusBtn = (id, qty) => {
+
+    }
+
+    const onSubBtn = (id, qty) => {
+    }
+
+    const qty = 1;
     return (
         <div className="product">
-            <div className="row">
-                <header className="lg-col-span-12 product-header">
-                    <h2>Edit Product</h2>
-                    <div className="clear"></div>
-                    <div className="product-header-divider"></div>
-                </header>
-            </div>
-            <div className="row">
-                <form id="formEdit">
-                    <article className="lg-col-span-7 product-article">
-                        <div className="row">
-                            <div className="product-article-group lg-col-span-12">
-                                <label>Product Name</label>
+            <main className="product margin-top-5 margin-bottom-5" style={{minHeight: '500px'}}>
+                { product &&
+                    <>
+                        <div className="row margin-top-1 margin-bottom-2" >
+                            <h3>Edit Product</h3>
+                            <div>
+                                <button className={`page-btn`}>
+                                    <LeftArrowIcon
+                                        width={'1.2rem'}
+                                        height={'1.2rem'}
+                                        offset={'.3rem'}
+                                    />
+                                </button>
+                                <button className={`page-btn`}>
+                                    <RightArrowIcon
+                                        width={'1.2rem'}
+                                        height={'1.2rem'}
+                                        offset={'.3rem'}
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    <form className="row top">
 
-                                <input type="text" className="product-article-control"  />
+                        <div className="col-6 product__img">
+                            <img alt="product.name" src={product.image}/>
+                        </div>
+                        <div className="col-6 padding-left-3">
+
+                            <div className="">
+                                <label>Product Name</label>
+                                <input type="text" className="product-article-control" value={product.name} />
                             </div>
-                            <div className="product-article-group lg-col-span-12">
-                                <label>Description</label>
-                                <textarea name="message" className="product-article-control" rows={8} ></textarea>
-                            </div>
-                            <div className="product-article-group lg-col-span-12" >
+                            <div className="product-article-group" >
                                 <label>Category</label>
                                 <select name="category" className="product-article-control" >
                                     <option key={ 0 } value="none">none set</option>
@@ -38,41 +89,49 @@ function EditProduct(props) {
                                     }
                                 </select>
                             </div>
-                            <div className="product-article-group lg-col-span-4" >
-                                <label>$ Price</label>
-                                <input type="text" className="product-article-control" />
-                            </div>
-                            <div className="product-article-group lg-col-span-4" >
-                                <label>$ Sale Price</label>
-                                <input type="text" className="product-article-control" ></input>
-                            </div>
-                            <div className="product-article-group lg-col-span-4" >
-                                <label className="product-article-group-inventory">Inventory</label>
-                                <div className="product-article-spinner">
-                                    <span className="product-article-sub">-</span>
-                                    <input type="number" />
-                                    <span className="product-article-add">+</span>
+                            <div className="row top space-between">
+                                <div className="col-8 margin-right-5">
+                                    <label>$ Price</label>
+                                    <input type="text" className="product-article-control" value={product.price} />
+                                </div>
+                                <div className="col-4" >
+                                    <label>Inventory</label>
+                                    <div className="margin-top-1">
+                                        <Quantity
+                                            value={qty}
+                                            onSubBtn={() => onSubBtn(id, qty)}
+                                            onPlusBtn={() => onPlusBtn(id, qty)}
+                                        />
+                                    </div>
+
                                 </div>
                             </div>
+
+                            <div className="margin-bottom-3">
+                                <label>Description</label>
+                                <textarea
+                                    name="message"
+                                    className="product-article-control"
+                                    rows={5}
+                                    value={product.description}
+                                    style={{textAlign: 'left'}}
+                                ></textarea>
+                            </div>
+
+                                <button
+                                    className="add-shop-cart btn-full-width margin-bottom-2"
+                                >
+                                    Cancel
+                                </button>
+                                <button className="buy btn-full-width">Save</button>
+
+
+
                         </div>
-                    </article>
-                    <aside className="lg-col-span-5 product-aside">
-                        <h5 className="pull-right product-aside-btn"><i className="fa fa-plus" aria-hidden="true"></i> Add Image</h5>
-                        <input id="selectedFile" type="file"  style={{display: 'none'}}  />
-                        <div className="pull-right product-aside-image-container">
-                            <img  alt="" width='385' height='385'/>
-                        </div>
-                    </aside>
-                </form>
-            </div>
-            <div className="row">
-                <footer className="lg-col-span-12 product-footer">
-                    <div className="clear"></div>
-                    <div className="product-footer-divider"></div>
-                    <button className="product-footer-btn pull-right" type="submit" form="formEdit" value="Submit">SAVE</button>
-                    <button className="product-footer-btn pull-right">CANCEL</button>
-                </footer>
-            </div>
+                    </form>
+                    </>
+                }
+            </main>
         </div>);
 }
 
