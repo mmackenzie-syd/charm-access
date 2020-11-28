@@ -1,24 +1,24 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import './EditCategories.css';
 import {useSelector} from "react-redux";
+import PlusIcon from "../icons/PlusIcon";
 
-function EditCategories(props) {
+function EditCategories() {
+
+    const [category, setCategory] = useState({name: '', slug: ''})
 
     const categoriesApi = useSelector(state => state.categoriesApi);
     const { data: categories } = categoriesApi;
+
+    const handleCategory = () => {
+
+    };
 
     return (
             <div className="categories margin-bottom-5">
                 <header className="row categories-header space-between">
                         <h2 className="col-6">Categories</h2>
-                    <button
-                        className="col-3 save-btn margin-left-1"
-                        type="button"
-                    >
-                        Create
-                    </button>
                 </header>
-                <article className="row">
                     <table className="categories-article-table">
                         <thead>
                         <tr>
@@ -45,7 +45,26 @@ function EditCategories(props) {
                         }
                         </tbody>
                     </table>
-                </article>
+                    <div className="row top">
+                        <input
+                            type="text"
+                            className="product-article-control"
+                            placeholder="Enter category..."
+                            value={category.name}
+                            onChange={e => handleCategory(e.target.value)}
+                        />
+                        <button
+                            className="plus-btn"
+                            type="button"
+                        >
+                            <PlusIcon
+                                width={'1.2rem'}
+                                height={'1.2rem'}
+                                className={'create-category'}
+                            />
+                        </button>
+                    </div>
+
             </div>);
 }
 
