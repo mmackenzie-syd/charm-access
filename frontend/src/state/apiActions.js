@@ -19,7 +19,7 @@ export const getArrivals = () => apiCall(ARRIVALS, '/api/products/arrivals');
 export const getProduct = (id) => apiCall(PRODUCT, `/api/products/${id}`);
 export const getProducts = (category, page) => apiCall(PRODUCTS, `/api/products/${category}/${page}`);
 
-// vendor CRUD
-
+// vendor
 export const getVendorProduct = (id) => apiCall(VENDOR_PRODUCT, `/vendor/product/${id}`);
 export const getVendorProducts = (page) => apiCall(VENDOR_PRODUCTS, `/vendor/products/${page}`);
+

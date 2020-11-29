@@ -1,16 +1,20 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './EditProducts.css';
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
-import {getVendorProducts} from "../state/apiActions";
+import {getVendorProduct, getVendorProducts} from "../state/apiActions";
 import { Link } from "react-router-dom";
 import Quantity from "../components/Quantity";
 import Paginator from "../components/Paginator";
 import Breadcrumb from "../components/Breadcrumb";
+import {deleteProduct, updateInventory} from "../api/api";
 
 function EditProducts(props) {
     const dispatch = useDispatch();
     const curPage = Number(props.match.params.page);
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+    const [del, setDel] = useState(false);
 
     const productsVendor = useSelector(state => state.productsVendor);
     const { loading: isLoadingProducts, errorProducts, data } = productsVendor;
@@ -18,11 +22,9 @@ function EditProducts(props) {
     const products = data ? data.products : [];
     const pages = data ? data.pages : 0;
 
-    console.log('curPage', curPage)
-
     useEffect(() => {
         dispatch(getVendorProducts( curPage));
-    }, [dispatch, 'shop', curPage]);
+    }, [dispatch, curPage, del]);
 
     const list = [];
     let showBreadcrumb = false;
@@ -68,6 +70,39 @@ function EditProducts(props) {
 
     const handleCreate = () => {
         history.push(`/dashboard/createproduct`);
+    }
+
+    const handleSubBtn = async (id, inventory) => {
+        if ((inventory - 1) >= 0) {
+            try {
+                const data = await updateInventory(id, inventory - 1);
+                const product = products.find(product => (product._id === id));
+                product.inventory = inventory - 1;
+                setSuccess(data); // to trigger update
+            } catch(error) {
+                setError(error);
+            }
+        }
+    }
+
+    const handlePlusBtn = async (id, inventory) => {
+        try {
+            const data = await updateInventory(id, inventory + 1);
+            const product = products.find(product => (product._id === id));
+            product.inventory = inventory + 1;
+            setSuccess(data); // to trigger update
+        } catch(error) {
+            setError(error);
+        }
+    }
+
+    const handleDelete = async (id) => {
+        try {
+            const success = await deleteProduct(id);
+            setDel(!del); // to trigger update and pull in new products
+        } catch(error) {
+            setError(error);
+        }
     }
 
     return (
@@ -134,9 +169,9 @@ function EditProducts(props) {
                                     <td>
                         <span className="products-table-spinner">
                             <Quantity
-                                value={1}
-                                onSubBtn={() => {}}
-                                onPlusBtn={() => {}}
+                                value={inventory}
+                                onSubBtn={() => handleSubBtn(_id, inventory)}
+                                onPlusBtn={() => handlePlusBtn(_id, inventory)}
                             />
                         </span>
                                     </td>
@@ -146,7 +181,13 @@ function EditProducts(props) {
                                         </Link>
                                     </td>
                                     <td>
-                                        <span className="products-table-link" >Delete</span>
+                                        <button
+                                            className="products-table-link span-btn"
+                                            onClick={e => handleDelete(_id)}
+                                            type="button"
+                                        >
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>);
                         })

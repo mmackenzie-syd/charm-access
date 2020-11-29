@@ -5,4 +5,3 @@ export const PRODUCT = 'PRODUCT';
 export const ARRIVALS = 'ARRIVALS';
 export const VENDOR_PRODUCTS = 'VENDOR_PRODUCTS';
 export const VENDOR_PRODUCT = 'VENDOR_PRODUCT';
-

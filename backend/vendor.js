@@ -35,6 +35,31 @@ vendor.get('/product/:id',  expressAsyncHandler(async (req, res) => {
     }
 }));
 
+vendor.put('/product/inventory/:id', expressAsyncHandler(async (req, res) => {
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
+    if (product) {
+        product.inventory = req.body.inventory;
+        const updatedProduct = product.save();
+        res.send({ message: 'Product Updated', product: updatedProduct});
+    } else {
+        res.status(404).send({ message: 'Product Not Found'});
+    }
+}));
+
+
+vendor.delete('/product/:id', expressAsyncHandler(async (req, res) => {
+    const productId = req.params.id;
+
+    const product = await Product.findById(productId);
+    if (product) {
+        const deletedProduct = await product.remove();
+        res.send({ message: 'Product Deleted', product: deletedProduct});
+    } else {
+        res.status(404).send({ message: 'Product Not Found'});
+    }
+}));
+
 vendor.get('/products/:page',  expressAsyncHandler(async (req, res) => {
     // paginate
     const { page, category } = req.params;
