@@ -16,22 +16,23 @@ function EditProducts(props) {
     // toggle to re-render state
     const [updateState, setUpdateState] = useState(false);
     // toggle to pull in data
-    const [updateData, setUpdateData] = useState(false);
     const [data, setData] = useState([])
 
     const products = data ? data.products : [];
     const pages = data ? data.pages : 0;
 
+    const init = async () => {
+        try {
+            const { data } = await getProducts(curPage);
+            setData(data);
+        } catch(error) {
+            setError(error);
+        }
+    };
+
     useEffect(() => {
-        (async () => {
-            try {
-                const { data } = await getProducts(curPage);
-                setData(data);
-            } catch(error) {
-                setError(error);
-            }
-        })();
-    }, [dispatch, curPage, updateData]);
+        init();
+    }, [dispatch, curPage]);
 
     let list = [];
     let showBreadcrumb = false;
@@ -89,8 +90,13 @@ function EditProducts(props) {
 
     const handleDelete = async (id) => {
         try {
-            const response = await deleteProduct(id);
-            setUpdateData(!updateData); // to trigger update and pull in new products
+            const { data } = await deleteProduct(id);
+            const { pages } = data;
+            if (curPage > Number(pages)) {
+                history.push('/dashboard/products/1'); // go back to first page if deleted all on this page
+            } else {
+                init();
+            }
         } catch(error) {
             setError(error);
         }

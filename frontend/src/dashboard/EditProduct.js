@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import './EditProduct.css';
 import LeftArrowIcon from "../icons/LeftArrowIcon";
