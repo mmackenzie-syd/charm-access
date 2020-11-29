@@ -7,45 +7,40 @@ import { Link } from "react-router-dom";
 import Quantity from "../components/Quantity";
 import Paginator from "../components/Paginator";
 import Breadcrumb from "../components/Breadcrumb";
-import {deleteProduct, updateInventory} from "../api/api";
+import {deleteProduct, getProducts, updateInventory} from "../api/api";
 
 function EditProducts(props) {
     const dispatch = useDispatch();
     const curPage = Number(props.match.params.page);
     const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(null);
-    const [del, setDel] = useState(false);
-
-    const productsVendor = useSelector(state => state.productsVendor);
-    const { loading: isLoadingProducts, errorProducts, data } = productsVendor;
+    // toggle to re-render state
+    const [updateState, setUpdateState] = useState(false);
+    // toggle to pull in data
+    const [updateData, setUpdateData] = useState(false);
+    const [data, setData] = useState([])
 
     const products = data ? data.products : [];
     const pages = data ? data.pages : 0;
 
     useEffect(() => {
-        dispatch(getVendorProducts( curPage));
-    }, [dispatch, curPage, del]);
+        (async () => {
+            try {
+                const { data } = await getProducts(curPage);
+                setData(data);
+            } catch(error) {
+                setError(error);
+            }
+        })();
+    }, [dispatch, curPage, updateData]);
 
-    const list = [];
+    let list = [];
     let showBreadcrumb = false;
 
     if (curPage) {
-        list.push({
-            name: 'Home Page',
-            url: '/'
-        });
-        list.push({
-            name: 'dashboard',
-            url: ''
-        });
-        list.push({
-            name: 'products',
-            url: ''
-        });
-        list.push({
-            name: curPage,
-            url: ''
-        });
+        list = [{ name: 'Home Page', url: '/' },
+                { name: 'dashboard', url: '' },
+                { name: 'products', url: '' },
+                { name: curPage, url: '' }];
         showBreadcrumb = true;
     }
     const url=`/dashboard/products`;
@@ -68,17 +63,13 @@ function EditProducts(props) {
         }
     }
 
-    const handleCreate = () => {
-        history.push(`/dashboard/createproduct`);
-    }
-
     const handleSubBtn = async (id, inventory) => {
         if ((inventory - 1) >= 0) {
             try {
-                const data = await updateInventory(id, inventory - 1);
+                const response = await updateInventory(id, inventory - 1);
                 const product = products.find(product => (product._id === id));
                 product.inventory = inventory - 1;
-                setSuccess(data); // to trigger update
+                setUpdateState(!updateState); // to trigger update
             } catch(error) {
                 setError(error);
             }
@@ -87,10 +78,10 @@ function EditProducts(props) {
 
     const handlePlusBtn = async (id, inventory) => {
         try {
-            const data = await updateInventory(id, inventory + 1);
+            const response = await updateInventory(id, inventory + 1);
             const product = products.find(product => (product._id === id));
             product.inventory = inventory + 1;
-            setSuccess(data); // to trigger update
+            setUpdateState(!updateState); // to trigger update
         } catch(error) {
             setError(error);
         }
@@ -98,8 +89,8 @@ function EditProducts(props) {
 
     const handleDelete = async (id) => {
         try {
-            const success = await deleteProduct(id);
-            setDel(!del); // to trigger update and pull in new products
+            const response = await deleteProduct(id);
+            setUpdateData(!updateData); // to trigger update and pull in new products
         } catch(error) {
             setError(error);
         }
@@ -210,9 +201,9 @@ function EditProducts(props) {
                     <button
                         className="col-3 save-btn margin-left-1"
                         type="button"
-                        onClick={handleCreate}
+                        onClick={() => history.push('/dashboard/createproduct')}
                     >
-                        Create
+                        Add Product
                     </button>
                 </div>
             </section>

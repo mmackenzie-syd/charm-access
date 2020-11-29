@@ -4,8 +4,6 @@ import {
     PRODUCT,
     BY_CATEGORY,
     ARRIVALS,
-    VENDOR_PRODUCT,
-    VENDOR_PRODUCTS
 } from './apiConstants'
 
 const apiReducer = (name) => (state = {}, action) => {
@@ -26,7 +24,3 @@ export const bycategoryReducer = apiReducer(BY_CATEGORY);
 export const arrivalsReducer = apiReducer(ARRIVALS);
 export const productReducer = apiReducer(PRODUCT);
 export const productsReducer = apiReducer(PRODUCTS);
-
-export const vendorProductReducer = apiReducer(VENDOR_PRODUCT);
-export const vendorProductsReducer = apiReducer(VENDOR_PRODUCTS);
-

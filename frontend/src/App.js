@@ -8,7 +8,7 @@ import Products from "./screens/Products";
 import Shipping from "./screens/Shipping";
 import Product from "./screens/Product";
 import Cart from "./screens/Cart";
-import {getCategories, getProducts} from "./state/apiActions";
+import {getCategoriesState, getProductsState} from "./state/apiActions";
 import {useDispatch} from "react-redux";
 import {ModalProvider} from "./context/modalContext";
 import ScrollToTop from "./components/ScrollToTop";
@@ -19,8 +19,8 @@ import EditProduct from "./dashboard/EditProduct";
 function App() {
     // preload
     const dispatch = useDispatch();
-    dispatch(getCategories());
-    dispatch(getProducts('shop', 1))
+    dispatch(getCategoriesState());
+    dispatch(getProductsState('shop', 1))
     return (
         <BrowserRouter>
             <ScrollToTop>

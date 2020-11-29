@@ -7,7 +7,7 @@ import Paginator from "../components/Paginator";
 import placeholder from './placeholder.png';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import { getProducts } from "../state/apiActions";
+import {getProductsState} from "../state/apiActions";
 import Message from "../components/Message";
 
 function Products(props) {
@@ -25,7 +25,7 @@ function Products(props) {
     let history = useHistory();
 
     useEffect(() => {
-        dispatch(getProducts(categorySlug, curPage));
+        dispatch(getProductsState(categorySlug, curPage));
     }, [dispatch, categorySlug, curPage]);
 
     const list = [];

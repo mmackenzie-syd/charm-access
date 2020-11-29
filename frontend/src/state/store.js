@@ -6,8 +6,6 @@ import {
     productReducer,
     productsReducer,
     arrivalsReducer,
-    vendorProductReducer,
-    vendorProductsReducer,
 } from "./apiReducers";
 import { cartReducer } from "./cartReducer";
 
@@ -21,8 +19,6 @@ const reducer = combineReducers({
     cart: cartReducer,
     bycategoryApi: bycategoryReducer,
     arrivalsApi: arrivalsReducer,
-    productVendor: vendorProductReducer,
-    productsVendor: vendorProductsReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

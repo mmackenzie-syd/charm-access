@@ -8,7 +8,7 @@ import Slider from "../components/Slider";
 import CategoriesSlide from "../components/CategoriesSlide";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import {useDispatch, useSelector} from "react-redux";
-import {getArrivals, getByCategory, getProducts} from "../state/apiActions";
+import {getArrivals, getByCategory} from "../state/apiActions";
 
 const images = [
     {

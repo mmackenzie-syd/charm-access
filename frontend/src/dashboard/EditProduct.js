@@ -1,62 +1,60 @@
 import React, {Fragment, useEffect, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import './EditProduct.css';
-import Message from "../components/Message";
-import Loading from "../components/Loading";
-import Breadcrumb from "../components/Breadcrumb";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
-import Selector from "../components/Selector";
-import ArrivalsSlide from "../components/ArrivalsSlide";
-import {useDispatch, useSelector} from "react-redux";
-import {getProduct, getVendorProduct} from "../state/apiActions";
+import {useSelector} from "react-redux";
 import Quantity from "../components/Quantity";
-import {updateCart} from "../state/cartActions";
 import PlusIcon from "../icons/PlusIcon";
+import {getProduct} from "../api/api";
 
 function EditProduct(props) {
-    const dispatch = useDispatch();
+    const history = useHistory();
     const id = props.match.params.id;
-    const categoriesApi = useSelector(state => state.categoriesApi);
-    const productVendor = useSelector(state => state.productVendor);
-    const { loading, error, data: product } = productVendor;
-    const { data: categories } = categoriesApi;
+    const { data: categories } = useSelector(state => state.categoriesApi);
 
-    const [qty, setQty] = useState(0);
+    const [inventory, setInventory] = useState(0);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('/images/largeplaceholder.png');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!product && id) {
-            dispatch(getVendorProduct(id));
-        }
-        if (product && id) {
-            const {
-                name,
-                image,
-                description,
-                price,
-                inventory,
-                category
-            } = product;
-            setName(name);
-            setImage(image);
-            setDescription(description);
-            setPrice(price);
-            setQty(Number(inventory));
-            setCategory(category);
-        }
-    }, [dispatch, id, product]);
+        (async () => {
+            if (!id) {
+                return;
+            }
+            try {
+                const { data } = await getProduct(id);
+                const {
+                        name,
+                        image,
+                        description,
+                        price,
+                        inventory,
+                        category
+                    } = data;
+                    setName(name);
+                    setImage(image);
+                    setDescription(description);
+                    setPrice(price);
+                    setInventory(Number(inventory));
+                    setCategory(category);
+            } catch(error) {
+                setError(error);
+            }
+        })();
+        }, [id]);
 
-    const onPlusBtn = (qty) => {
-        setQty(Number(qty )+ 1);
+    const onPlusBtn = (inventory) => {
+        setInventory(Number(inventory )+ 1);
     }
 
-    const onSubBtn = (qty) => {
-        if ((qty - 1) >= 0) {
-            setQty(qty - 1);
+    const onSubBtn = (inventory) => {
+        if ((inventory - 1) >= 0) {
+            setInventory(inventory - 1);
         }
     }
 
@@ -137,9 +135,9 @@ function EditProduct(props) {
                                 <label className="margin-left-2">Inventory</label>
                                 <div className="">
                                     <Quantity
-                                        value={qty}
-                                        onSubBtn={() => onSubBtn(qty)}
-                                        onPlusBtn={() => onPlusBtn(qty)}
+                                        value={inventory}
+                                        onSubBtn={() => onSubBtn(inventory)}
+                                        onPlusBtn={() => onPlusBtn(inventory)}
                                     />
                                 </div>
 
@@ -160,10 +158,17 @@ function EditProduct(props) {
                         <div className="row">
                             <button
                                 className="cancel-btn btn-full-width"
+                                onClick={() => history.goBack()}
+                                type="button"
                             >
                                 Cancel
                             </button>
-                            <button className="save-btn btn-full-width" type="submit">Save</button>
+                            <button
+                                className="save-btn btn-full-width"
+                                type="submit"
+                            >
+                                Save
+                            </button>
 
                         </div>
                     </div>
