@@ -6,7 +6,7 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import {useSelector} from "react-redux";
 import Quantity from "../components/Quantity";
 import PlusIcon from "../icons/PlusIcon";
-import {getProduct} from "../api/api";
+import {getProduct, updateProduct} from "../api/api";
 
 function EditProduct(props) {
     const history = useHistory();
@@ -17,6 +17,7 @@ function EditProduct(props) {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('/images/largeplaceholder.png');
+    const [thumbnail, setThumbnail] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
     const [error, setError] = useState(null);
@@ -31,6 +32,7 @@ function EditProduct(props) {
                 const {
                         name,
                         image,
+                        thumbnail,
                         description,
                         price,
                         inventory,
@@ -38,6 +40,7 @@ function EditProduct(props) {
                     } = data;
                     setName(name);
                     setImage(image);
+                    setThumbnail(thumbnail);
                     setDescription(description);
                     setPrice(price);
                     setInventory(Number(inventory));
@@ -55,6 +58,26 @@ function EditProduct(props) {
     const onSubBtn = (inventory) => {
         if ((inventory - 1) >= 0) {
             setInventory(inventory - 1);
+        }
+    }
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        const product = {
+            name,
+            image,
+            thumbnail,
+            description,
+            price,
+            inventory,
+            category
+        };
+
+        try {
+            const { data } = await updateProduct(id, product);
+            history.goBack();
+        } catch(error) {
+            setError(error);
         }
     }
 
@@ -80,7 +103,7 @@ function EditProduct(props) {
                         </button>
                     </div>
                 </div>
-                <form className="row top">
+                <form className="row top" onSubmit={submitHandler}>
                     <div className="col-6 product__img-wrap">
                         <img className="product__img" alt={name} src={image}/>
                         <button

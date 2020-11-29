@@ -35,7 +35,7 @@ api.get('/products/arrivals', expressAsyncHandler(async (req, res) => {
     }
 }));
 
-api.get('/products/:id',  expressAsyncHandler(async (req, res) => {
+api.get('/product/:id',  expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id)
     if (product) {
         res.send(product);

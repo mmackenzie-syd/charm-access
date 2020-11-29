@@ -47,6 +47,25 @@ vendor.put('/product/inventory/:id', expressAsyncHandler(async (req, res) => {
     }
 }));
 
+vendor.put('/product/:id', expressAsyncHandler(async (req, res) => {
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
+    if (product) {
+        product.inventory = req.body.inventory;
+        product.price = req.body.price;
+        product.name = req.body.name;
+        product.category = req.body.category;
+        product.description = req.body.description;
+        product.image = req.body.image;
+        product.thumbnail = req.body.thumbnail;
+        const updatedProduct = product.save();
+        res.send({ message: 'Product Updated', product: updatedProduct});
+    } else {
+        res.status(404).send({ message: 'Product Not Found'});
+    }
+}));
+
+
 
 vendor.delete('/product/:id', expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
