@@ -112,7 +112,7 @@
     text-decoration: underline;
 }
 
-.plus-btn {
+.categories-btn {
     width: 6rem;
     height: 4rem;
     border: 0;
@@ -121,7 +121,12 @@
     margin-left: .6rem;
 }
 
-.create-category {
+.categories-btn:hover {
+    opacity: 60%;
+    cursor: pointer;
+}
+
+.categories-icon {
     width: 1.2rem;
     height: 1.2rem;
 }

@@ -3,10 +3,11 @@ import './EditCategories.css';
 import PlusIcon from "../icons/PlusIcon";
 import {getCategories, saveCategories} from "../api/api";
 import {useHistory} from "react-router";
+import CrossIcon from "../icons/CrossIcon";
 
 function EditCategories() {
     const history = useHistory();
-    const [category, setCategory] = useState({name: '', slug: ''})
+    const [category, setCategory] = useState('')
     const [categories, setCategories] = useState([]);
     const [error, setError] = useState(null);
 
@@ -27,6 +28,19 @@ function EditCategories() {
         newCategories[index] = { name: value, slug  };
         setCategories(newCategories);
     };
+
+    const handleAddCategory = () => {
+        const slug = category.replace(/\s/g,'').toLowerCase();
+        const newCategories = [...categories]
+        newCategories.push({ name: category, slug  });
+        setCategories(newCategories);
+        setCategory('')
+    }
+
+    const handleDelete = (name) => {
+        const newCategories = categories.filter(category => (category.name !== name));
+        setCategories(newCategories);
+    }
 
     const handleSave = async () => {
         try {
@@ -52,17 +66,18 @@ function EditCategories() {
                         type="text"
                         className="product-article-control"
                         placeholder="Enter category..."
-                        value={category.name}
+                        value={category}
                         onChange={e => setCategory(e.target.value)}
                     />
                     <button
-                        className="plus-btn"
+                        className="categories-btn"
                         type="button"
+                        onClick={handleAddCategory}
                     >
                         <PlusIcon
                             width={'1.2rem'}
                             height={'1.2rem'}
-                            className={'create-category'}
+                            className={'categories-icon'}
                         />
                     </button>
                 </div>
@@ -79,13 +94,14 @@ function EditCategories() {
                                     onChange={e => handleCategories(index, e.target.value)}
                                 />
                                 <button
-                                    className="plus-btn"
+                                    className="categories-btn"
                                     type="button"
+                                    onClick={e => handleDelete(item.name)}
                                 >
-                                    <PlusIcon
-                                        width={'1.2rem'}
-                                        height={'1.2rem'}
-                                        className={'create-category'}
+                                    <CrossIcon
+                                        width={'1rem'}
+                                        height={'1rem'}
+                                        className={'categories-icon'}
                                     />
                                 </button>
                             </li>);
