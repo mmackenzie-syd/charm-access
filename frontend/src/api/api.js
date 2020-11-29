@@ -8,6 +8,10 @@ export const updateProduct = async (id, product) => {
     return Axios.put(`/vendor/product/${id}`, product);
 }
 
+export const createProduct = async (product) => {
+    return Axios.post('/vendor/product', product);
+}
+
 export const deleteProduct = async (id) => {
     return Axios.delete(`/vendor/product/${id}`);
 }

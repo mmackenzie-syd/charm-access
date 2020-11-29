@@ -65,6 +65,20 @@ vendor.put('/product/:id', expressAsyncHandler(async (req, res) => {
     }
 }));
 
+vendor.post('/product', expressAsyncHandler(async (req, res) => {
+    const product = new Product({
+        inventory: req.body.inventory,
+        price: req.body.price,
+        name: req.body.name,
+        category: req.body.category,
+        description: req.body.description,
+        image: req.body.image,
+        thumbnail: req.body.thumbnail,
+    })
+    const createdProduct = await product.save();
+    res.send({ message: 'Product Created', product: createdProduct});
+}));
+
 
 
 vendor.delete('/product/:id', expressAsyncHandler(async (req, res) => {

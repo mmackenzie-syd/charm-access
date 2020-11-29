@@ -6,18 +6,18 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import {useSelector} from "react-redux";
 import Quantity from "../components/Quantity";
 import PlusIcon from "../icons/PlusIcon";
-import {getProduct, updateProduct} from "../api/api";
+import {createProduct, getProduct, updateProduct} from "../api/api";
 
 function EditProduct(props) {
     const history = useHistory();
     const id = props.match.params.id;
     const { data: categories } = useSelector(state => state.categoriesApi);
 
-    const [inventory, setInventory] = useState(0);
+    const [inventory, setInventory] = useState(1);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('/images/largeplaceholder.png');
-    const [thumbnail, setThumbnail] = useState('');
+    const [thumbnail, setThumbnail] = useState('/images/placeholder.png');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
     const [error, setError] = useState(null);
@@ -72,12 +72,20 @@ function EditProduct(props) {
             inventory,
             category
         };
-
-        try {
-            const { data } = await updateProduct(id, product);
-            history.goBack();
-        } catch(error) {
-            setError(error);
+        if (id) {
+            try {
+                const { data } = await updateProduct(id, product);
+                history.goBack();
+            } catch(error) {
+                setError(error);
+            }
+        } else {
+            try {
+                const { data } = await createProduct(product);
+                history.goBack();
+            } catch(error) {
+                setError(error);
+            }
         }
     }
 
