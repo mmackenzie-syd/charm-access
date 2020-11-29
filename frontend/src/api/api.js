@@ -23,3 +23,11 @@ export const getProduct = async (id) => {
 export const getProducts = async (page) => {
     return Axios.get(`/vendor/products/${page}`);
 }
+
+export const getCategories = async () => {
+    return Axios.get('/vendor/categories');
+}
+
+export const saveCategories = async (categories) => {
+    return Axios.post('/vendor/categories', { categories });
+}

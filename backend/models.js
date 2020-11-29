@@ -3,8 +3,6 @@ const { model, Schema } = require('mongoose');
 const Category = model("Category", new Schema({
     name: {type: String, required: true, unique: true},
     slug: {type: String, required: true, unique: true},
-}, {
-    timestamps: true
 }));
 
 const Product = model("Product", new Schema({

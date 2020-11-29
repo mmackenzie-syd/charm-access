@@ -200,7 +200,6 @@ function EditProduct(props) {
                             >
                                 Save
                             </button>
-
                         </div>
                     </div>
                 </form>

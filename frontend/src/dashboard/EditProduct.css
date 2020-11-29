@@ -152,6 +152,7 @@ label {
     background-color: #ccc;
     text-transform: uppercase;
     color: #4f4f4f;
+    min-width: 15rem;
 }
 
 .cancel-btn {

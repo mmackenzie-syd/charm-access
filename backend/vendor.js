@@ -7,12 +7,19 @@ const vendor = express.Router();
 
 const perPage = 4;
 
-vendor.get('/categories/',  expressAsyncHandler(async (req, res) => {
+vendor.get('/categories',  expressAsyncHandler(async (req, res) => {
     const categories = await Category.find({});
     res.send(categories);
 }));
 
 
+vendor.post('/categories', expressAsyncHandler(async (req, res) => {
+    await Category.remove({});
+    const createdCategories = await Category.insertMany(req.body.categories);
+    res.send({ createdCategories });
+}));
+
+/* seed data */
 vendor.get('categories/seed', expressAsyncHandler(async (req, res) => {
         await Category.remove({});
         const createdCategories = await Category.insertMany(data);
@@ -20,13 +27,13 @@ vendor.get('categories/seed', expressAsyncHandler(async (req, res) => {
     })
 );
 
-
 vendor.get('/products/seed', expressAsyncHandler(async (req, res) => {
         await Product.remove({});
         const createdProducts = await Product.insertMany(data);
         res.send({ createdProducts });
     })
 );
+/* end seed data */
 
 vendor.get('/product/:id',  expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id)
@@ -80,8 +87,6 @@ vendor.post('/product', expressAsyncHandler(async (req, res) => {
     const createdProduct = await product.save();
     res.send({ message: 'Product Created', product: createdProduct});
 }));
-
-
 
 vendor.delete('/product/:id', expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;

@@ -24,7 +24,7 @@ const Product = model("Product", new Schema({
 // exec returns a promise
 const vendor = express.Router();
 
-vendor.get('/categories/',  expressAsyncHandler(async (req, res) => {
+vendor.get('/categories',  expressAsyncHandler(async (req, res) => {
     const categories = await Category.find({});
     res.send(categories);
 }));
