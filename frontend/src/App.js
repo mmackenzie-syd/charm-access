@@ -15,6 +15,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import EditProducts from "./dashboard/EditProducts";
 import EditCategories from "./dashboard/EditCategories";
 import EditProduct from "./dashboard/EditProduct";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
     // preload
@@ -35,10 +36,22 @@ function App() {
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />
                         {/* Protected routes */}
-                        <Route path="/dashboard/products/:page" component={EditProducts} />
-                        <Route path="/dashboard/product/:id" component={EditProduct} />
-                        <Route path="/dashboard/createproduct" component={EditProduct} />
-                        <Route path="/dashboard/categories" component={EditCategories} />
+                        <ProtectedRoute
+                            path="/dashboard/products/:page"
+                            component={EditProducts}
+                        />
+                        <ProtectedRoute
+                            path="/dashboard/product/:id"
+                            component={EditProduct}
+                        />
+                        <ProtectedRoute
+                            path="/dashboard/createproduct"
+                            component={EditProduct}
+                        />
+                        <ProtectedRoute
+                            path="/dashboard/categories"
+                            component={EditCategories}
+                        />
                     </div>
                     <Footer />
                 </ModalProvider>

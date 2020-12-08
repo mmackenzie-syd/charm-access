@@ -8,6 +8,7 @@ import {
     arrivalsReducer,
 } from "./apiReducers";
 import { cartReducer } from "./cartReducer";
+import { userReducer } from "./userReducer";
 
 const initialState = {
 };
@@ -19,6 +20,7 @@ const reducer = combineReducers({
     cart: cartReducer,
     bycategoryApi: bycategoryReducer,
     arrivalsApi: arrivalsReducer,
+    userApi: userReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

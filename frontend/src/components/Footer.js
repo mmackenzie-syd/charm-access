@@ -4,9 +4,20 @@ import PhoneIcon from "../icons/PhoneIcon";
 import LoginIcon from "../icons/LoginIcon";
 import {ModalContext} from "../context/modalContext";
 import Login from "./Login";
+import LogoutIcon from "../icons/LogoutIcon";
+import { useDispatch, useSelector } from "react-redux";
+import { signout } from "../state/userActions";
 
 function Footer() {
+    const dispatch = useDispatch();
     let { handleModal } = React.useContext(ModalContext);
+    const userApi = useSelector(state => state.userApi);
+    const { name } = userApi;
+    const handleLogout = () => {
+        console.log('cicked')
+        dispatch(signout());
+    }
+
     return (
         <footer >
             <div className="margin-bottom-3 social-media">
@@ -28,11 +39,17 @@ function Footer() {
                 </div>
             </div>
             <div className="row center vendor">
-                <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor Login </div>
+                <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor { name ? 'Logout' : 'Login'} </div>
                 <div className="vendor-login-wrap">
-                    <button className="login-btn" onClick={() => handleModal(<Login />)}>
-                        <LoginIcon width={'2rem'} height={'2rem'} />
-                    </button>
+                    {
+                        name
+                            ? <button className="login-btn" onClick={() => handleLogout()}>
+                                <LogoutIcon width={'2.8rem'} height={'2.8rem'} />
+                              </button>
+                            : <button className="login-btn" onClick={() => handleModal(<Login />)}>
+                                <LoginIcon width={'2.8rem'} height={'2.8rem'} />
+                              </button>
+                    }
                 </div>
             </div>
         </footer>

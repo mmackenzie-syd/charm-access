@@ -25,6 +25,9 @@ function Header() {
         }, 0);
     }
 
+    const userApi = useSelector(state => state.userApi);
+    const { name } = userApi;
+
     return (
         <div className="sticky">
             <header className="site row">
@@ -54,17 +57,18 @@ function Header() {
                         </li>
                         <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
                         <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
-
-                        <li className="site__nav-item dropdown">
-                            <div className="dropbtn">
-                                <NavLink to="#" className={isShopActive}>Dashboard</NavLink>
-                            </div>
-                            <div className="dropdown-content">
-                                <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
-                                <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
-                            </div>
-                        </li>
-
+                        {
+                            name &&
+                            <li className="site__nav-item dropdown">
+                                <div className="dropbtn">
+                                    <NavLink to="#" className={isShopActive}>Dashboard</NavLink>
+                                </div>
+                                <div className="dropdown-content">
+                                    <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
+                                    <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div className="row right" style={{marginRight: '-.5rem'}}>
