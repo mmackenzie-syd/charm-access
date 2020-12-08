@@ -1,0 +1,29 @@
+{
+  "name": "charm-access",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch backend --exec node --experimental-modules app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmackenzie-syd/charm-access.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmackenzie-syd/charm-access/issues"
+  },
+  "homepage": "https://github.com/mmackenzie-syd/charm-access#readme",
+  "dependencies": {
+    "aws-serverless-express": "^3.3.8",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.10.16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

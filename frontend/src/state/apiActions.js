@@ -13,10 +13,12 @@ const apiCall = (name, url) => async (dispatch) => {
     }
 }
 
-export const getCategoriesState = () => apiCall(CATEGORIES, '/api/categories');
-export const getByCategory = () => apiCall(BY_CATEGORY, '/api/categories/bycategory');
-export const getArrivals = () => apiCall(ARRIVALS, '/api/products/arrivals');
-export const getProductState = (id) => apiCall(PRODUCT, `/api/product/${id}`);
-export const getProductsState = (category, page) => apiCall(PRODUCTS, `/api/products/${category}/${page}`);
+const uri = 'http://localhost:4000';
+
+export const getCategoriesState = () => apiCall(CATEGORIES, uri + '/api/categories');
+export const getByCategory = () => apiCall(BY_CATEGORY, uri + '/api/categories/bycategory');
+export const getArrivals = () => apiCall(ARRIVALS, uri + '/api/products/arrivals');
+export const getProductState = (id) => apiCall(PRODUCT, uri + `/api/product/${id}`);
+export const getProductsState = (category, page) => apiCall(PRODUCTS, uri + `/api/products/${category}/${page}`);
 
 

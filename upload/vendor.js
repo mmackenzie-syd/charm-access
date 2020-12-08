@@ -1,6 +1,8 @@
 const express = require('express');
 const expressAsyncHandler = require('express-async-handler');
 const { Category, Product } = require('./models.js')
+const categories = require('./data/categories');
+const products = require('./data/products');
 
 // exec returns a promise
 const vendor = express.Router();
@@ -20,16 +22,16 @@ vendor.post('/categories', expressAsyncHandler(async (req, res) => {
 }));
 
 /* seed data */
-vendor.get('categories/seed', expressAsyncHandler(async (req, res) => {
+vendor.get('/categories/seed', expressAsyncHandler(async (req, res) => {
         await Category.remove({});
-        const createdCategories = await Category.insertMany(data);
+        const createdCategories = await Category.insertMany(categories);
         res.send({ createdCategories });
     })
 );
 
 vendor.get('/products/seed', expressAsyncHandler(async (req, res) => {
         await Product.remove({});
-        const createdProducts = await Product.insertMany(data);
+        const createdProducts = await Product.insertMany(products);
         res.send({ createdProducts });
     })
 );
