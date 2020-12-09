@@ -1,7 +1,7 @@
 const express = require('express');
 const expressAsyncHandler = require('express-async-handler');
 
-const { model, Schema } = require('mongoose');
+const { model, Schema, Types } = require('mongoose');
 
 const Category = model("Category", new Schema({
     name: {type: String, required: true, unique: true},
@@ -77,6 +77,26 @@ api.get('/products/:category/:page',  expressAsyncHandler(async (req, res) => {
         // exec returns a promise from the chain
         const products = await Product.find(query).skip(perPage * (page - 1)).limit(perPage).exec();
         res.json({ products, pages });
+    }
+}));
+
+api.get('/product/next/:id',  expressAsyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const product = await Product.find({_id: {$gt: Types.ObjectId(id) }});
+    if (product && product[0]) {
+        res.send(product[0]._id);
+    } else {
+        res.send(-1);
+    }
+}));
+
+api.get('/product/previous/:id',  expressAsyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const product = await Product.find({_id: {$lt: Types.ObjectId(id) }});
+    if (product && product[0]) {
+        res.send(product[0]._id);
+    } else {
+        res.send(-1);
     }
 }));
 

@@ -6,10 +6,13 @@ import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
-import {getProductState} from "../state/apiActions";
+import {getNextProductState, getProductState} from "../state/apiActions";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import Message from "../components/Message";
 import {addToCart} from "../state/cartActions";
+import {getProduct} from "../api/api";
+import {getNextId, getPreviousId} from "../state/api";
+import {useHistory} from "react-router";
 
 const arrivalsData = [
     {
@@ -47,9 +50,12 @@ const arrivalsData = [
 ];
 
 function Product(props) {
+    let history = useHistory();
     const dispatch = useDispatch();
     const id = props.match.params.id;
     const [qty, setQty] = useState(1);
+    const [nextDisabled, setNextDisabled] = useState(false);
+    const [previousDisabled, setPreviousDisabled] = useState(false);
     const categoriesApi = useSelector(state => state.categoriesApi);
     const productsApi = useSelector(state => state.productsApi);
     const productApi = useSelector(state => state.productApi);
@@ -99,9 +105,28 @@ function Product(props) {
     }
 
     const handleAddToCart = () => {
-
         dispatch(addToCart(id, product, qty));
         props.history.goBack();
+    }
+
+    const getNext = async () => {
+        const { data } = await getNextId(id);
+        if (data !== -1) {
+            history.push(`/product/${data}`);
+            setPreviousDisabled(false);
+        } else {
+            setNextDisabled(true);
+        }
+    }
+
+    const getPrevious = async () => {
+        const { data } = await getPreviousId(id);
+        if (data !== -1) {
+            history.push(`/product/${data}`);
+            setNextDisabled(false);
+        } else {
+            setPreviousDisabled(true);
+        }
     }
 
     return (
@@ -121,14 +146,14 @@ function Product(props) {
                         <div className="row  margin-bottom-1">
                             <h2 className="product__title">{product.name}</h2>
                             <div>
-                                <button className={`page-btn`}>
+                                <button className={`page-btn`} onClick={getPrevious} disabled={previousDisabled}>
                                     <LeftArrowIcon
                                         width={'1.2rem'}
                                         height={'1.2rem'}
                                         offset={'.3rem'}
                                     />
                                 </button>
-                                <button className={`page-btn`}>
+                                <button className={`page-btn`} onClick={getNext} disabled={nextDisabled}>
                                     <RightArrowIcon
                                         width={'1.2rem'}
                                         height={'1.2rem'}

@@ -14,7 +14,6 @@ function Footer() {
     const userApi = useSelector(state => state.userApi);
     const { name } = userApi;
     const handleLogout = () => {
-        console.log('cicked')
         dispatch(signout());
     }
 

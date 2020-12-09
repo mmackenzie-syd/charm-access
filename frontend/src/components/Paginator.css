@@ -37,3 +37,7 @@
 .page-btn:hover {
     opacity: 60%;
 }
+
+.page-btn:disabled {
+    opacity: 60%;
+}
