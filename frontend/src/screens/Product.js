@@ -57,15 +57,19 @@ function Product(props) {
     const [nextDisabled, setNextDisabled] = useState(false);
     const [previousDisabled, setPreviousDisabled] = useState(false);
     const categoriesApi = useSelector(state => state.categoriesApi);
-    const productsApi = useSelector(state => state.productsApi);
     const productApi = useSelector(state => state.productApi);
     const { loading, error, data } = productApi;
     const { categories } = categoriesApi;
-    const products = (productsApi && productsApi.data) ? productsApi.data.products : [];
 
-    let existingProduct = products.find(product => (product._id === id));
+    let product;
+    let products;
+    if (data && data.product) {
+        product = data.product;
+    }
 
-    const product = (!existingProduct && data) ? data : existingProduct;
+    if (data && data.products) {
+        products = data.products;
+    }
 
     let category;
     let categorySlug;
@@ -75,10 +79,8 @@ function Product(props) {
     }
 
     useEffect(() => {
-        if (!existingProduct) {
-            dispatch(getProductState(id));
-        }
-    }, [dispatch, id, existingProduct]);
+        dispatch(getProductState(id));
+    }, [dispatch, id]);
 
     const onQty = (value) => {
        setQty(value);
@@ -191,10 +193,14 @@ function Product(props) {
                         </div>
                     </div>
                 </section>
-                <section className="arrivals margin-top-5">
-                    <h3>Similar Items</h3>
-                    <ArrivalsSlide items={arrivalsData} />
-                </section>
+                    {
+                        products && (products.length === 4)
+                            ? <section className="arrivals margin-top-5">
+                                <h3>Similar Items</h3>
+                                <ArrivalsSlide items={products} />
+                              </section>
+                            : <div className="margin-bottom-5"></div>
+                    }
                 </>
             }
         </main>

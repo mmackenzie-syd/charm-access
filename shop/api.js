@@ -54,9 +54,17 @@ api.get('/products/arrivals', expressAsyncHandler(async (req, res) => {
 }));
 
 api.get('/product/:id',  expressAsyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findById(req.params.id);
+    const category = product.category;
+    const id = product._id;
+    const query = (category === 'shop')
+        ? {}
+        : { category: { $eq: category }, _id: {$ne: Types.ObjectId(id) } };
+    // exec returns a promise from the chain
+    const products = await Product.find(query).limit(4).exec();
+
     if (product) {
-        res.send(product);
+        res.send({ product, products });
     } else {
         res.status(404).send({ message: 'Product Not Found'});
     }
@@ -80,24 +88,25 @@ api.get('/products/:category/:page',  expressAsyncHandler(async (req, res) => {
     }
 }));
 
-api.get('/product/next/:id',  expressAsyncHandler(async (req, res) => {
+api.get('/product/next/:id',  async (req, res) => {
     const id = req.params.id;
-    const product = await Product.find({_id: {$gt: Types.ObjectId(id) }});
+    const product = await Product.find({_id: {$gt: Types.ObjectId(id) }}).sort({_id: 1 }).limit(1);
     if (product && product[0]) {
         res.send(product[0]._id);
     } else {
         res.send(-1);
     }
-}));
+});
 
-api.get('/product/previous/:id',  expressAsyncHandler(async (req, res) => {
+api.get('/product/previous/:id',  async (req, res) => {
     const id = req.params.id;
-    const product = await Product.find({_id: {$lt: Types.ObjectId(id) }});
+    const product = await Product.find({_id: {$lt: Types.ObjectId(id) }}).sort({_id: -1 }).limit(1);
+    console.log('prev', product)
     if (product && product[0]) {
         res.send(product[0]._id);
     } else {
         res.send(-1);
     }
-}));
+});
 
 module.exports = api;

@@ -7,6 +7,7 @@ import {useSelector} from "react-redux";
 import Quantity from "../components/Quantity";
 import PlusIcon from "../icons/PlusIcon";
 import {createProduct, getProduct, updateProduct} from "../api/api";
+import {getNextId, getPreviousId} from "../state/api";
 
 function EditProduct(props) {
     const history = useHistory();
@@ -21,6 +22,8 @@ function EditProduct(props) {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
     const [error, setError] = useState(null);
+    const [nextDisabled, setNextDisabled] = useState(false);
+    const [previousDisabled, setPreviousDisabled] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -61,6 +64,28 @@ function EditProduct(props) {
         }
     }
 
+    const getNext = async () => {
+        console.log('data', id)
+        const data = await getNextId(id);
+        console.log('data', data)
+        if (data !== -1) {
+            history.push(`/product/${data}`);
+            setPreviousDisabled(false);
+        } else {
+            setNextDisabled(true);
+        }
+    }
+
+    const getPrevious = async () => {
+        const { data } = await getPreviousId(id);
+        if (data !== -1) {
+            history.push(`/product/${data}`);
+            setNextDisabled(false);
+        } else {
+            setPreviousDisabled(true);
+        }
+    }
+
     const submitHandler = async (e) => {
         e.preventDefault();
         const product = {
@@ -95,14 +120,14 @@ function EditProduct(props) {
                 <div className="row margin-top-1 margin-bottom-2" >
                     <h3>{id ? 'Edit' : 'Create'} Product</h3>
                     <div>
-                        <button className={`page-btn`}>
+                        <button className={`page-btn`} onClick={getPrevious} disabled={previousDisabled}>
                             <LeftArrowIcon
                                 width={'1.2rem'}
                                 height={'1.2rem'}
                                 offset={'.3rem'}
                             />
                         </button>
-                        <button className={`page-btn`}>
+                        <button className={`page-btn`} onClick={getNext} disabled={nextDisabled}>
                             <RightArrowIcon
                                 width={'1.2rem'}
                                 height={'1.2rem'}

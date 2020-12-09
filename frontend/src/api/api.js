@@ -33,3 +33,12 @@ export const getCategories = async () => {
 export const saveCategories = async (categories) => {
     return Axios.post(uri + '/api/categories', { categories });
 }
+
+export const getNextId = async (id) => {
+    return Axios.get(uri + `/api/product/next/${id}`);
+}
+
+export const getPreviousId = async (id) => {
+    return Axios.get(uri + `/api/product/previous/${id}`);
+}
+

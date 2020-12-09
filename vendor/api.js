@@ -110,7 +110,6 @@ api.post('/product', expressAsyncHandler(async (req, res) => {
 
 api.delete('/product/:id', expressAsyncHandler(async (req, res) => {
     const productId = req.params.id;
-
     const product = await Product.findById(productId);
     if (product) {
         const deletedProduct = await product.remove();
@@ -139,24 +138,25 @@ api.get('/products/:page',  expressAsyncHandler(async (req, res) => {
 }));
 
 
-api.get('/product/next/:id',  expressAsyncHandler(async (req, res) => {
+api.get('/product/next/:id',  async (req, res) => {
     const id = req.params.id;
-    const product = await Product.find({_id: {$gt: Types.ObjectId(id) }});
+    const product = await Product.find({_id: {$gt: Types.ObjectId(id) }}).sort({_id: 1 }).limit(1);
     if (product && product[0]) {
         res.send(product[0]._id);
     } else {
         res.send(-1);
     }
-}));
+});
 
-api.get('/product/previous/:id',  expressAsyncHandler(async (req, res) => {
+api.get('/product/previous/:id',  async (req, res) => {
     const id = req.params.id;
-    const product = await Product.find({_id: {$lt: Types.ObjectId(id) }});
+    const product = await Product.find({_id: {$lt: Types.ObjectId(id) }}).sort({_id: -1 }).limit(1);
+    console.log('prev', product)
     if (product && product[0]) {
         res.send(product[0]._id);
     } else {
         res.send(-1);
     }
-}));
+});
 
 module.exports = api;
