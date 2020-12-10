@@ -65,11 +65,9 @@ function EditProduct(props) {
     }
 
     const getNext = async () => {
-        console.log('data', id)
-        const data = await getNextId(id);
-        console.log('data', data)
-        if (data !== -1) {
-            history.push(`/product/${data}`);
+        const { data } = await getNextId(id);
+        if (data && data.id !== -1) {
+            history.push(`/product/${data.id}`);
             setPreviousDisabled(false);
         } else {
             setNextDisabled(true);
@@ -78,13 +76,14 @@ function EditProduct(props) {
 
     const getPrevious = async () => {
         const { data } = await getPreviousId(id);
-        if (data !== -1) {
-            history.push(`/product/${data}`);
+        if (data && data.id !== -1) {
+            history.push(`/product/${data.id}`);
             setNextDisabled(false);
         } else {
             setPreviousDisabled(true);
         }
     }
+
 
     const submitHandler = async (e) => {
         e.preventDefault();
