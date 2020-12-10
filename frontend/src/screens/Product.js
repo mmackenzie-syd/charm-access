@@ -14,41 +14,6 @@ import {getProduct} from "../api/api";
 import {getNextId, getPreviousId} from "../state/api";
 import {useHistory} from "react-router";
 
-const arrivalsData = [
-    {
-        _id: '1',
-        name: 'Rose Bouquet Brooch',
-        category: 'brooches',
-        image: '/products/1.jpg',
-        thumbnail: '/products/1_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '2',
-        name: 'Rose Butterfly Brooch',
-        category: 'brooches',
-        image: '/products/2.jpg',
-        thumbnail: '/products/2_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '3',
-        name: 'Single Rose Brooch',
-        category: 'brooches',
-        image: '/products/3.jpg',
-        thumbnail: '/products/3_thb.jpg',
-        price: 120,
-    },
-    {
-        _id: '4',
-        name: 'White Butterfly Brooch',
-        category: 'brooches',
-        image: '/products/4.jpg',
-        thumbnail: '/products/4_thb.jpg',
-        price: 120,
-    },
-];
-
 function Product(props) {
     let history = useHistory();
     const dispatch = useDispatch();
@@ -113,8 +78,8 @@ function Product(props) {
 
     const getNext = async () => {
         const { data } = await getNextId(id);
-        if (data !== -1) {
-            history.push(`/product/${data}`);
+        if (data && data.id !== -1) {
+            history.push(`/product/${data.id}`);
             setPreviousDisabled(false);
         } else {
             setNextDisabled(true);
