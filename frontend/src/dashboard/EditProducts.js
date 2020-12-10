@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import './EditProducts.css';
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
-import {getVendorProduct, getVendorProducts} from "../state/apiActions";
 import { Link } from "react-router-dom";
 import Quantity from "../components/Quantity";
 import Paginator from "../components/Paginator";

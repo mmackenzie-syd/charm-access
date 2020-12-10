@@ -88,8 +88,8 @@ function Product(props) {
 
     const getPrevious = async () => {
         const { data } = await getPreviousId(id);
-        if (data !== -1) {
-            history.push(`/product/${data}`);
+        if (data && data.id !== -1) {
+            history.push(`/product/${data.id}`);
             setNextDisabled(false);
         } else {
             setPreviousDisabled(true);

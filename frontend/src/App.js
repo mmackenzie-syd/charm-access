@@ -16,6 +16,7 @@ import EditProducts from "./dashboard/EditProducts";
 import EditCategories from "./dashboard/EditCategories";
 import EditProduct from "./dashboard/EditProduct";
 import ProtectedRoute from "./ProtectedRoute";
+import ResetPassword from "./dashboard/ResetPassword";
 
 function App() {
     // preload
@@ -51,6 +52,10 @@ function App() {
                         <ProtectedRoute
                             path="/dashboard/categories"
                             component={EditCategories}
+                        />
+                        <ProtectedRoute
+                            path="/dashboard/reset"
+                            component={ResetPassword}
                         />
                     </div>
                     <Footer />

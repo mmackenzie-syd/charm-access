@@ -71,6 +71,10 @@
     z-index: 100;
 }
 
+.dropdown-content-lrg {
+    min-width: 190px;
+}
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
