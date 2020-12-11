@@ -62,6 +62,7 @@ img.avatar {
     border: 1px solid #888;
     width: 80%;
     max-width: 50rem;
+    position: relative;
 }
 
 /* The Close Button (x) */
@@ -89,6 +90,12 @@ img.avatar {
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
+}
+
+.login-loading-icon {
+    position: absolute;
+    left: 40%;
+    top: 35%;
 }
 
 @-webkit-keyframes animatezoom {

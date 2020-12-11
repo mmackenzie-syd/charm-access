@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Login.css';
 import { ModalContext } from "../context/modalContext";
 import { useDispatch, useSelector } from "react-redux";
 import { signin } from "../state/userActions";
+import { useHistory } from "react-router";
 
 function Login() {
     let { handleModal } = React.useContext(ModalContext);
+    let history = useHistory();
 
     const dispatch = useDispatch();
     const [username, setUsername] = useState('');
@@ -13,22 +15,32 @@ function Login() {
 
     const userApi = useSelector(state => state.userApi);
 
-    const { name } = userApi;
+    const { name, reset, loading } = userApi;
 
     const submitHandler = (e) => {
         e.preventDefault(); // so that form does not refresh when we click submit
         dispatch(signin(username, password));
-        handleModal('');
     }
 
-    // useEffect(() => {
-    //     if (userInfo) {
-    //         props.history.push(redirect);
-    //     }
-    // }, [userInfo, props.history, redirect]);
+    useEffect(() => {
+        if (name) {
+            handleModal('');
+        }
+        if (reset) {
+            handleModal('');
+            history.push('/dashboard/reset');
+        }
+    }, [name, reset]);
 
     return (
         <form className="modal-content animate" onSubmit={submitHandler}>
+            {
+                loading &&
+                <div className="login-loading-icon">
+                    <img alt="loading" className="loading-img" src={`${process.env.PUBLIC_URL}/images/loading.gif`} />
+                </div>
+            }
+
             <div className="row top title-container">
                 <h3>Vendor Login</h3>
                 <div onClick={() => handleModal('')} className="close-login">&times;</div>

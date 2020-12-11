@@ -3,16 +3,19 @@ import {
     USER_REQUEST,
     USER_SUCCESS,
     USER_REMOVE,
+    USER_RESET,
 } from "./userConstants";
 
 export const userReducer = (state = {}, action) => {
     switch(action.type) {
         case USER_REQUEST:
-            return {loading: true}
+            return {...state, loading: true}
         case USER_SUCCESS:
-            return {loading: false, name: action.payload}
+            return {...state, loading: false, name: action.payload, reset: false}
         case USER_FAIL:
-            return {loading: false, error: action.payload}
+            return {...state, loading: false, error: action.payload}
+        case USER_RESET:
+            return {...state, loading: false, reset: true, name: action.payload}
         case USER_REMOVE:
             return {};
         default:

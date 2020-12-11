@@ -66,7 +66,6 @@ function Header() {
                                 <div className="dropdown-content dropdown-content-lrg">
                                     <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
                                     <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
-                                    <NavLink to="/dashboard/reset" activeClassName='is-active'>RESET PASSWORD</NavLink>
                                 </div>
                             </li>
                         }
