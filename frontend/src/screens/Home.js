@@ -92,7 +92,7 @@ function Home() {
 
           <section className="info">
             <div className="info__img-container">
-                <img alt="mood" className="info__img" src="./images/banners_for_site_1_1080x.jpg"/>
+                <img alt="mood" className="info__img" src="./images/mood.jpg"/>
             </div>
             <div className="info__caption">
                 <div className="info__mood">

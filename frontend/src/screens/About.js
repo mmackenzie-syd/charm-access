@@ -7,7 +7,7 @@ function About() {
         <main className="product margin-top-5" style={{minHeight: '500px'}}>
                 <section className="row top">
                     <div className="col-6 product__img">
-                        <img alt="Sydney" src={`${process.env.PUBLIC_URL}/images/sydney-med.jpg`}/>
+                        <img alt="Sydney" src={`${process.env.PUBLIC_URL}/images/sydney.jpg`}/>
                     </div>
                     <div className="col-6 padding-left-3">
                         <div>

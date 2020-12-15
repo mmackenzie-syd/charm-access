@@ -112,7 +112,7 @@ function Products(props) {
                             <div className="row bottom margin-bottom-2">
                                 <div>
                                     <h2>{name}</h2>
-                                    <p className="price">${price}</p>
+                                    <p className="price">${price.toFixed(2)}</p>
                                 </div>
                             </div>
                         </li>

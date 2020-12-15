@@ -130,7 +130,7 @@ function Product(props) {
                             </div>
                         </div>
                         <h3 className="product__brand-title margin-bottom-2">Charm Accessories</h3>
-                        <div className="product__price margin-bottom-4">${product.price}</div>
+                        <div className="product__price margin-bottom-4">${product.price.toFixed(2)}</div>
                         <div className="margin-bottom-3" style={{width: '100%'}}>
                             <Selector callback={onQty} count={10}/>
                         </div>

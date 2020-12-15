@@ -71,7 +71,7 @@ function Header() {
                         }
                     </ul>
                 </div>
-                <div className="row right" style={{marginRight: '-.5rem'}}>
+                <div className="row right" style={{marginRight: '-.1rem'}}>
                     <div className="site__nav-item search-icon-container">
                         <button className="login-btn" onClick={() => handleModal(<Search />)}>
                             <SearchIcon
