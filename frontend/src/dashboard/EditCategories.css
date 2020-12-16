@@ -122,7 +122,7 @@
 }
 
 .categories-btn:hover {
-    opacity: 60%;
+    opacity: .6;
     cursor: pointer;
 }
 

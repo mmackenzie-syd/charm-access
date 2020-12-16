@@ -1,4 +1,5 @@
 const config = {
-    api: 'https://f2wfwkd82f.execute-api.ap-southeast-2.amazonaws.com/latest/api'
+    shopApi: 'https://kgse569c6b.execute-api.ap-southeast-2.amazonaws.com/dev',
+    vendorApi: ''
 }
 export default config;

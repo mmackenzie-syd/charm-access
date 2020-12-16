@@ -27,17 +27,17 @@
 }
 
 .leftArrowDisabled {
-    opacity: 40%;
+    opacity: .6;
 }
 
 .rightArrowDisabled {
-    opacity: 40%;
+    opacity: .6;
 }
 
 .page-btn:hover {
-    opacity: 60%;
+    opacity: .6;
 }
 
 .page-btn:disabled {
-    opacity: 60%;
+    opacity: .6;
 }

@@ -73,6 +73,6 @@ img.avatar {
 
 .close:hover,
 .close:focus {
-    opacity: 60%;
+    opacity: .6;
     cursor: pointer;
 }

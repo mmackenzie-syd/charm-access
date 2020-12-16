@@ -62,5 +62,5 @@ footer {
 
 .login-btn:hover {
     cursor: pointer;
-    opacity: 60%;
+    opacity: .6;
 }

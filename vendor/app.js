@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const api = require('./api.js');
@@ -13,9 +14,10 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/charm', {
     useCreateIndex: true,
 });
 
+const dbState = ['disconnected', 'connected', 'connecting', 'disconnecting'];
 app.use('/api/', api);
 app.get('/', (req, res) => {
-    res.send('Server is ready');
+    res.send(`Database state: ${dbState[mongoose.connection.readyState]}`);
 });
 
 app.use((err, req, res, next) => {

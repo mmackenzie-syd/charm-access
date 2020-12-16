@@ -75,7 +75,7 @@ img.avatar {
 
 .close-login:hover,
 .close-login:focus {
-    opacity: 60%;
+    opacity: .6;
     cursor: pointer;
 }
 

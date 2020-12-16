@@ -33,12 +33,6 @@ api.get('/categories',  expressAsyncHandler(async (req, res) => {
 }));
 
 
-api.post('/categories', expressAsyncHandler(async (req, res) => {
-    await Category.remove({});
-    const createdCategories = await Category.insertMany(req.body.categories);
-    res.send({ createdCategories });
-}));
-
 /* seed data */
 api.get('/categories/seed', expressAsyncHandler(async (req, res) => {
         await Category.remove({});

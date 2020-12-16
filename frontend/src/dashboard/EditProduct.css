@@ -165,7 +165,7 @@ label {
 }
 .cancel-btn:hover,
 .save-btn:hover {
-    opacity: 60%;
+    opacity: .6;
     cursor: pointer;
 }
 
@@ -189,6 +189,6 @@ label {
 }
 
 .plus-img-btn:hover {
-    opacity: 60%;
+    opacity: .6;
     cursor: pointer;
 }

@@ -102,7 +102,7 @@
 }
 /* mouse over link */
 .products-table-link:hover {
-    opacity: 60%;
+    opacity: .6;
     cursor: pointer;
     text-decoration: underline;
 }

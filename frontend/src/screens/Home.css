@@ -181,7 +181,7 @@ a:active {
 }
 
 .icon-arrow-disabled {
-    opacity: 40%;
+    opacity: .6;
 }
 
 /* signup - from angus and coote */

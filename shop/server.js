@@ -1,14 +1,34 @@
+const sls = require('serverless-http');
 const express = require('express');
-const expressAsyncHandler = require('express-async-handler');
+const app = express();
+const bodyParser = require('body-parser');
+const asyncHandler = require('express-async-handler');
+const createError = require('http-errors');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
 
-const { model, Schema, Types } = require('mongoose');
+// Middleware
 
-const Category = model("Category", new Schema({
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(cors());
+
+// Env Parameters
+const MONGODB_URL = process.env.MONGODB_URL;
+const SERVERLESS = process.env.SERVERLESS;
+
+// Connect
+mongoose.connect(MONGODB_URL);
+
+// Schemas
+const CategorySchema = new mongoose.Schema({
     name: {type: String, required: true, unique: true},
     slug: {type: String, required: true, unique: true},
-}));
+})
 
-const Product = model("Product", new Schema({
+const ProductSchema = new mongoose.Schema({
     name: {type: String, required: true, unique: true},
     image: {type: String, required: true},
     thumbnail: {type: String, required: true},
@@ -18,12 +38,27 @@ const Product = model("Product", new Schema({
     inventory: {type: Number, required: true},
 }, {
     timestamps: true
-}))
+});
 
-// exec returns a promise
-const api = express.Router();
+// Models
+const Category = mongoose.model('Category', CategorySchema);
+const Product = mongoose.model('Product', ProductSchema);
 
-api.get('/categories/bycategory',  expressAsyncHandler(async (req, res) => {
+// Routes
+const router = express.Router();
+
+router.get('/',  asyncHandler(async (req, res) => {
+    res.status(200).send('categories is ready');
+}));
+
+// Get all Categories
+router.get('/categories',  asyncHandler(async (req, res) => {
+    const categories = await Category.find({});
+    res.status(200).send(categories);
+}));
+
+// Get a Product for each Category
+router.get('/categories/bycategory',  asyncHandler(async (req, res) => {
     const categories = await Category.find({});
     const byCategory = [];
     for (let i = 0; i < categories.length; i++) {
@@ -39,12 +74,7 @@ api.get('/categories/bycategory',  expressAsyncHandler(async (req, res) => {
     res.send(byCategory);
 }));
 
-api.get('/categories/',  expressAsyncHandler(async (req, res) => {
-    const categories = await Category.find({});
-    res.send(categories);
-}));
-
-api.get('/products/arrivals', expressAsyncHandler(async (req, res) => {
+router.get('/products/arrivals', asyncHandler(async (req, res) => {
     let products = await Product.find({}).sort({'createdAt': -1}).limit(12).exec();
     if (products) {
         res.send(products);
@@ -53,13 +83,13 @@ api.get('/products/arrivals', expressAsyncHandler(async (req, res) => {
     }
 }));
 
-api.get('/product/:id',  expressAsyncHandler(async (req, res) => {
+router.get('/product/:id',  asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
     const category = product.category;
     const id = product._id;
     const query = (category === 'shop')
         ? {}
-        : { category: { $eq: category }, _id: {$ne: Types.ObjectId(id) } };
+        : { category: { $eq: category }, _id: {$ne: mongoose.Types.ObjectId(id) } };
     // exec returns a promise from the chain
     const products = await Product.find(query).limit(4).exec();
 
@@ -70,7 +100,7 @@ api.get('/product/:id',  expressAsyncHandler(async (req, res) => {
     }
 }));
 
-api.get('/products/:category/:page',  expressAsyncHandler(async (req, res) => {
+router.get('/products/:category/:page',  asyncHandler(async (req, res) => {
     // paginate
     const { page, category } = req.params;
     const query = (category === 'shop') ? {} : { category: { $eq: category } };
@@ -88,9 +118,9 @@ api.get('/products/:category/:page',  expressAsyncHandler(async (req, res) => {
     }
 }));
 
-api.get('/product/next/:id',   (req, res, next) => {
+router.get('/product/next/:id',   (req, res, next) => {
     const id = req.params.id;
-    Product.find({_id: {$gt: Types.ObjectId(id) }}).sort({_id: 1 }).limit(1).exec((err, products) => {
+    Product.find({_id: {$gt: mongoose.Types.ObjectId(id) }}).sort({_id: 1 }).limit(1).exec((err, products) => {
         if (err) {
             res.status(404).send(err);
         }
@@ -102,9 +132,9 @@ api.get('/product/next/:id',   (req, res, next) => {
     });
 });
 
-api.get('/product/previous/:id',  async (req, res) => {
+router.get('/product/previous/:id',  async (req, res) => {
     const id = req.params.id;
-    Product.find({_id: {$lt: Types.ObjectId(id) }}).sort({_id: 1 }).limit(1).exec((err, products) => {
+    Product.find({_id: {$lt: mongoose.Types.ObjectId(id) }}).sort({_id: 1 }).limit(1).exec((err, products) => {
         if (err) {
             res.status(404).send(err);
         }
@@ -116,4 +146,27 @@ api.get('/product/previous/:id',  async (req, res) => {
     });
 });
 
-module.exports = api;
+// End of routes
+
+app.use('/', router);
+
+// Errors
+app.use((req, res, next) => {
+    next(createError(404));
+})
+
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+        message: error.message,
+        status: error.status
+    });
+});
+if (!SERVERLESS) {
+    const port = process.env.PORT || 5000;
+    app.listen(port, () => {
+        console.log(`Serve at http://localhost:${port}`);
+    });
+}
+//Export app
+module.exports.run = sls(app);
