@@ -1,4 +1,5 @@
 const express = require('express');
+const awsServerlessExpress = require('aws-serverless-express');
 const mongoose = require('mongoose');
 const api = require('./api.js');
 const app = express();
@@ -23,6 +24,16 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 4000;
-app.listen(port, () => {
-    console.log(`Serve at http://localhost:${port}`);
-});
+
+const serverless = process.env.SERVERLESS || false;
+
+if (!serverless) {
+    app.listen(port, () => {
+        console.log(`Serve at http://localhost:${port}`);
+    });
+}
+const server = awsServerlessExpress.createServer(app)
+exports.handler = (event, context) => {
+    console.log('event', event)
+    awsServerlessExpress.proxy(server, event, context);
+}
