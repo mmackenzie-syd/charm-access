@@ -73,7 +73,7 @@ function Product(props) {
 
     const handleAddToCart = () => {
         dispatch(addToCart(id, product, qty));
-        props.history.goBack();
+        history.push('/cart');
     }
 
     const getNext = async () => {

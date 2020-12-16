@@ -4,6 +4,7 @@ import Quantity from "../components/Quantity";
 import Breadcrumb from "../components/Breadcrumb";
 import { useDispatch, useSelector } from "react-redux";
 import {removeFromCart, updateCart} from "../state/cartActions";
+import { Link } from "react-router-dom";
 
 function Cart() {
     const dispatch = useDispatch();
@@ -39,7 +40,7 @@ function Cart() {
                     list={[{name: 'Home Page', url: '/'}, {name: 'Cart', url: ''}]}
                     show={true}
                 />
-                <div>&crarr; <span className="cart__continue">Continue Shopping</span> </div>
+                <Link to="/products/shop/1">&crarr; <span className="cart__continue">Continue Shopping</span> </Link>
             </section>
             <section className="row margin-top-5 ">
                 <h3 className="margin-bottom-3">Basket</h3>
