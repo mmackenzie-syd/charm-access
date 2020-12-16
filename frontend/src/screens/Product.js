@@ -99,12 +99,22 @@ function Product(props) {
     return (
         <main className="product margin-top-5" style={{minHeight: '500px'}}>
             { error && <Message variant="danger">{error}</Message> }
-            { loading && <Loading /> }
+
             { product &&
                 <>
                 <section className="row top">
                     <div className="col-6 product__img-wrap">
-                        <img className="product__img" alt="product.name" src={product.image}/>
+                        {
+                            loading &&
+                            <div className={"product__img-loading"}>
+                                <img src={`${process.env.PUBLIC_URL}/images/loading.gif`} />
+                            </div>
+                        }
+                        <img
+                            className="product__img"
+                            alt="product.name"
+                            src={ loading ? `${process.env.PUBLIC_URL}/images/largeplaceholder.png`: product.image}
+                        />
                     </div>
                     <div className="col-6 padding-left-3">
                         <div>
