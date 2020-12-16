@@ -4,10 +4,10 @@ import React from "react";
 
 function About() {
     return (
-        <main className="product margin-top-5" style={{minHeight: '500px'}}>
+        <main className="product margin-top-5 margin-bottom-5" style={{minHeight: '500px'}}>
                 <section className="row top">
-                    <div className="col-6 product__img">
-                        <img alt="Sydney" src={`${process.env.PUBLIC_URL}/images/sydney.jpg`}/>
+                    <div className="col-6">
+                        <img alt="Sydney" className="about__img" src={`${process.env.PUBLIC_URL}/images/sydney.jpg`}/>
                     </div>
                     <div className="col-6 padding-left-3">
                         <div>
