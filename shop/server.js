@@ -118,32 +118,26 @@ router.get('/products/:category/:page',  asyncHandler(async (req, res) => {
     }
 }));
 
-router.get('/product/next/:id',   (req, res, next) => {
+router.get('/product/next/:id',   async (req, res, next) => {
     const id = req.params.id;
-    Product.find({_id: {$gt: mongoose.Types.ObjectId(id) }}).sort({_id: 1 }).limit(1).exec((err, products) => {
-        if (err) {
-            res.status(404).send(err);
-        }
-        if (products && products[0]) {
-            res.send({ id: products[0]._id });
-        } else {
-            res.send({ id: -1 });
-        }
-    });
+    let nextProduct = await Product.findOne({_id: {$gt: mongoose.Types.ObjectId(id) }}).sort({_id: 1 }).exec();
+    if (nextProduct) {
+        res.send({ id: nextProduct._id });
+    } else {
+        nextProduct = await Product.findOne({}).sort({'createdAt': 1}).exec();
+        res.send({ id: nextProduct._id });
+    }
 });
 
 router.get('/product/previous/:id',  async (req, res) => {
     const id = req.params.id;
-    Product.find({_id: {$lt: mongoose.Types.ObjectId(id) }}).sort({_id: 1 }).limit(1).exec((err, products) => {
-        if (err) {
-            res.status(404).send(err);
-        }
-        if (products && products[0]) {
-            res.send({ id: products[0]._id });
-        } else {
-            res.send({ id: -1 });
-        }
-    });
+    let prevProduct = await Product.findOne({_id: {$lt: mongoose.Types.ObjectId(id) }}).sort({_id: -1 }).exec();
+    if (prevProduct) {
+        res.send({ id: prevProduct._id });
+    } else {
+        prevProduct = await Product.findOne({}).sort({'createdAt': -1}).exec();
+        res.send({ id: prevProduct._id });
+    }
 });
 
 // End of routes

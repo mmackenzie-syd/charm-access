@@ -77,22 +77,16 @@ function Product(props) {
     }
 
     const getNext = async () => {
-        const { data } = await getNextId(id);
-        if (data && data.id !== -1) {
-            history.push(`/product/${data.id}`);
-            setPreviousDisabled(false);
-        } else {
-            setNextDisabled(true);
+        const resp = await getNextId(id);
+        if (resp.data && resp.data.id !== -1) {
+            history.push(`/product/${resp.data.id}`);
         }
     }
 
     const getPrevious = async () => {
-        const { data } = await getPreviousId(id);
-        if (data && data.id !== -1) {
-            history.push(`/product/${data.id}`);
-            setNextDisabled(false);
-        } else {
-            setPreviousDisabled(true);
+        const resp = await getPreviousId(id);
+        if (resp.data && resp.data.id !== -1) {
+            history.push(`/product/${resp.data.id}`);
         }
     }
 
