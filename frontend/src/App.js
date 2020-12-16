@@ -22,7 +22,6 @@ function App() {
     // preload
     const dispatch = useDispatch();
     dispatch(getCategoriesState());
-    dispatch(getProductsState('shop', 1))
     return (
         <BrowserRouter>
             <ScrollToTop>

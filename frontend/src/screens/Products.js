@@ -14,6 +14,7 @@ function Products(props) {
     const dispatch = useDispatch();
     const categoriesApi = useSelector(state => state.categoriesApi);
     const categorySlug = props.match.params.category;
+
     const curPage = Number(props.match.params.page);
 
     const productsApi = useSelector(state => state.productsApi);
@@ -106,7 +107,9 @@ function Products(props) {
                             <div className="arrivals__grid-img-container" >
                                 <Link to={`/product/${_id}`}>
                                     <img alt="placeholder" className="arrivals__grid-img" src={placeholder} />
-                                    <img  alt={name} className="arrivals__grid-img absolute" src={thumbnail} />
+                                    { !isLoading &&
+                                        <img  alt={name} className="arrivals__grid-img absolute" src={thumbnail} />
+                                    }
                                 </Link>
                             </div>
                             <div className="row bottom margin-bottom-2">

@@ -3,7 +3,8 @@ import {BY_CATEGORY, CATEGORIES, PRODUCT, PRODUCTS, ARRIVALS} from "./apiConstan
 
 import config from '../config.js';
 
-const uri = config.shopApi;
+// const uri = config.shopApi;
+const uri = 'http://localhost:5000';
 
 const apiCall = (name, url) => async (dispatch) => {
     dispatch({type: `${name}_REQUEST`});
