@@ -81,11 +81,10 @@ export const reset = (password) => async(dispatch, getState) => {
             alert(err.message || JSON.stringify(err));
         }}
     );
-
-
 }
 
 export const signout = () => async(dispatch) => {
     localStorage.removeItem('user');
+    cognitoUser.signOut();
     dispatch({ type: USER_REMOVE });
 }
