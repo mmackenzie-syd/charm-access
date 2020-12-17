@@ -25,6 +25,7 @@ function EditProducts(props) {
             const { data } = await getProducts(curPage);
             setData(data);
         } catch(error) {
+            console.log('error', error)
             setError(error);
         }
     };

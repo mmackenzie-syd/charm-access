@@ -48,7 +48,7 @@ const Product = mongoose.model('Product', ProductSchema);
 const router = express.Router();
 
 router.get('/',  asyncHandler(async (req, res) => {
-    res.status(200).send('categories is ready');
+    res.status(200).send('SHOP API');
 }));
 
 // Get all Categories
@@ -157,7 +157,7 @@ app.use((error, req, res, next) => {
     });
 });
 if (!SERVERLESS) {
-    const port = process.env.PORT || 5000;
+    const port = process.env.PORT || 4000;
     app.listen(port, () => {
         console.log(`Serve at http://localhost:${port}`);
     });

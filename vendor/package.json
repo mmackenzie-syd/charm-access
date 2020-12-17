@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch backend --exec node --experimental-modules app.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,14 +17,13 @@
   },
   "homepage": "https://github.com/mmackenzie-syd/charm-access#readme",
   "dependencies": {
-    "aws-serverless-express": "^3.3.8",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "mongoose": "^5.10.16"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
+    "http-errors": "^1.8.0",
+    "mongoose": "^5.10.11",
+    "serverless-http": "^2.6.0"
   }
 }

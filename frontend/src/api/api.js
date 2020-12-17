@@ -1,44 +1,99 @@
 import Axios from "axios";
 
-const uri = 'http://localhost:5000';
+import config from '../config.js';
+
+import { getToken } from "../state/userActions";
+
+const uri = config.vendorApi;
+// const uri = 'http://localhost:5000';
 
 export const updateInventory = async (id, inventory) => {
-    return Axios.put(uri + `/api/product/inventory/${id}`, { inventory });
+    const token = await getToken();
+    return Axios.put(uri + `/product/inventory/${id}`, { inventory }, {
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
 export const updateProduct = async (id, product) => {
-    return Axios.put(uri + `/api/product/${id}`, product);
+    const token = await getToken();
+    return Axios.put(uri + `/product/${id}`, product,{
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
 export const createProduct = async (product) => {
-    return Axios.post(uri + '/api/product', product);
+    const token = await getToken();
+    return Axios.post(uri + '/product', product,{
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
 export const deleteProduct = async (id) => {
-    return Axios.delete(uri + `/api/product/${id}`);
+    const token = await getToken();
+    return Axios.delete(uri + `/product/${id}`,{
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
 export const getProduct = async (id) => {
-    return Axios.get(uri + `/api/product/${id}`);
+    const token = await getToken();
+    return Axios.get(uri + `/product/${id}`, {
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
 export const getProducts = async (page) => {
-    return Axios.get(uri + `/api/products/${page}`);
-}
+    const token = await getToken();
+    return await Axios.get(uri + `/products/${page}`, {
+        headers: {
+            'Authorization': token
+        }
+    });
+};
 
 export const getCategories = async () => {
-    return Axios.get(uri + '/api/categories');
+    const token = await getToken();
+    return Axios.get(uri + '/categories', {
+        headers: {
+            'Authorization': token,
+        }
+    });
 }
 
 export const saveCategories = async (categories) => {
-    return Axios.post(uri + '/api/categories', { categories });
+    const token = await getToken();
+    return Axios.post(uri + '/categories', { categories }, {
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
 export const getNextId = async (id) => {
-    return Axios.get(uri + `/api/product/next/${id}`);
+    const token = await getToken();
+    return Axios.get(uri + `/product/next/${id}`, {
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
 export const getPreviousId = async (id) => {
-    return Axios.get(uri + `/api/product/previous/${id}`);
+    const token = await getToken();
+    return Axios.get(uri + `/product/previous/${id}`, {
+        headers: {
+            'Authorization': token
+        }
+    });
 }
 
