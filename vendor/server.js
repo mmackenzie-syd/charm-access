@@ -55,7 +55,7 @@ router.get('/',  asyncHandler(async (req, res) => {
 
 const perPage = 4;
 
-api.get('/categories',  asyncHandler(async (req, res) => {
+router.get('/categories',  asyncHandler(async (req, res) => {
     const categories = await Category.find({});
     res.send(categories);
 }));

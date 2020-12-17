@@ -31,6 +31,7 @@ export const getToken =  () => {
                         reject(err);
                     }
                     token = session.getIdToken().getJwtToken();
+                    console.log('token', token)
                     resolve(token);
                 });
             }
@@ -86,5 +87,6 @@ export const reset = (password) => async(dispatch, getState) => {
 export const signout = () => async(dispatch) => {
     localStorage.removeItem('user');
     cognitoUser.signOut();
+    token = null;
     dispatch({ type: USER_REMOVE });
 }
