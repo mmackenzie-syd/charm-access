@@ -3,16 +3,25 @@
 ### URL
 http://charm-app.s3-website-ap-southeast-2.amazonaws.com/
 
-#### Public API Schematic Diagram ("Shop")
+
+
+#### Shop API Schematic Diagram
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/Schematic/AWS-schematic-shop.png)
 
 
-#### Protected API Schematic Diagram ("Vendor")
+
+
+
+#### Vendor API Schematic Diagram 
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/Schematic/AWS-schematic-vendor.png)
 
 
-#### Protected API for Image Upload
+
+
+
+#### Image Upload API Schematic Diagram
+
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/Schematic/AWS-schematic-upload.png)
