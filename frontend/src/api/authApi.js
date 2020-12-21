@@ -1,11 +1,13 @@
 import Axios from "axios";
 
-import config from '../config.js';
-
 import { getToken } from "../state/userActions";
 
-const uri = config.vendorApi;
-// const uri = 'http://localhost:5000';
+let uri;
+if (process.env.NODE_ENV === 'development') {
+    uri = 'http://localhost:5000';
+} else {
+    uri = process.env.REACT_APP_VENDOR_URL;
+}
 
 export const updateInventory = async (id, inventory) => {
     const token = await getToken();

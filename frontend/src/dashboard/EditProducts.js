@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Quantity from "../components/Quantity";
 import Paginator from "../components/Paginator";
 import Breadcrumb from "../components/Breadcrumb";
-import {deleteProduct, getProducts, updateInventory} from "../api/api";
+import {deleteProduct, getProducts, updateInventory} from "../api/authApi";
 
 function EditProducts(props) {
     const dispatch = useDispatch();

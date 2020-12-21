@@ -6,7 +6,7 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import {useSelector} from "react-redux";
 import Quantity from "../components/Quantity";
 import PlusIcon from "../icons/PlusIcon";
-import {createProduct, getProduct, updateProduct} from "../api/api";
+import {createProduct, getProduct, updateProduct} from "../api/authApi";
 import {getNextId, getPreviousId} from "../state/api";
 
 function EditProduct(props) {

@@ -10,7 +10,7 @@ import {getNextProductState, getProductState} from "../state/apiActions";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import Message from "../components/Message";
 import {addToCart} from "../state/cartActions";
-import {getProduct} from "../api/api";
+import {getProduct} from "../api/unauthApi";
 import {getNextId, getPreviousId} from "../state/api";
 import {useHistory} from "react-router";
 

@@ -1,10 +1,13 @@
 import Axios from "axios";
 import {BY_CATEGORY, CATEGORIES, PRODUCT, PRODUCTS, ARRIVALS} from "./apiConstants";
 
-import config from '../config.js';
+let uri;
 
-const uri = config.shopApi;
-// const uri = 'http://localhost:4000';
+if (process.env.NODE_ENV === 'development') {
+    uri = 'http://localhost:4000';
+} else {
+    uri = process.env.REACT_APP_SHOP_URL;
+}
 
 const apiCall = (name, url) => async (dispatch) => {
     dispatch({type: `${name}_REQUEST`});
