@@ -44,6 +44,27 @@ const ProductSchema = new mongoose.Schema({
 const Category = mongoose.model('Category', CategorySchema);
 const Product = mongoose.model('Product', ProductSchema);
 
+// Helper Functions
+const getNextId = async (currId) => {
+    let nextProduct = await Product.findOne({_id: {$gt: mongoose.Types.ObjectId(currId) }}).sort({_id: 1 }).exec();
+    if (nextProduct) {
+        return nextProduct._id;
+    } else {
+        nextProduct = await Product.findOne({}).sort({'createdAt': 1}).exec();
+        return nextProduct._id;
+    }
+}
+
+const getPrevId = async (currId) => {
+    let prevProduct = await Product.findOne({_id: {$lt: mongoose.Types.ObjectId(currId) }}).sort({_id: -1 }).exec();
+    if (prevProduct) {
+        return prevProduct._id;
+    } else {
+        prevProduct = await Product.findOne({}).sort({'createdAt': -1}).exec();
+        return prevProduct._id;
+    }
+}
+
 // Routes
 const router = express.Router();
 
@@ -84,9 +105,9 @@ router.get('/arrivals', asyncHandler(async (req, res) => {
 }));
 
 router.get('/productWithSimilar/:id',  asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
+    const id = req.params.id;
+    const product = await Product.findById(id);
     const category = product.category;
-    const id = product._id;
     const query = (category === 'shop')
         ? {}
         : { category: { $eq: category }, _id: {$ne: mongoose.Types.ObjectId(id) } };
@@ -101,7 +122,8 @@ router.get('/productWithSimilar/:id',  asyncHandler(async (req, res) => {
 }));
 
 router.get('/product/:id',  asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id)
+    const id = req.params.id;
+    const product = await Product.findById(id);
     if (product) {
         res.send(product);
     } else {
@@ -111,26 +133,15 @@ router.get('/product/:id',  asyncHandler(async (req, res) => {
 
 router.get('/productId/next/:id',   async (req, res, next) => {
     const id = req.params.id;
-    let nextProduct = await Product.findOne({_id: {$gt: mongoose.Types.ObjectId(id) }}).sort({_id: 1 }).exec();
-    if (nextProduct) {
-        res.send({ id: nextProduct._id });
-    } else {
-        nextProduct = await Product.findOne({}).sort({'createdAt': 1}).exec();
-        res.send({ id: nextProduct._id });
-    }
+    const nextId = await getNextId(id);
+    res.send({ id: nextId });
 });
 
 router.get('/productId/previous/:id',  async (req, res) => {
     const id = req.params.id;
-    let prevProduct = await Product.findOne({_id: {$lt: mongoose.Types.ObjectId(id) }}).sort({_id: -1 }).exec();
-    if (prevProduct) {
-        res.send({ id: prevProduct._id });
-    } else {
-        prevProduct = await Product.findOne({}).sort({'createdAt': -1}).exec();
-        res.send({ id: prevProduct._id });
-    }
+    const prevId = await getPrevId(id);
+    res.send({ id: prevId });
 });
-
 
 router.get('/products/:page',  asyncHandler(async (req, res) => {
     // paginate and return in descending order
