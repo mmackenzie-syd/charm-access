@@ -6,8 +6,9 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import {useSelector} from "react-redux";
 import Quantity from "../components/Quantity";
 import PlusIcon from "../icons/PlusIcon";
-import {createProduct, getProduct, updateProduct} from "../api/authApi";
-import {getNextId, getPreviousId} from "../state/api";
+import {createProduct, updateProduct} from "../api/authApi";
+import {getProduct} from "../api/unauthApi";
+import {getNextId, getPreviousId} from "../api/unauthApi";
 
 function EditProduct(props) {
     const history = useHistory();

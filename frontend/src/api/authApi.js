@@ -45,54 +45,9 @@ export const deleteProduct = async (id) => {
     });
 }
 
-export const getProduct = async (id) => {
-    const token = await getToken();
-    return Axios.get(uri + `/product/${id}`, {
-        headers: {
-            'Authorization': token
-        }
-    });
-}
-
-export const getProducts = async (page) => {
-    const token = await getToken();
-    return await Axios.get(uri + `/products/${page}`, {
-        headers: {
-            'Authorization': token
-        }
-    });
-};
-
-export const getCategories = async () => {
-    const token = await getToken();
-    return Axios.get(uri + '/categories', {
-        headers: {
-            'Authorization': token,
-        }
-    });
-}
-
 export const saveCategories = async (categories) => {
     const token = await getToken();
     return Axios.post(uri + '/categories', { categories }, {
-        headers: {
-            'Authorization': token
-        }
-    });
-}
-
-export const getNextId = async (id) => {
-    const token = await getToken();
-    return Axios.get(uri + `/product/next/${id}`, {
-        headers: {
-            'Authorization': token
-        }
-    });
-}
-
-export const getPreviousId = async (id) => {
-    const token = await getToken();
-    return Axios.get(uri + `/product/previous/${id}`, {
         headers: {
             'Authorization': token
         }

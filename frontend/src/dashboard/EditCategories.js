@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './EditCategories.css';
 import PlusIcon from "../icons/PlusIcon";
-import {getCategories, saveCategories} from "../api/authApi";
+import {saveCategories} from "../api/authApi";
+import {getCategories} from "../api/unauthApi";
 import {useHistory} from "react-router";
 import CrossIcon from "../icons/CrossIcon";
 

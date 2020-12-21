@@ -1,4 +1,3 @@
-// helper api calls
 import Axios from "axios";
 
 let uri;
@@ -10,9 +9,21 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const getNextId = async (id) => {
-    return Axios.get(uri + `/product/next/${id}`);
+    return Axios.get(uri + `/productId/next/${id}`);
 }
 
 export const getPreviousId = async (id) => {
-    return Axios.get(uri + `/product/previous/${id}`);
+    return Axios.get(uri + `/productId/previous/${id}`);
+}
+
+export const getProduct = async (id) => {
+    return Axios.get(uri + `/product/${id}`);
+}
+
+export const getProducts = async (page) => {
+    return await Axios.get(uri + `/products/${page}`);
+};
+
+export const getCategories = async () => {
+    return Axios.get(uri + '/categories');
 }

@@ -53,14 +53,6 @@ router.get('/',  asyncHandler(async (req, res) => {
     res.status(200).send('VENDOR API');
 }));
 
-const perPage = 4;
-
-router.get('/categories',  asyncHandler(async (req, res) => {
-    const categories = await Category.find({});
-    res.send(categories);
-}));
-
-
 /* seed data */
 router.get('/categories/seed', asyncHandler(async (req, res) => {
         await Category.remove({});
@@ -77,14 +69,14 @@ router.get('/products/seed', asyncHandler(async (req, res) => {
 );
 /* end seed data */
 
-router.get('/product/:id',  asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id)
-    if (product) {
-        res.send(product);
-    } else {
-        res.status(404).send({ message: 'Product Not Found'});
-    }
+// new category and also edit categories - replace all
+router.post('/categories', asyncHandler(async (req, res) => {
+    await Category.remove({});
+    const categories = req.body.categories;
+    const createdCategories = await Category.insertMany(categories);
+    res.send({ createdCategories });
 }));
+
 
 router.put('/product/inventory/:id', asyncHandler(async (req, res) => {
     const productId = req.params.id;
@@ -142,44 +134,6 @@ router.delete('/product/:id', asyncHandler(async (req, res) => {
         res.status(404).send({ message: 'Product Not Found'});
     }
 }));
-
-router.get('/products/:page',  asyncHandler(async (req, res) => {
-    // paginate and return in descending order
-    let { page } = req.params;
-    const count = await Product.countDocuments({});
-    const pages = Math.ceil(count / perPage);
-
-    if (pages === 0) {
-        // no products with this category or page
-        res.status(404).send({ message: 'Products not found'});
-    } else {
-        // exec returns a promise from the chain
-        const products = await Product.find({}).sort({'createdAt': -1}).skip(perPage * (page - 1)).limit(perPage).exec();
-        res.json({ products, pages, page });
-    }
-}));
-
-router.get('/product/next/:id',   async (req, res, next) => {
-    const id = req.params.id;
-    let nextProduct = await Product.findOne({_id: {$gt: mongoose.Types.ObjectId(id) }}).sort({_id: 1 }).exec();
-    if (nextProduct) {
-        res.send({ id: nextProduct._id });
-    } else {
-        nextProduct = await Product.findOne({}).sort({'createdAt': 1}).exec();
-        res.send({ id: nextProduct._id });
-    }
-});
-
-router.get('/product/previous/:id',  async (req, res) => {
-    const id = req.params.id;
-    let prevProduct = await Product.findOne({_id: {$lt: mongoose.Types.ObjectId(id) }}).sort({_id: -1 }).exec();
-    if (prevProduct) {
-        res.send({ id: prevProduct._id });
-    } else {
-        prevProduct = await Product.findOne({}).sort({'createdAt': -1}).exec();
-        res.send({ id: prevProduct._id });
-    }
-});
 
 // End of routes
 

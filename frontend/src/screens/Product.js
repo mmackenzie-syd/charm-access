@@ -11,7 +11,7 @@ import ArrivalsSlide from "../components/ArrivalsSlide";
 import Message from "../components/Message";
 import {addToCart} from "../state/cartActions";
 import {getProduct} from "../api/unauthApi";
-import {getNextId, getPreviousId} from "../state/api";
+import {getNextId, getPreviousId} from "../api/unauthApi";
 import {useHistory} from "react-router";
 
 function Product(props) {
