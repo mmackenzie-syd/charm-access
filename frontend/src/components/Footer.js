@@ -7,14 +7,19 @@ import Login from "./Login";
 import LogoutIcon from "../icons/LogoutIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../state/userActions";
+import {useHistory} from "react-router";
+import {getCategoriesState} from "../state/apiActions";
 
 function Footer() {
+    const history = useHistory();
     const dispatch = useDispatch();
     let { handleModal } = React.useContext(ModalContext);
     const userApi = useSelector(state => state.userApi);
     const { name } = userApi;
     const handleLogout = () => {
         dispatch(signout());
+        dispatch(getCategoriesState());
+        history.push('/');
     }
 
     return (

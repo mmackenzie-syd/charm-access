@@ -38,26 +38,31 @@ function Header() {
                         </Link>
                     </div>
                     <ul className="row site__nav">
-                        <li className="site__nav-item dropdown">
-                            <div className="dropbtn">
-                                <NavLink to="/products/shop/1" className={isShopActive}>Shop</NavLink>
-                            </div>
-                            <div className="dropdown-content">
-                                {
-                                    categories && categories.map(category => (
-                                        <NavLink
-                                            key={category._id}
-                                            to={`/products/${category.slug}/1`}
-                                        >
-                                            {category.name}
-                                        </NavLink>
-                                    ))
-                                }
-                            </div>
-                        </li>
-                        <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
-                        <li className="site__nav-item"><NavLink to="/upload" activeClassName='is-active'>UPLOAD</NavLink></li>
+                        {
+                            !name &&
+                            <>
+                                <li className="site__nav-item dropdown">
+                                    <div className="dropbtn">
+                                        <NavLink to="/products/shop/1" className={isShopActive}>Shop</NavLink>
+                                    </div>
+                                    <div className="dropdown-content">
+                                        {
+                                            categories && categories.map(category => (
+                                                <NavLink
+                                                    key={category._id}
+                                                    to={`/products/${category.slug}/1`}
+                                                >
+                                                    {category.name}
+                                                </NavLink>
+                                            ))
+                                        }
+                                    </div>
+                                </li>
+                                <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
+                                <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
+                                <li className="site__nav-item"><NavLink to="/upload" activeClassName='is-active'>UPLOAD</NavLink></li>
+                            </>
+                        }
                         {
                             name &&
                             <li className="site__nav-item dropdown">
