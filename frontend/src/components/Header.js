@@ -65,15 +65,14 @@ function Header() {
                         }
                         {
                             name &&
-                            <li className="site__nav-item dropdown">
-                                <div className="dropbtn">
-                                    <NavLink to="#" className={isShopActive}>Dashboard</NavLink>
-                                </div>
-                                <div className="dropdown-content dropdown-content-lrg">
+                            <>
+                                <li className="site__nav-item">
                                     <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
+                                </li>
+                                <li>
                                     <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
-                                </div>
-                            </li>
+                                </li>
+                            </>
                         }
                     </ul>
                 </div>
