@@ -65,7 +65,7 @@ function EditCategories() {
                 <div className="row top">
                     <input
                         type="text"
-                        className="product-article-control"
+                        className="product-article-control margin-bottom-0"
                         placeholder="Enter category..."
                         value={category}
                         onChange={e => setCategory(e.target.value)}
@@ -82,6 +82,7 @@ function EditCategories() {
                         />
                     </button>
                 </div>
+                <hr/>
                 <ul>
                     {
                         categories && categories.map((item, index) => {

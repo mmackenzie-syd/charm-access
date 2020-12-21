@@ -119,6 +119,7 @@
     background-color: #ccc;
     border-radius: 3px;
     margin-left: .6rem;
+    margin-bottom: 0;
 }
 
 .categories-btn:hover {
