@@ -59,6 +59,9 @@ export const signin = (email, password) => async(dispatch) => {
     cognitoUser = new CognitoUser(userData);
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function(result) {
+
+            console.log('credentials', result)
+
             token = result.getIdToken().getJwtToken();
             dispatch({type: USER_SUCCESS, payload: email});
         },
