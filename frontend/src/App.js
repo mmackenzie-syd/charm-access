@@ -17,7 +17,6 @@ import EditCategories from "./screens/EditCategories";
 import EditProduct from "./screens/EditProduct";
 import ProtectedRoute from "./ProtectedRoute";
 import ResetPassword from "./screens/ResetPassword";
-import Upload from "./screens/Upload";
 
 function App() {
     // preload
@@ -34,7 +33,6 @@ function App() {
                         <Route path="/product/:category/:id" component={Product} />
                         <Route path="/products/:category/:page" component={Products} />
                         <Route path="/about" component={About} />
-                        <Route path="/upload" component={Upload} />
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />
                         {/* Protected routes */}
