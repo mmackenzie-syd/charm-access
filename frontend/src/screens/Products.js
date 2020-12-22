@@ -105,7 +105,7 @@ function Products(props) {
                     products && products.map(({ name, _id, thumbnail, price }) =>
                         <li key={_id} className="arrivals__grid-item">
                             <div className="arrivals__grid-img-container" >
-                                <Link to={`/product/${_id}`}>
+                                <Link to={`/product/${categorySlug}/${_id}`}>
                                     <img alt="placeholder" className="arrivals__grid-img" src={placeholder} />
                                     { !isLoading &&
                                         <img  alt={name} className="arrivals__grid-img absolute" src={thumbnail} />

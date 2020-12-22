@@ -6,46 +6,47 @@ import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
-import {getNextProductState, getProductState} from "../state/apiActions";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import Message from "../components/Message";
 import {addToCart} from "../state/cartActions";
-import {getProduct} from "../api/unauthApi";
-import {getNextId, getPreviousId} from "../api/unauthApi";
 import {useHistory} from "react-router";
+
+const getNextId = (id, products) => {
+    const index = products.findIndex(product => product._id === id);
+    const maxIndex = products.length - 1;
+    const nextIndex = ((index + 1) > maxIndex) ? 0 : index + 1;
+    return products[nextIndex]._id;
+}
+
+const getPrevId = (id, products) => {
+    const index = products.findIndex(product => product._id === id);
+    const maxIndex = products.length - 1;
+    const prevIndex = ((index - 1) > 0) ? index -1 : maxIndex;
+    return products[prevIndex]._id;
+}
+
 
 function Product(props) {
     let history = useHistory();
     const dispatch = useDispatch();
     const id = props.match.params.id;
+    const categorySlug = props.match.params.category;
     const [qty, setQty] = useState(1);
-    const [nextDisabled, setNextDisabled] = useState(false);
-    const [previousDisabled, setPreviousDisabled] = useState(false);
+    const productsApi = useSelector(state => state.productsApi);
     const categoriesApi = useSelector(state => state.categoriesApi);
-    const productApi = useSelector(state => state.productApi);
-    const { loading, error, data } = productApi;
-    const { categories } = categoriesApi;
+
+    // start temp
+    let loading = false;
+    let error = false;
+    // end temp
 
     let product;
-    let products;
-    if (data && data.product) {
-        product = data.product;
+    let similarProducts = [];
+    let products = [];
+    if (productsApi && productsApi.data) {
+        products = productsApi.data.products;
+        product = products.find(product => product._id === id)
     }
-
-    if (data && data.products) {
-        products = data.products;
-    }
-
-    let category;
-    let categorySlug;
-    if (categories && product) {
-        categorySlug = product.category;
-        category = categories.find(category => (category.slug === categorySlug));
-    }
-
-    useEffect(() => {
-        dispatch(getProductState(id));
-    }, [dispatch, id]);
 
     const onQty = (value) => {
        setQty(value);
@@ -53,6 +54,12 @@ function Product(props) {
 
     const list = [];
     let showBreadcrumb = false;
+    let category;
+
+    if (categoriesApi && categoriesApi.data) {
+        category = categoriesApi.data.find(category => category.slug === categorySlug)
+    }
+
     if (category && category.name) {
         if (product && product.name) {
             list.push({
@@ -77,17 +84,13 @@ function Product(props) {
     }
 
     const getNext = async () => {
-        const resp = await getNextId(id);
-        if (resp.data && resp.data.id !== -1) {
-            history.push(`/product/${resp.data.id}`);
-        }
+        const id = getNextId(product._id, products);
+        history.push(`/product/${categorySlug}/${id}`);
     }
 
     const getPrevious = async () => {
-        const resp = await getPreviousId(id);
-        if (resp.data && resp.data.id !== -1) {
-            history.push(`/product/${resp.data.id}`);
-        }
+        const id = getPrevId(product._id, products);
+        history.push(`/product/${categorySlug}/${id}`);
     }
 
     return (
@@ -117,14 +120,14 @@ function Product(props) {
                         <div className="row  margin-bottom-1">
                             <h2 className="product__title">{product.name}</h2>
                             <div>
-                                <button className={`page-btn`} onClick={getPrevious} disabled={previousDisabled}>
+                                <button className={`page-btn`} onClick={getPrevious}>
                                     <LeftArrowIcon
                                         width={'1.2rem'}
                                         height={'1.2rem'}
                                         offset={'.3rem'}
                                     />
                                 </button>
-                                <button className={`page-btn`} onClick={getNext} disabled={nextDisabled}>
+                                <button className={`page-btn`} onClick={getNext}>
                                     <RightArrowIcon
                                         width={'1.2rem'}
                                         height={'1.2rem'}
@@ -163,10 +166,10 @@ function Product(props) {
                     </div>
                 </section>
                     {
-                        products && (products.length === 4)
+                        similarProducts && (similarProducts.length === 4)
                             ? <section className="arrivals margin-top-5">
                                 <h3>Similar Items</h3>
-                                <ArrivalsSlide items={products} />
+                                <ArrivalsSlide items={similarProducts} />
                               </section>
                             : <div className="margin-bottom-5"></div>
                     }

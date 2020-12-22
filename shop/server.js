@@ -104,23 +104,6 @@ router.get('/arrivals', asyncHandler(async (req, res) => {
     }
 }));
 
-router.get('/productWithSimilar/:id',  asyncHandler(async (req, res) => {
-    const id = req.params.id;
-    const product = await Product.findById(id);
-    const category = product.category;
-    const query = (category === 'shop')
-        ? {}
-        : { category: { $eq: category }, _id: {$ne: mongoose.Types.ObjectId(id) } };
-    // exec returns a promise from the chain
-    const products = await Product.find(query).limit(4).exec();
-
-    if (product) {
-        res.send({ product, products });
-    } else {
-        res.status(404).send({ message: 'Product Not Found'});
-    }
-}));
-
 router.get('/product/:id',  asyncHandler(async (req, res) => {
     const id = req.params.id;
     const product = await Product.findById(id);

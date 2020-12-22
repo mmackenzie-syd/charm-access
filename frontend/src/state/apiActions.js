@@ -22,5 +22,4 @@ const apiCall = (name, url) => async (dispatch) => {
 export const getCategoriesState = () => apiCall(CATEGORIES, uri + '/categories');
 export const getByCategory = () => apiCall(BY_CATEGORY, uri + '/categoriesWithProduct');
 export const getArrivals = () => apiCall(ARRIVALS, uri + '/arrivals');
-export const getProductState = (id) => apiCall(PRODUCT, uri + `/productWithSimilar/${id}`);
 export const getProductsState = (category, page) => apiCall(PRODUCTS, uri + `/productsByCategory/${category}/${page}`);
