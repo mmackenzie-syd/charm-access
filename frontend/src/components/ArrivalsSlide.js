@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import React from "react";
-import './ArrivalsSlide.css';
+import './ArrivalsSlide.css'
 
 const ArrivalsSlide = (props) => {
     const { items: products } = props;

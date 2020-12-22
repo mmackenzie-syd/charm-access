@@ -9,7 +9,7 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import Message from "../components/Message";
 import {addToCart} from "../state/cartActions";
-import {useHistory} from "react-router";
+import {useHistory} from "react-router"
 
 const getNextId = (id, products) => {
     const index = products.findIndex(product => product._id === id);

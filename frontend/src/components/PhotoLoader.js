@@ -4,7 +4,7 @@ import PlusIcon from "../icons/PlusIcon";
 
 import AWS_WRAPPER from '../services/AWS_WRAPPER';
 import ConfigAWS from "../ConfigAWS";
-const { AWS } = AWS_WRAPPER;
+const { AWS, s3 } = AWS_WRAPPER;
 const {
     BUCKET_NAME,
     ALBUM_NAME,
@@ -34,6 +34,15 @@ function PhotoLoader(props) {
                 ACL: "public-read"
             }
         });
+
+        const deletePhoto = (photoKey) => {
+            s3.deleteObject({ Key: photoKey }, function(err, data) {
+                if (err) {
+                    return alert("There was an error deleting your photo: ", err.message);
+                }
+                alert("Successfully deleted photo.");
+            });
+        }
 
         const promise = upload.promise();
 
