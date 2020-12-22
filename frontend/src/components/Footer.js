@@ -14,8 +14,7 @@ function Footer() {
     const history = useHistory();
     const dispatch = useDispatch();
     let { handleModal } = React.useContext(ModalContext);
-    const userApi = useSelector(state => state.userApi);
-    const { name } = userApi;
+    const { status } = useSelector(state => state.userApi);
     const handleLogout = () => {
         dispatch(signout());
         dispatch(getCategoriesState());
@@ -43,10 +42,10 @@ function Footer() {
                 </div>
             </div>
             <div className="row center vendor">
-                <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor { name ? 'Logout' : 'Login'} </div>
+                <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor { status ? 'Logout' : 'Login'} </div>
                 <div className="vendor-login-wrap">
                     {
-                        name
+                        status
                             ? <button className="login-btn" onClick={() => handleLogout()}>
                                 <LogoutIcon width={'2.8rem'} height={'2.8rem'} />
                               </button>

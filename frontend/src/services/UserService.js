@@ -18,6 +18,7 @@ class UserService {
         if(! UserService.instance){
             this.cognitoUser = null;
             this.token = null;
+            this.getToken();
             //
             UserService.instance = this;
         }
