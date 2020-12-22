@@ -13,7 +13,7 @@ function ResetPassword(props) {
 
     useEffect(() => {
         if (status === 'SUCCESS') {
-            history.push('/');
+            history.push('/dashboard/products/1');
         }
     }, [status]);
 

@@ -25,6 +25,7 @@ function Login() {
     useEffect(() => {
         if (status === 'SUCCESS') {
             handleModal('');
+            history.push('/dashboard/products/1');
         }
         if (status === 'RESET') {
             handleModal('');
