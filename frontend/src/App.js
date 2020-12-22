@@ -12,11 +12,11 @@ import {getCategoriesState, getProductsState} from "./state/apiActions";
 import {useDispatch} from "react-redux";
 import {ModalProvider} from "./context/modalContext";
 import ScrollToTop from "./components/ScrollToTop";
-import EditProducts from "./dashboard/EditProducts";
-import EditCategories from "./dashboard/EditCategories";
-import EditProduct from "./dashboard/EditProduct";
+import EditProducts from "./screens/EditProducts";
+import EditCategories from "./screens/EditCategories";
+import EditProduct from "./screens/EditProduct";
 import ProtectedRoute from "./ProtectedRoute";
-import ResetPassword from "./dashboard/ResetPassword";
+import ResetPassword from "./screens/ResetPassword";
 import Upload from "./screens/Upload";
 
 function App() {
