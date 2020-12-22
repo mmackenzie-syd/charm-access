@@ -15,6 +15,7 @@ const apiCall = (name, url) => async (dispatch) => {
         const { data } = await Axios.get(url);
         dispatch({type: `${name}_SUCCESS`, payload: data})
     } catch(error) {
+        console.log('err mssg', error)
         dispatch({type: `${name}_FAIL`, payload: error.message})
     }
 }

@@ -15,7 +15,7 @@ function Login() {
 
     const userApi = useSelector(state => state.userApi);
 
-    const { name, reset, loading } = userApi;
+    const { status, loading, error } = userApi;
 
     const submitHandler = (e) => {
         e.preventDefault(); // so that form does not refresh when we click submit
@@ -23,14 +23,14 @@ function Login() {
     }
 
     useEffect(() => {
-        if (name) {
+        if (status === 'SUCCESS') {
             handleModal('');
         }
-        if (reset) {
+        if (status === 'RESET') {
             handleModal('');
             history.push('/dashboard/reset');
         }
-    }, [name, reset]);
+    }, [status]);
 
     return (
         <form className="modal-content animate" onSubmit={submitHandler}>

@@ -1,10 +1,6 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from "redux-thunk";
 import throttle from 'lodash.throttle';
-
-// persisted state
-// https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
-
 import {
     bycategoryReducer,
     categoriesReducer,
@@ -16,9 +12,6 @@ import { userReducer } from "./userReducer";
 import {loadState} from "./loadState";
 import {saveState} from "./saveState";
 
-
-const initialState = {
-};
 
 const reducer = combineReducers({
     productsApi: productsReducer,
@@ -37,10 +30,17 @@ const store = createStore(
     composeEnhancer(applyMiddleware(thunk))
 );
 
+
+// persisted state
+// https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
+
 store.subscribe(throttle(() => {
+    // persist data only and not errors!
+    const state = store.getState();
     saveState({
-        productsApi: store.getState().productsApi,
-        categoriesApi: store.getState().categoriesApi,
+        productsApi: { data: state.productsApi.data },
+        categoriesApi: { data: state.categoriesApi.data },
+        userApi: { status: state.userApi.status },
     });
 }, 1000));
 

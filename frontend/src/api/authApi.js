@@ -1,6 +1,5 @@
 import Axios from "axios";
-
-import { getToken } from "../state/userActions";
+import UserService from "../services/UserService";
 
 let uri;
 if (process.env.NODE_ENV === 'development') {
@@ -10,7 +9,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const updateInventory = async (id, inventory) => {
-    const token = await getToken();
+    const token = await UserService.getToken();
     return Axios.put(uri + `/product/inventory/${id}`, { inventory }, {
         headers: {
             'Authorization': token
@@ -19,7 +18,7 @@ export const updateInventory = async (id, inventory) => {
 }
 
 export const updateProduct = async (id, product) => {
-    const token = await getToken();
+    const token = await UserService.getToken();
     return Axios.put(uri + `/product/${id}`, product,{
         headers: {
             'Authorization': token
@@ -28,7 +27,7 @@ export const updateProduct = async (id, product) => {
 }
 
 export const createProduct = async (product) => {
-    const token = await getToken();
+    const token = await UserService.getToken();
     return Axios.post(uri + '/product', product,{
         headers: {
             'Authorization': token
@@ -37,7 +36,7 @@ export const createProduct = async (product) => {
 }
 
 export const deleteProduct = async (id) => {
-    const token = await getToken();
+    const token = await UserService.getToken();
     return Axios.delete(uri + `/product/${id}`,{
         headers: {
             'Authorization': token
@@ -46,7 +45,7 @@ export const deleteProduct = async (id) => {
 }
 
 export const saveCategories = async (categories) => {
-    const token = await getToken();
+    const token = await UserService.getToken();
     return Axios.post(uri + '/categories', { categories }, {
         headers: {
             'Authorization': token

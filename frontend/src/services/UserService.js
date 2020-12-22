@@ -7,8 +7,8 @@ import {
 } from 'amazon-cognito-identity-js';
 
 const poolData = {
-    UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-    ClientId: process.env.REACT_APP_CLIENT_ID,
+    UserPoolId: 'ap-southeast-2_2jM17jIwp',
+    ClientId: '2jbqffoa0speanm98bh7rklinb',
 };
 
 const userPool = new CognitoUserPool(poolData);
@@ -62,20 +62,14 @@ class UserService {
 
         return new Promise((resolve, reject) => {
             that.cognitoUser.authenticateUser(authenticationDetails, {
-                onSuccess: function(result) {
+                onSuccess: (result) => {
                     that.token = result.getIdToken().getJwtToken();
-                    resolve({
-                        type: 'SUCCESS',
-                        name: email,
-                    });
+                    resolve('SUCCESS');
                 },
-                newPasswordRequired: function(result, session) {
-                    resolve({
-                        type: 'RESET'
-                    });
+                newPasswordRequired: (result, session) => {
+                    resolve('RESET');
                 },
-                onFailure: function(err) {
-                    alert(err.message || JSON.stringify(err));
+                onFailure: (err) => {
                     reject(err);
                 },
             });
@@ -86,13 +80,10 @@ class UserService {
         const that = this;
         return new Promise((resolve, reject) => {
             that.cognitoUser.completeNewPasswordChallenge(password, [], {
-                onSuccess: function(result) {
-                    resolve({
-                        type: 'SUCCESS'
-                    })
+                onSuccess: (result) => {
+                    resolve('SUCCESS');
                 },
-                onFailure: function(err) {
-                    alert(err.message || JSON.stringify(err));
+                onFailure: (err) => {
                     reject(err);
                 }}
             );

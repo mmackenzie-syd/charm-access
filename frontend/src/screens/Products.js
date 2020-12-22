@@ -51,28 +51,24 @@ function Products(props) {
 
     const fixedHeight = (isLoading && !products) ? '700px' : 'auto';
 
-
-    const url=`/products/${categorySlug}`;
-
     const handlePageClick = (page) => {
-        history.push(`${url}/${page}`);
+        history.push(`/products/${categorySlug}/${page}`);
     }
 
     const handleLeftPageClick = () => {
         if ((curPage - 1) > 0) {
-            history.push(`${url}/${curPage - 1}`);
+            history.push(`/products/${categorySlug}/${curPage - 1}`);
         }
     }
 
     const handleRightPageClick = () => {
         if ((curPage + 1) <= pages) {
-            history.push(`${url}/${curPage + 1}`);
+            history.push(`/products/${categorySlug}/${curPage + 1}`);
         }
     }
 
     return (
         <main className="collections" style={{height: fixedHeight}}>
-            { error && <Message variant="danger">{error}</Message> }
             { isLoading &&
                 <Loading isLoading={isLoading} />
             }

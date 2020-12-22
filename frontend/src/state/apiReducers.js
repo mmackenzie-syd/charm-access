@@ -11,7 +11,7 @@ const apiReducer = (name) => (state = {}, action) => {
         case `${name}_REQUEST`:
             return {...state, loading: true}
         case `${name}_SUCCESS`:
-            return {...state, loading: false, data: action.payload}
+            return {...state, loading: false, data: action.payload, error: null}
         case `${name}_FAIL`:
             return {...state, loading: false, error: action.payload}
         default:

@@ -8,7 +8,7 @@ export default function ProtectedRoute({ component: Component, ...rest }) {
         <Route
             {...rest}
             render={(props) =>
-                userApi && userApi.name
+                userApi && userApi.status
                     ? <Component {...props}></Component>
                     : <Redirect to="/" />
 

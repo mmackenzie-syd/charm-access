@@ -24,9 +24,9 @@ function Header() {
             return acc;
         }, 0);
     }
+    const { status } = useSelector(state => state.userApi);
 
-    const userApi = useSelector(state => state.userApi);
-    const { name } = userApi;
+    const showDashboard = (status === 'SUCCESS');
 
     return (
         <div className="sticky">
@@ -39,7 +39,7 @@ function Header() {
                     </div>
                     <ul className="row site__nav">
                         {
-                            !name &&
+                            !showDashboard &&
                             <>
                                 <li className="site__nav-item dropdown">
                                     <div className="dropbtn">
@@ -64,7 +64,7 @@ function Header() {
                             </>
                         }
                         {
-                            name &&
+                            showDashboard &&
                             <>
                                 <li className="site__nav-item">
                                     <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
