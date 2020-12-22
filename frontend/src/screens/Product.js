@@ -25,6 +25,16 @@ const getPrevId = (id, products) => {
     return products[prevIndex]._id;
 }
 
+const getSimilarProducts = (id, products) => {
+    let similarProducts = products.filter(product => product._id !== id);
+    if (similarProducts.length < 4) {
+        return [];
+    } else {
+        return similarProducts.slice(0, 4);
+    }
+
+}
+
 
 function Product(props) {
     let history = useHistory();
@@ -46,6 +56,7 @@ function Product(props) {
     if (productsApi && productsApi.data) {
         products = productsApi.data.products;
         product = products.find(product => product._id === id)
+        similarProducts = getSimilarProducts(id, products);
     }
 
     const onQty = (value) => {
