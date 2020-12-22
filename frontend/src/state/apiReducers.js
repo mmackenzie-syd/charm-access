@@ -1,7 +1,6 @@
 import {
     CATEGORIES,
     PRODUCTS,
-    PRODUCT,
     BY_CATEGORY,
     ARRIVALS,
 } from './apiConstants'

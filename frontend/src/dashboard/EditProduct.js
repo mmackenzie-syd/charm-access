@@ -23,8 +23,6 @@ function EditProduct(props) {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
     const [error, setError] = useState(null);
-    const [nextDisabled, setNextDisabled] = useState(false);
-    const [previousDisabled, setPreviousDisabled] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -68,20 +66,14 @@ function EditProduct(props) {
     const getNext = async () => {
         const { data } = await getNextId(id);
         if (data && data.id !== -1) {
-            history.push(`/product/${data.id}`);
-            setPreviousDisabled(false);
-        } else {
-            setNextDisabled(true);
+            history.push(`/dashboard/product/${data.id}`);
         }
     }
 
     const getPrevious = async () => {
         const { data } = await getPreviousId(id);
         if (data && data.id !== -1) {
-            history.push(`/product/${data.id}`);
-            setNextDisabled(false);
-        } else {
-            setPreviousDisabled(true);
+            history.push(`/dashboard/product/${data.id}`);
         }
     }
 
@@ -120,14 +112,14 @@ function EditProduct(props) {
                 <div className="row margin-top-1 margin-bottom-2" >
                     <h3>{id ? 'Edit' : 'Create'} Product</h3>
                     <div>
-                        <button className={`page-btn`} onClick={getPrevious} disabled={previousDisabled}>
+                        <button className={`page-btn`} onClick={getPrevious}>
                             <LeftArrowIcon
                                 width={'1.2rem'}
                                 height={'1.2rem'}
                                 offset={'.3rem'}
                             />
                         </button>
-                        <button className={`page-btn`} onClick={getNext} disabled={nextDisabled}>
+                        <button className={`page-btn`} onClick={getNext}>
                             <RightArrowIcon
                                 width={'1.2rem'}
                                 height={'1.2rem'}
