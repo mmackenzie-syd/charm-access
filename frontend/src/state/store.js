@@ -22,7 +22,7 @@ const reducer = combineReducers({
     userApi: userReducer
 });
 
-const persistedState = {}; // loadState();
+const persistedState = loadState();
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     reducer,
@@ -34,15 +34,15 @@ const store = createStore(
 // persisted state
 // https://medium.com/@jrcreencia/persisting-redux-state-to-local-storage-f81eb0b90e7e
 
-// store.subscribe(throttle(() => {
-//     // persist data only and not errors!
-//     const state = store.getState();
-//     saveState({
-//         productsApi: { data: state.productsApi.data },
-//         categoriesApi: { data: state.categoriesApi.data },
-//         userApi: { status: state.userApi.status },
-//     });
-// }, 1000));
+store.subscribe(throttle(() => {
+    // persist data only and not errors!
+    const state = store.getState();
+    saveState({
+        productsApi: { data: state.productsApi.data },
+        categoriesApi: { data: state.categoriesApi.data },
+        userApi: { status: state.userApi.status },
+    });
+}, 1000));
 
 
 export default store;
