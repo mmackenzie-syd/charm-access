@@ -49,7 +49,7 @@ class UserService {
         if(! UserService.instance){
             this.cognitoUser = null;
             this.token = null;
-           // this.getToken();
+            this.getToken();
             //
             UserService.instance = this;
         }
@@ -67,6 +67,7 @@ class UserService {
                             reject(err);
                         }
                         that.token = session.getIdToken().getJwtToken();
+                        setCredentials(that.token);
                         resolve(that.token);
                     });
                 }
@@ -96,9 +97,7 @@ class UserService {
             that.cognitoUser.authenticateUser(authenticationDetails, {
                 onSuccess: (result) => {
                     that.token = result.getIdToken().getJwtToken();
-
                     setCredentials(that.token);
-
                     resolve('SUCCESS');
                 },
                 newPasswordRequired: (result, session) => {
@@ -117,7 +116,7 @@ class UserService {
             that.cognitoUser.completeNewPasswordChallenge(password, [], {
                 onSuccess: (result) => {
                     that.token = result.getIdToken().getJwtToken();
-                 //   setCredentials(that.token);
+                    setCredentials(that.token);
                     resolve('SUCCESS');
                 },
                 onFailure: (err) => {
