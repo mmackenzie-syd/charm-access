@@ -5,7 +5,8 @@ import {
     USER_REMOVE,
 } from "./userConstants";
 
-import UserService from '../services/UserService';
+import AWS_WRAPPER from '../services/AWS_WRAPPER';
+const { UserService } = AWS_WRAPPER;
 
 export const signin = (email, password) => async(dispatch) => {
     dispatch({type: USER_REQUEST});

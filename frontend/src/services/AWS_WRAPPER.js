@@ -1,15 +1,46 @@
 // Manages the AWS Cognito
+import AWS from 'aws-sdk';
 import {
     CognitoUserPool,
-    CognitoUserAttribute,
     CognitoUser,
     AuthenticationDetails,
 } from 'amazon-cognito-identity-js';
 
+import ConfigAWS from "../ConfigAWS";
+
+const {
+    REGION,
+    BUCKET_NAME,
+    USER_POOL_ID,
+    CLIENT_ID,
+    IDENTITY_POOL_ID
+} = ConfigAWS;
+
 const poolData = {
-    UserPoolId: 'ap-southeast-2_2jM17jIwp',
-    ClientId: '2jbqffoa0speanm98bh7rklinb',
+    UserPoolId: USER_POOL_ID,
+    ClientId: CLIENT_ID,
 };
+
+const albumBucketName = BUCKET_NAME;
+
+AWS.config.region = REGION;
+
+let s3;
+
+const setCredentials = (token) => {
+    const key = `cognito-idp.${REGION}.amazonaws.com/${USER_POOL_ID}`;
+    const Logins = {};
+    Logins[key] = token;
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: IDENTITY_POOL_ID,
+        Logins
+    });
+
+    s3 = new AWS.S3({
+        apiVersion: '2006-03-01',
+        params: {Bucket: albumBucketName}
+    });
+}
 
 const userPool = new CognitoUserPool(poolData);
 
@@ -18,7 +49,7 @@ class UserService {
         if(! UserService.instance){
             this.cognitoUser = null;
             this.token = null;
-            this.getToken();
+           // this.getToken();
             //
             UserService.instance = this;
         }
@@ -65,6 +96,9 @@ class UserService {
             that.cognitoUser.authenticateUser(authenticationDetails, {
                 onSuccess: (result) => {
                     that.token = result.getIdToken().getJwtToken();
+
+                    setCredentials(that.token);
+
                     resolve('SUCCESS');
                 },
                 newPasswordRequired: (result, session) => {
@@ -82,6 +116,8 @@ class UserService {
         return new Promise((resolve, reject) => {
             that.cognitoUser.completeNewPasswordChallenge(password, [], {
                 onSuccess: (result) => {
+                    that.token = result.getIdToken().getJwtToken();
+                 //   setCredentials(that.token);
                     resolve('SUCCESS');
                 },
                 onFailure: (err) => {
@@ -98,4 +134,9 @@ class UserService {
 }
 
 const instance = new UserService();
-export default instance;
+
+export default {
+    UserService: instance,
+    AWS,
+    s3
+}

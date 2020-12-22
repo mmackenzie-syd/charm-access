@@ -181,14 +181,4 @@ label {
     position: absolute;
     top: 2rem;
     right: 2rem;
-    width: 4.2rem;
-    height: 4.2rem;
-    border-radius: 50%;
-    border: 0;
-    background-color: #ccc;
-}
-
-.plus-img-btn:hover {
-    opacity: .6;
-    cursor: pointer;
 }

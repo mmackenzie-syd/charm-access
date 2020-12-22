@@ -1,5 +1,6 @@
 import Axios from "axios";
-import UserService from "../services/UserService";
+import AWS_WRAPPER from "../services/AWS_WRAPPER";
+const { UserService } = AWS_WRAPPER;
 
 let uri;
 if (process.env.NODE_ENV === 'development') {

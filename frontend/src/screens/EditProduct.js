@@ -9,6 +9,7 @@ import PlusIcon from "../icons/PlusIcon";
 import {createProduct, updateProduct} from "../api/authApi";
 import {getProduct} from "../api/unauthApi";
 import {getNextId, getPreviousId} from "../api/unauthApi";
+import PhotoLoader from "../components/PhotoLoader";
 
 function EditProduct(props) {
     const history = useHistory();
@@ -106,6 +107,7 @@ function EditProduct(props) {
         }
     }
 
+
     return (
         <div className="product">
             <main className="product margin-bottom-5" style={{minHeight: '500px'}}>
@@ -131,16 +133,9 @@ function EditProduct(props) {
                 <form className="row top" onSubmit={submitHandler}>
                     <div className="col-6 product__img-wrap">
                         <img className="product__img" alt={name} src={image}/>
-                        <button
-                            className="plus-img-btn"
-                            type="button"
-                        >
-                            <PlusIcon
-                                width={'1.2rem'}
-                                height={'1.2rem'}
-                                className={'create-category'}
-                            />
-                        </button>
+                        <div className="plus-img-btn">
+                            <PhotoLoader />
+                        </div>
                     </div>
                     <div className="col-6 padding-left-3">
                         <div className="">
