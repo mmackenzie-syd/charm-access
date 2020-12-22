@@ -8,7 +8,7 @@ import Slider from "../components/Slider";
 import CategoriesSlide from "../components/CategoriesSlide";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import {useDispatch, useSelector} from "react-redux";
-import {getArrivals, getByCategory} from "../state/apiActions";
+import {getArrivalSlides, getCategorySlides} from "../state/apiActions";
 
 const images = [
     {
@@ -29,20 +29,20 @@ function Home() {
     let history = useHistory();
     const dispatch = useDispatch();
 
-    const bycategoryApi = useSelector(state => state.bycategoryApi);
-    const { loading: isLoadingBycategory, errorBycategory, data: bycategory } = bycategoryApi;
+    const categorySlidesApi = useSelector(state => state.categorySlidesApi);
+    const { data: categorySlides } = categorySlidesApi;
     const categoriesPerSlide = 3;
 
     useEffect(() => {
-        dispatch(getByCategory());
+        dispatch(getCategorySlides());
     }, [dispatch]);
 
-    const arrivalsApi = useSelector(state => state.arrivalsApi);
-    const { loading: isLoadingArrivals, errorArrivals, data: arrivals } = arrivalsApi;
+    const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi);
+    const { data: arrivalSlides } = arrivalSlidesApi;
     const arrivalsPerSlide = 4;
 
     useEffect(() => {
-        dispatch(getArrivals());
+        dispatch(getArrivalSlides());
     }, [dispatch]);
 
     const handleShopNow = () => {
@@ -78,14 +78,14 @@ function Home() {
             </div>
           </section>
            <section className="category">
-               { bycategory &&
-                    <Slider caption={'By Category'} items={bycategory} perSlide={categoriesPerSlide}
+               { categorySlides &&
+                    <Slider caption={'By Category'} items={categorySlides} perSlide={categoriesPerSlide}
                        displayImage={CategoriesSlide}/>
                }
           </section>
           <section className="arrivals">
-              {arrivals &&
-                <Slider caption={'Recent Arrivals'} items={arrivals} perSlide={arrivalsPerSlide}
+              {arrivalSlides &&
+                <Slider caption={'Recent Arrivals'} items={arrivalSlides} perSlide={arrivalsPerSlide}
                       displayImage={ArrivalsSlide}/>
               }
           </section>

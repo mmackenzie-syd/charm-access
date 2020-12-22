@@ -1,5 +1,5 @@
 import Axios from "axios";
-import {BY_CATEGORY, CATEGORIES, PRODUCT, PRODUCTS, ARRIVALS} from "./apiConstants";
+import {CATEGORY_SLIDES, CATEGORIES, PRODUCT, PRODUCTS, ARRIVAL_SLIDES} from "./apiConstants";
 
 let uri;
 
@@ -21,6 +21,6 @@ const apiCall = (name, url) => async (dispatch) => {
 }
 
 export const getCategoriesState = () => apiCall(CATEGORIES, uri + '/categories');
-export const getByCategory = () => apiCall(BY_CATEGORY, uri + '/categoriesWithProduct');
-export const getArrivals = () => apiCall(ARRIVALS, uri + '/arrivals');
+export const getCategorySlides = () => apiCall(CATEGORY_SLIDES, uri + '/categorySlides');
+export const getArrivalSlides = () => apiCall(ARRIVAL_SLIDES, uri + '/arrivalSlides');
 export const getProductsState = (category, page) => apiCall(PRODUCTS, uri + `/productsByCategory/${category}/${page}`);

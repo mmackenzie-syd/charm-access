@@ -1,4 +1,4 @@
 export const CATEGORIES = 'CATEGORIES';
-export const BY_CATEGORY = 'BY_CATEGORY';
+export const CATEGORY_SLIDES = 'CATEGORY_SLIDES';
 export const PRODUCTS = 'PRODUCTS';
-export const ARRIVALS = 'ARRIVALS';
+export const ARRIVAL_SLIDES = 'ARRIVAL_SLIDES';

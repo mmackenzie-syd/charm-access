@@ -79,7 +79,7 @@ router.get('/categories',  asyncHandler(async (req, res) => {
 }));
 
 // Get a Product for each Category
-router.get('/categoriesWithProduct',  asyncHandler(async (req, res) => {
+router.get('/categorySlides',  asyncHandler(async (req, res) => {
     const categories = await Category.find({});
     const byCategory = [];
     for (let i = 0; i < categories.length; i++) {
@@ -95,7 +95,7 @@ router.get('/categoriesWithProduct',  asyncHandler(async (req, res) => {
     res.send(byCategory);
 }));
 
-router.get('/arrivals', asyncHandler(async (req, res) => {
+router.get('/arrivalSlides', asyncHandler(async (req, res) => {
     let products = await Product.find({}).sort({'createdAt': -1}).limit(12).exec();
     if (products) {
         res.send(products);

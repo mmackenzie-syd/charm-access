@@ -2,10 +2,10 @@ import {applyMiddleware, combineReducers, compose, createStore} from "redux";
 import thunk from "redux-thunk";
 import throttle from 'lodash.throttle';
 import {
-    bycategoryReducer,
     categoriesReducer,
     productsReducer,
-    arrivalsReducer,
+    categorySlidesReducer,
+    arrivalSlidesReducer
 } from "./apiReducers";
 import { cartReducer } from "./cartReducer";
 import { userReducer } from "./userReducer";
@@ -17,8 +17,8 @@ const reducer = combineReducers({
     productsApi: productsReducer,
     categoriesApi: categoriesReducer,
     cart: cartReducer,
-    bycategoryApi: bycategoryReducer,
-    arrivalsApi: arrivalsReducer,
+    categorySlidesApi: categorySlidesReducer,
+    arrivalSlidesApi: arrivalSlidesReducer,
     userApi: userReducer
 });
 
