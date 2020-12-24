@@ -21,24 +21,21 @@ const poolData = {
     ClientId: CLIENT_ID,
 };
 
-const albumBucketName = BUCKET_NAME;
-
 AWS.config.region = REGION;
 
-let s3;
+const S3 = new AWS.S3({
+    apiVersion: '2006-03-01',
+    params: {Bucket: BUCKET_NAME}
+});
+
+const key = `cognito-idp.${REGION}.amazonaws.com/${USER_POOL_ID}`;
 
 const setCredentials = (token) => {
-    const key = `cognito-idp.${REGION}.amazonaws.com/${USER_POOL_ID}`;
     const Logins = {};
     Logins[key] = token;
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
         IdentityPoolId: IDENTITY_POOL_ID,
         Logins
-    });
-
-    s3 = new AWS.S3({
-        apiVersion: '2006-03-01',
-        params: {Bucket: albumBucketName}
     });
 }
 
@@ -51,6 +48,7 @@ class UserService {
             this.token = null;
             this.getToken();
             //
+            // make it singleton
             UserService.instance = this;
         }
         return UserService.instance;
@@ -137,5 +135,5 @@ const instance = new UserService();
 export default {
     UserService: instance,
     AWS,
-    s3
+    S3
 }

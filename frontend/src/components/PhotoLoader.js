@@ -4,7 +4,7 @@ import PlusIcon from "../icons/PlusIcon";
 
 import AWS_WRAPPER from '../services/AWS_WRAPPER';
 import ConfigAWS from "../ConfigAWS";
-const { AWS, s3 } = AWS_WRAPPER;
+const { AWS, S3 } = AWS_WRAPPER;
 const {
     BUCKET_NAME,
     ALBUM_NAME,
@@ -15,6 +15,7 @@ function PhotoLoader(props) {
 
     const handleFileUpload = (e) => {
         e.preventDefault();
+
         const files = fileRef.current.files;
         if (!files.length) {
             return alert("Please choose a file to upload first.");
@@ -36,7 +37,7 @@ function PhotoLoader(props) {
         });
 
         const deletePhoto = (photoKey) => {
-            s3.deleteObject({ Key: photoKey }, function(err, data) {
+            S3.deleteObject({ Key: photoKey }, function(err, data) {
                 if (err) {
                     return alert("There was an error deleting your photo: ", err.message);
                 }
