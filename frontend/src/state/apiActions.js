@@ -1,13 +1,7 @@
 import Axios from "axios";
 import {CATEGORY_SLIDES, CATEGORIES, PRODUCT, PRODUCTS, ARRIVAL_SLIDES} from "./apiConstants";
 
-let uri;
-
-if (process.env.NODE_ENV === 'development') {
-    uri = 'http://localhost:4000';
-} else {
-    uri = process.env.REACT_APP_SHOP_URL;
-}
+const uri = process.env.REACT_APP_SHOP_URL;
 
 const apiCall = (name, url) => async (dispatch) => {
     dispatch({type: `${name}_REQUEST`});

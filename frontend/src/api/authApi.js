@@ -2,12 +2,7 @@ import Axios from "axios";
 import AWS_WRAPPER from "../services/AWS_WRAPPER";
 const { UserService } = AWS_WRAPPER;
 
-let uri;
-if (process.env.NODE_ENV === 'development') {
-    uri = 'http://localhost:5000';
-} else {
-    uri = process.env.REACT_APP_VENDOR_URL;
-}
+const uri = process.env.REACT_APP_VENDOR_URL;
 
 export const updateInventory = async (id, inventory) => {
     const token = await UserService.getToken();

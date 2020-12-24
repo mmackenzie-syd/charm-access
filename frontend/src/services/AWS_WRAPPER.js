@@ -6,15 +6,13 @@ import {
     AuthenticationDetails,
 } from 'amazon-cognito-identity-js';
 
-import ConfigAWS from "../ConfigAWS";
+const REGION = process.env.REACT_APP_REGION;
+const BUCKET_NAME = process.env.REACT_APP_BUCKET_NAME;
+const USER_POOL_ID = process.env.REACT_APP_USER_POOL_ID;
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+const IDENTITY_POOL_ID = process.env.REACT_APP_IDENTITY_POOL_ID;
 
-const {
-    REGION,
-    BUCKET_NAME,
-    USER_POOL_ID,
-    CLIENT_ID,
-    IDENTITY_POOL_ID
-} = ConfigAWS;
+console.log('region', REGION)
 
 const poolData = {
     UserPoolId: USER_POOL_ID,

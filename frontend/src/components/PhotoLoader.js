@@ -3,12 +3,10 @@ import './PhotoLoader.css';
 import PlusIcon from "../icons/PlusIcon";
 
 import AWS_WRAPPER from '../services/AWS_WRAPPER';
-import ConfigAWS from "../ConfigAWS";
 const { AWS, S3 } = AWS_WRAPPER;
-const {
-    BUCKET_NAME,
-    ALBUM_NAME,
-} = ConfigAWS;
+
+const ALBUM_NAME = process.env.REACT_APP_ALBUM_NAME;
+const BUCKET_NAME = process.env.REACT_APP_BUCKET_NAME;
 
 function PhotoLoader(props) {
     const fileRef = useRef(null);
