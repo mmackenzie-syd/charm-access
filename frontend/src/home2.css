@@ -33,14 +33,6 @@ button, input, optgroup, select, textarea {
 .inline { display: inline-block; }
 
 
-/* font */
-
-.font-small { font-size: 1.4rem; }
-.font-large { font-size: 2.2rem !important; }
-
-.font-grey { color: #777; }
-
-
 /* font weights */
 .thin { font-weight: 100; }
 .extra-light { font-weight: 200; }
@@ -116,6 +108,14 @@ button, input, optgroup, select, textarea {
     border-radius: 50%;
     color: #111;
 }
+
+/* declare font last to have an effect */
+
+
+/* font */
+.font-small { font-size: 1.4rem; }
+.font-large { font-size: 2.2rem; }
+.font-grey { color: #777; }
 
 /* ----------------------------------------------------- */
 

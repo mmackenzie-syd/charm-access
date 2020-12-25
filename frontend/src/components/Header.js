@@ -30,77 +30,72 @@ function Header() {
 
     return (
         <div className="sticky">
-            <header className="site row">
-                <div className="row left">
-                    <div className="site__title">
+            <header className="header row space-between">
+                <ul className="nav">
+                    <li className="nav-item">
                         <Link to="/">
-                            <img alt="brand" src="../../images/brand.png"/>
+                            <img alt="brand" className="header-img" src="../../images/brand.png"/>
                         </Link>
-                    </div>
-                    <ul className="row site__nav">
-                        {
-                            !showDashboard &&
-                            <>
-                                <li className="site__nav-item dropdown">
-                                    <div className="dropbtn">
-                                        <NavLink to="/products/shop/1" className={isShopActive}>Shop</NavLink>
-                                    </div>
-                                    <div className="dropdown-content">
-                                        {
-                                            categories && categories.map(category => (
-                                                <NavLink
-                                                    key={category._id}
-                                                    to={`/products/${category.slug}/1`}
-                                                >
-                                                    {category.name}
-                                                </NavLink>
-                                            ))
-                                        }
-                                    </div>
-                                </li>
-                                <li className="site__nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
-                                <li className="site__nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
-                            </>
+                    </li>
+                    {
+                        !showDashboard &&
+                        <>
+                            <li className="nav-item nav-item-dropdown">
+                                <div className="nav-item-dropbtn">
+                                    <NavLink to="/products/shop/1" className={isShopActive}>SHOP</NavLink>
+                                </div>
+                                <div className="nav-item-dropdown-content">
+                                    {
+                                        categories && categories.map(category => (
+                                            <NavLink
+                                                key={category._id}
+                                                to={`/products/${category.slug}/1`}
+                                            >
+                                                {category.name}
+                                            </NavLink>
+                                        ))
+                                    }
+                                </div>
+                            </li>
+                            <li className="nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
+                            <li className="nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
+                        </>
+                    }
+                    {
+                        showDashboard &&
+                        <>
+                            <li className="site__nav-item">
+                                <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
+                            </li>
+                        </>
+                    }
+                </ul>
+            <ul className="nav">
+                <li className="nav-item srch-icon-wrap" onClick={() => handleModal(<Search />)}>
+                    <SearchIcon
+                        className={"srch-icon"}
+                        width={'2.6rem'}
+                        height={'2.6rem'}
+                    />
+                </li>
+                <li className="nav-item crt-icon-wrap">
+                    <NavLink to="/cart" activeClassName='is-active'>
+                        { addedIds && (addedIds.length !== 0) &&
+                            <div className="qty">{totalItems}</div>
                         }
-                        {
-                            showDashboard &&
-                            <>
-                                <li className="site__nav-item">
-                                    <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
-                                </li>
-                            </>
-                        }
-                    </ul>
-                </div>
-                <div className="row right" style={{marginRight: '-.1rem'}}>
-                    <div className="site__nav-item search-icon-container">
-                        <button className="login-btn" onClick={() => handleModal(<Search />)}>
-                            <SearchIcon
-                                className={"search-icon"}
-                                width={'2.6rem'}
-                                height={'2.6rem'}
-                                offset={'.4rem'}
-                            />
-                        </button>
-                    </div>
-                    <div className="site__nav-item cart-icon-container">
-                        <NavLink to="/cart" activeClassName='is-active'>
-                            { addedIds && (addedIds.length !== 0) &&
-                                <div className="qty">{totalItems}</div>
-                            }
-                            <CartIcon
-                                className={"cart-icon"}
-                                width={'3.2rem'}
-                                height={'3.2rem'}
-                                offset={'-.1rem'}
-                            />
-                        </NavLink>
-                    </div>
-                </div>
-            </header>
+                        <CartIcon
+                            className={"crt-icon"}
+                            width={'3.2rem'}
+                            height={'3.2rem'}
+                            offset={'-.1rem'}
+                        />
+                    </NavLink>
+                </li>
+            </ul>
+        </header>
         </div>
     );
 }
