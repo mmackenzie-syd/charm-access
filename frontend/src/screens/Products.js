@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import Paginator from "../components/Paginator";
-import placeholder from './placeholder.png';
+import placeholder from './placeholder-grey.png';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getProductsState} from "../state/apiActions";
@@ -99,11 +99,11 @@ function Products(props) {
                 {
                     products && products.map(({ name, _id, thumbnail, price }) =>
                         <li key={_id} className="full-width">
-                            <div className="slide-img-wrap" >
+                            <div className="slide-img-wrap products-img-wrap" >
                                 <Link to={`/product/${categorySlug}/${_id}`}>
-                                    {/* <img alt="placeholder" className="arrivals__grid-img" src={placeholder} /> */}
+                                    <img alt="placeholder" src={placeholder} />
                                     { !isLoading &&
-                                        <img  alt={name} className="img-dull" src={thumbnail} />
+                                        <img  alt={name} className="img-dull products-img fade-in" src={thumbnail} />
                                     }
                                 </Link>
                             </div>

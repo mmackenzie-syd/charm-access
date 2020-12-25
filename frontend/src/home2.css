@@ -259,6 +259,27 @@ button, input, optgroup, select, textarea {
 }
 
 
+.products-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.products-img-wrap { position: relative; }
+
+.fade-in {
+    animation: fadeIn ease .5s;
+}
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
 
 
 
