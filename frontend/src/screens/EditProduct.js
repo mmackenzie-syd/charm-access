@@ -114,14 +114,14 @@ function EditProduct(props) {
                 <div className="row margin-top-1 margin-bottom-2" >
                     <h3>{id ? 'Edit' : 'Create'} Product</h3>
                     <div>
-                        <button className={`page-btn`} onClick={getPrevious}>
+                        <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
                             <LeftArrowIcon
                                 width={'1.2rem'}
                                 height={'1.2rem'}
                                 offset={'.3rem'}
                             />
                         </button>
-                        <button className={`page-btn`} onClick={getNext}>
+                        <button className='btn btn-secondary btn-icon' onClick={getNext}>
                             <RightArrowIcon
                                 width={'1.2rem'}
                                 height={'1.2rem'}

@@ -1,25 +1,24 @@
 import {Link} from "react-router-dom";
 import React from "react";
-import './CategoriesSlide.css';
 
 const CategoriesSlide = (props) => {
     const { items } = props;
     return (
-        <ul className="category__grid" >
+        <ul className="grid grid-col-3" >
             {
-               items.map(({ product, category, count }) => {
+                items.map(({ product, category, count }) => {
                     const { _id, image } = product;
                     const { name, slug } = category;
                     return (
-                        <li key={_id} className="category__grid-item">
-                            <div className="category__grid-img-container">
+                        <li key={_id}>
+                            <div className="slide-img-wrap">
                                 <Link to={`/products/${slug}/1`}>
-                                    <img alt={name} className="category__grid-img" src={image}/>
+                                    <img alt={name} className="img-dull" src={image}/>
                                 </Link>
                             </div>
-                            <h2>{name}&nbsp;
+                            <p className="slide-caption">{name}&nbsp;
                                 <mark>({ count })</mark>
-                            </h2>
+                            </p>
                         </li>);
                 })
             }

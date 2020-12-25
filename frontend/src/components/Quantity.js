@@ -4,10 +4,10 @@ import './Quantity.css';
 function Quantity(props) {
     const { value, onSubBtn, onPlusBtn} = props;
     return (
-        <div className="quantity">
-            <button onClick={onSubBtn} type="button" className="quantity__btn">-</button>
-            <div className="quantity__value">{value}</div>
-            <button onClick={onPlusBtn} type="button" className="quantity__btn">+</button>
+        <div className="inline">
+            <button onClick={onSubBtn} type="button" className="btn btn-icon btn-secondary">-</button>
+            <div className="quantity-value">{value}</div>
+            <button onClick={onPlusBtn} type="button" className="btn btn-icon btn-secondary">+</button>
         </div>
     );
 }

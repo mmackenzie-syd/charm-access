@@ -1,5 +1,4 @@
 import React from 'react';
-import './Paginator.css';
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 
@@ -22,38 +21,38 @@ function Paginator(props) {
         endPage = maxPage;
     }
 
-    let leftArrowDisabled = (curPage === 1) ? 'leftArrowDisabled' : '';
-    let rightArrowDisabled = (curPage === maxPage) ? 'rightArrowDisabled' : '';
+    let leftArrowDisabled = (curPage === 1) ? 'btn-disabled' : '';
+    let rightArrowDisabled = (curPage === maxPage) ? 'btn-disabled' : '';
 
     const pagesToDisplay = (pages === 0) ? [] : pagesArray.slice((startPage - 1), endPage);
 
     return (
         <div className="pagination margin-bottom-1">
             { pagesToDisplay.length > 1 &&
-                <button className={`page-btn ${leftArrowDisabled}`}  onClick={leftPageClick}>
-                    <LeftArrowIcon
-                        width={'1.2rem'}
-                        height={'1.2rem'}
-                        offset={'.3rem'}
-                    />
-                </button>
+            <button className={`btn btn-icon btn-secondary ${leftArrowDisabled}`}  onClick={leftPageClick}>
+                <LeftArrowIcon
+                    width={'1.2rem'}
+                    height={'1.2rem'}
+                    offset={'.3rem'}
+                />
+            </button>
             }
             {   pagesToDisplay.length > 1 &&
-                pagesToDisplay.map((page) => {
-                    const active = (page === Number(curPage)) ? 'active' : '';
-                    return (
-                        <button key={page} className={`page-btn ${active}`} onClick={() => pageClick(page)}>
-                            {page}
-                        </button>)})
+            pagesToDisplay.map((page) => {
+                const active = (page === Number(curPage)) ? 'btn-active' : '';
+                return (
+                    <button key={page} className={`btn btn-secondary btn-icon ${active}`} onClick={() => pageClick(page)}>
+                        {page}
+                    </button>)})
             }
             { pagesToDisplay.length > 1 &&
-                <button className={`page-btn ${rightArrowDisabled}`} onClick={rightPageClick}>
-                    <RightArrowIcon
-                        width={'1.2rem'}
-                        height={'1.2rem'}
-                        offset={'.3rem'}
-                    />
-                </button>
+            <button className={`btn btn-secondary btn-icon ${rightArrowDisabled}`} onClick={rightPageClick}>
+                <RightArrowIcon
+                    width={'1.2rem'}
+                    height={'1.2rem'}
+                    offset={'.3rem'}
+                />
+            </button>
             }
         </div>
     );

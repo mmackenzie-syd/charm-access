@@ -53,12 +53,6 @@ a:active {
 }
 .image-bgd {}
 
-.banner {
-    position: relative;
-    width: 100%;
-    margin-top: 3rem;
-    margin-bottom: 5rem;
-}
 .caption {
     position: absolute;
     left: 3rem;
@@ -118,7 +112,6 @@ a:active {
 
 .info__mood {
     font-family: 'Arsenal', sans-serif;
-    margin-bottom: 4rem;
     font-size: 4.8rem;
     font-weight: 700;
     line-height: 1.5;

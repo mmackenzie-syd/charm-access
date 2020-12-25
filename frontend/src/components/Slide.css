@@ -33,3 +33,17 @@
 .slider-dot-active {
     opacity: 1;
 }
+
+.slide-img-wrap {
+    margin-bottom: .6rem;
+}
+
+.slide-caption {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    color: #606060;
+}

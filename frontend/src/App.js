@@ -18,6 +18,8 @@ import EditProduct from "./screens/EditProduct";
 import ProtectedRoute from "./ProtectedRoute";
 import ResetPassword from "./screens/ResetPassword";
 
+import './home2.css';
+
 function App() {
     // preload
     const dispatch = useDispatch();
@@ -30,13 +32,14 @@ function App() {
                     <div className="spacer-header-compensate">&nbsp;</div>
                     <div className="wrap" >
                         <Route path="/" component={Home} exact />
-                        <Route path="/product/:category/:id" component={Product} />
+                        {  <Route path="/product/:category/:id" component={Product}/> }
                         <Route path="/products/:category/:page" component={Products} />
-                        <Route path="/about" component={About} />
+                          <Route path="/about" component={About} />
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />
+
                         {/* Protected routes */}
-                        <ProtectedRoute
+                        {/*        <ProtectedRoute
                             path="/dashboard/products/:page"
                             component={EditProducts}
                         />
@@ -55,7 +58,7 @@ function App() {
                         <ProtectedRoute
                             path="/dashboard/reset"
                             component={ResetPassword}
-                        />
+                        /> */}
                     </div>
                     <Footer />
                 </ModalProvider>

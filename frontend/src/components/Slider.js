@@ -54,22 +54,22 @@ function Slider(props) {
         }
     }
 
-    let leftArrowDisabled = (offset < 0) ? '' : 'leftArrowDisabled';
-    let rightArrowDisabled = (offset > maxOffset * slideWidth) ? '' : 'rightArrowDisabled';
+    let leftArrowDisabled = (offset < 0) ? '' : 'btn-disabled';
+    let rightArrowDisabled = (offset > maxOffset * slideWidth) ? '' : 'btn-disabled';
 
     return (
         <Fragment>
             <div className="row  margin-bottom-1">
-                <h3>{caption}</h3>
+                <h3 className="margin-bottom-2">{caption}</h3>
                 <div>
-                    <button className={`page-btn ${leftArrowDisabled}`}  onClick={handleLeft}>
+                    <button className={`btn btn-icon btn-secondary  ${leftArrowDisabled}`}  onClick={handleLeft}>
                         <LeftArrowIcon
                             width={'1.2rem'}
                             height={'1.2rem'}
                             offset={'.3rem'}
                         />
                     </button>
-                    <button className={`page-btn ${rightArrowDisabled}`} onClick={handleRight}>
+                    <button className={`btn btn-icon btn-secondary  ${rightArrowDisabled}`} onClick={handleRight}>
                         <RightArrowIcon
                             width={'1.2rem'}
                             height={'1.2rem'}

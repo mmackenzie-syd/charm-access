@@ -1,4 +1,3 @@
-import './Home.css';
 import React, {useEffect} from 'react';
 import ImageGallery from 'react-image-gallery';
 import { useHistory } from "react-router";
@@ -51,8 +50,7 @@ function Home() {
 
   return (
       <main className="home">
-          <section className="banner">
-              <div className="image-bgd">
+          <section className="banner margin-top-3 margin-bottom-5 full-width">
               <ImageGallery
                   items={images}
                   showNav={false}
@@ -63,17 +61,15 @@ function Home() {
                   showPlayButton={false}
                   slideInterval={7000}
               />
-              </div>
-            <div className="caption">
-                <div className="brand-transp">
-                    <img alt="brand" className="brand-transp-img" src="./images/brand_transp_purple.png"/>
+            <div className="banner-caption">
+                <div className="banner-caption-brand">
+                    <img alt="brand" src="./images/brand_transp_purple.png"/>
                 </div>
                 <div>
-                    <p className="brand-p">Beautiful and charming fashion accessories at an affordable price.</p>
-
+                    <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
                 </div>
-                <div className="row center">
-                    <button className="shop-now" onClick={handleShopNow}>Shop Now</button>
+                <div className="row center margin-top-3">
+                    <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
                 </div>
             </div>
           </section>
@@ -90,46 +86,38 @@ function Home() {
               }
           </section>
 
-          <section className="info">
-            <div className="info__img-container">
-                <img alt="mood" className="info__img" src="./images/mood.jpg"/>
+          <section className="mood margin-bottom-5">
+            <div>
+                <img alt="mood" className="mood-img" src="./images/mood.jpg"/>
             </div>
-            <div className="info__caption">
-                <div className="info__mood">
+            <div className="mood-caption">
+                <div className="mood-caption-title margin-bottom-4">
                     Create your mood with Charm Accessories
                 </div>
-                <div className="row center info__phone">
+                <div className="row center margin-bottom-3 padding-right-3">
                     <PhoneIcon width={'2.8rem'} height={'2.8rem'}  fill={'#fff'} />
                     &nbsp;+061421013777 &nbsp;&nbsp; 10AM - 8PM
                 </div>
-                <div className="row center info__shipping margin-bottom-5">
-                    <KangarooIcon width={'4.2rem'} height={'4.2rem'} fill={'#fff'} className={'info__kangaroo'}/>
+                <div className="row center padding-right-3 margin-bottom-5">
+                    <KangarooIcon width={'4.2rem'} height={'4.2rem'} fill={'#fff'} className={'kangaroo'}/>
                     Australia Post Delivery Rates Apply
                 </div>
             </div>
           </section>
 
-          <section className="info__signup-wrap">
-              <div className="row center">
-                <div className="col-6 footer__col footer__sign-up">
-                  <form id="footersignupform" className="s-form form--footer">
-                      <p className=" footer__heading u-bold u-uppercase">Become a vip</p>
-                      <p className="u-semi-bold">Be the first to know about special offers and&nbsp;updates.</p>
-
-                      <input type="hidden" id="csrftoken" name="csrftoken"
-                             value="jHECa7neQMKbSudI6xZ16366o54gryO2lI5mBUpzLmM=" />
-                      <div className="s-input-wrap">
-                          <div className="s-input" data-label="Email">
-                              <input type="email" id="footersignupemail" placeholder="Enter your email address" />
-                          </div>
-
-                          <button id="footersignupbutton" className="s-button s-button--primary">Sign Up</button>
-                      </div>
-                      <div id="footer-error-wrapper" className="is-hidden"></div>
-                  </form>
-                  <div className="clear"></div>
-              </div>
-              </div>
+          <section className="signup row center margin-bottom-5">
+              <form className="col-8">
+                  <h5 className="margin-bottom-2">BECOME A VIP</h5>
+                  <p className="margin-bottom-2">Be the first to know about special offers and&nbsp;updates.</p>
+                  <div className="row">
+                      <input
+                          type="email"
+                          placeholder="Enter your email address"
+                          className="col-9"
+                      />
+                      <button className="btn btn-primary btn-small col-3 margin-left-1">SIGN UP</button>
+                  </div>
+              </form>
           </section>
           <div className="spacer"></div>
       </main>

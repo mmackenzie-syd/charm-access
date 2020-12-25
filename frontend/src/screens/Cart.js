@@ -110,7 +110,7 @@ function Cart() {
                         <section className="row end margin-top-1">
                         <div></div>
                         <div className="col-3">
-                        <button className="add-shop-cart btn-full-width">Checkout</button>
+                        <button className="btn btn-secondary full-width">Checkout</button>
                         </div>
                     </section>
                 </>

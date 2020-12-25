@@ -1,5 +1,4 @@
 import React, {useRef, useState} from 'react';
-import './PhotoLoader.css';
 import PlusIcon from "../icons/PlusIcon";
 
 import AWS_WRAPPER from '../services/AWS_WRAPPER';
@@ -65,7 +64,7 @@ function PhotoLoader(props) {
     return (
         <>
             <input ref={fileRef} hidden type="file" accept="image/*" onChange={handleFileUpload} />
-            <button className="photo-loader-btn" type="button" onClick={triggerInputFile}>
+            <button className="btn btn-icon-circle btn-secondary" type="button" onClick={triggerInputFile}>
                 <PlusIcon
                     width={'1.2rem'}
                     height={'1.2rem'}

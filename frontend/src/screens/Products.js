@@ -1,4 +1,3 @@
-import './Products.css';
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
@@ -68,17 +67,17 @@ function Products(props) {
     }
 
     return (
-        <main className="collections" style={{height: fixedHeight}}>
+        <main style={{height: fixedHeight}}>
             { isLoading &&
                 <Loading isLoading={isLoading} />
             }
             <section className="row  margin-top-1 margin-bottom-2">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
-                <div className="collections__page-numbers">
+                <div className="font-small">
                     { (pages > 0)
                         ? <div>
                             <span>Page</span>
-                            <span className="fixed-width-ch">{curPage}</span>
+                            <span className="fixed-width-page-number">{curPage}</span>
                             <span>of {pages}</span>
                           </div>
                         : <span>&nbsp;</span>
@@ -96,32 +95,33 @@ function Products(props) {
                     rightPageClick={handleRightPageClick}
                 />
             </section>
-            <ul className="arrivals__grid">
+            <ul className="grid grid-col-4">
                 {
                     products && products.map(({ name, _id, thumbnail, price }) =>
-                        <li key={_id} className="arrivals__grid-item">
-                            <div className="arrivals__grid-img-container" >
+                        <li key={_id} className="full-width">
+                            <div className="slide-img-wrap" >
                                 <Link to={`/product/${categorySlug}/${_id}`}>
-                                    <img alt="placeholder" className="arrivals__grid-img" src={placeholder} />
+                                    {/* <img alt="placeholder" className="arrivals__grid-img" src={placeholder} /> */}
                                     { !isLoading &&
-                                        <img  alt={name} className="arrivals__grid-img absolute" src={thumbnail} />
+                                        <img  alt={name} className="img-dull" src={thumbnail} />
                                     }
                                 </Link>
                             </div>
                             <div className="row bottom margin-bottom-2">
                                 <div>
-                                    <h2>{name}</h2>
-                                    <p className="price">${price.toFixed(2)}</p>
+                                    <p className="slide-caption">{name}</p>
+                                    <h5>${price.toFixed(2)}</h5>
                                 </div>
                             </div>
                         </li>
                     )
                 }
             </ul>
+
             <section className="margin-top-1 margin-bottom-5">
                 <div className="row center">
                     { (pages > 0)
-                        ? <span className="">Page {curPage} of {pages}</span>
+                        ? <span>Page {curPage} of {pages}</span>
                         : <span>&nbsp;</span>
                     }
                 </div>
