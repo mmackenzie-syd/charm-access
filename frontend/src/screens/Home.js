@@ -108,7 +108,7 @@ function Home() {
           <section className="signup row center margin-bottom-5">
               <form className="col-8">
                   <h5 className="margin-bottom-2">BECOME A VIP</h5>
-                  <p className="margin-bottom-2">Be the first to know about special offers and&nbsp;updates.</p>
+                  <p className="signup-paragraph margin-bottom-2">Be the first to know about special offers and&nbsp;updates.</p>
                   <div className="row">
                       <input
                           type="email"

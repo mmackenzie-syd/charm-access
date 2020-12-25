@@ -153,7 +153,7 @@ function Product(props) {
                             Add to Shopping Cart
                         </button>
                         <button className="btn btn-primary full-width">Buy</button>
-                        <p className="product-description margin-top-3">{product.description}</p>
+                        <p className="margin-top-3">{product.description}</p>
                         <div>
                             <div className="product-share margin-bottom-2">Share this</div>
                             <div className="social-icons">

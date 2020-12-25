@@ -17,15 +17,15 @@ function About() {
                         </div>
                         <h3 className="margin-bottom-1">About Us</h3>
                         <h3 className="product-brand-title  margin-bottom-2">Charm Accessories</h3>
-                        <p className="product-description margin-top-4">Located in the beautiful harbour city of Sydney,
+                        <p className="margin-top-4">Located in the beautiful harbour city of Sydney,
                             Charm Accessories online store offers minimalist fashion jewelry and jewelry at affordable prices,
                             shipping Australia wide. We do not just sell jewelry, we create an image and mood.</p>
-                        <p className="product-description">Everything around us is changing rapidly, especially fashion trends.
+                        <p>Everything around us is changing rapidly, especially fashion trends.
                             Earlier, decorations emphasized their status, importance in society. Today, jewelry or accessories
                             for a person are primarily an element of mood, a way to complement an image. Therefore, a modern
                             woman tends to choose original, classic or minimalist accessories and jewelry, often change them
                             depending on the mood, time of day, season, and we are always ready to help with this.</p>
-                        <p className="product-description">Fashion jewelry is both simple and sophisticated complementing the image
+                        <p>Fashion jewelry is both simple and sophisticated complementing the image
                             harmoniously, and a successful combination of jewelry, such as silver earrings and bracelets or a
                             pendant and a silver ring, you can easily create a new image, change your mood. There are also
                             interesting silver sets in the Charm Accessories online store.</p>
