@@ -36,6 +36,7 @@
 
 .slide-img-wrap {
     margin-bottom: .6rem;
+    position: relative;
 }
 
 .slide-caption {

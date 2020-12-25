@@ -266,8 +266,6 @@ button, input, optgroup, select, textarea {
     z-index: 100;
 }
 
-.products-img-wrap { position: relative; }
-
 .fade-in {
     animation: fadeIn ease .5s;
 }

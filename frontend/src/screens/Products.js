@@ -99,7 +99,7 @@ function Products(props) {
                 {
                     products && products.map(({ name, _id, thumbnail, price }) =>
                         <li key={_id} className="full-width">
-                            <div className="slide-img-wrap products-img-wrap" >
+                            <div className="slide-img-wrap" >
                                 <Link to={`/product/${categorySlug}/${_id}`}>
                                     <img alt="placeholder" src={placeholder} />
                                     { !isLoading &&
