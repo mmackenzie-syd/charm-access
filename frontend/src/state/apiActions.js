@@ -1,5 +1,5 @@
 import Axios from "axios";
-import {CATEGORY_SLIDES, CATEGORIES, PRODUCT, PRODUCTS, ARRIVAL_SLIDES} from "./apiConstants";
+import {CATEGORY_SLIDES, CATEGORIES, PRODUCTS, ARRIVAL_SLIDES} from "./apiConstants";
 
 const uri = process.env.REACT_APP_SHOP_URL;
 

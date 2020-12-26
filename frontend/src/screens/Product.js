@@ -84,7 +84,7 @@ function Product(props) {
             });
             list.push({
                 name: category.name,
-                url: `/collections/${categorySlug}/1`
+                url: `/products/${categorySlug}/1`
             });
             list.push({
                 name: product.name,
