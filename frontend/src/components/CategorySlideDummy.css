@@ -1,0 +1,12 @@
+.category-dummy {
+    opacity: 0;
+}
+
+.dummy-category-img {
+    filter: brightness(90%);
+}
+
+.category-dummy-caption {
+    width: 100px;
+    background-color: #ddd;
+}

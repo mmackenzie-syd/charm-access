@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import ImageGallery from 'react-image-gallery';
 import { useHistory } from "react-router";
 import PhoneIcon from "../icons/PhoneIcon";
@@ -8,6 +8,8 @@ import CategoriesSlide from "../components/CategoriesSlide";
 import ArrivalsSlide from "../components/ArrivalsSlide";
 import {useDispatch, useSelector} from "react-redux";
 import {getArrivalSlides, getCategorySlides} from "../state/apiActions";
+import ArrivalsSlideDummy from "../components/ArrivalsSlideDummy";
+import CategorySlideDummy from "../components/CategorySlideDummy";
 
 const images = [
     {
@@ -24,13 +26,25 @@ const images = [
     },
 ];
 
+
 function Home() {
     let history = useHistory();
     const dispatch = useDispatch();
+    const [width, setWidth] = useState(1000);
+    const widthRef = useRef(null);
 
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
     const { data: categorySlides } = categorySlidesApi;
     const categoriesPerSlide = 3;
+
+    console.log('categorySlides', categorySlides)
+
+    useEffect( () => {
+        // get initial slide width
+        if (widthRef.current){
+            setWidth(widthRef.current.offsetWidth);
+        }
+    }, [widthRef]);
 
     useEffect(() => {
         dispatch(getCategorySlides());
@@ -73,16 +87,23 @@ function Home() {
                 </div>
             </div>
           </section>
-           <section className="category">
+          <section className="category category-relative">
+              <CategorySlideDummy />
                { categorySlides &&
-                    <Slider caption={'By Category'} items={categorySlides} perSlide={categoriesPerSlide}
-                       displayImage={CategoriesSlide}/>
+                   <div className="category-absolute">
+                        <Slider caption={'By Category'} items={categorySlides} perSlide={categoriesPerSlide}
+                            displayImage={CategoriesSlide} initialWidth={width}/>
+                   </div>
                }
           </section>
-          <section className="arrivals">
-              {arrivalSlides &&
-                <Slider caption={'Recent Arrivals'} items={arrivalSlides} perSlide={arrivalsPerSlide}
-                      displayImage={ArrivalsSlide}/>
+
+          <section className="arrivals arrivals-relative" ref={widthRef}>
+              <ArrivalsSlideDummy />
+              {  arrivalSlides &&
+                  <div className="arrivals-absolute">
+                    <Slider caption={'Recent Arrivals'} items={arrivalSlides} perSlide={arrivalsPerSlide}
+                        displayImage={ArrivalsSlide} initialWidth={width}/>
+                  </div>
               }
           </section>
 

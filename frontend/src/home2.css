@@ -278,6 +278,40 @@ button, input, optgroup, select, textarea {
     }
 }
 
+/* ************************************ */
+
+.fade-out {
+    animation: fadeOut ease 2s;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity:1;
+    }
+    100% {
+        opacity:0;
+    }
+}
+
+.arrivals-relative {
+   position: relative;
+}
+
+.arrivals-absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.category-relative {
+    position: relative;
+}
+
+.category-absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 
 
 

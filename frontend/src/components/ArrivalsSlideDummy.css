@@ -1,0 +1,17 @@
+.arrivals-dummy {
+    opacity: 0;
+}
+
+.arrivals-dummy-img {
+    filter:brightness(96.5%);
+}
+
+.arrivals-dummy-price {
+    background-color: #eee;
+    width: 70px;
+}
+
+.arrivals-dummy-caption {
+    background-color: #eee;
+    width: 150px;
+}

@@ -4,7 +4,7 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import Slide from "./Slide.js"
 
 function Slider(props) {
-    const { caption, items, perSlide, displayImage: DisplayImage } = props;
+    const { caption, items, perSlide, displayImage: DisplayImage, initialWidth } = props;
     const ref = useRef(null);
     const [slideWidth, setSlideWidth] = useState(1000);
     const [offset, setOffset] = useState(0);
@@ -26,10 +26,15 @@ function Slider(props) {
 
     useEffect( () => {
         // get initial slide width
-        if(ref.current){
+        if (ref.current){
             setSlideWidth(ref.current.offsetWidth);
         }
     }, [ref]);
+
+    useEffect( () => {
+        // set initial slide width on mount
+        setSlideWidth(initialWidth);
+    }, []);
 
     let numberOfSlides = Math.floor(items.length / perSlide);
     if (items.length % perSlide > 0) {
