@@ -39,7 +39,7 @@ function App() {
                         <Route path="/cart" component={Cart} />
 
                         {/* Protected routes */}
-                        {/*        <ProtectedRoute
+                        <ProtectedRoute
                             path="/dashboard/products/:page"
                             component={EditProducts}
                         />
@@ -58,7 +58,7 @@ function App() {
                         <ProtectedRoute
                             path="/dashboard/reset"
                             component={ResetPassword}
-                        /> */}
+                        /> 
                     </div>
                     <Footer />
                 </ModalProvider>

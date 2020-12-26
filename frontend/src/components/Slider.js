@@ -1,40 +1,18 @@
-import React, {Fragment, useEffect, useRef, useState} from 'react';
-import LeftArrowIcon from "../icons/LeftArrowIcon";
-import RightArrowIcon from "../icons/RightArrowIcon";
+import React, {Fragment, useEffect, useState} from 'react';
 import Slide from "./Slide.js"
 
 function Slider(props) {
-    const { items, perSlide, displayImage: DisplayImage, initialWidth, event } = props;
-    const ref = useRef(null);
-    const [slideWidth, setSlideWidth] = useState(1000);
+    const { items, perSlide, displayImage: DisplayImage, width, event } = props;
+    const [slideWidth, setSlideWidth] = useState(2000);
     const [offset, setOffset] = useState(0);
     const [isSliding, setIsSliding] = useState(false);
     const [activeSlide, setActiveSlide] = useState(1);
 
-    useEffect(() => {
-        // detect window resize and get slide width again
-        const handleWindowResize = () => {
-            setIsSliding(false);
-            if(ref.current){
-                setSlideWidth(ref.current.offsetWidth);
-            }
-        }
-        window.addEventListener("resize", handleWindowResize);
-        // Return a function from the effect that removes the event listener
-        return () => window.removeEventListener("resize", handleWindowResize);
-    }, []);
-
-    useEffect( () => {
-        // get initial slide width
-        if (ref.current){
-            setSlideWidth(ref.current.offsetWidth);
-        }
-    }, [ref]);
-
     useEffect( () => {
         // set initial slide width on mount
-        setSlideWidth(initialWidth);
-    }, []);
+        setSlideWidth(width);
+        setIsSliding(false);
+    }, [width]);
 
     let numberOfSlides = Math.floor(items.length / perSlide);
     if (items.length % perSlide > 0) {
@@ -47,14 +25,14 @@ function Slider(props) {
     const handleLeft = () => {
         setIsSliding(true);
         if (offset < 0) {
-            setOffset(offset + slideWidth );
+            setOffset(offset + 1 );
             setActiveSlide(activeSlide - 1);
         }
     }
     const handleRight = () => {
         setIsSliding(true);
-        if (offset > maxOffset * slideWidth ) {
-            setOffset(offset - slideWidth );
+        if (offset > maxOffset) {
+            setOffset(offset - 1 );
             setActiveSlide(activeSlide + 1);
         }
     }
@@ -83,16 +61,16 @@ function Slider(props) {
 
     return (
         <Fragment>
-            <div className="slide-container" ref={ref}>
+            <div className="slide-container">
                 {/* added hidden dummy item so that slide container has a height */}
-                <div className="hidden">
+                <div className="hidden" style={{width: slideWidth}}>
                     <DisplayImage items={[items[0]]} />
                 </div>
                 {
                     slides.map(slide => {
                         const itemsPerSlide = items.slice((slide - 1) * perSlide, slide * perSlide);
                         return(
-                            <Slide x={(slide - 1) * slideWidth + offset} key={slide} i={slide} width={slideWidth} isSliding={isSliding}>
+                            <Slide x={(slide - 1) * slideWidth + offset * slideWidth} key={slide} i={slide} width={slideWidth} isSliding={isSliding}>
                                 <DisplayImage items={itemsPerSlide} />
                             </Slide>
                         );

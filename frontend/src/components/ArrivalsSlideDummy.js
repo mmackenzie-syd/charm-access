@@ -11,28 +11,8 @@ const dummyArrivalsData = [
 ];
 
 const ArrivalsSlideDummy = () => {
-
     return (
         <div className="arrivals-dummy fade-out">
-            <div className="row  margin-bottom-1">
-                <h3 className="margin-bottom-2">Recent Arrivals</h3>
-                <div>
-                    <button className='btn btn-icon btn-secondary'>
-                        <LeftArrowIcon
-                            width={'1.2rem'}
-                            height={'1.2rem'}
-                            offset={'.3rem'}
-                        />
-                    </button>
-                    <button className='btn btn-icon btn-secondary'>
-                        <RightArrowIcon
-                            width={'1.2rem'}
-                            height={'1.2rem'}
-                            offset={'.3rem'}
-                        />
-                    </button>
-                </div>
-            </div>
             <ul className="grid grid-col-4" >
                 {
                     dummyArrivalsData.map((thumbnail, index) => (

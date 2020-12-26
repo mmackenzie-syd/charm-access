@@ -36,12 +36,23 @@ function Home() {
     const [arrivalsArrowState, setArrivalsArrowState] = useState('');
     const widthRef = useRef(null);
     let handleArrivalsEvent;
+    let handleCategoryEvent;
 
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
     const { data: categorySlides } = categorySlidesApi;
     const categoriesPerSlide = 3;
 
-    console.log('categorySlides', categorySlides)
+    useEffect(() => {
+        // detect window resize
+        const handleWindowResize = () => {
+            if(widthRef.current){
+                setWidth(widthRef.current.offsetWidth);
+            }
+        }
+        window.addEventListener("resize", handleWindowResize);
+        // Return a function from the effect that removes the event listener
+        return () => window.removeEventListener("resize", handleWindowResize);
+    }, []);
 
     useEffect( () => {
         // get initial slide width
@@ -66,7 +77,7 @@ function Home() {
         history.push("/products/shop/1");
     }
 
-    const handleLeft = () => {
+    const handleLeftArrivals = () => {
         if (handleArrivalsEvent) {
             const arrowState = handleArrivalsEvent('LEFT_CLICK');
             setArrivalsArrowState(arrowState);
@@ -74,12 +85,28 @@ function Home() {
 
     }
 
-    const handleRight = () => {
+    const handleRightArrivals = () => {
         if (handleArrivalsEvent) {
             const arrowState = handleArrivalsEvent('RIGHT_CLICK');
             setArrivalsArrowState(arrowState);
         }
     }
+
+    const handleLeftCategory = () => {
+        if (handleArrivalsEvent) {
+            const arrowState = handleCategoryEvent('LEFT_CLICK');
+           // setArrivalsArrowState(arrowState);
+        }
+
+    }
+
+    const handleRightCategory = () => {
+        if (handleArrivalsEvent) {
+            const arrowState = handleCategoryEvent('RIGHT_CLICK');
+            //setArrivalsArrowState(arrowState);
+        }
+    }
+
 
     return (
       <main className="home">
@@ -106,54 +133,89 @@ function Home() {
                 </div>
             </div>
           </section>
-          <section className="category category-relative">
-              <CategorySlideDummy />
-               { /* categorySlides &&
-                   <div className="category-absolute">
-                        <Slider caption={'By Category'} items={categorySlides} perSlide={categoriesPerSlide}
-                            displayImage={CategoriesSlide} initialWidth={width}/>
-                   </div> */
-               }
+          <section className="category">
+              <div className="row  margin-bottom-1">
+                  <h3 className="margin-bottom-2">By Category</h3>
+                  <div>
+                      <button
+                          onClick={handleLeftCategory}
+                          className='btn btn-icon btn-secondary'
+                      >
+                          <LeftArrowIcon
+                              width={'1.2rem'}
+                              height={'1.2rem'}
+                              offset={'.3rem'}
+                          />
+                      </button>
+                      <button
+                          onClick={handleRightCategory}
+                          className='btn btn-icon btn-secondary'
+                      >
+                          <RightArrowIcon
+                              width={'1.2rem'}
+                              height={'1.2rem'}
+                              offset={'.3rem'}
+                          />
+                      </button>
+                  </div>
+              </div>
+              <div className="category-relative">
+                  <CategorySlideDummy />
+                  {  categorySlides &&
+                  <div className="category-absolute">
+                      <Slider
+                          items={categorySlides}
+                          perSlide={categoriesPerSlide}
+                          displayImage={CategoriesSlide}
+                          width={width}
+                          setHandleEvent={instance => handleCategoryEvent = instance}
+                      />
+                  </div>
+                  }
+              </div>
           </section>
 
-          <section className="arrivals arrivals-relative" ref={widthRef}>
-              <ArrivalsSlideDummy />
-              {  arrivalSlides &&
-                  <div className="arrivals-absolute">
-                      <div className="row  margin-bottom-1">
-                          <h3 className="margin-bottom-2">Recent Arrivals</h3>
-                          <div>
-                              <button
-                                  className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'LEFT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
-                                  onClick={handleLeft}
-                              >
-                                  <LeftArrowIcon
-                                      width={'1.2rem'}
-                                      height={'1.2rem'}
-                                      offset={'.3rem'}
-                                  />
-                              </button>
-                              <button
-                                  className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'RIGHT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
-                                  onClick={handleRight}
-                              >
-                                  <RightArrowIcon
-                                      width={'1.2rem'}
-                                      height={'1.2rem'}
-                                      offset={'.3rem'}
-                                  />
-                              </button>
-                          </div>
-                      </div>
-                    <Slider
-                        items={arrivalSlides}
-                        perSlide={arrivalsPerSlide}
-                        displayImage={ArrivalsSlide}
-                        initialWidth={width}
-                        setHandleEvent={instance => handleArrivalsEvent = instance}
-                    />
+          <section className="arrivals" ref={widthRef}>
+              <div className="row  margin-bottom-1">
+                  <h3 className="margin-bottom-2">Recent Arrivals</h3>
+                  <div>
+                      <button
+                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'LEFT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
+                          onClick={handleLeftArrivals}
+                      >
+                          <LeftArrowIcon
+                              width={'1.2rem'}
+                              height={'1.2rem'}
+                              offset={'.3rem'}
+                          />
+                      </button>
+                      <button
+                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'RIGHT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
+                          onClick={handleRightArrivals}
+                      >
+                          <RightArrowIcon
+                              width={'1.2rem'}
+                              height={'1.2rem'}
+                              offset={'.3rem'}
+                          />
+                      </button>
                   </div>
-              }
+              </div>
+                <div className="arrivals-relative">
+                        <ArrivalsSlideDummy />
+                      {  arrivalSlides &&
+                            <div className="arrivals-absolute">
+                                  <Slider
+                                      items={arrivalSlides}
+                                      perSlide={arrivalsPerSlide}
+                                      displayImage={ArrivalsSlide}
+                                      width={width}
+                                      setHandleEvent={instance => handleArrivalsEvent = instance}
+                                  />
+                            </div>
+                      }
+                </div>
+
           </section>
 
           <section className="mood margin-bottom-5">

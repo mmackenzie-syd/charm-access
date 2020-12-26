@@ -4,7 +4,7 @@ import React from "react";
 const ArrivalsSlide = (props) => {
     const { items: products } = props;
     return (
-        <ul className="grid grid-col-4" >
+        <ul className="grid grid-col-4">
             {
                 products.map(({name, _id, thumbnail, price}) => (
                     <li key={_id} className="full-width">
