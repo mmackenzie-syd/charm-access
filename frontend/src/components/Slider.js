@@ -4,7 +4,7 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import Slide from "./Slide.js"
 
 function Slider(props) {
-    const { caption, items, perSlide, displayImage: DisplayImage, initialWidth } = props;
+    const { items, perSlide, displayImage: DisplayImage, initialWidth, event } = props;
     const ref = useRef(null);
     const [slideWidth, setSlideWidth] = useState(1000);
     const [offset, setOffset] = useState(0);
@@ -59,30 +59,30 @@ function Slider(props) {
         }
     }
 
-    let leftArrowDisabled = (offset < 0) ? '' : 'btn-disabled';
-    let rightArrowDisabled = (offset > maxOffset * slideWidth) ? '' : 'btn-disabled';
+    const handleEvent = (event) => {
+        switch (event) {
+            case 'LEFT_CLICK':
+                handleLeft();
+                break;
+            case 'RIGHT_CLICK':
+                handleRight();
+                break;
+        }
+
+        if (offset < 0) {
+            return 'LEFT_ARROW_DISABLED';
+        }
+        if (offset > maxOffset * slideWidth) {
+            return 'RIGHT_ARROW_DISABLED';
+        }
+        return '';
+    }
+
+    // set callbacks
+    props.setHandleEvent(handleEvent);
 
     return (
         <Fragment>
-            <div className="row  margin-bottom-1">
-                <h3 className="margin-bottom-2">{caption}</h3>
-                <div>
-                    <button className={`btn btn-icon btn-secondary  ${leftArrowDisabled}`}  onClick={handleLeft}>
-                        <LeftArrowIcon
-                            width={'1.2rem'}
-                            height={'1.2rem'}
-                            offset={'.3rem'}
-                        />
-                    </button>
-                    <button className={`btn btn-icon btn-secondary  ${rightArrowDisabled}`} onClick={handleRight}>
-                        <RightArrowIcon
-                            width={'1.2rem'}
-                            height={'1.2rem'}
-                            offset={'.3rem'}
-                        />
-                    </button>
-                </div>
-            </div>
             <div className="slide-container" ref={ref}>
                 {/* added hidden dummy item so that slide container has a height */}
                 <div className="hidden">

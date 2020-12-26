@@ -10,6 +10,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getArrivalSlides, getCategorySlides} from "../state/apiActions";
 import ArrivalsSlideDummy from "../components/ArrivalsSlideDummy";
 import CategorySlideDummy from "../components/CategorySlideDummy";
+import LeftArrowIcon from "../icons/LeftArrowIcon";
+import RightArrowIcon from "../icons/RightArrowIcon";
 
 const images = [
     {
@@ -31,7 +33,9 @@ function Home() {
     let history = useHistory();
     const dispatch = useDispatch();
     const [width, setWidth] = useState(1000);
+    const [arrivalsArrowState, setArrivalsArrowState] = useState('');
     const widthRef = useRef(null);
+    let handleArrivalsEvent;
 
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
     const { data: categorySlides } = categorySlidesApi;
@@ -62,7 +66,22 @@ function Home() {
         history.push("/products/shop/1");
     }
 
-  return (
+    const handleLeft = () => {
+        if (handleArrivalsEvent) {
+            const arrowState = handleArrivalsEvent('LEFT_CLICK');
+            setArrivalsArrowState(arrowState);
+        }
+
+    }
+
+    const handleRight = () => {
+        if (handleArrivalsEvent) {
+            const arrowState = handleArrivalsEvent('RIGHT_CLICK');
+            setArrivalsArrowState(arrowState);
+        }
+    }
+
+    return (
       <main className="home">
           <section className="banner margin-top-3 margin-bottom-5 full-width">
               <ImageGallery
@@ -89,11 +108,11 @@ function Home() {
           </section>
           <section className="category category-relative">
               <CategorySlideDummy />
-               { categorySlides &&
+               { /* categorySlides &&
                    <div className="category-absolute">
                         <Slider caption={'By Category'} items={categorySlides} perSlide={categoriesPerSlide}
                             displayImage={CategoriesSlide} initialWidth={width}/>
-                   </div>
+                   </div> */
                }
           </section>
 
@@ -101,8 +120,38 @@ function Home() {
               <ArrivalsSlideDummy />
               {  arrivalSlides &&
                   <div className="arrivals-absolute">
-                    <Slider caption={'Recent Arrivals'} items={arrivalSlides} perSlide={arrivalsPerSlide}
-                        displayImage={ArrivalsSlide} initialWidth={width}/>
+                      <div className="row  margin-bottom-1">
+                          <h3 className="margin-bottom-2">Recent Arrivals</h3>
+                          <div>
+                              <button
+                                  className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'LEFT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
+                                  onClick={handleLeft}
+                              >
+                                  <LeftArrowIcon
+                                      width={'1.2rem'}
+                                      height={'1.2rem'}
+                                      offset={'.3rem'}
+                                  />
+                              </button>
+                              <button
+                                  className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'RIGHT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
+                                  onClick={handleRight}
+                              >
+                                  <RightArrowIcon
+                                      width={'1.2rem'}
+                                      height={'1.2rem'}
+                                      offset={'.3rem'}
+                                  />
+                              </button>
+                          </div>
+                      </div>
+                    <Slider
+                        items={arrivalSlides}
+                        perSlide={arrivalsPerSlide}
+                        displayImage={ArrivalsSlide}
+                        initialWidth={width}
+                        setHandleEvent={instance => handleArrivalsEvent = instance}
+                    />
                   </div>
               }
           </section>
