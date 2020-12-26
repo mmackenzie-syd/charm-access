@@ -6,10 +6,10 @@ const ArrivalsSlide = (props) => {
     return (
         <ul className="grid grid-col-4">
             {
-                products.map(({name, _id, thumbnail, price}) => (
+                products.map(({name, _id, thumbnail, price, category}) => (
                     <li key={_id} className="full-width">
                         <div className="slide-img-wrap">
-                            <Link to={`/product/${_id}`}>
+                            <Link to={`/product/${category}/${_id}`}>
                                 <img  alt={name} className="img-dull" src={thumbnail} />
                             </Link>
                         </div>

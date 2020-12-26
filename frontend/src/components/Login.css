@@ -20,27 +20,6 @@ input[type=password] {
     font-size: 1.6rem;
 }
 
-.primary {
-    background-color: #9886BA; /* purple */
-    border-radius: 3px;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1.8rem;
-    font-weight: 600;
-    padding: 1.4rem 4.5rem;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border: 2px solid #9886BA;
-    outline: none;
-    width: 100%;
-}
-
-primary:hover {
-    opacity: 0.8;
-}
-
 /* Center the image and position the close button */
 .imgcontainer {
     text-align: center;

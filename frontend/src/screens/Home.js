@@ -35,12 +35,14 @@ function Home() {
     const [width, setWidth] = useState(1000);
     const [arrivalsArrowState, setArrivalsArrowState] = useState('');
     const widthRef = useRef(null);
-    let handleArrivalsEvent;
-    let handleCategoryEvent;
-
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
     const { data: categorySlides } = categorySlidesApi;
     const categoriesPerSlide = 3;
+    const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi);
+    const { data: arrivalSlides } = arrivalSlidesApi;
+    const arrivalsPerSlide = 4;
+    let handleArrivalsEvent;
+    let handleCategoryEvent;
 
     useEffect(() => {
         // detect window resize
@@ -64,10 +66,6 @@ function Home() {
     useEffect(() => {
         dispatch(getCategorySlides());
     }, [dispatch]);
-
-    const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi);
-    const { data: arrivalSlides } = arrivalSlidesApi;
-    const arrivalsPerSlide = 4;
 
     useEffect(() => {
         dispatch(getArrivalSlides());

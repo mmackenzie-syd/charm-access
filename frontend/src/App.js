@@ -58,7 +58,7 @@ function App() {
                         <ProtectedRoute
                             path="/dashboard/reset"
                             component={ResetPassword}
-                        /> 
+                        />
                     </div>
                     <Footer />
                 </ModalProvider>

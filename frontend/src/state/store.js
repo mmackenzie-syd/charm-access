@@ -38,6 +38,7 @@ store.subscribe(throttle(() => {
     // persist data only and not errors!
     const state = store.getState();
     saveState({
+        arrivalSlidesApi: { data: state.arrivalSlidesApi.data },
         productsApi: { data: state.productsApi.data },
         categoriesApi: { data: state.categoriesApi.data },
         userApi: { status: state.userApi.status },

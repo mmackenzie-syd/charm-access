@@ -63,7 +63,7 @@ function Login() {
                     required
                     onChange={e => setPassword(e.target.value)}
                 />
-                <button type="submit" className="primary">Login</button>
+                <button type="submit" className="btn btn-primary full-width">Login</button>
             </div>
         </form>
     );

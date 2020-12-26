@@ -43,6 +43,7 @@ function Product(props) {
     const categorySlug = props.match.params.category;
     const [qty, setQty] = useState(1);
     const productsApi = useSelector(state => state.productsApi);
+    const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi);
     const categoriesApi = useSelector(state => state.categoriesApi);
 
     // start temp
@@ -55,7 +56,11 @@ function Product(props) {
     let products = [];
     if (productsApi && productsApi.data) {
         products = productsApi.data.products;
-        product = products.find(product => product._id === id)
+        product = products.find(product => product._id === id);
+        if (!product) {
+            products = arrivalSlidesApi.data;
+            product = products.find(product => product._id === id);
+        }
         similarProducts = getSimilarProducts(id, products);
     }
 

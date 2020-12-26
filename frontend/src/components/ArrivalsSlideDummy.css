@@ -1,14 +1,4 @@
-.arrivals-dummy {
-    opacity: 0;
-}
+.arrivals-dummy { opacity: 0; }
 
-.arrivals-dummy-img {
-    filter:brightness(96.5%);
-}
+.arrivals-dummy-img { filter:brightness(96.5%); }
 
-.arrivals-dummy-price {
-}
-
-.arrivals-dummy-caption {
-
-}
