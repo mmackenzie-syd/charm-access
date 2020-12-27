@@ -34,7 +34,7 @@ function Header() {
                 <ul className="nav">
                     <li className="nav-item">
                         <Link to="/">
-                            <img alt="brand" className="header-img" src="../../images/brand.png"/>
+                            <img alt="brand" className="header-img" src={`${process.env.PUBLIC_URL}/images/brand.png`}/>
                         </Link>
                     </li>
                     {
