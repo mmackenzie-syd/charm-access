@@ -33,8 +33,8 @@ function App() {
                     <div className="wrap" >
                         <Route path="/" component={Home} exact />
                         <Route path="/arrivals/:index" component={Product}/>
-                        <Route path="/product/:category/:page/:index" component={Product}/>
-                        <Route path="/products/:category/:page" component={Products} />
+                        <Route path="/products/:category/:page/:index" component={Product}/>
+                        <Route path="/products/:category/:page" exact component={Products} />
                           <Route path="/about" component={About} />
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />

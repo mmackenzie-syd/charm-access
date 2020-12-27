@@ -100,7 +100,7 @@ function Products(props) {
                     products && products.map(({ name, _id, thumbnail, price }, index) =>
                         <li key={_id} className="full-width">
                             <div className="slide-img-wrap" >
-                                <Link to={`/product/${categorySlug}/${curPage}/${index + 1}`}>
+                                <Link to={`/products/${categorySlug}/${curPage}/${index + 1}`}>
                                     <img alt="placeholder" src={placeholder} />
                                     { !isLoading &&
                                         <img  alt={name} className="img-dull products-img fade-in" src={thumbnail} />

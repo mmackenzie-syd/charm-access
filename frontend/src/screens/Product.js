@@ -36,8 +36,8 @@ function Product(props) {
     let category;
     let type;
     const index = Number(props.match.params.index) - 1;
-    if (props.match.path.search(/product/) !== -1){
-        type = 'PRODUCT';
+    if (props.match.path.search(/products/) !== -1){
+        type = 'PRODUCTS';
         products = productsApi.data.products;
         categorySlug = props.match.params.category;
         page = Number(props.match.params.page);
@@ -78,8 +78,8 @@ function Product(props) {
     }
 
     const goToIndex = (index) => {
-        if (type === 'PRODUCT') {
-            history.push(`/product/${categorySlug}/${page}/${index + 1}`);
+        if (type === 'PRODUCTS') {
+            history.push(`/products/${categorySlug}/${page}/${index + 1}`);
         } else if (type === 'ARRIVALS') {
             history.push(`/arrivals/${index + 1}`);
         }
