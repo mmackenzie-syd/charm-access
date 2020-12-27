@@ -111,9 +111,14 @@ function Product(props) {
             { product &&
                 <>
                 <section className="row top">
-                    <div className="col-6">
+                    <div className="col-6 product-img-rel">
                         <img
                             className="product-img"
+                            alt={product.name}
+                            src ={product.thumbnail}
+                        />
+                        <img
+                            className="product-img product-img-abs"
                             alt={product.name}
                             src ={product.image}
                         />

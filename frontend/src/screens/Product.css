@@ -8,5 +8,15 @@
 
 .product-img { border: 10px solid #f1f1f1; }
 
+.product-img-rel {
+    position: relative;
+}
+
+.product-img-abs {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 
 

@@ -294,6 +294,10 @@ button, input, optgroup, select, textarea {
     z-index: 100;
 }
 
+.fade-in-long {
+    animation: fadeIn ease 1s;
+}
+
 .fade-in {
     animation: fadeIn ease .5s;
 }
