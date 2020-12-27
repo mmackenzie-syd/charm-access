@@ -7,7 +7,6 @@ import Breadcrumb from "../components/Breadcrumb";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import ArrivalsSlide from "../components/ArrivalsSlide";
-import Message from "../components/Message";
 import {addToCart} from "../state/cartActions";
 import {useHistory} from "react-router"
 
@@ -34,7 +33,6 @@ const getSimilarProducts = (id, products) => {
     }
 
 }
-
 
 function Product(props) {
     let history = useHistory();
@@ -96,7 +94,6 @@ function Product(props) {
 
     const handleAddToCart = () => {
         dispatch(addToCart(id, product, qty));
-        history.push('/cart');
     }
 
     const getNext = async () => {
@@ -111,8 +108,6 @@ function Product(props) {
 
     return (
         <main className="margin-top-5" style={{minHeight: '500px'}}>
-            { error && <Message variant="danger">{error}</Message> }
-
             { product &&
                 <>
                 <section className="row top">
@@ -146,7 +141,7 @@ function Product(props) {
                                 </button>
                             </div>
                         </div>
-                        <h3 className="product-brand-title margin-bottom-2">Charm Accessories</h3>
+                        <h4 className="product-brand-title margin-bottom-2">Charm Accessories</h4>
                         <div className="product-price margin-bottom-4">${product.price.toFixed(2)}</div>
                         <div className="margin-bottom-3" style={{width: '100%'}}>
                             <Selector callback={onQty} count={10}/>

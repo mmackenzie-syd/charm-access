@@ -20,9 +20,9 @@ function Shipping() {
 
                     <h3 className="margin-bottom-2">Payment</h3>
                     <p>We offer our clients two payment methods:</p>
-                    <ol className="shipping__list">
-                        <li className="shipping__list-item">Paypal or Direct Debit Card.</li>
-                        <li className="shipping__list-item">Prepayment via bank transfer to Charm Accessories.</li>
+                    <ol className="margin-bottom-2 margin-left-2">
+                        <li className="">Paypal or Direct Debit Card.</li>
+                        <li className="">Prepayment via bank transfer to Charm Accessories.</li>
                     </ol>
                     <h3 className="margin-bottom-2">Exchange and return</h3>
                     <p>The online silver store Charm Accessories makes an exchange and

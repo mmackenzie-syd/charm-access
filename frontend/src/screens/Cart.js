@@ -76,7 +76,7 @@ function Cart() {
                                     <div className="table-delete-container">
                                         <div className="table-delete" onClick={() => handleDelete(id)}>
                                             <span className="table-delete-cross">&#10005;</span> <span
-                                            className="delete">Delete</span>
+                                            className="delete">DELETE</span>
                                         </div>
                                     </div>
                                 </div>

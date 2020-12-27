@@ -1,28 +1,12 @@
 /* Product */
-
-.product-brand-title {
-    font-size: 1.8rem;
-}
-
 .product-price {
     font-size: 2.2rem;
     color: #4f4f4f;
 }
 
-.product-description {
-    font-weight: 400;
-    font-size: 1.4rem;
-    font-style: normal;
-    line-height: 1.6;
-}
+.product-share { font-size: 1.5rem; }
 
-.product-share {
-    font-size: 1.5rem;
-}
-
-.product-img {
-    border: 10px solid #f1f1f1;
-}
+.product-img { border: 10px solid #f1f1f1; }
 
 
 

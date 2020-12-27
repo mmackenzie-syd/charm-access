@@ -33,6 +33,7 @@ function Home() {
     let history = useHistory();
     const dispatch = useDispatch();
     const [width, setWidth] = useState(1000);
+    const [emailFrom, setEmailFrom] = useState('');
     const [arrivalsArrowState, setArrivalsArrowState] = useState('');
     const widthRef = useRef(null);
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
@@ -105,6 +106,10 @@ function Home() {
         }
     }
 
+    const submitHandler = (e) => {
+        e.preventDefault();
+        window.location.href=`mailto:test@gmail.com?subject=Please sign me up&body=${emailFrom}`;
+    }
 
     return (
       <main className="home">
@@ -236,7 +241,7 @@ function Home() {
           </section>
 
           <section className="signup row center margin-bottom-5">
-              <form className="col-8">
+              <form className="col-8" onSubmit={submitHandler} encType="text/plain">
                   <h5 className="margin-bottom-2">BECOME A VIP</h5>
                   <p className="signup-paragraph margin-bottom-2">Be the first to know about special offers and&nbsp;updates.</p>
                   <div className="row">
@@ -244,8 +249,11 @@ function Home() {
                           type="email"
                           placeholder="Enter your email address"
                           className="col-9"
+                          required
+                          value={emailFrom}
+                          onChange={e => setEmailFrom(e.target.value)}
                       />
-                      <button className="btn btn-primary btn-small col-3 margin-left-1">SIGN UP</button>
+                      <button type='submit' className="btn btn-primary btn-small col-3 margin-left-1">SIGN UP</button>
                   </div>
               </form>
           </section>

@@ -1,6 +1,35 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
 /* shared */
+h1 {
+    font-weight: 400;
+    font-size: 56px;
+    margin-bottom: 20px;
+    line-height: 1.2em;
+}
+
+h2 {
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+    line-height: 1.2em;
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    color: #606060;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
+}
+
+
+h4 {
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+
 h5 {
     font-size: 1.5rem;
     font-weight: 700;
