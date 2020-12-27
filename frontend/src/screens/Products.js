@@ -97,10 +97,10 @@ function Products(props) {
             </section>
             <ul className="grid grid-col-4">
                 {
-                    products && products.map(({ name, _id, thumbnail, price }) =>
+                    products && products.map(({ name, _id, thumbnail, price }, index) =>
                         <li key={_id} className="full-width">
                             <div className="slide-img-wrap" >
-                                <Link to={`/product/${categorySlug}/${_id}`}>
+                                <Link to={`/product/${categorySlug}/${curPage}/${index + 1}`}>
                                     <img alt="placeholder" src={placeholder} />
                                     { !isLoading &&
                                         <img  alt={name} className="img-dull products-img fade-in" src={thumbnail} />

@@ -10,100 +10,89 @@ import ArrivalsSlide from "../components/ArrivalsSlide";
 import {addToCart} from "../state/cartActions";
 import {useHistory} from "react-router"
 
-const getNextId = (id, products) => {
-    const index = products.findIndex(product => product._id === id);
-    const maxIndex = products.length - 1;
-    const nextIndex = ((index + 1) > maxIndex) ? 0 : index + 1;
-    return products[nextIndex]._id;
-}
-
-const getPrevId = (id, products) => {
-    const index = products.findIndex(product => product._id === id);
-    const maxIndex = products.length - 1;
-    const prevIndex = ((index - 1) > 0) ? index -1 : maxIndex;
-    return products[prevIndex]._id;
-}
-
-const getSimilarProducts = (id, products) => {
-    let similarProducts = products.filter(product => product._id !== id);
+const getSimilarProducts = (curIndex, products) => {
+    let similarProducts = products.filter((product, index) => index !== curIndex);
     if (similarProducts.length < 4) {
         return [];
     } else {
         return similarProducts.slice(0, 4);
     }
-
 }
 
 function Product(props) {
     let history = useHistory();
     const dispatch = useDispatch();
-    const id = props.match.params.id;
-    const categorySlug = props.match.params.category;
     const [qty, setQty] = useState(1);
     const productsApi = useSelector(state => state.productsApi);
     const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi);
     const categoriesApi = useSelector(state => state.categoriesApi);
-
-    // start temp
-    let loading = false;
-    let error = false;
-    // end temp
-
     let product;
     let similarProducts = [];
     let products = [];
-    if (productsApi && productsApi.data) {
+    let categorySlug;
+    let page;
+    const list = [];
+    let showBreadcrumb = false;
+    let category;
+    let type;
+    const index = Number(props.match.params.index) - 1;
+    if (props.match.path.search(/product/) !== -1){
+        type = 'PRODUCT';
         products = productsApi.data.products;
-        product = products.find(product => product._id === id);
-        if (!product) {
-            products = arrivalSlidesApi.data;
-            product = products.find(product => product._id === id);
+        categorySlug = props.match.params.category;
+        page = Number(props.match.params.page);
+        product = products[index];
+        if (categoriesApi && categoriesApi.data) {
+            category = categoriesApi.data.find(category => category.slug === categorySlug)
         }
-        similarProducts = getSimilarProducts(id, products);
+
+        if (category && category.name) {
+            if (product && product.name) {
+                list.push({name: 'Home Page', url: '/'});
+                list.push({name: category.name, url: `/products/${categorySlug}/1`});
+                list.push({name: product.name, url: ''});
+                showBreadcrumb = true;
+            }
+        }
+        similarProducts = getSimilarProducts(index, products);
+    }
+    if (props.match.path.search(/arrivals/) !== -1){
+        type = 'ARRIVALS';
+        products = arrivalSlidesApi.data;
+        product = products[index];
+        if (product && product.name) {
+            list.push({name: 'Home Page', url: '/'});
+            list.push({name: 'Arrivals', url: '/'});
+            list.push({name: product.name, url: ''});
+            showBreadcrumb = true;
+        }
+        similarProducts = getSimilarProducts(index, products);
     }
 
     const onQty = (value) => {
        setQty(value);
     };
 
-    const list = [];
-    let showBreadcrumb = false;
-    let category;
-
-    if (categoriesApi && categoriesApi.data) {
-        category = categoriesApi.data.find(category => category.slug === categorySlug)
+    const handleAddToCart = () => {
+        dispatch(addToCart(product._id, product, qty));
     }
 
-    if (category && category.name) {
-        if (product && product.name) {
-            list.push({
-                name: 'Home Page',
-                url: '/'
-            });
-            list.push({
-                name: category.name,
-                url: `/products/${categorySlug}/1`
-            });
-            list.push({
-                name: product.name,
-                url: ''
-            });
-            showBreadcrumb = true;
+    const goToIndex = (index) => {
+        if (type === 'PRODUCT') {
+            history.push(`/product/${categorySlug}/${page}/${index + 1}`);
+        } else if (type === 'ARRIVALS') {
+            history.push(`/arrivals/${index + 1}`);
         }
     }
 
-    const handleAddToCart = () => {
-        dispatch(addToCart(id, product, qty));
-    }
-
     const getNext = async () => {
-        const id = getNextId(product._id, products);
-        history.push(`/product/${categorySlug}/${id}`);
+        const nextIndex = (index + 1) < products.length ? index + 1 : 0;
+        goToIndex(nextIndex);
     }
 
     const getPrevious = async () => {
-        const id = getPrevId(product._id, products);
-        history.push(`/product/${categorySlug}/${id}`);
+        const prevIndex = (index - 1) >= 0 ? index - 1 : products.length - 1;
+        goToIndex(prevIndex);
     }
 
     return (
@@ -131,18 +120,10 @@ function Product(props) {
                             <h3 className="">{product.name}</h3>
                             <div>
                                 <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
-                                    <LeftArrowIcon
-                                        width={'1.2rem'}
-                                        height={'1.2rem'}
-                                        offset={'.3rem'}
-                                    />
+                                    <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                                 </button>
                                 <button className='btn btn-secondary btn-icon' onClick={getNext}>
-                                    <RightArrowIcon
-                                        width={'1.2rem'}
-                                        height={'1.2rem'}
-                                        offset={'.3rem'}
-                                    />
+                                    <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                                 </button>
                             </div>
                         </div>
