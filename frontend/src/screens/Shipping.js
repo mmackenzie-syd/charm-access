@@ -19,7 +19,7 @@ function Shipping() {
                     <p>Delivery is carried out throughout Australia by the Australia Post.</p>
 
                     <h3 className="margin-bottom-2">Payment</h3>
-                    <p>We offer our clients two payment methods:</p>
+                    <p className="margin-bottom-1">We offer our clients two payment methods:</p>
                     <ol className="margin-bottom-2 margin-left-2">
                         <li className="">Paypal or Direct Debit Card.</li>
                         <li className="">Prepayment via bank transfer to Charm Accessories.</li>
