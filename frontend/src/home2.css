@@ -345,6 +345,39 @@ button, input, optgroup, select, textarea {
     top: 0;
 }
 
+/* Modal zoom animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Close modal btn */
+/* The Close Button (x) */
+.close-modal {
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+    position: absolute;
+    right: 25px;
+    top: 0;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    opacity: .6;
+    cursor: pointer;
+}
+
 
 
 

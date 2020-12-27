@@ -14,7 +14,7 @@ function Search() {
     return (
         <form className="modal-content animate" onSubmit={handleSearch}>
             <div className="search-container">
-                <span onClick={() => handleModal('')} className="close" title="Close Modal">&times;</span>
+                <span onClick={() => handleModal('')} className="close-modal" title="Close Modal">&times;</span>
                 <input
                     className="search-input"
                     type="text"

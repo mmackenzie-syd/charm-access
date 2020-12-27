@@ -20,20 +20,6 @@ input[type=password] {
     font-size: 1.6rem;
 }
 
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-}
-
-img.avatar {
-    width: 60%;
-}
-
-.container {
-    padding: 1rem 3rem 3rem 3rem;
-}
-
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
@@ -44,47 +30,10 @@ img.avatar {
     position: relative;
 }
 
-/* The Close Button (x) */
-.close-login {
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-    line-height: 2.5rem;
-}
-
-.close-login:hover,
-.close-login:focus {
-    opacity: .6;
-    cursor: pointer;
-}
-
-.title-container {
-    margin: 2rem 3rem 2rem 3rem;
-    border-bottom: 1px solid #ddd;
-}
-
-
-
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
 .login-loading-icon {
     position: absolute;
     left: 40%;
     top: 35%;
-}
-
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
-}
-
-@keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
 }
 
 /* Change styles for span and cancel button on extra small screens */

@@ -41,12 +41,10 @@ function Login() {
                     <img alt="loading" className="loading-img" src={`${process.env.PUBLIC_URL}/images/loading.gif`} />
                 </div>
             }
-
-            <div className="row top title-container">
+            <div className="padding-top-2 padding-left-3 padding-right-3 padding-bottom-3">
                 <h3>Vendor Login</h3>
-                <div onClick={() => handleModal('')} className="close-login">&times;</div>
-            </div>
-            <div className="container">
+                <hr className="margin-top-2"/>
+                <div onClick={() => handleModal('')} className="close-modal">&times;</div>
                 <label htmlFor="uname" className="login-label">Username:</label>
                 <input
                     type="text"
