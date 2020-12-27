@@ -10,46 +10,10 @@
     font-size: 1.6rem;
 }
 
-/* Set a style for all buttons */
-
-.input-wrap {
-    position: relative;
-    padding: 0;
-}
-
-.search-btn {
-    text-align: center;
-    border: 0;
-    right: .4rem;
-    top: .4rem;
-    background-color: #ccc;
-    width: 5.2rem;
-    height: 4.5rem;
-    text-decoration: none;
-    cursor: pointer;
-    outline: none;
-    fill: #4f4f4f;
-    border-radius: 3px;
-    margin-left: .8rem;
-}
-
-.search-btn:hover {
-    opacity: 0.6;
-}
-
 /* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
-
-img.avatar {
-    width: 60%;
-}
-
 .search-container {
-    padding: 3rem;
+    position: relative;
+    padding: 5rem 3rem 3rem 3rem;
 }
 
 /* Modal Content/Box */
