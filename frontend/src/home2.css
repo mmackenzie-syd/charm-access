@@ -266,6 +266,7 @@ button, input, optgroup, select, textarea {
 
 .img-dull:hover {
     filter:brightness(90%);
+    cursor: pointer;
 }
 
 /* paginator */

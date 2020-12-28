@@ -16,7 +16,7 @@ function EditCategories() {
         (async () => {
             try {
                 const { data } = await getCategories();
-                setCategories(data.slice(1));
+                setCategories(data.slice(2));
             } catch(error) {
                 setError(error);
             }
@@ -49,6 +49,10 @@ function EditCategories() {
             newCategories.unshift(  {
                 name: 'Shop',
                 slug: 'shop'
+            });
+            newCategories.unshift(  {
+                name: 'New',
+                slug: 'new'
             });
             const response = await saveCategories(newCategories);
             history.goBack();

@@ -4,7 +4,6 @@ import {
     CATEGORY_SLIDES,
     ARRIVAL_SLIDES,
 } from './apiConstants'
-import {Link} from "react-router-dom";
 
 const apiReducer = (name) => (state = {}, action) => {
     switch (action.type) {
@@ -14,6 +13,9 @@ const apiReducer = (name) => (state = {}, action) => {
             return {...state, loading: false, data: action.payload, error: null}
         case `${name}_FAIL`:
             return {...state, loading: false, error: action.payload}
+        case `${name}_NEW`:
+            console.log('action', action)
+            return {...state, loading: false, data: action.payload}
         default:
             return state;
     }

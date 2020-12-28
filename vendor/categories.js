@@ -4,6 +4,10 @@ const categories = [
             name: 'Shop',
         },
         {
+            slug: 'new',
+            name: 'New',
+        },
+        {
             slug: 'necklaces',
             name: 'Necklaces',
         },

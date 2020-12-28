@@ -146,7 +146,8 @@ router.get('/products/:page',  asyncHandler(async (req, res) => {
 router.get('/productsByCategory/:category/:page',  asyncHandler(async (req, res) => {
     // paginate
     const { page, category } = req.params;
-    const query = (category === 'shop') ? {} : { category: { $eq: category } };
+    const query = ((category === 'shop') || (category === 'new')) ? {} : { category: { $eq: category } };
+
     const perPage = 8;
     const count = await Product.countDocuments(query);
     const pages = Math.ceil(count / perPage);
@@ -156,10 +157,18 @@ router.get('/productsByCategory/:category/:page',  asyncHandler(async (req, res)
         res.status(404).send({ message: 'Products not found'});
     } else {
         // exec returns a promise from the chain
-        const products = await Product.find(query).skip(perPage * (page - 1)).limit(perPage).exec();
-        res.json({ products, pages });
+        let products = [];
+        if (category === 'new') {
+            // sort if shop 'new'
+            products = await Product.find({}).sort({'createdAt': -1}).limit(perPage).exec();
+            res.json({ products, pages });
+        } else {
+            products = await Product.find(query).skip(perPage * (page - 1)).limit(perPage).exec();
+            res.json({ products, pages });
+        }
     }
 }));
+
 
 
 // End of routes

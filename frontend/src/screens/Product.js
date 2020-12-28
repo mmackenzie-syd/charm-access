@@ -19,12 +19,15 @@ const getSimilarProducts = (curIndex, products) => {
     }
 }
 
+const findProductFromName = (name, products) => {
+
+}
+
 function Product(props) {
     let history = useHistory();
     const dispatch = useDispatch();
     const [qty, setQty] = useState(1);
     const productsApi = useSelector(state => state.productsApi);
-    const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi);
     const categoriesApi = useSelector(state => state.categoriesApi);
     let product;
     let similarProducts = [];
@@ -34,40 +37,26 @@ function Product(props) {
     const list = [];
     let showBreadcrumb = false;
     let category;
-    let type;
-    const index = Number(props.match.params.index) - 1;
-    if (props.match.path.search(/products/) !== -1){
-        type = 'PRODUCTS';
-        products = productsApi.data.products;
-        categorySlug = props.match.params.category;
-        page = Number(props.match.params.page);
-        product = products[index];
-        if (categoriesApi && categoriesApi.data) {
-            category = categoriesApi.data.find(category => category.slug === categorySlug)
-        }
 
-        if (category && category.name) {
-            if (product && product.name) {
-                list.push({name: 'Home Page', url: '/'});
-                list.push({name: category.name, url: `/products/${categorySlug}/1`});
-                list.push({name: product.name, url: ''});
-                showBreadcrumb = true;
-            }
-        }
-        similarProducts = getSimilarProducts(index, products);
+    products = productsApi.data.products;
+    categorySlug = props.match.params.category;
+    const name = props.match.params.name;
+    const index = products.findIndex(product => product.name === name);
+
+    product = products[index];
+    if (categoriesApi && categoriesApi.data) {
+        category = categoriesApi.data.find(category => category.slug === categorySlug)
     }
-    if (props.match.path.search(/arrivals/) !== -1){
-        type = 'ARRIVALS';
-        products = arrivalSlidesApi.data;
-        product = products[index];
+
+    if (category && category.name) {
         if (product && product.name) {
             list.push({name: 'Home Page', url: '/'});
-            list.push({name: 'Arrivals', url: '/'});
+            list.push({name: category.name, url: `/products/${categorySlug}/1`});
             list.push({name: product.name, url: ''});
             showBreadcrumb = true;
         }
-        similarProducts = getSimilarProducts(index, products);
     }
+    similarProducts = getSimilarProducts(index, products);
 
     const onQty = (value) => {
        setQty(value);
@@ -78,11 +67,8 @@ function Product(props) {
     }
 
     const goToIndex = (index) => {
-        if (type === 'PRODUCTS') {
-            history.push(`/products/${categorySlug}/${page}/${index + 1}`);
-        } else if (type === 'ARRIVALS') {
-            history.push(`/arrivals/${index + 1}`);
-        }
+        const nextName = products[index].name;
+        history.push(`/product/${categorySlug}/${nextName}`);
     }
 
     const getNext = async () => {

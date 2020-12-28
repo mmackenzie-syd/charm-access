@@ -32,10 +32,9 @@ function App() {
                     <div className="spacer-header-compensate">&nbsp;</div>
                     <div className="wrap" >
                         <Route path="/" component={Home} exact />
-                        <Route path="/arrivals/:index" component={Product}/>
-                        <Route path="/products/:category/:page/:index" component={Product}/>
+                        <Route path="/product/:category/:name" component={Product}/>
                         <Route path="/products/:category/:page" exact component={Products} />
-                          <Route path="/about" component={About} />
+                        <Route path="/about" component={About} />
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />
 
