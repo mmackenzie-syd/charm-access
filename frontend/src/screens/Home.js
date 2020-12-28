@@ -115,7 +115,7 @@ function Home() {
 
     return (
       <main className="home margin-top-5">
-          <section className="banner margin-top-3 margin-bottom-5 full-width desktop">
+          <section className="banner margin-top-3 margin-bottom-5 full-width">
               <ImageGallery
                   items={images}
                   showNav={false}
@@ -130,16 +130,16 @@ function Home() {
                 <div className="banner-caption-brand">
                     <img alt="brand" src="./images/brand_transp_purple.png"/>
                 </div>
-                <div>
+                <div className="desktop">
                     <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
                 </div>
-                <div className="row center margin-top-3">
+                <div className="row center banner-caption-button-wrap">
                     <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
                 </div>
             </div>
           </section>
 
-          <section className="arrivals mobile">
+          <section className="arrivals mobile tablet">
                   <h3 className="margin-bottom-2">New Arrivals</h3>
                   {  arrivalSlides &&
                       <ul className="mobile-list margin-bottom-3">
@@ -195,7 +195,7 @@ function Home() {
                   }
               </div>
           </section>
-          <section className="category mobile">
+          <section className="category mobile tablet">
               <h3 className="margin-bottom-3">Shop By Category</h3>
                   {  categorySlides &&
                       <ul className="mobile-list margin-bottom-3" >
