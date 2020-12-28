@@ -160,7 +160,7 @@ router.get('/productsByCategory/:category/:page',  asyncHandler(async (req, res)
         let products = [];
         if (category === 'new') {
             // sort if shop 'new'
-            products = await Product.find({}).sort({'createdAt': -1}).limit(perPage).exec();
+            products = await Product.find({}).sort({'createdAt': -1}).skip(perPage * (page - 1)).limit(perPage).exec();
             res.json({ products, pages });
         } else {
             products = await Product.find(query).skip(perPage * (page - 1)).limit(perPage).exec();

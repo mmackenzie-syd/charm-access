@@ -136,9 +136,42 @@ function Home() {
                 </div>
             </div>
           </section>
+
+          <section className="arrivals" ref={widthRef}>
+              <div className="row  margin-bottom-1">
+                  <h3 className="margin-bottom-2">New Arrivals</h3>
+                  <div>
+                      <button
+                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'LEFT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
+                          onClick={handleLeftArrivals}>
+                          <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                      </button>
+                      <button
+                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'RIGHT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
+                          onClick={handleRightArrivals}>
+                          <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                      </button>
+                  </div>
+              </div>
+              <div className="arrivals-relative">
+                  <ArrivalsSlideDummy />
+                  {  arrivalSlides &&
+                  <div className="arrivals-absolute">
+                      <Slider
+                          items={arrivalSlides}
+                          perSlide={arrivalsPerSlide}
+                          displayImage={ArrivalsSlide}
+                          width={width}
+                          setHandleEvent={instance => handleArrivalsEvent = instance}
+                      />
+                  </div>
+                  }
+              </div>
+          </section>
+
           <section className="category">
               <div className="row  margin-bottom-1">
-                  <h3 className="margin-bottom-2">By Category</h3>
+                  <h3 className="margin-bottom-2">Shop By Category</h3>
                   <div>
                       <button
                           onClick={handleLeftCategory}
@@ -162,38 +195,6 @@ function Home() {
                               displayImage={CategoriesSlide}
                               width={width}
                               setHandleEvent={instance => handleCategoryEvent = instance}
-                          />
-                      </div>
-                  }
-              </div>
-          </section>
-
-          <section className="arrivals" ref={widthRef}>
-              <div className="row  margin-bottom-1">
-                  <h3 className="margin-bottom-2">Recent Arrivals</h3>
-                  <div>
-                      <button
-                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'LEFT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
-                          onClick={handleLeftArrivals}>
-                          <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                      </button>
-                      <button
-                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'RIGHT_ARROW_DISABLED') ? '' : 'btn-disabled'}`}
-                          onClick={handleRightArrivals}>
-                          <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                      </button>
-                  </div>
-              </div>
-              <div className="arrivals-relative">
-                  <ArrivalsSlideDummy />
-                  {  arrivalSlides &&
-                      <div className="arrivals-absolute">
-                          <Slider
-                              items={arrivalSlides}
-                              perSlide={arrivalsPerSlide}
-                              displayImage={ArrivalsSlide}
-                              width={width}
-                              setHandleEvent={instance => handleArrivalsEvent = instance}
                           />
                       </div>
                   }
