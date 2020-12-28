@@ -13,7 +13,7 @@ import Products from "./screens/Products";
 import Shipping from "./screens/Shipping";
 import Product from "./screens/Product";
 import Cart from "./screens/Cart";
-import {getCategoriesState, getProductsState} from "./state/apiActions";
+import {getCategoriesState} from "./state/apiActions";
 import {useDispatch} from "react-redux";
 import {ModalProvider} from "./context/modalContext";
 import ScrollToTop from "./components/ScrollToTop";

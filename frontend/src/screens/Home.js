@@ -13,6 +13,7 @@ import ArrivalsSlideDummy from "../components/ArrivalsSlideDummy";
 import CategorySlideDummy from "../components/CategorySlideDummy";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
+import {Link} from "react-router-dom";
 
 const images = [
     {
@@ -113,8 +114,8 @@ function Home() {
     }
 
     return (
-      <main className="home">
-          <section className="banner margin-top-3 margin-bottom-5 full-width">
+      <main className="home margin-top-5">
+          <section className="banner margin-top-3 margin-bottom-5 full-width desktop">
               <ImageGallery
                   items={images}
                   showNav={false}
@@ -138,7 +139,32 @@ function Home() {
             </div>
           </section>
 
-          <section className="arrivals" ref={widthRef}>
+          <section className="arrivals mobile">
+                  <h3 className="margin-bottom-2">New Arrivals</h3>
+                  {  arrivalSlides &&
+                      <ul className="mobile-list margin-bottom-3">
+                          {
+                              arrivalSlides.map(({name, _id, thumbnail, price}, index) => {
+                                  return (
+                                      <li key={_id} className="mobile-list-item margin-bottom-1">
+                                          <div className="slide-img-wrap" onClick={() => {}}>
+                                              <img  alt={name} className="img-dull" src={thumbnail} />
+                                          </div>
+                                          <div className="row bottom margin-bottom-2">
+                                              <div>
+                                                  <p className="slide-caption">{name}</p>
+                                                  <h5>${price.toFixed(2)}</h5>
+                                              </div>
+                                          </div>
+                                      </li>
+                                  );
+                              })
+                          }
+                      </ul>
+                  }
+          </section>
+
+          <section className="arrivals desktop" ref={widthRef}>
               <div className="row  margin-bottom-1">
                   <h3 className="margin-bottom-2">New Arrivals</h3>
                   <div>
@@ -169,8 +195,32 @@ function Home() {
                   }
               </div>
           </section>
+          <section className="category mobile">
+              <h3 className="margin-bottom-3">Shop By Category</h3>
+                  {  categorySlides &&
+                      <ul className="mobile-list margin-bottom-3" >
+                          {
+                              categorySlides.map(({ product, category, count }) => {
+                                  const { _id, image } = product;
+                                  const { name, slug } = category;
+                                  return (
+                                      <li key={_id} className="mobile-list-item margin-bottom-1">
+                                          <div className="slide-img-wrap">
+                                              <Link to={`/products/${slug}/1`}>
+                                                  <img alt={name} className="img-dull" src={image}/>
+                                              </Link>
+                                          </div>
+                                          <p className="slide-caption">{name}&nbsp;
+                                              <mark>({ count })</mark>
+                                          </p>
+                                      </li>);
+                              })
+                          }
+                      </ul>
+                  }
+          </section>
 
-          <section className="category">
+          <section className="category desktop">
               <div className="row  margin-bottom-1">
                   <h3 className="margin-bottom-2">Shop By Category</h3>
                   <div>
