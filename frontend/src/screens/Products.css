@@ -1,0 +1,7 @@
+/* paginator */
+
+.fixed-width-page-number {
+    text-align: center;
+    display: inline-block;
+    width: 2rem;
+}

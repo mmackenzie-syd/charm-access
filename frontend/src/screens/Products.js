@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
+import './Products.css';
 import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import Paginator from "../components/Paginator";

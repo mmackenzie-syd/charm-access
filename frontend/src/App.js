@@ -1,5 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
+//
+import './Carousel.css';
+import './Base.css';
+import './Layout.css';
+//
 import Home from './screens/Home';
 import About from './screens/About';
 import Header from "./components/Header";
@@ -17,8 +22,6 @@ import EditCategories from "./screens/EditCategories";
 import EditProduct from "./screens/EditProduct";
 import ProtectedRoute from "./ProtectedRoute";
 import ResetPassword from "./screens/ResetPassword";
-
-import './home2.css';
 
 function App() {
     // preload

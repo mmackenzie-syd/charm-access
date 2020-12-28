@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import ImageGallery from 'react-image-gallery';
+import './Home.css';
 import { useHistory } from "react-router";
 import PhoneIcon from "../icons/PhoneIcon";
 import KangarooIcon from "../icons/KangarooIcon";

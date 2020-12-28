@@ -1,0 +1,14 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.image-gallery-bullets .image-gallery-bullet {
+    box-shadow: none;
+    border: 1px solid #fff;
+    background-color: #fff;
+    width: 1.9rem;
+    height: 1.9rem;
+}
+
+.image-gallery-bullets .image-gallery-bullet.active {
+    border: 1px solid #9886BA;
+    background-color: #9886BA;
+}

@@ -1,0 +1,106 @@
+.logo-font {
+    font-family: 'Arsenal', sans-serif;
+}
+
+.banner { position: relative; }
+
+.banner-caption {
+    position: absolute;
+    left: 3rem;
+    top: 18%;
+    width: 40%;
+}
+
+.banner-caption-brand {
+    width: 320px;
+    width: 280px;
+    margin: 0 auto;
+}
+
+.banner-caption-txt {
+    margin-left: 8rem;
+    max-width: 460px;
+    margin-bottom: 0;
+    color: #937cd4;
+    line-height: 2;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+.mood {
+    position: relative;
+    background-color: #fff;
+}
+
+.mood-img { opacity: 0.8; }
+
+.mood-caption {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.mood-caption-title {
+    font-family: 'Arsenal', sans-serif;
+    margin-bottom: 4rem;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.kangaroo { margin-right: .5rem; }
+
+.category { margin-bottom: 7rem; }
+
+.arrivals { margin-bottom: 7rem; }
+
+.signup {
+    background-color: #efefef;
+    padding: 6rem 0;
+}
+
+
+/* ***************************************** */
+
+.spacer {
+    height: 3rem;
+    width: 100%;
+}
+
+.signup-paragraph {
+    font-size: 1.6rem;
+}
+
+.products-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+
+.arrivals-relative { position: relative; }
+
+.arrivals-absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.category-relative { position: relative; }
+
+.category-absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+
+
+
+
