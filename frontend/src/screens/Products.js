@@ -72,7 +72,7 @@ function Products(props) {
             { isLoading &&
                 <Loading isLoading={isLoading} />
             }
-            <section className="row  margin-top-1 margin-bottom-2">
+            <section className="row products-header">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
                 <div className="font-small">
                     { (pages > 0)
@@ -85,7 +85,7 @@ function Products(props) {
                     }
                 </div>
             </section>
-            <section className="row margin-bottom-1 margin-top-1" style={{height: '5rem'}} >
+            <section className="row margin-bottom-1" style={{height: '5rem'}} >
                 <h3 className="">{category && category.name}</h3>
                 <div className="desktop">
                     <Paginator
