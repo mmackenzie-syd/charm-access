@@ -10,10 +10,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-.spacer-header-compensate {
-    line-height: 12rem;
-}
-
 .header {
     max-width: 132rem;
     padding: 0 4rem;
@@ -24,8 +20,6 @@
 .header-img {
     height: 100%;
     width: auto;
-    margin-left: -4rem;
-    margin-right: .5rem;
 }
 
 .nav {
@@ -143,4 +137,128 @@
 }
 
 
+/* Mobile */
+.mobile { display: block; }
+.desktop { display: none; }
+.spacer-header-compensate {
+    line-height: 8rem;
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 768px) {
+    .mobile { display: none; }
+    .desktop { display: block; }
+    .spacer-header-compensate {
+        line-height: 12rem;
+    }
+
+    /* Site Title */
+    .header-img {
+        height: 100%;
+        width: auto;
+        margin-left: -4rem;
+        margin-right: .5rem;
+    }
+}
+
+
+/* mobile side menu */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #937cd4;
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    padding: 6rem 0rem;
+}
+
+.sidebar a {
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+   opacity: .6;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: -1rem;
+    right: 0;
+    font-size: 36px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #937cd4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 2px;
+}
+
+.openbtn:hover {
+    opacity: .6;
+}
+
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+
+
+.dropbtn {
+    display: inline-block;
+    fill: #fff;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    opacity: .6;
+    cursor: pointer;
+}
+
+.dropdown {
+
+}
+
+.dropdown-content {
+    display: none;
+    min-width: 160px;
+    overflow: auto;
+    z-index: 1;
+    background-color: #9886ba;
+}
+
+.dropdown-content a {
+    padding: 1rem 1.6rem 1rem 3.2rem;
+    text-decoration: none;
+    display: block;
+}
+
+
+
+.show {display: block;}
+
+.dropdown-arrow {
+    color: #fff;
+}
+
+.sidebar-li {
+    width: 40rem;
+}
+
+.sidebar .sidebar-li-dropdown {
+    display: inline-block;
+}
 

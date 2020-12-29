@@ -6,6 +6,7 @@ import CartIcon from "../icons/CartIcon";
 import {useSelector} from "react-redux";
 import Search from "./Search";
 import {ModalContext} from "../context/modalContext";
+import DownArrowIcon from "../icons/DownArrowIcon";
 
 function Header() {
     let { handleModal } = React.useContext(ModalContext);
@@ -28,8 +29,128 @@ function Header() {
 
     const showDashboard = (status === 'SUCCESS');
 
+    const openNav = (e) => {
+        e.preventDefault();
+        if (document.getElementById("mySidebar") !== null ) {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+    }
+
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    const closeNav = (e) => {
+        e.preventDefault();
+        if (document.getElementById("mySidebar") !== null) {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    }
+
+    const closeDropdown = (e) => {
+        e.preventDefault();
+        if (document.getElementsByClassName("dropdown-container") !== null) {
+            const dropdownContent = document.getElementsByClassName("dropdown-container");
+            if (dropdownContent[0].style.display === "block") {
+                dropdownContent[0].style.display = "none";
+            } else {
+                dropdownContent[0].style.display = "block";
+            }
+        }
+    }
+
+    const myFunction = (e) => {
+        e.preventDefault();
+        if (document.getElementById("myDropdown") !== null) {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+    }
+
     return (
-        <div className="sticky">
+        <>
+            <div className="sticky mobile">
+            <header className="header row space-between">
+                <div id="mySidebar" className="sidebar">
+                    <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
+                    <div className="">
+                        <div className="dropdown">
+                            <div style={{width: '400px'}}>
+                                <NavLink
+                                    to="/products/shop/1"
+                                    className={isShopActive}
+                                    className={"sidebar-li-dropdown"}
+                                >
+                                    SHOP
+                                </NavLink>
+                                <div onClick={myFunction} className="dropbtn">
+                                    <DownArrowIcon
+                                        className={'dropdown-arrow'}
+                                        offset={'.4rem'}
+                                    />
+                                </div>
+                            </div>
+                            <div id="myDropdown" className="dropdown-content">
+                                {
+                                    categories && categories.map(category => (
+                                        <NavLink
+                                            key={category._id}
+                                            to={`/products/${category.slug}/1`}
+                                        >
+                                            {category.name}
+                                        </NavLink>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                        <NavLink
+                            to="/shipping"
+                            activeClassName='is-active'
+                            className="sidebar-li"
+                        >
+                            Shipping & Payment
+                        </NavLink>
+                        <NavLink
+                            to="/about"
+                            activeClassName='is-active'
+                            className="sidebar-li"
+                        >
+                            About Us
+                        </NavLink>
+                    </div>
+                </div>
+                <ul className="nav">
+                    <button className="openbtn" onClick={openNav}>&#9776;</button>
+                </ul>
+                <ul className="nav">
+                    <li className="nav-item">
+                        <Link to="/">
+                            <img alt="brand" className="header-img" src={`${process.env.PUBLIC_URL}/images/brand.png`}/>
+                        </Link>
+                    </li>
+                </ul>
+                <ul className="nav">
+                    <li className="nav-item srch-icon-wrap" onClick={() => handleModal(<Search />)}>
+                        <SearchIcon
+                            className={"srch-icon"}
+                            width={'2.6rem'}
+                            height={'2.6rem'}
+                        />
+                    </li>
+                    <li className="nav-item crt-icon-wrap">
+                        <NavLink to="/cart" activeClassName='is-active'>
+                            { addedIds && (addedIds.length !== 0) &&
+                            <div className="qty">{totalItems}</div>
+                            }
+                            <CartIcon
+                                className={"crt-icon"}
+                                width={'3.2rem'}
+                                height={'3.2rem'}
+                                offset={'-.1rem'}
+                            />
+                        </NavLink>
+                    </li>
+                </ul>
+            </header>
+        </div>
+        <div className="sticky desktop">
             <header className="header row space-between">
                 <ul className="nav">
                     <li className="nav-item">
@@ -97,6 +218,7 @@ function Header() {
             </ul>
         </header>
         </div>
+        </>
     );
 }
 
