@@ -64,6 +64,15 @@ function Header() {
         }
     }
 
+    const handleMobileNav = () => {
+        if (document.getElementById("mySidebar") !== null) {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+        if (document.getElementById("myDropdown") !== null) {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+    }
+
     return (
         <>
             <div className="sticky mobile">
@@ -77,6 +86,7 @@ function Header() {
                                     to="/products/shop/1"
                                     className={isShopActive}
                                     className={"sidebar-li-dropdown"}
+                                    onClick={handleMobileNav}
                                 >
                                     SHOP
                                 </NavLink>
@@ -93,6 +103,7 @@ function Header() {
                                         <NavLink
                                             key={category._id}
                                             to={`/products/${category.slug}/1`}
+                                            onClick={handleMobileNav}
                                         >
                                             {category.name}
                                         </NavLink>
@@ -104,6 +115,7 @@ function Header() {
                             to="/shipping"
                             activeClassName='is-active'
                             className="sidebar-li"
+                            onClick={handleMobileNav}
                         >
                             Shipping & Payment
                         </NavLink>
@@ -111,6 +123,7 @@ function Header() {
                             to="/about"
                             activeClassName='is-active'
                             className="sidebar-li"
+                            onClick={handleMobileNav}
                         >
                             About Us
                         </NavLink>

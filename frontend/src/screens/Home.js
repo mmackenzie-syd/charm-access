@@ -114,7 +114,7 @@ function Home() {
     }
 
     return (
-      <main className="home margin-top-5">
+      <main className="home margin-top-3">
           <section className="banner margin-top-3 margin-bottom-5 full-width">
               <ImageGallery
                   items={images}
