@@ -14,7 +14,7 @@ const ArrivalsSlide = (props) => {
         history.push(`/product/new/${name}`)
     }
     return (
-        <ul className="grid grid-col-4">
+        <ul className="grid grid-col-4-large">
             {
                 products.map(({name, _id, thumbnail, price}, index) => {
                     return (

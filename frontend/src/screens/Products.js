@@ -96,7 +96,7 @@ function Products(props) {
                     rightPageClick={handleRightPageClick}
                 />
             </section>
-            <ul className="grid grid-col-4">
+            <ul className="grid grid-col-2-small grid-col-4-large">
                 {
                     products && products.map(({ name, _id, thumbnail, price }, index) =>
                         <li key={_id} className="full-width">

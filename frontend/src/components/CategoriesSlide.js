@@ -4,7 +4,7 @@ import React from "react";
 const CategoriesSlide = (props) => {
     const { items } = props;
     return (
-        <ul className="grid grid-col-3" >
+        <ul className="grid grid-col-3-large" >
             {
                 items.map(({ product, category, count }) => {
                     const { _id, image } = product;

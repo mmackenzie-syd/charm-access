@@ -3,7 +3,7 @@ import "./CategorySlideDummy.css";
 
 export default () =>
         <div className="category-dummy fade-out">
-            <ul className="grid grid-col-3" >
+            <ul className="grid grid-col-3-large" >
                 {
                     [1, 2, 3].map((image, index) => {
                         return (

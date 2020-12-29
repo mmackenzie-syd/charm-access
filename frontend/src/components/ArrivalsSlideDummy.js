@@ -3,7 +3,7 @@ import "./ArrivalsSlideDummy.css";
 
 export default () =>
         <div className="arrivals-dummy fade-out">
-            <ul className="grid grid-col-4" >
+            <ul className="grid grid-col-4-large" >
                 {
                     [1, 2, 3, 4].map((thumbnail, index) => (
                         <li key={index} className="full-width">
