@@ -94,8 +94,7 @@
 }
 
 /* mobile responsive */
-.mobile { display: block; }
-.desktop { display: none; }
+
 
 .mobile-list {
     width: 100%;
@@ -117,15 +116,10 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    .mobile { display: none; }
-    .desktop { display: none; }
-    .tablet { display: block; }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 768px) {
-    .mobile { display: none; }
-    .desktop { display: block; }
     .banner-caption {
         top: 5%;
     }
@@ -152,8 +146,6 @@
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .mobile { display: none; }
-    .desktop { display: block; }
     .banner-caption {
         top: 10%;
         width: 40%;

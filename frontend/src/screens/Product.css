@@ -6,9 +6,12 @@
 
 .product-share { font-size: 1.5rem; }
 
-.product-img { border: 10px solid #f1f1f1; }
+.product-img {
+    border: 10px solid #f1f1f1;
+}
 
 .product-img-rel {
+    width: 100%;
     position: relative;
 }
 
@@ -18,5 +21,20 @@
     top: 0;
 }
 
+.product { margin-top: 2rem; }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .product { margin-top: 5rem; }
+}
 
 

@@ -110,9 +110,14 @@
     grid-template-columns: 25fr 25fr 25fr 25fr;
 }
 
+.mobile { display: block; }
+.tablet { display: none; }
+.desktop { display: none; }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+    .mobile { display: none; }
+    .tablet { display: block; }
     .wrap {
         padding: 0 4rem;
     }
@@ -123,6 +128,8 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+    .tablet { display: none; }
+    .desktop { display: block; }
     .grid {
         grid-column-gap: 1.5rem;
     }

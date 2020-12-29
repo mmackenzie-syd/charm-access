@@ -82,11 +82,29 @@ function Product(props) {
     }
 
     return (
-        <main className="margin-top-5" style={{minHeight: '500px'}}>
+        <main className="product" style={{minHeight: '500px'}}>
             { product &&
                 <>
-                <section className="row top">
-                    <div className="col-6 product-img-rel">
+                <div className="mobile tablet">
+                    <div className="margin-bottom-1">
+                        <Breadcrumb list={list} show={showBreadcrumb}/>
+                    </div>
+                    <div className="row margin-bottom-1">
+                        <h3 className="">{product.name}</h3>
+                        <div className="row">
+                            <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
+                                <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                            </button>
+                            <button className='btn btn-secondary btn-icon' onClick={getNext}>
+                                <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                            </button>
+                        </div>
+                    </div>
+                    <h4 className="product-brand-title margin-bottom-1">Charm Accessories</h4>
+                    <div className="product-price margin-bottom-1">${product.price.toFixed(2)}</div>
+                </div>
+                <section className="grid grid-col-2-large">
+                    <div className="product-img-rel margin-bottom-2">
                         <img
                             className="product-img"
                             alt={product.name}
@@ -98,23 +116,25 @@ function Product(props) {
                             src ={product.image}
                         />
                     </div>
-                    <div className="col-6 padding-left-3">
-                        <div>
-                            <Breadcrumb list={list} show={showBreadcrumb}/>
-                        </div>
-                        <div className="row margin-bottom-1">
-                            <h3 className="">{product.name}</h3>
+                    <div className="">
+                        <div className="desktop">
                             <div>
-                                <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
-                                    <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                                </button>
-                                <button className='btn btn-secondary btn-icon' onClick={getNext}>
-                                    <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                                </button>
+                                <Breadcrumb list={list} show={showBreadcrumb}/>
                             </div>
+                            <div className="row margin-bottom-1">
+                                <h3 className="">{product.name}</h3>
+                                <div className="row">
+                                    <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
+                                        <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                                    </button>
+                                    <button className='btn btn-secondary btn-icon' onClick={getNext}>
+                                        <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                                    </button>
+                                </div>
+                            </div>
+                            <h4 className="product-brand-title margin-bottom-2">Charm Accessories</h4>
+                            <div className="product-price margin-bottom-4">${product.price.toFixed(2)}</div>
                         </div>
-                        <h4 className="product-brand-title margin-bottom-2">Charm Accessories</h4>
-                        <div className="product-price margin-bottom-4">${product.price.toFixed(2)}</div>
                         <div className="margin-bottom-3" style={{width: '100%'}}>
                             <Selector callback={onQty} count={10}/>
                         </div>
@@ -144,12 +164,13 @@ function Product(props) {
                 </section>
                     {
                         similarProducts && (similarProducts.length === 4)
-                            ? <section className="arrivals margin-top-5">
+                            ? <section className="arrivals margin-top-4 desktop">
                                 <h3 className="margin-bottom-2">Similar Items</h3>
                                 <ArrivalsSlide items={similarProducts} />
                               </section>
                             : <div className="margin-bottom-5"></div>
                     }
+                    <div className="margin-bottom-2 mobile"></div>
                 </>
             }
         </main>
