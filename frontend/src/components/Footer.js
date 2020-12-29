@@ -41,18 +41,24 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="row center vendor">
-                <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor { status ? 'Logout' : 'Login'} </div>
-                <div className="vendor-login-wrap">
-                    {
-                        status
-                            ? <button className="login-btn" onClick={() => handleLogout()}>
-                                <LogoutIcon width={'2.8rem'} height={'2.8rem'} />
-                              </button>
-                            : <button className="login-btn" onClick={() => handleModal(<Login />)}>
-                                <LoginIcon width={'2.8rem'} height={'2.8rem'} />
-                              </button>
-                    }
+            <div className="vendor mobile">
+                <div className="txt-center">&copy; 2020 Charm Accessories</div>
+                <div className="txt-center">Built by Mark Mackenzie</div>
+            </div>
+            <div className="desktop">
+                <div className="row center vendor">
+                    <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor { status ? 'Logout' : 'Login'} </div>
+                    <div className="vendor-login-wrap">
+                        {
+                            status
+                                ? <button className="login-btn" onClick={() => handleLogout()}>
+                                    <LogoutIcon width={'2.8rem'} height={'2.8rem'} />
+                                </button>
+                                : <button className="login-btn" onClick={() => handleModal(<Login />)}>
+                                    <LoginIcon width={'2.8rem'} height={'2.8rem'} />
+                                </button>
+                        }
+                    </div>
                 </div>
             </div>
         </footer>

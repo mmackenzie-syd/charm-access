@@ -141,11 +141,7 @@
 /* Mobile */
 .mobile { display: block; }
 .desktop { display: none; }
-.spacer-header-compensate {
-    line-height: 10rem;
-}
-
-
+.spacer-header-compensate { line-height: 10rem; }
 
 /* mobile side menu */
 .sidebar {
