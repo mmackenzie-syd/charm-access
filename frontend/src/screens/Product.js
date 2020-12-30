@@ -86,7 +86,7 @@ function Product(props) {
             { product &&
                 <>
                 <div className="mobile tablet">
-                    <div className="margin-bottom-1">
+                    <div className="margin-bottom-1 tablet">
                         <Breadcrumb list={list} show={showBreadcrumb}/>
                     </div>
                     <div className="row margin-bottom-1">

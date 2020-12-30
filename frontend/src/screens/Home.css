@@ -2,24 +2,48 @@
     font-family: 'Arsenal', sans-serif;
 }
 
+/* Banner Start */
 .banner { position: relative; }
 
 .banner-caption {
     position: absolute;
-    left: 1rem;
-    top: 10%;
-    width: 40%;
+    bottom: 10%;
+    width: 100%;
+    bottom: 5%;
+    width: 90%;
+    left: 5%;
+    background: rgba(255, 255, 255, 0.8);
 }
+
+.banner-caption-txt {
+    text-align: center;
+    color: #937cd4;
+    line-height: 1.6;
+    font-weight: 500;
+    font-size: 1.6rem;
+    padding: 1rem;
+    margin: 0;
+}
+
+.banner-caption-button-wrap {
+    margin-bottom: 1rem;
+}
+
+
 
 .banner-caption-brand {
     width: 140px;
     margin: 0 auto;
 }
 
-.banner-caption-button-wrap {
-    margin-top: 1rem;
+.btn-mobile {
+    padding: 1rem 3.5rem;
 }
 
+
+/* Banner End */
+
+.arrivals { margin-top: 3rem; }
 
 .mood {
     position: relative;
@@ -48,9 +72,7 @@
 
 .kangaroo { margin-right: .5rem; }
 
-.category { margin-bottom: 7rem; }
 
-.arrivals { margin-bottom: 7rem; }
 
 .signup {
     background-color: #efefef;
@@ -112,17 +134,63 @@
     margin-right: 0;
 }
 
-
+.mobile { display: block; }
+.tablet { display: none; }
+.desktop { display: none; }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+    .mobile { display: none; }
+    .tablet { display: block; }
+    .arrivals { margin-bottom: 7rem; margin-top: 5rem; }
+    .category { margin-bottom: 7rem; }
+
+    .btn-mobile {
+        padding: 1.4rem 4.5rem;
+    }
+
+    .banner-caption {
+        bottom: 5%;
+        width: 90%;
+        left: 5%;
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    .banner-caption-txt {
+        color: #937cd4;
+        line-height: 2;
+        font-weight: 500;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        padding-top: 1.5rem;
+    }
+
+    .banner-caption-brand {
+        width: 140px;
+        margin: 0 auto;
+    }
+
+    .banner-caption-button-wrap {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 768px) {
+
     .banner-caption {
-        top: 5%;
+        top: 8%;
+        left: 0;
+        width: 50%;
+        background: transparent;
     }
+
+
+
+    .tablet { display: none; }
+    .desktop { display: block; }
 
     .banner-caption-brand {
         width: 200px;
@@ -130,16 +198,18 @@
     }
 
     .banner-caption-txt {
-        margin-left: 5%;
+        padding: 0;
+        text-align: left;
+        margin-left: 11%;
         color: #937cd4;
         line-height: 2;
         font-weight: 500;
         font-size: 1.8rem;
-        margin-bottom: 2rem;
-        max-width: 360px;
+        margin-bottom: 1rem;
     }
     .banner-caption-button-wrap {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0;
     }
 
 }
@@ -153,6 +223,7 @@
 
     .banner-caption-txt {
         margin-left: 15%;
+        max-width: 360px;
     }
 
     .banner-caption-brand {

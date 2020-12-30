@@ -30,6 +30,21 @@ const images = [
     },
 ];
 
+const imagesMobile = [
+    {
+        original: './images/banner1-mobile.jpg',
+        thumbnail: './images/banner1-mobile.jpg',
+    },
+    {
+        original: './images/banner2-mobile.jpg',
+        thumbnail: './images/banner2-mobile.jpg',
+    },
+    {
+        original: './images/banner3-mobile.jpg',
+        thumbnail: './images/banner3-mobile.jpg',
+    },
+];
+
 
 function Home() {
     let history = useHistory();
@@ -115,7 +130,27 @@ function Home() {
 
     return (
       <main className="home margin-top-3">
-          <section className="banner margin-top-3 margin-bottom-5 full-width">
+          <section className="banner margin-top-3 full-width mobile">
+              <ImageGallery
+                  items={imagesMobile}
+                  showNav={false}
+                  showThumbnails={false}
+                  showFullscreenButton={false}
+                  showBullets={false}
+                  autoPlay={true}
+                  showPlayButton={false}
+                  slideInterval={7000}
+              />
+            <div className="banner-caption">
+                <div className="">
+                    <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
+                </div>
+                <div className="row center banner-caption-button-wrap">
+                    <button className="btn btn-primary btn-mobile" onClick={handleShopNow}>Shop Now</button>
+                </div>
+            </div>
+          </section>
+          <section className="banner margin-top-3 full-width tablet desktop">
               <ImageGallery
                   items={images}
                   showNav={false}
@@ -126,23 +161,23 @@ function Home() {
                   showPlayButton={false}
                   slideInterval={7000}
               />
-            <div className="banner-caption">
-                <div className="banner-caption-brand">
-                    <img alt="brand" src="./images/brand_transp_purple.png"/>
-                </div>
-                <div className="desktop">
-                    <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
-                </div>
-                <div className="row center banner-caption-button-wrap">
-                    <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
-                </div>
-            </div>
+              <div className="banner-caption">
+                  <div className="banner-caption-brand">
+                      <img alt="brand" src="./images/brand_transp_purple.png"/>
+                  </div>
+                  <div className="">
+                      <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
+                  </div>
+                  <div className="row center banner-caption-button-wrap">
+                      <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
+                  </div>
+              </div>
           </section>
 
-          <section className="arrivals mobile tablet">
+          <section className="arrivals margin-top-2 mobile tablet">
                   <h3 className="margin-bottom-2">New Arrivals</h3>
                   {  arrivalSlides &&
-                      <ul className="mobile-list margin-bottom-3">
+                      <ul className="mobile-list margin-bottom-1">
                           {
                               arrivalSlides.map(({name, _id, thumbnail, price}, index) => {
                                   return (
