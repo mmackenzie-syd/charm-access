@@ -4,6 +4,7 @@ function KangarooIcon(props) {
     const fill = props.fill || '#111';
     const width = props.width || '2.4rem';
     const height = props.height || '2.4rem';
+    const offset = props.offset || 0;
     const className = props.className || '';
     return (
         <span className={className}>
@@ -11,7 +12,10 @@ function KangarooIcon(props) {
                   xmlns="http://www.w3.org/2000/svg"
                   width={width}
                   height={height}
-                  style={{fill: fill}}
+                  style={{
+                      fill: fill,
+                      transform: `translate(0, ${offset})`
+                  }}
                   viewBox="0 0 1280.000000 789.000000"
                   preserveAspectRatio="xMidYMid meet">
                     <g transform="translate(0.000000,789.000000) scale(0.100000,-0.100000)"

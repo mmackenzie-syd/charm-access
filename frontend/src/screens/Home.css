@@ -7,8 +7,6 @@
 
 .banner-caption {
     position: absolute;
-    bottom: 10%;
-    width: 100%;
     bottom: 5%;
     width: 90%;
     left: 5%;
@@ -45,6 +43,8 @@
 
 .arrivals { margin-top: 3rem; }
 
+/* Mood Start */
+
 .mood {
     position: relative;
     background-color: #fff;
@@ -54,31 +54,35 @@
 
 .mood-caption {
     position: absolute;
-    top: 30%;
+    top: 25%;
     width: 100%;
     text-align: center;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 500;
 }
 
 .mood-caption-title {
     font-family: 'Arsenal', sans-serif;
-    margin-bottom: 4rem;
-    font-size: 4.8rem;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     line-height: 1.5;
 }
 
 .kangaroo { margin-right: .5rem; }
 
+.mood-shipping {
+    width: 80%;
+    margin: 0 auto;
+}
 
+/* Mood End */
 
 .signup {
     background-color: #efefef;
     padding: 6rem 0;
 }
-
 
 /* ***************************************** */
 
@@ -175,6 +179,40 @@
         margin-top: 1rem;
         margin-bottom: 2rem;
     }
+
+    /* Mood */
+    .mood {
+        position: relative;
+        background-color: #fff;
+    }
+
+    .mood-img { opacity: 0.8; }
+
+    .mood-caption-title {
+        text-align: center;
+        font-family: 'Arsenal', sans-serif;
+        margin-bottom: 4rem;
+        font-size: 3.8rem;
+        font-weight: 700;
+        line-height: 1.5;
+        border: 1px solid red;
+        width: 100%;
+    }
+
+    .mood-caption {
+        position: relative;
+        margin-top: 0%;
+        left: 0;
+
+        text-align: center;
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 500;
+        border: 1px solid blue;
+    }
+
+    .kangaroo { margin-right: .5rem; }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -186,8 +224,6 @@
         width: 50%;
         background: transparent;
     }
-
-
 
     .tablet { display: none; }
     .desktop { display: block; }
@@ -210,6 +246,32 @@
     .banner-caption-button-wrap {
         margin-top: 1.5rem;
         margin-bottom: 0;
+    }
+
+    /* mood */
+    /* Mood */
+    .mood {
+        position: relative;
+        background-color: #fff;
+    }
+
+    .mood-img { opacity: 0.8; }
+
+    .mood-caption-title {
+        font-family: 'Arsenal', sans-serif;
+        margin-bottom: 3rem;
+        font-size: 3.8rem;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+    .mood-caption {
+        position: absolute;
+        top: 30%;
+        width: 90%;
+        text-align: center;
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 500;
     }
 
 }
