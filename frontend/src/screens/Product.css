@@ -13,6 +13,7 @@
 .product-img-rel {
     width: 100%;
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .product-img-abs {
@@ -27,13 +28,34 @@
     min-width: 9rem;
 }
 
-.product-mobile {
-    display: block;
+.product-title {
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-.product-desktop {
-    display: none;
+.product-brand-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
+
+.product-price {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.product-qty {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.product-btn {
+    margin-bottom: 1.5rem;
+}
+
+.product-mobile { display: block; }
+
+.product-desktop { display: none; }
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -42,12 +64,35 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .product-mobile {
-        display: none;
+    .product-mobile { display: none; }
+
+    .product-desktop { display: block; }
+
+    .product-img-rel {
+        margin-bottom: 2rem;
     }
 
-    .product-desktop {
-        display: block;
+    .product-title {
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    .product-brand-title {
+        text-align: left;
+        margin-bottom: 2rem;
+    }
+
+    .product-price {
+        text-align: left;
+        margin-bottom: 4rem;
+    }
+
+    .product-qty {
+        margin-bottom: 3rem;
+    }
+
+    .product-btn {
+        margin-bottom: 3rem;
     }
 }
 

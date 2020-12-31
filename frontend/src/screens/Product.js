@@ -99,7 +99,7 @@ function Product(props) {
                     </div>
                 </div>
                 <section className="grid grid-col-2-large">
-                    <div className="product-img-rel margin-bottom-2">
+                    <div className="product-img-rel">
                         <img
                             className="product-img"
                             alt={product.name}
@@ -116,31 +116,36 @@ function Product(props) {
                             <div className="product-desktop">
                                 <Breadcrumb list={list} show={showBreadcrumb}/>
                             </div>
-                            <div className="row margin-bottom-1">
-                                <h3 className="">{product.name}</h3>
-                                <div className="product-desktop product-nav-arrows">
-                                    <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
-                                        <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                                    </button>
-                                    <button className='btn btn-secondary btn-icon' onClick={getNext}>
-                                        <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                                    </button>
+                            <div className="product-desktop">
+                                <div className="row product-title">
+                                    <h3>{product.name}</h3>
+                                    <div className="product-nav-arrows">
+                                        <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
+                                            <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                                        </button>
+                                        <button className='btn btn-secondary btn-icon' onClick={getNext}>
+                                            <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <h4 className="product-brand-title margin-bottom-2">Charm Accessories</h4>
-                            <div className="product-price margin-bottom-4">${product.price.toFixed(2)}</div>
+                            <div className="product-title product-mobile">
+                                <h3 className="">{product.name}</h3>
+                            </div>
+                            <h4 className="product-brand-title product-desktop">Charm Accessories</h4>
+                            <div className="product-price">${product.price.toFixed(2)}</div>
                         </div>
-                        <div className="margin-bottom-3" style={{width: '100%'}}>
+                        <div className="product-qty">
                             <Selector callback={onQty} count={10}/>
                         </div>
                         <button
-                            className="btn btn-secondary full-width margin-bottom-3"
+                            className="btn btn-secondary full-width product-btn"
                             onClick={handleAddToCart}
                         >
                             Add to Shopping Cart
                         </button>
-                        <button className="btn btn-primary full-width">Buy</button>
-                        <p className="margin-top-3">{product.description}</p>
+                        <button className="btn btn-primary full-width product-btn">Buy</button>
+                        <p>{product.description}</p>
                         <div>
                             <div className="product-share margin-bottom-2">Share this</div>
                             <div className="social-icons">
@@ -159,7 +164,7 @@ function Product(props) {
                 </section>
                     {
                         similarProducts && (similarProducts.length === 4)
-                            ? <section className="arrivals margin-top-4 desktop">
+                            ? <section className="arrivals margin-top-4 product-desktop">
                                 <h3 className="margin-bottom-2">Similar Items</h3>
                                 <ArrivalsSlide items={similarProducts} />
                               </section>
