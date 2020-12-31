@@ -99,7 +99,7 @@
 }
 
 .grid-col-2-small {
-    grid-template-columns: 33.33fr 33.33fr;
+    grid-template-columns: 50fr 50fr;
 }
 
 .grid-col-3-small {
@@ -133,7 +133,7 @@
         grid-column-gap: 1.5rem;
     }
     .grid-col-2-large {
-        grid-template-columns: 33.33fr 33.33fr;
+        grid-template-columns: 50fr 50fr;
     }
 
     .grid-col-3-large {

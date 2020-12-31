@@ -1,5 +1,11 @@
 /* numeral up/down */
 
+.quantity {
+    min-width: 130px;
+}
+.quantity-btn {
+    margin-left: 0;
+}
 .quantity-value {
     display: inline-block;
     width: 40px;
@@ -16,5 +22,6 @@
     border-radius: 3px;
     text-decoration: none;
     margin-left: .5rem;
+    margin-right: .5rem;
     text-align: center;
 }

@@ -45,9 +45,42 @@ function Cart() {
             <section className="row margin-top-5 ">
                 <h3 className="margin-bottom-3">Basket</h3>
             </section>
-            <div className="row">
-                <section className="table">
-                    {addedIds && (addedIds.length !== 0) &&
+            <div className="cart-mobile">
+                <section className="">
+                    { addedIds && addedIds.map( (id) => {
+                        const { name, price, image } = productById[id];
+                        const qty = quantityById[id];
+                        const subTotal = qty * Number(price);
+                        return (
+                            <div key={id} className="cart-grid">
+                                <div className="cart-item-img-wrap">
+                                    <img className="cart-item-img" alt={name} src={image}/>
+                                </div>
+                                <div className="cart-item-detail">
+                                    <p className="cart-item-name">{name}</p>
+                                    <p className="cart-item-price">${price}</p>
+                                    <Quantity
+                                        value={qty}
+                                        onSubBtn={() => onSubBtn(id, qty)}
+                                        onPlusBtn={() => onPlusBtn(id, qty)}
+                                    />
+                                    <span
+                                        onClick={() => handleDelete(id)}
+                                        className="cart-item-cross"
+                                    >
+                                        &#10005;
+                                    </span>
+                                </div>
+                            </div>
+                        );
+                    })
+                    }
+                </section>
+            </div>
+            <div className="cart-desktop">
+                <div className="row">
+                    <section className="table">
+                        {addedIds && (addedIds.length !== 0) &&
                         <div className="row table__heading">
                             <div className="col-2 padding-right-3">Product</div>
                             <div className="col-4">Description</div>
@@ -55,17 +88,17 @@ function Cart() {
                             <div className="col-2 row">Quantity</div>
                             <div className="col-2 row right">Sub-total</div>
                         </div>
-                    }
-                    { addedIds && (addedIds.length === 0) &&
+                        }
+                        { addedIds && (addedIds.length === 0) &&
                         <div>
                             Your Cart is empty.
                         </div>
-                    }
-                    { addedIds && addedIds.map( (id) => {
-                        const { name, price, image } = productById[id];
-                        const qty = quantityById[id];
-                        const subTotal = qty * Number(price);
-                        return <div key={id} className="row top table__item">
+                        }
+                        { addedIds && addedIds.map( (id) => {
+                            const { name, price, image } = productById[id];
+                            const qty = quantityById[id];
+                            const subTotal = qty * Number(price);
+                            return <div key={id} className="row top table__item">
                                 <div className="col-2 padding-right-3">
                                     <div className="table__img">
                                         <img alt={name} src={image}/>
@@ -97,8 +130,9 @@ function Cart() {
                                 </div>
                             </div>;
                         })
-                    }
-                </section>
+                        }
+                    </section>
+                </div>
             </div>
             { addedIds && addedIds.length !== 0 &&
                 <>
