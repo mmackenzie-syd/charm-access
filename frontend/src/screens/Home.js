@@ -130,7 +130,7 @@ function Home() {
 
     return (
       <main className="home margin-top-3">
-          <section className="banner margin-top-3 full-width mobile">
+          <section className="banner margin-top-3 full-width banner-mobile">
               <ImageGallery
                   items={imagesMobile}
                   showNav={false}
@@ -150,7 +150,7 @@ function Home() {
                 </div>
             </div>
           </section>
-          <section className="banner margin-top-3 full-width tablet desktop">
+          <section className="banner margin-top-3 full-width banner-desktop">
               <ImageGallery
                   items={images}
                   showNav={false}
@@ -174,7 +174,7 @@ function Home() {
               </div>
           </section>
 
-          <section className="arrivals margin-top-2 mobile tablet">
+          <section className="arrivals margin-top-2 arrivals-mobile">
                   <h3 className="margin-bottom-2">New Arrivals</h3>
                   {  arrivalSlides &&
                       <ul className="mobile-list margin-bottom-1">
@@ -199,7 +199,7 @@ function Home() {
                   }
           </section>
 
-          <section className="arrivals desktop" ref={widthRef}>
+          <section className="arrivals arrivals-desktop" ref={widthRef}>
               <div className="row  margin-bottom-1">
                   <h3 className="margin-bottom-2">New Arrivals</h3>
                   <div>
@@ -230,7 +230,7 @@ function Home() {
                   }
               </div>
           </section>
-          <section className="category mobile tablet">
+          <section className="category home-mobile category-mobile">
               <h3 className="margin-bottom-3">Shop By Category</h3>
                   {  categorySlides &&
                       <ul className="mobile-list margin-bottom-3" >
@@ -255,7 +255,7 @@ function Home() {
                   }
           </section>
 
-          <section className="category desktop">
+          <section className="category category-desktop">
               <div className="row  margin-bottom-1">
                   <h3 className="margin-bottom-2">Shop By Category</h3>
                   <div>
@@ -287,7 +287,7 @@ function Home() {
               </div>
           </section>
 
-          <section className="mood mobile">
+          <section className="mood mood-mobile">
             <div>
                 <img alt="mood" className="mood-img" src="./images/mood-mobile.jpg"/>
             </div>
@@ -316,7 +316,7 @@ function Home() {
                 </div>
             </div>
           </section>
-          <section className="mood tablet">
+          <section className="mood mood-tablet">
               <div>
                   <img alt="mood" className="mood-img" src="./images/mood-mobile.jpg"/>
               </div>
@@ -348,7 +348,7 @@ function Home() {
               </div>
           </section>
 
-          <section className="mood desktop">
+          <section className="mood mood-desktop">
               <div>
                   <img alt="mood" className="mood-img" src="./images/mood.jpg"/>
               </div>
@@ -380,20 +380,20 @@ function Home() {
               </div>
           </section>
 
-          <section className="signup row center margin-bottom-5">
-              <form className="col-8" onSubmit={submitHandler} encType="text/plain">
-                  <h5 className="margin-bottom-2">BECOME A VIP</h5>
-                  <p className="signup-paragraph margin-bottom-2">Be the first to know about special offers and&nbsp;updates.</p>
+          <section className="signup row center">
+              <form className="signup-form" onSubmit={submitHandler} encType="text/plain">
+                  <h5 className="signup-title">BECOME A VIP</h5>
+                  <p className="signup-paragraph">Be the first to know about special offers and&nbsp;updates.</p>
                   <div className="row">
                       <input
+                          className="signup-email"
                           type="email"
-                          placeholder="Enter your email address"
-                          className="col-9"
+                          placeholder="Enter your email"
                           required
                           value={emailFrom}
                           onChange={e => setEmailFrom(e.target.value)}
                       />
-                      <button type='submit' className="btn btn-primary btn-small col-3 margin-left-1">SIGN UP</button>
+                      <button type='submit' className="btn btn-primary btn-small signup-btn">SIGN UP</button>
                   </div>
               </form>
           </section>

@@ -84,21 +84,38 @@
 
 /* Mood End */
 
+/* Signup start */
 .signup {
     background-color: #efefef;
-    padding: 6rem 0;
+    padding: 2rem;
 }
 
-/* ***************************************** */
+.signup-form {
+}
 
-.spacer {
-    height: 3rem;
-    width: 100%;
+.signup-title {
+    margin-bottom: 2rem;
 }
 
 .signup-paragraph {
     font-size: 1.6rem;
+    margin-bottom: 2rem;
 }
+
+.signup-email {
+    font-size: 1.4rem;
+    width: 55%;
+    padding-left: .8rem !important;
+}
+
+.signup-btn {
+    margin-left: .5rem;
+    width: 45%;
+    padding: 1.4rem 0.5rem;
+}
+/* Signup end */
+
+
 
 .products-img {
     position: absolute;
@@ -107,6 +124,10 @@
     z-index: 100;
 }
 
+.spacer {
+    height: 3rem;
+    width: 100%;
+}
 
 .arrivals-relative { position: relative; }
 
@@ -143,19 +164,19 @@
     margin-right: 0;
 }
 
-.mobile { display: block; }
-.tablet { display: none; }
-.desktop { display: none; }
+.banner-mobile { display: block; }
+.banner-desktop { display: none; }
+.arrivals-mobile { display: block; }
+.arrivals-desktop { display: none; }
+.category-mobile { display: block; }
+.category-desktop { display: none; }
+.mood-mobile { display: block; }
+.mood-tablet { display: none; }
+.mood-desktop { display: none; }
 
 @media only screen and (min-width: 600px) {
-    .mobile {
-        display: none;
-    }
-
-    .tablet {
-        display: block;
-    }
-
+    .mood-mobile { display: none; }
+    .mood-tablet { display: block; }
     .arrivals {
         margin-bottom: 7rem;
         margin-top: 5rem;
@@ -239,13 +260,26 @@
     }
 
     /* Mood End */
+
+    /* Signup start */
+    .signup-btn {
+        margin-left: 1rem;
+        width: 25%;
+        padding: 1.4rem .9rem;
+    }
+    /* signup end */
+
 }
 
 @media only screen and (min-width: 768px) {
-
-    .tablet {
-        display: none;
-    }
+    .banner-mobile { display: none; }
+    .banner-desktop { display: block; }
+    .arrivals-mobile { display: none; }
+    .arrivals-desktop { display: block; }
+    .category-mobile { display: none; }
+    .category-desktop { display: block; }
+    .mood-tablet { display: none; }
+    .mood-desktop { display: block; }
 
     .banner-caption {
         top: 8%;
@@ -276,10 +310,45 @@
     }
 
     /* mood start */
+    .mood {
+        margin-bottom: 4rem;
+    }
     .mood-caption-contact {
         margin-bottom: 2rem;
     }
     /* mood end */
+
+    /* Signup start */
+    .signup {
+        background-color: #efefef;
+        padding: 6rem 0;
+        margin-bottom: 1rem;
+    }
+
+    .signup-form {
+        width: 66.67%;
+    }
+
+    .signup-title {
+        margin-bottom: 2rem;
+    }
+
+    .signup-paragraph {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .signup-email {
+        font-size: 1.6rem;
+        width: 75%;
+    }
+
+    .signup-btn {
+        margin-left: 1rem;
+        width: 25%;
+        padding: 1.4rem 1.6rem;
+    }
+    /* Signup end */
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -305,9 +374,7 @@
 
     /* Mood Start */
     .mood {
-        position: relative;
-        background-color: #fff;
-        margin-bottom: 2rem;
+        margin-bottom: 5rem;
     }
 
     .mood-img {
@@ -352,6 +419,7 @@
 @media only screen and (min-width: 1200px) {
     .banner-caption {
         top: 18%;
+        left: 2%;
     }
     .banner-caption-txt {
         margin-left: 20%;
