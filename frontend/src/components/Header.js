@@ -75,7 +75,7 @@ function Header() {
 
     return (
         <>
-            <div className="sticky mobile">
+            <div className="sticky header-mobile">
             <header className="header row space-between">
                 <div id="mySidebar" className="sidebar">
                     <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
@@ -163,7 +163,7 @@ function Header() {
                 </ul>
             </header>
         </div>
-        <div className="sticky desktop">
+        <div className="sticky header-desktop">
             <header className="header row space-between">
                 <ul className="nav">
                     <li className="nav-item">

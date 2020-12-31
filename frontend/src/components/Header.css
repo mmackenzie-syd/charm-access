@@ -139,8 +139,8 @@
 
 
 /* Mobile */
-.mobile { display: block; }
-.desktop { display: none; }
+.header-mobile { display: block; }
+.header-desktop { display: none; }
 .spacer-header-compensate { line-height: 10rem; }
 
 /* mobile side menu */
@@ -261,8 +261,8 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 768px) {
-    .mobile { display: none; }
-    .desktop { display: block; }
+    .header-mobile { display: none; }
+    .header-desktop { display: block; }
     .spacer-header-compensate {
         line-height: 12rem;
     }
