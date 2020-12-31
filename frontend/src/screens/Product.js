@@ -85,12 +85,9 @@ function Product(props) {
         <main className="product" style={{minHeight: '500px'}}>
             { product &&
                 <>
-                <div className="mobile tablet">
-                    <div className="margin-bottom-1 tablet">
-                        <Breadcrumb list={list} show={showBreadcrumb}/>
-                    </div>
+                <div className="mobile product-mobile">
                     <div className="row margin-bottom-1">
-                        <h3 className="">{product.name}</h3>
+                        <div>&nbsp;</div>
                         <div className="row">
                             <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
                                 <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
@@ -100,8 +97,6 @@ function Product(props) {
                             </button>
                         </div>
                     </div>
-                    <h4 className="product-brand-title margin-bottom-1">Charm Accessories</h4>
-                    <div className="product-price margin-bottom-1">${product.price.toFixed(2)}</div>
                 </div>
                 <section className="grid grid-col-2-large">
                     <div className="product-img-rel margin-bottom-2">
@@ -117,13 +112,13 @@ function Product(props) {
                         />
                     </div>
                     <div className="">
-                        <div className="desktop">
-                            <div>
+                        <div>
+                            <div className="product-desktop">
                                 <Breadcrumb list={list} show={showBreadcrumb}/>
                             </div>
                             <div className="row margin-bottom-1">
                                 <h3 className="">{product.name}</h3>
-                                <div className="row">
+                                <div className="product-desktop product-nav-arrows">
                                     <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
                                         <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                                     </button>

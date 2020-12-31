@@ -23,13 +23,32 @@
 
 .product { margin-top: 2rem; }
 
+.product-nav-arrows {
+    min-width: 9rem;
+}
+
+.product-mobile {
+    display: block;
+}
+
+.product-desktop {
+    display: none;
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+    .product-mobile {
+        display: none;
+    }
 
+    .product-desktop {
+        display: block;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
