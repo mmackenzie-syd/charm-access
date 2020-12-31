@@ -1,0 +1,10 @@
+
+.breadcrumb {
+    margin-bottom: .5rem;
+}
+
+.breadcrumb-item {
+    display: inline-block;
+    margin-right: .4rem;
+    font-size: 1.4rem;
+}

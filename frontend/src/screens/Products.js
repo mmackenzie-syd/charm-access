@@ -74,7 +74,7 @@ function Products(props) {
             }
             <section className="row products-header">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
-                <div className="font-small">
+                <div className="products-header-page-numbers">
                     { (pages > 0)
                         ? <div>
                             <span>Page</span>

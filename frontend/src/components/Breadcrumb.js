@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import {Link} from "react-router-dom";
+import "./Breadcrumb.css";
 
 function Breadcrumb(props) {
     const { list, show } = props;
@@ -8,13 +9,13 @@ function Breadcrumb(props) {
         return <Fragment></Fragment>;
     }
     return (
-        <ul>
+        <ul className="breadcrumb">
             {
                 list.reduce((arr, item, index) => {
                     arr.push(
                         <li
                             key={`breadcrumb-${index}`}
-                            className={`inline font-small margin-right-1 ${(index === maxIndex) ? 'font-grey' : ''}`}
+                            className={`breadcrumb-item ${(index === maxIndex) ? 'font-grey' : ''}`}
                         >
                             {
                                 index < maxIndex
@@ -23,7 +24,7 @@ function Breadcrumb(props) {
                             }
                         </li>);
                         if (index < maxIndex) {
-                            arr.push(<li key={`backslash-${index}`}  className="inline font-small margin-right-1">/</li>);
+                            arr.push(<li key={`backslash-${index}`}  className="breadcrumb-item">/</li>);
                         }
                         return arr;
                 }, [])
