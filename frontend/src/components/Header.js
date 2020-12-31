@@ -132,13 +132,9 @@ function Header() {
                 <ul className="nav">
                     <button className="openbtn" onClick={openNav}>&#9776;</button>
                 </ul>
-                <ul className="nav">
-                    <li className="nav-item">
-                        <Link to="/">
-                            <img alt="brand" className="header-img" src={`${process.env.PUBLIC_URL}/images/brand.png`}/>
-                        </Link>
-                    </li>
-                </ul>
+                <Link to="/" className="header-img-wrap">
+                    <img alt="brand" className="header-img" src={`${process.env.PUBLIC_URL}/images/brand-mobile.png`}/>
+                </Link>
                 <ul className="nav">
                     <li className="nav-item srch-icon-wrap" onClick={() => handleModal(<Search />)}>
                         <SearchIcon
@@ -168,7 +164,7 @@ function Header() {
                 <ul className="nav">
                     <li className="nav-item">
                         <Link to="/">
-                            <img alt="brand" className="header-img" src={`${process.env.PUBLIC_URL}/images/brand.png`}/>
+                            <img alt="brand" className="header-img" src={`${process.env.PUBLIC_URL}/images/brand-mobile.png`}/>
                         </Link>
                     </li>
                     {

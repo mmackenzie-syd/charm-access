@@ -18,13 +18,15 @@
 
 /* Site Title */
 .header-img {
-    height: 90%;
+    height: 95%;
     width: auto;
-    margin-right: -3rem;
+    padding-top: 5%;
+    margin-left: .8rem;
 }
 
-.nav {
-
+.header-img-wrap {
+    height: 65px;
+    margin-left: 0;
 }
 
 .nav-item {
@@ -180,6 +182,16 @@
 }
 
 .openbtn {
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #937cd4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 2px;
+}
+/*
+.openbtn {
     font-size: 20px;
     cursor: pointer;
     background-color: #937cd4;
@@ -188,6 +200,7 @@
     border: none;
     border-radius: 2px;
 }
+*/
 
 .openbtn:hover {
     opacity: .6;
@@ -270,8 +283,7 @@
     .header-img {
         height: 100%;
         width: auto;
-        margin-left: -4rem;
-        margin-right: -2rem;
+        margin-left: -2rem;
     }
 }
 
