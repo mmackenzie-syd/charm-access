@@ -14,6 +14,7 @@ import CategorySlideDummy from "../components/CategorySlideDummy";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import {Link} from "react-router-dom";
+import {setProductsNew} from "../state/nonApiActions";
 
 const images = [
     {
@@ -128,6 +129,12 @@ function Home() {
         window.location.href=`mailto:test@gmail.com?subject=Please sign me up&body=${emailFrom}`;
     }
 
+    const handleArrivalsNav = (index) => {
+        const name = arrivalSlides[index].name;
+        setProductsNew(arrivalSlides, dispatch);
+        history.push(`/product/new/${name}`)
+    }
+
     return (
       <main className="home margin-top-3">
           <section className="banner margin-top-3 full-width banner-mobile">
@@ -182,7 +189,7 @@ function Home() {
                               arrivalSlides.map(({name, _id, thumbnail, price}, index) => {
                                   return (
                                       <li key={_id} className="mobile-list-item margin-bottom-1">
-                                          <div className="slide-img-wrap" onClick={() => {}}>
+                                          <div className="slide-img-wrap" onClick={() => handleArrivalsNav(index)}>
                                               <img  alt={name} className="img-dull" src={thumbnail} />
                                           </div>
                                           <div className="row bottom margin-bottom-2">
