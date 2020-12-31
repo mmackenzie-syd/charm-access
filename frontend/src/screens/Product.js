@@ -149,14 +149,14 @@ function Product(props) {
                         <div>
                             <div className="product-share margin-bottom-2">Share this</div>
                             <div className="social-icons">
-                                <div className="social-icons__img-wrap">
-                                    <img alt="facebook" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
+                                <div className="social-icons-img-wrap">
+                                    <img alt="facebook" className="social-icons-img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
                                 </div>
-                                <div className="social-icons__img-wrap">
-                                    <img alt="instagram" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
+                                <div className="social-icons-img-wrap">
+                                    <img alt="instagram" className="social-icons-img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
                                 </div>
-                                <div className="social-icons__img-wrap">
-                                    <img alt="youtube" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
+                                <div className="social-icons-img-wrap">
+                                    <img alt="youtube" className="social-icons-img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
                                 </div>
                             </div>
                         </div>

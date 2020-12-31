@@ -22,30 +22,29 @@ function Footer() {
     }
 
     return (
-        <footer >
-            <div className="margin-bottom-3 social-media">
-                <div className="row center footer__phone  margin-bottom-3">
+        <footer className="footer">
+            <div className="social-media">
+                <div className="row center social-media-phone">
                     <PhoneIcon width={'2.8rem'} height={'2.8rem'}  offset={'0.3rem'} />
-                    <span>&nbsp;+061421013777 &nbsp;&nbsp; 10AM - 8PM</span>
+                    <span>&nbsp;+061421013777 : 10AM - 8PM</span>
                 </div>
                 <div className="row center social-icons">
                     <div className="follow-us">Follow us</div>
-                    <div className="social-icons__img-wrap">
-                        <img alt="facebook" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
+                    <div className="social-icons-img-wrap">
+                        <img alt="facebook" className="img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
                     </div>
-                    <div className="social-icons__img-wrap">
-                        <img alt="instagram" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
+                    <div className="social-icons-img-wrap">
+                        <img alt="instagram" className="img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
                     </div>
-                    <div className="social-icons__img-wrap">
-                        <img alt="youtube" className="social-icons__img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
+                    <div className="social-icons-img-wrap">
+                        <img alt="youtube" className="img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
                     </div>
                 </div>
             </div>
-            <div className="vendor mobile">
-                <div className="txt-center">&copy; 2020 Charm Accessories</div>
-                <div className="txt-center">Built by Mark Mackenzie</div>
+            <div className="vendor footer-mobile">
+                <div className="txt-center">&copy; 2020 Charm Accessories : Built by Mark Mackenzie</div>
             </div>
-            <div className="desktop">
+            <div className="footer-desktop">
                 <div className="row center vendor">
                     <div>&copy; 2020 Charm Accessories - Built by Mark Mackenzie - Vendor { status ? 'Logout' : 'Login'} </div>
                     <div className="vendor-login-wrap">

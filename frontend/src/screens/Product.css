@@ -4,7 +4,10 @@
     color: #4f4f4f;
 }
 
-.product-share { font-size: 1.5rem; }
+.product-share {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
 
 .product-img {
     border: 10px solid #f1f1f1;

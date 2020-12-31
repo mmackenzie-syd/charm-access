@@ -1,9 +1,9 @@
-footer {
+.footer {
     font-size: 1.5rem;
     line-height: 1.5;
     color: #111;
-    padding: 4rem;
-    padding-bottom: 5rem;
+    padding: 2rem;
+    padding-bottom: 3rem;
     background-color: #fff;
     border-top: 1px solid rgba(0, 0, 0, .2);
 
@@ -13,32 +13,29 @@ footer {
     letter-spacing: 1px;
 }
 
-.footer__phone {
-}
-
 
 /* social media */
 
 .social-media {
-
+    margin-bottom: 2rem;
 }
 
-.social-icons__img {
-    width: 100%;
+.social-media-phone {
+    margin-bottom: 2rem;
 }
 
 .social-icons {
-    margin-right: 3rem;
+    margin-right: 2rem;
 }
 
-.social-icons__img-wrap {
+.social-icons-img-wrap {
     margin: 0 1.5rem 0 0;
     display: inline-block;
     width: 2.8rem;
     line-height: 1rem;
 }
 
-.social-icons__img-wrap:last-child {
+.social-icons-img-wrap:last-child {
     margin-right: 0;
 }
 
@@ -64,3 +61,87 @@ footer {
     cursor: pointer;
     opacity: .6;
 }
+
+.footer-mobile { display: block; }
+.footer-desktop { display: none; }
+
+@media only screen and (min-width: 600px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+    .footer {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        color: #111;
+        padding: 4rem;
+        padding-bottom: 5rem;
+        background-color: #fff;
+        border-top: 1px solid rgba(0, 0, 0, .2);
+
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: #4f4f4f;
+        letter-spacing: 1px;
+    }
+
+
+    /* social media */
+
+    .social-media {
+        margin-bottom: 3rem;
+    }
+
+    .social-media-phone {
+        margin-bottom: 3rem;
+    }
+
+    .social-icons {
+        margin-right: 3rem;
+    }
+
+    .social-icons-img-wrap {
+        margin: 0 1.5rem 0 0;
+        display: inline-block;
+        width: 2.8rem;
+        line-height: 1rem;
+    }
+
+    .social-icons-img-wrap:last-child {
+        margin-right: 0;
+    }
+
+    .follow-us {
+        font-size: 1.4rem !important;
+        font-weight: 400;
+        color: #4f4f4f;
+        margin-right: 2rem;
+    }
+
+
+    .vendor-login-wrap {
+        margin-left: .5rem;
+    }
+
+    .login-btn {
+        border: 0;
+        background-color: #fff;
+        display: inline-block;
+    }
+
+    .login-btn:hover {
+        cursor: pointer;
+        opacity: .6;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .footer-mobile { display: none; }
+    .footer-desktop { display: block; }
+}
+
+@media only screen and (min-width: 1200px) {
+
+}
+
+
