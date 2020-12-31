@@ -287,48 +287,95 @@ function Home() {
               </div>
           </section>
 
-          <section className="mood margin-bottom-5 mobile">
+          <section className="mood mobile">
             <div>
                 <img alt="mood" className="mood-img" src="./images/mood-mobile.jpg"/>
             </div>
             <div className="mood-caption">
-                <div className="mood-caption-title margin-bottom-4">
+                <div className="mood-caption-title">
                     Create your mood with Charm Accessories
                 </div>
-                <div className="row center">
-                    <PhoneIcon width={'2.8rem'} height={'2.8rem'}  fill={'#fff'} />
+                <div className="mood-caption-contact row center">
+                    <PhoneIcon
+                        width={'1.8rem'}
+                        height={'1.8rem'}
+                        offset={'.25rem'}
+                        fill={'#fff'}
+                    />
                     &nbsp;+061421013777 : 10AM - 8PM
                 </div>
-                <div className="mood-shipping padding-right-1 padding-left-1 margin-bottom-5">
+                <div className="mood-caption-shipping">
+                    <KangarooIcon
+                        width={'2.8rem'}
+                        height={'1.7rem'}
+                        offset={'.3rem'}
+                        fill={'#fff'}
+                        className={'kangaroo'}
+                    />
+                    Australia Post Deliver Rates Apply
+                </div>
+            </div>
+          </section>
+          <section className="mood tablet">
+              <div>
+                  <img alt="mood" className="mood-img" src="./images/mood-mobile.jpg"/>
+              </div>
+              <div className="mood-caption">
+                  <div className="mood-caption-title">
+                      Create your mood with Charm Accessories
+                  </div>
+                  <div className="mood-caption-contact row center">
+                      <PhoneIcon
+                          width={'2.2rem'}
+                          height={'2.2rem'}
+                          offset={'.25rem'}
+                          fill={'#fff'}
+                      />
+                      &nbsp;+061421013777 : 10AM - 8PM
+                  </div>
+                  <div className="mood-caption-shipping row center">
                     <span>
                     <KangarooIcon
                         width={'3.2rem'}
-                        height={'3.2rem'}
-                        offset={'1rem'}
+                        height={'2.2rem'}
+                        offset={'.4rem'}
                         fill={'#fff'}
                         className={'kangaroo'}
                     />
                     </span>
-                    <span>Australia Post Delivery Rates Apply</span>
-                </div>
-            </div>
+                      <span>Australia Post Deliver Rates Apply</span>
+                  </div>
+              </div>
           </section>
 
-          <section className="mood margin-bottom-5 tablet desktop">
+          <section className="mood desktop">
               <div>
                   <img alt="mood" className="mood-img" src="./images/mood.jpg"/>
               </div>
               <div className="mood-caption">
-                  <div className="mood-caption-title margin-bottom-4">
+                  <div className="mood-caption-title">
                       Create your mood with Charm Accessories
                   </div>
-                  <div className="row center margin-bottom-3 padding-right-3">
-                      <PhoneIcon width={'2.8rem'} height={'2.8rem'}  fill={'#fff'} />
-                      &nbsp;+061421013777 &nbsp;&nbsp; 10AM - 8PM
+                  <div className="mood-caption-contact row center">
+                      <PhoneIcon
+                          width={'2.8rem'}
+                          height={'2.8rem'}
+                          offset={'.25rem'}
+                          fill={'#fff'}
+                      />
+                      &nbsp;+061421013777 : 10AM - 8PM
                   </div>
-                  <div className="row center padding-right-3 margin-bottom-5">
-                      <KangarooIcon width={'4.2rem'} height={'4.2rem'} fill={'#fff'} className={'kangaroo'}/>
-                      Australia Post Delivery Rates Apply
+                  <div className="mood-caption-shipping row center">
+                    <span>
+                    <KangarooIcon
+                        width={'4.4rem'}
+                        height={'2.7rem'}
+                        offset={'.4rem'}
+                        fill={'#fff'}
+                        className={'kangaroo'}
+                    />
+                    </span>
+                      <span>Australia Post Deliver Rates Apply</span>
                   </div>
               </div>
           </section>

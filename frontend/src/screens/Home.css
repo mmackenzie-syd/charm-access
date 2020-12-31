@@ -48,6 +48,7 @@
 .mood {
     position: relative;
     background-color: #fff;
+    margin-bottom: 2rem;
 }
 
 .mood-img { opacity: 0.8; }
@@ -64,17 +65,21 @@
 
 .mood-caption-title {
     font-family: 'Arsenal', sans-serif;
-    margin-bottom: 2rem;
+    margin-bottom: 5%;
     font-size: 2.4rem;
     font-weight: 700;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
-.kangaroo { margin-right: .5rem; }
+.kangaroo {
+    margin-right: .5rem;
+}
 
-.mood-shipping {
-    width: 80%;
-    margin: 0 auto;
+.mood-caption-contact {
+    margin-bottom: .8rem;
+}
+
+.mood-caption-shipping {
 }
 
 /* Mood End */
@@ -142,12 +147,23 @@
 .tablet { display: none; }
 .desktop { display: none; }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    .mobile { display: none; }
-    .tablet { display: block; }
-    .arrivals { margin-bottom: 7rem; margin-top: 5rem; }
-    .category { margin-bottom: 7rem; }
+    .mobile {
+        display: none;
+    }
+
+    .tablet {
+        display: block;
+    }
+
+    .arrivals {
+        margin-bottom: 7rem;
+        margin-top: 5rem;
+    }
+
+    .category {
+        margin-bottom: 7rem;
+    }
 
     .btn-mobile {
         padding: 1.4rem 4.5rem;
@@ -180,43 +196,56 @@
         margin-bottom: 2rem;
     }
 
-    /* Mood */
+    /* Mood Start */
     .mood {
         position: relative;
         background-color: #fff;
+        margin-bottom: 2rem;
     }
 
-    .mood-img { opacity: 0.8; }
-
-    .mood-caption-title {
-        text-align: center;
-        font-family: 'Arsenal', sans-serif;
-        margin-bottom: 4rem;
-        font-size: 3.8rem;
-        font-weight: 700;
-        line-height: 1.5;
-        border: 1px solid red;
-        width: 100%;
+    .mood-img {
+        opacity: 0.8;
     }
 
     .mood-caption {
-        position: relative;
-        margin-top: 0%;
-        left: 0;
-
+        position: absolute;
+        top: 25%;
+        width: 100%;
         text-align: center;
         color: #fff;
         font-size: 1.8rem;
         font-weight: 500;
-        border: 1px solid blue;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
-    .kangaroo { margin-right: .5rem; }
+    .mood-caption-title {
+        font-family: 'Arsenal', sans-serif;
+        margin-bottom: 5%;
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.4;
+    }
 
+    .kangaroo {
+        margin-right: .5rem;
+    }
+
+    .mood-caption-contact {
+        margin-bottom: 1.2rem;
+    }
+
+    .mood-caption-shipping {
+    }
+
+    /* Mood End */
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 768px) {
+
+    .tablet {
+        display: none;
+    }
 
     .banner-caption {
         top: 8%;
@@ -224,8 +253,6 @@
         width: 50%;
         background: transparent;
     }
-
-    .tablet { display: none; }
     .desktop { display: block; }
 
     .banner-caption-brand {
@@ -248,32 +275,11 @@
         margin-bottom: 0;
     }
 
-    /* mood */
-    /* Mood */
-    .mood {
-        position: relative;
-        background-color: #fff;
+    /* mood start */
+    .mood-caption-contact {
+        margin-bottom: 2rem;
     }
-
-    .mood-img { opacity: 0.8; }
-
-    .mood-caption-title {
-        font-family: 'Arsenal', sans-serif;
-        margin-bottom: 3rem;
-        font-size: 3.8rem;
-        font-weight: 700;
-        line-height: 1.5;
-    }
-    .mood-caption {
-        position: absolute;
-        top: 30%;
-        width: 90%;
-        text-align: center;
-        color: #fff;
-        font-size: 2rem;
-        font-weight: 500;
-    }
-
+    /* mood end */
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -296,6 +302,50 @@
     .banner-caption-button-wrap {
         margin-top: 3rem;
     }
+
+    /* Mood Start */
+    .mood {
+        position: relative;
+        background-color: #fff;
+        margin-bottom: 2rem;
+    }
+
+    .mood-img {
+        opacity: 0.8;
+    }
+
+    .mood-caption {
+        position: absolute;
+        top: 28%;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: 500;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .mood-caption-title {
+        font-family: 'Arsenal', sans-serif;
+        margin-bottom: 5%;
+        font-size: 4.4rem;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    .kangaroo {
+        margin-right: .5rem;
+    }
+
+    .mood-caption-contact {
+        margin-bottom: 2.8rem;
+    }
+
+    .mood-caption-shipping {
+    }
+
+    /* Mood End */
 }
 
 /* Extra Large devices (laptops/desktops, 1200px and up) */
