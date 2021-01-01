@@ -35,11 +35,20 @@ function Cart() {
 
     return (
         <main className="cart">
-            <div className="cart-mobile">
-                <section className="row margin-top-1 margin-bottom-3">
-                    <h3 className="">Basket</h3>
-                    <Link to="/products/shop/1">&crarr; <span className="cart-continue-mobile">Continue Shopping</span> </Link>
+            <div className="cart-desktop">
+                <section className="row">
+                    <Breadcrumb
+                        list={[{name: 'Home Page', url: '/'}, {name: 'Cart', url: ''}]}
+                        show={true}
+                    />
+                    <Link to="/products/shop/1">&crarr; <span className="cart-continue">Continue Shopping</span> </Link>
                 </section>
+            </div>
+            <section className="row margin-top-3 margin-bottom-3">
+                <h3 className="">Basket</h3>
+                <Link className="cart-mobile" to="/products/shop/1">&crarr; <span>Continue Shopping</span> </Link>
+            </section>
+            <div className="cart-mobile">
                 <section className="">
                     { addedIds && addedIds.map( (id) => {
                         const { name, price, image } = productById[id];
@@ -72,16 +81,6 @@ function Cart() {
                 </section>
             </div>
             <div className="cart-desktop">
-                <section className="row">
-                    <Breadcrumb
-                        list={[{name: 'Home Page', url: '/'}, {name: 'Cart', url: ''}]}
-                        show={true}
-                    />
-                    <Link to="/products/shop/1">&crarr; <span className="cart__continue">Continue Shopping</span> </Link>
-                </section>
-                <section className="row margin-top-3 ">
-                    <h3 className="margin-bottom-3">Basket</h3>
-                </section>
                 <div className="row">
                     <section className="table">
                         {addedIds && (addedIds.length !== 0) &&
