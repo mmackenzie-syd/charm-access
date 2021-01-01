@@ -81,7 +81,7 @@ function Cart() {
                 </section>
             </div>
             <div className="cart-desktop">
-                <div className="row">
+                <div className="">
                     <section className="table">
                         {addedIds && (addedIds.length !== 0) &&
                         <div className="row table__heading">
