@@ -70,17 +70,6 @@ function Cart() {
                     })
                     }
                 </section>
-                { addedIds && addedIds.length !== 0 &&
-                    <>
-                        <section className="cart-total-wrap">
-                            <p className="cart-total">Cart
-                                total:&nbsp;&nbsp;${total.toFixed(2)}</p>
-                        </section>
-                        <section className="cart-checkout">
-                            <button className="btn btn-secondary cart-checkout-btn">Checkout</button>
-                        </section>
-                    </>
-                }
             </div>
             <div className="cart-desktop">
                 <section className="row">
@@ -148,23 +137,18 @@ function Cart() {
                         }
                     </section>
                 </div>
-                { addedIds && addedIds.length !== 0 &&
+            </div>
+            { addedIds && addedIds.length !== 0 &&
                 <>
-                    <section className="cart__total">
-                        <h3 className="product__brand-title inline-block margin-right-2 margin-bottom-2 margin-top-1">Cart
-                            total:</h3>
-                        <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">${total.toFixed(2)}</h3>
+                    <section className="cart-total-wrap">
+                        <p className="cart-total">Cart
+                            total:&nbsp;&nbsp;${total.toFixed(2)}</p>
                     </section>
-                    <section className="row end margin-top-1">
-                        <div></div>
-                        <div className="col-3">
-                            <button className="btn btn-secondary full-width">Checkout</button>
-                        </div>
+                    <section className="cart-checkout">
+                        <button className="btn btn-secondary cart-checkout-btn">Checkout</button>
                     </section>
                 </>
-                }
-            </div>
-
+            }
         </main>
     );
 }

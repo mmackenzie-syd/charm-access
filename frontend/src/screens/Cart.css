@@ -63,7 +63,8 @@
 
 .cart-checkout-btn {
     display: inline-block;
-    padding: 1.2rem 5rem;
+    padding: 1.2rem 1rem;
+    width: 60%;
 }
 
 .cart-mobile { display: block; }
@@ -95,7 +96,8 @@
     }
 
     .cart-checkout-btn {
-        padding: 1.4rem 5rem;
+        padding: 1.4rem 1rem;
+        width: 40%;
     }
 
 }
@@ -103,6 +105,18 @@
 @media only screen and (min-width: 768px) {
     .cart-mobile { display: none; }
     .cart-desktop { display: block; }
+
+    .cart-total {
+        font-size: 2.5rem;
+        font-weight: 400;
+    }
+
+    .cart-checkout-btn {
+        padding: 1.4rem 1rem;
+        width: 40%;
+    }
+
+    /*-----------------------*/
     .cart {
         margin-top: 1rem;
         margin-bottom: 8rem;
@@ -186,10 +200,6 @@
 
     .inline-block {
         display: inline-block;
-    }
-
-    .cart__total {
-        text-align: right;
     }
 
 }
