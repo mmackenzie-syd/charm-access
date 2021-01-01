@@ -85,6 +85,10 @@
         margin-bottom: 2rem;
     }
 
+    .cart-item-detail {
+        padding-right: 2.5rem;
+    }
+
     .cart-item-cross {
         top: 0;
         right: .5rem;
@@ -107,6 +111,11 @@
     .cart-mobile { display: none; }
     .cart-desktop { display: block; }
 
+    .cart {
+        margin-top: 1rem;
+        margin-bottom: 8rem;
+    }
+
     .cart-total {
         font-size: 2rem;
         font-weight: 400;
@@ -117,52 +126,34 @@
         width: 40%;
     }
 
-    /*-----------------------*/
-    .cart {
-        margin-top: 1rem;
-        margin-bottom: 8rem;
-    }
-    .cart__title {
-        font-size: 2.5rem;
-        line-height: 1.6;
-    }
-
-    .table__heading {
+    .cart-table {
+        margin: 0;
         line-height: 2;
+        font-weight: 400;
+    }
+    .cart-table-heading {
         border-bottom: 1px solid rgba(0,0,0,0.15);
     }
 
-    .table__img {
-        border: 5px solid rgba(0,0,0,0.15);
-        border: 6px solid #f1f1f1;;
-    }
-
-    .table__p {
+    .cart-table p {
         margin: 0;
         line-height: 2;
     }
-    .underline {
-        text-decoration: underline;
-    }
 
-    .table-delete-container {
+    .cart-table-delete-container {
         margin-top: 1rem;
     }
 
-    .table-delete {
+    .cart-table-delete {
         padding-left: 2.4rem;
         position: relative;
         display: inline-block;
     }
 
-    .table-delete-cross {
-        position: absolute;
-        text-decoration: none;
-        left:.2rem;
-        top:.2rem;
-        font-weight: 400;
+    .cart-item-cross {
+        left:.25rem;
+        top: 0;
         font-size: 1.8rem;
-        color: #4f4f4f;
     }
 
     .table-delete:hover {
@@ -170,7 +161,7 @@
         opacity: .6;
     }
 
-    .table__item {
+    .cart-table-item {
         margin-top: 2rem;
         margin-bottom: 2rem;
         padding-bottom: 2rem;
@@ -186,11 +177,6 @@
         font-size: 1.4rem;
         margin-bottom: .5rem;
     }
-
-    .inline-block {
-        display: inline-block;
-    }
-
 }
 
 @media only screen and (min-width: 992px) {

@@ -81,10 +81,9 @@ function Cart() {
                 </section>
             </div>
             <div className="cart-desktop">
-                <div className="">
-                    <section className="table">
+                <section className="cart-table">
                         {addedIds && (addedIds.length !== 0) &&
-                        <div className="row table__heading">
+                        <div className="row cart-table-heading">
                             <div className="col-2 padding-right-3">Product</div>
                             <div className="col-4">Description</div>
                             <div className="col-2">Price</div>
@@ -101,23 +100,23 @@ function Cart() {
                             const { name, price, image } = productById[id];
                             const qty = quantityById[id];
                             const subTotal = qty * Number(price);
-                            return <div key={id} className="row top table__item">
+                            return <div key={id} className="row top cart-table-item">
                                 <div className="col-2 padding-right-3">
-                                    <div className="table__img">
+                                    <div className="cart-item-img">
                                         <img alt={name} src={image}/>
                                     </div>
                                 </div>
                                 <div className="col-4">
-                                    <p className="table__p"><span className="">{name}</span></p>
-                                    <div className="table-delete-container">
-                                        <div className="table-delete" onClick={() => handleDelete(id)}>
-                                            <span className="table-delete-cross">&#10005;</span> <span
+                                    <p><span className="">{name}</span></p>
+                                    <div className="cart-table-delete-container">
+                                        <div className="cart-table-delete" onClick={() => handleDelete(id)}>
+                                            <span className="cart-item-cross">&#10005;</span> <span
                                             className="delete">DELETE</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="col-2 text-center">
-                                    <p className="table__p">${price.toFixed(2)}</p>
+                                    <p>${price.toFixed(2)}</p>
                                 </div>
                                 <div className="col-2">
                                     <div className="row">
@@ -129,13 +128,12 @@ function Cart() {
                                     </div>
                                 </div>
                                 <div className="col-2 row right">
-                                    <p className="table__p">${subTotal.toFixed(2)}</p>
+                                    <p>${subTotal.toFixed(2)}</p>
                                 </div>
                             </div>;
                         })
                         }
                     </section>
-                </div>
             </div>
             { addedIds && addedIds.length !== 0 &&
                 <>
