@@ -34,18 +34,12 @@ function Cart() {
     }
 
     return (
-        <main className="cart margin-top-3">
-            <section className="row margin-top-1">
-                <Breadcrumb
-                    list={[{name: 'Home Page', url: '/'}, {name: 'Cart', url: ''}]}
-                    show={true}
-                />
-                <Link to="/products/shop/1">&crarr; <span className="cart__continue">Continue Shopping</span> </Link>
-            </section>
-            <section className="row margin-top-5 ">
-                <h3 className="margin-bottom-3">Basket</h3>
-            </section>
+        <main className="cart">
             <div className="cart-mobile">
+                <section className="row margin-top-1 margin-bottom-3">
+                    <h3 className="">Basket</h3>
+                    <Link to="/products/shop/1">&crarr; <span className="cart-continue-mobile">Continue Shopping</span> </Link>
+                </section>
                 <section className="">
                     { addedIds && addedIds.map( (id) => {
                         const { name, price, image } = productById[id];
@@ -76,8 +70,29 @@ function Cart() {
                     })
                     }
                 </section>
+                { addedIds && addedIds.length !== 0 &&
+                    <>
+                        <section className="cart-total-wrap">
+                            <p className="cart-total">Cart
+                                total:&nbsp;&nbsp;${total}</p>
+                        </section>
+                        <section className="cart-checkout">
+                            <button className="btn btn-secondary cart-checkout-btn">Checkout</button>
+                        </section>
+                    </>
+                }
             </div>
             <div className="cart-desktop">
+                <section className="row">
+                    <Breadcrumb
+                        list={[{name: 'Home Page', url: '/'}, {name: 'Cart', url: ''}]}
+                        show={true}
+                    />
+                    <Link to="/products/shop/1">&crarr; <span className="cart__continue">Continue Shopping</span> </Link>
+                </section>
+                <section className="row margin-top-3 ">
+                    <h3 className="margin-bottom-3">Basket</h3>
+                </section>
                 <div className="row">
                     <section className="table">
                         {addedIds && (addedIds.length !== 0) &&
@@ -133,22 +148,23 @@ function Cart() {
                         }
                     </section>
                 </div>
-            </div>
-            { addedIds && addedIds.length !== 0 &&
+                { addedIds && addedIds.length !== 0 &&
                 <>
                     <section className="cart__total">
                         <h3 className="product__brand-title inline-block margin-right-2 margin-bottom-2 margin-top-1">Cart
                             total:</h3>
                         <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">${total}</h3>
                     </section>
-                        <section className="row end margin-top-1">
+                    <section className="row end margin-top-1">
                         <div></div>
                         <div className="col-3">
-                        <button className="btn btn-secondary full-width">Checkout</button>
+                            <button className="btn btn-secondary full-width">Checkout</button>
                         </div>
                     </section>
                 </>
-            }
+                }
+            </div>
+
         </main>
     );
 }
