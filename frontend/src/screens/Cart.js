@@ -52,7 +52,7 @@ function Cart() {
                                 </div>
                                 <div className="cart-item-detail">
                                     <p className="cart-item-name">{name}</p>
-                                    <p className="cart-item-price">${price}</p>
+                                    <p className="cart-item-price">${price.toFixed(2)}</p>
                                     <Quantity
                                         value={qty}
                                         onSubBtn={() => onSubBtn(id, qty)}
@@ -74,7 +74,7 @@ function Cart() {
                     <>
                         <section className="cart-total-wrap">
                             <p className="cart-total">Cart
-                                total:&nbsp;&nbsp;${total}</p>
+                                total:&nbsp;&nbsp;${total.toFixed(2)}</p>
                         </section>
                         <section className="cart-checkout">
                             <button className="btn btn-secondary cart-checkout-btn">Checkout</button>
@@ -129,7 +129,7 @@ function Cart() {
                                     </div>
                                 </div>
                                 <div className="col-2 text-center">
-                                    <p className="table__p">${price}</p>
+                                    <p className="table__p">${price.toFixed(2)}</p>
                                 </div>
                                 <div className="col-2">
                                     <div className="row">
@@ -141,7 +141,7 @@ function Cart() {
                                     </div>
                                 </div>
                                 <div className="col-2 row right">
-                                    <p className="table__p">${subTotal}</p>
+                                    <p className="table__p">${subTotal.toFixed(2)}</p>
                                 </div>
                             </div>;
                         })
@@ -153,7 +153,7 @@ function Cart() {
                     <section className="cart__total">
                         <h3 className="product__brand-title inline-block margin-right-2 margin-bottom-2 margin-top-1">Cart
                             total:</h3>
-                        <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">${total}</h3>
+                        <h3 className="product__brand-title inline-block margin-bottom-2 margin-top-1">${total.toFixed(2)}</h3>
                     </section>
                     <section className="row end margin-top-1">
                         <div></div>
