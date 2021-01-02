@@ -25,6 +25,8 @@ input[type="text"].search-term {
 /* Search end */
 
 
+.search-mobile { display: block; }
+.search-desktop { display: none; }
 
 @media only screen and (min-width: 600px) {
     .search-form {
@@ -34,6 +36,8 @@ input[type="text"].search-term {
 }
 
 @media only screen and (min-width: 768px) {
+    .search-mobile { display: none; }
+    .search-desktop { display: block; }
     .search-form {
         width: 50%;
         margin-top: 0;

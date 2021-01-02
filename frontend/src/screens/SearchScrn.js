@@ -82,7 +82,7 @@ function SearchScrn(props) {
                     />
                     <button type='submit' className="btn btn-primary btn-small search-btn">SEARCH</button>
                 </form>
-                <div className="desktop">
+                <div className="search-desktop">
                     <Paginator
                         pages={pages}
                         curPage={curPage}
@@ -117,7 +117,7 @@ function SearchScrn(props) {
 
             {
             <section className="margin-top-1 margin-bottom-5">
-                <div className="mobile">
+                <div className="search-mobile">
                     <div className="row center">
                         <Paginator
                             pages={pages}
@@ -128,7 +128,7 @@ function SearchScrn(props) {
                         />
                     </div>
                 </div>
-                <div className="desktop">
+                <div className="search-desktop">
                     <div className="row center">
                         { (pages > 0)
                             ? <span>Page {curPage} of {pages}</span>
