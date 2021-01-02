@@ -27,6 +27,7 @@ function SearchScrn(props) {
     useEffect(() => {
         if (curPage && curSearchValue) {
             dispatch(getSearchState(curSearchValue, curPage));
+            setSearchValue(curSearchValue);
         }
     }, [curPage, curSearchValue]);
 
@@ -55,7 +56,6 @@ function SearchScrn(props) {
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchValue && searchValue !== '') {
-            clearSearchState(dispatch);
             history.push(`/search/${searchValue}/${1}`);
         }
     }
