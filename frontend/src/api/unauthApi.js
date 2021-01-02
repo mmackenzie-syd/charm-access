@@ -21,3 +21,7 @@ export const getProducts = async (page) => {
 export const getCategories = async () => {
     return Axios.get(uri + '/categories');
 }
+
+export const searchProducts = async (page, searchString) => {
+    return await Axios.get(uri + `/search/${page}/${searchString}`);
+};

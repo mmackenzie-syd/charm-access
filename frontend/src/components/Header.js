@@ -3,10 +3,12 @@ import React from 'react'
 import {NavLink, Link, useLocation} from "react-router-dom";
 import SearchIcon from "../icons/SearchIcon";
 import CartIcon from "../icons/CartIcon";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import DownArrowIcon from "../icons/DownArrowIcon";
+import {clearSearchState} from "../state/nonApiActions";
 
 function Header() {
+    const dispatch = useDispatch();
     const categoriesApi = useSelector(state => state.categoriesApi);
     const { data } = categoriesApi;
     const categories = data ? data.filter(category => category.slug !== 'shop') : [];
@@ -56,6 +58,10 @@ function Header() {
         if (document.getElementById("myDropdown") !== null) {
             document.getElementById("myDropdown").classList.toggle("show");
         }
+    }
+
+    const handleSearch = () => {
+        clearSearchState(dispatch);
     }
 
     return (
@@ -199,7 +205,7 @@ function Header() {
                     !showDashboard &&
                         <>
                         <li className="nav-item srch-icon-wrap">
-                            <NavLink to="/search/1" activeClassName='is-active'>
+                            <NavLink to="/search?" activeClassName='is-active' onClick={handleSearch}>
                                 <SearchIcon
                                     className={"srch-icon"}
                                     width={'2.6rem'}

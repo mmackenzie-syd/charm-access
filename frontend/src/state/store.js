@@ -5,7 +5,8 @@ import {
     categoriesReducer,
     productsReducer,
     categorySlidesReducer,
-    arrivalSlidesReducer
+    arrivalSlidesReducer,
+    searchReducer
 } from "./apiReducers";
 import { cartReducer } from "./cartReducer";
 import { userReducer } from "./userReducer";
@@ -19,7 +20,8 @@ const reducer = combineReducers({
     cart: cartReducer,
     categorySlidesApi: categorySlidesReducer,
     arrivalSlidesApi: arrivalSlidesReducer,
-    userApi: userReducer
+    userApi: userReducer,
+    searchApi: searchReducer
 });
 
 const persistedState = loadState();

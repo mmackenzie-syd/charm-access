@@ -6,3 +6,12 @@ export const setProductsNew = (products, dispatch) => {
         payload: { products, pages: 1 }
     });
 };
+
+export const clearSearchState = (dispatch) => {
+    dispatch({
+        type: 'SEARCH_CLEAR',
+        payload: {}
+    });
+};
+
+

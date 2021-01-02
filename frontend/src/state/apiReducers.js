@@ -3,6 +3,7 @@ import {
     PRODUCTS,
     CATEGORY_SLIDES,
     ARRIVAL_SLIDES,
+    SEARCH,
 } from './apiConstants'
 
 const apiReducer = (name) => (state = {}, action) => {
@@ -14,8 +15,9 @@ const apiReducer = (name) => (state = {}, action) => {
         case `${name}_FAIL`:
             return {...state, loading: false, error: action.payload}
         case `${name}_NEW`:
-            console.log('action', action)
             return {...state, loading: false, data: action.payload}
+        case `${name}_CLEAR`:
+            return {}
         default:
             return state;
     }
@@ -25,3 +27,4 @@ export const productsReducer = apiReducer(PRODUCTS);
 export const categoriesReducer = apiReducer(CATEGORIES);
 export const arrivalSlidesReducer = apiReducer(ARRIVAL_SLIDES);
 export const categorySlidesReducer = apiReducer(CATEGORY_SLIDES);
+export const searchReducer = apiReducer(SEARCH);

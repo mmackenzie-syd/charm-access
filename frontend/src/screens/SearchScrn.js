@@ -7,26 +7,41 @@ import Paginator from "../components/Paginator";
 import placeholder from './placeholder-grey.png';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {getProductsState} from "../state/apiActions";
+import { getSearchState } from "../state/apiActions";
+import {clearSearchState} from "../state/nonApiActions";
 
-function SearchScrn(props) {
+const extractQuery = (str) => {
+    const queryArray = str.slice(1).split('&');
+    return {
+        curPage: queryArray[1].split('=')[1],
+        curSearchValue: queryArray[0].split('=')[1]
+    }
+}
 
-    const [searchTerm, setSearchTerm] = useState('');
+function SearchScrn() {
+    let history = useHistory();
+    const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
-
-    const curPage = Number(props.match.params.page);
-
-    const productsApi = useSelector(state => state.productsApi);
-    const { loading: isLoading, error, data } = productsApi;
+    let query = {};
+    let curPage;
+    let curSearchValue;
+    if (history.location.search) {
+        query = extractQuery(history.location.search)
+        curPage = Number(query.curPage);
+        curSearchValue = query.curSearchValue;
+    }
+    const searchApi = useSelector(state => state.searchApi);
+    const { loading: isLoading, error, data } = searchApi;
 
     const products = data ? data.products : [];
     const pages = data ? data.pages : 0;
 
-    let history = useHistory();
-
     useEffect(() => {
-        dispatch(getProductsState('shop', curPage));
-    }, [dispatch, curPage]);
+        console.log('cu', curPage, curSearchValue)
+        if (curPage && curSearchValue) {
+            dispatch(getSearchState(curSearchValue, curPage));
+        }
+    }, [curPage, curSearchValue]);
 
     const list = [{ name: 'Home Page', url: '/' }, { name: 'Search', url: '' }];
     let showBreadcrumb = false;
@@ -39,17 +54,30 @@ function SearchScrn(props) {
     }
 
     const handleLeftPageClick = () => {
-        if ((curPage - 1) > 0) {
-          //  history.push(`/products/${categorySlug}/${curPage - 1}`);
-        }
+       if ((curPage - 1) > 0) {
+           history.push(`/search?searchValue=${curSearchValue}&page=${curPage - 1}`);
+       }
     }
 
     const handleRightPageClick = () => {
-        if ((curPage + 1) <= pages) {
-          //  history.push(`/products/${categorySlug}/${curPage + 1}`);
+       if ((curPage + 1) <= pages) {
+            history.push(`/search?searchValue=${curSearchValue}&page=${curPage + 1}`);
+       }
+    }
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchValue && searchValue !== '') {
+            history.push(`/search?searchValue=${searchValue}&page=${1}`);
         }
     }
 
+    const clearSearch = (e) => {
+        e.preventDefault();
+        clearSearchState(dispatch);
+        history.push('/search')
+        setSearchValue('');
+    }
 
     return (
         <main style={{height: fixedHeight}}>
@@ -61,7 +89,7 @@ function SearchScrn(props) {
             <section className="row products-header margin-bottom-1">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
                 <div className="products-header-page-numbers">
-                    { (pages > 0)
+                    { (pages > 0 && curPage)
                         ? <div>
                             <span>Page</span>
                             <span className="fixed-width-page-number">{curPage}</span>
@@ -72,16 +100,20 @@ function SearchScrn(props) {
                 </div>
             </section>
             <section className="row top margin-bottom-1" style={{height: '5rem'}} >
-                <form className="search-form row"  encType="text/plain">
-                    <input
-                        className="search-term"
-                        type="text"
-                        placeholder="Search..."
-                        value={searchTerm}
-                        onChange={e => setSearchTerm(e.target.value)}
-                    />
+                <form className="search-form row"  onSubmit={handleSearch}>
+                    <div className="search-term-wrap">
+                        <input
+                            className="search-term"
+                            type="text"
+                            placeholder="Search..."
+                            value={searchValue}
+                            onChange={e => setSearchValue(e.target.value)}
+                        />
+                        <span className="search-clear" onClick={clearSearch}>&#10005;</span>
+                    </div>
                     <button type='submit' className="btn btn-primary btn-small search-btn">SEARCH</button>
                 </form>
+
                 <div className="search-desktop">
                     <Paginator
                         pages={pages}

@@ -44,10 +44,13 @@ const ProductSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+ProductSchema.index({ name: 'text' }); // search names only
 
 // Models
 const Category = mongoose.model('Category', CategorySchema);
 const Product = mongoose.model('Product', ProductSchema);
+Product.createIndexes();
+// to reset indexes - Product.collection.dropIndexes();
 
 // Routes
 const router = express.Router();

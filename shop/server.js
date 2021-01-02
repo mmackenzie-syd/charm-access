@@ -172,6 +172,27 @@ router.get('/productsByCategory/:category/:page',  asyncHandler(async (req, res)
     }
 }));
 
+router.get('/search/:page/:searchString',  asyncHandler(async (req, res) => {
+    // paginate
+    const { page, searchString } = req.params;
+
+    console.log('page', page)
+    console.log('searchString', searchString)
+
+    const query = {$text: {$search: searchString}};
+    const perPage = 8;
+    const count = await Product.countDocuments(query);
+    const pages = Math.ceil(count / perPage);
+
+    if (count === 0) {
+        // no products with this category or page
+        res.send({ count: 0 });
+    } else {
+        // exec returns a promise from the chain
+        const products = await Product.find(query).skip(perPage * (page - 1)).limit(perPage).exec();
+        res.json({ products, pages });
+    }
+}));
 
 
 // End of routes
