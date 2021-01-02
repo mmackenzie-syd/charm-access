@@ -176,9 +176,6 @@ router.get('/search/:page/:searchString',  asyncHandler(async (req, res, next) =
     // paginate
     const { page, searchString } = req.params;
 
-    console.log('page', page)
-    console.log('searchString', searchString);
-
     // and search method
     // const arr = searchString.split(/\s+/);
     // let andSearchString = `\"${arr[0].trim()}\"`;

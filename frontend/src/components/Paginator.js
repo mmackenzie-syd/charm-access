@@ -24,7 +24,11 @@ function Paginator(props) {
     let leftArrowDisabled = (curPage === 1) ? 'btn-disabled' : '';
     let rightArrowDisabled = (curPage === maxPage) ? 'btn-disabled' : '';
 
-    const pagesToDisplay = (pages === 0) ? [] : pagesArray.slice((startPage - 1), endPage);
+    let pagesToDisplay = (pages === 0) ? [] : pagesArray.slice((startPage - 1), endPage);
+
+    if (pages === 3) {
+        pagesToDisplay = pagesArray;
+    }
 
     return (
         <div className="pagination margin-bottom-1">

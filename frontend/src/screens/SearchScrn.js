@@ -10,26 +10,14 @@ import {useDispatch, useSelector} from "react-redux";
 import { getSearchState } from "../state/apiActions";
 import {clearSearchState} from "../state/nonApiActions";
 
-const extractQuery = (str) => {
-    const queryArray = str.slice(1).split('&');
-    return {
-        curPage: queryArray[1].split('=')[1],
-        curSearchValue: queryArray[0].split('=')[1]
-    }
-}
-
-function SearchScrn() {
+function SearchScrn(props) {
     let history = useHistory();
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
-    let query = {};
-    let curPage;
-    let curSearchValue;
-    if (history.location.search) {
-        query = extractQuery(history.location.search)
-        curPage = Number(query.curPage);
-        curSearchValue = query.curSearchValue;
-    }
+
+    const curPage = Number(props.match.params.page);
+    const curSearchValue = props.match.params.search;
+
     const searchApi = useSelector(state => state.searchApi);
     const { loading: isLoading, error, data } = searchApi;
 
@@ -37,7 +25,6 @@ function SearchScrn() {
     const pages = data ? data.pages : 0;
 
     useEffect(() => {
-        console.log('cu', curPage, curSearchValue)
         if (curPage && curSearchValue) {
             dispatch(getSearchState(curSearchValue, curPage));
         }
@@ -55,13 +42,13 @@ function SearchScrn() {
 
     const handleLeftPageClick = () => {
        if ((curPage - 1) > 0) {
-           history.push(`/search?searchValue=${curSearchValue}&page=${curPage - 1}`);
+           history.push(`/search/${curSearchValue}/${curPage - 1}`);
        }
     }
 
     const handleRightPageClick = () => {
        if ((curPage + 1) <= pages) {
-            history.push(`/search?searchValue=${curSearchValue}&page=${curPage + 1}`);
+            history.push(`/search/${curSearchValue}/${curPage + 1}`);
        }
     }
 
@@ -69,7 +56,7 @@ function SearchScrn() {
         e.preventDefault();
         if (searchValue && searchValue !== '') {
             clearSearchState(dispatch);
-            history.push(`/search?searchValue=${searchValue}&page=${1}`);
+            history.push(`/search/${searchValue}/${1}`);
         }
     }
 
@@ -90,7 +77,7 @@ function SearchScrn() {
             <section className="row products-header margin-bottom-1">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
                 <div className="products-header-page-numbers">
-                    { (pages > 0 && curPage)
+                    { (pages > 0)
                         ? <div>
                             <span>Page</span>
                             <span className="fixed-width-page-number">{curPage}</span>
