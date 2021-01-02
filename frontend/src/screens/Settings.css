@@ -1,0 +1,26 @@
+.reset {
+    width: 50rem;
+    border: 2px solid #f15c4b;
+    padding: 2rem;
+}
+
+.reset p {
+    font-weight: 700;
+    color: #f15c4b;
+    margin: 0;
+}
+
+.reset p.margin-bottom {
+    margin-bottom: 2rem;
+}
+
+.reset-btn {
+    background-color: #f15c4b;
+    color: #fff;
+    padding: 1.2rem 5rem;
+}
+
+.reset-divider {
+    background-color: #f15c4b;
+    height: .2rem;
+}

@@ -23,6 +23,7 @@ import EditProduct from "./screens/EditProduct";
 import ProtectedRoute from "./ProtectedRoute";
 import ResetPassword from "./screens/ResetPassword";
 import SearchScrn from "./screens/SearchScrn";
+import Settings from "./screens/Settings";
 
 function App() {
     // preload
@@ -59,6 +60,10 @@ function App() {
                         <ProtectedRoute
                             path="/dashboard/categories"
                             component={EditCategories}
+                        />
+                        <ProtectedRoute
+                            path="/dashboard/settings"
+                            component={Settings}
                         />
                         <ProtectedRoute
                             path="/dashboard/reset"
