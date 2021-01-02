@@ -1,47 +1,78 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import './Settings.css';
-import {resetCategories, resetProducts} from "../api/authApi";
+import {apiReducer, resetCategories, resetProducts} from "../api/authApi";
+
 
 function Settings() {
+    const [state, dispatch] = useReducer(apiReducer, {});
 
-    const handleResetCategories = () => {
-        const result = resetCategories();
-        console.log('reset categories', result);
+    const handleResetCategories = async () => {
+        try {
+            dispatch({type: 'REQUEST'})
+            const result = await resetCategories();
+            dispatch({type: 'SUCCESS', payload: 'Successfully reset category' });
+        } catch (error) {
+            dispatch({type: 'FAIL', payload: `Category ${error}`});
+        }
     }
 
-    const handleResetProducts = () => {
-        const result = resetProducts();
-        console.log('reset products', result);
+    const handleResetProducts = async () => {
+        try {
+            dispatch({type: 'REQUEST'})
+            const result = await resetProducts();
+            dispatch({type: 'SUCCESS', payload: 'Successfully reset products' });
+        } catch (error) {
+            dispatch({type: 'FAIL', payload: `Products ${error}`});
+        }
+    }
+
+    const handleClose = () => {
+        dispatch({type: 'RESET'});
     }
 
     return (
-        <div className="reset">
-            <p className="margin-bottom">WARNING:</p>
-            <p>ALL DATA WILL BE ERASED FROM THE DATABASE AND IT WILL BE RETURNED
-                TO THE DEFAULT STATE WITH SEED DATA.</p>
-            <hr className="reset-divider"/>
-            <div className="row">
-                <p>RESET CATEGORIES</p>
-                <button
-                    className="btn reset-btn"
-                    type="button"
-                    onClick={handleResetCategories}
-                >
-                    RESET
-                </button>
+        <div className="reset-wrap">
+                { state && state.data &&
+                    <div className="api-message-box">
+                        <span onClick={handleClose} className="api-message-box-close">&#10005;</span>
+                        { state.data  }
+                    </div>
+                }
+                { state && state.error &&
+                    <div className="api-message-box api-message-box-red">
+                        <span onClick={handleClose} className="api-message-box-close">&#10005;</span>
+                        { state.error  }
+                    </div>
+                }
+                <div className="reset">
+                    <p className="margin-bottom">WARNING:</p>
+                    <p>ALL DATA WILL BE ERASED FROM THE DATABASE AND IT WILL BE RETURNED
+                        TO THE DEFAULT STATE WITH SEED DATA.</p>
+                    <hr className="reset-divider"/>
+                    <div className="row">
+                        <p>RESET CATEGORIES</p>
+                        <button
+                            className="btn reset-btn"
+                            type="button"
+                            onClick={handleResetCategories}
+                        >
+                            RESET
+                        </button>
+                    </div>
+                    <hr className="reset-divider"/>
+                    <div className="row">
+                        <p>RESET PRODUCTS</p>
+                        <button
+                            className="btn reset-btn"
+                            type="button"
+                            onClick={handleResetProducts}
+                        >
+                            RESET
+                        </button>
+                    </div>
+                </div>
             </div>
-            <hr className="reset-divider"/>
-            <div className="row">
-                <p>RESET PRODUCTS</p>
-                <button
-                    className="btn reset-btn"
-                    type="button"
-                    onClick={handleResetProducts}
-                >
-                    RESET
-                </button>
-            </div>
-        </div>);
+    );
 }
 
 export default Settings;

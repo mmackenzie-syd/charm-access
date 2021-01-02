@@ -26,10 +26,6 @@ const categories = [
             name: 'Earrings',
         },
         {
-            slug: 'rings',
-            name: 'Rings',
-        },
-        {
             slug: 'shopAll',
             name: 'Shop All',
         }

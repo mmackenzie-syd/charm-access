@@ -20,7 +20,10 @@ const MONGODB_URL = process.env.MONGODB_URL;
 const SERVERLESS = process.env.SERVERLESS;
 
 // Connect
-mongoose.connect(MONGODB_URL);
+mongoose.connect(MONGODB_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 // Schemas
 const CategorySchema = new mongoose.Schema({
@@ -175,18 +178,7 @@ router.get('/productsByCategory/:category/:page',  asyncHandler(async (req, res)
 
 app.use('/', router);
 
-// Errors
-app.use((req, res, next) => {
-    next(createError(404));
-})
 
-app.use((error, req, res, next) => {
-    res.status(error.status || 500);
-    res.json({
-        message: error.message,
-        status: error.status
-    });
-});
 if (!SERVERLESS) {
     const port = process.env.PORT || 4000;
     app.listen(port, () => {

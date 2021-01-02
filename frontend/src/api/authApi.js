@@ -67,3 +67,17 @@ export const resetProducts = async () => {
     });
 }
 
+export const  apiReducer = (state, action) => {
+    switch (action.type) {
+        case 'REQUEST':
+            return {...state, loading: true}
+        case 'SUCCESS':
+            return {...state, loading: false, data: action.payload, error: undefined}
+        case 'FAIL':
+            return {...state, loading: false, error: action.payload}
+        case 'RESET':
+            return {}
+        default:
+            return state;
+    }
+}
