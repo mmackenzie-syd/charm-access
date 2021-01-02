@@ -87,7 +87,7 @@ function Products(props) {
             </section>
             <section className="row margin-bottom-1" style={{height: '5rem'}} >
                 <h3 className="">{category && category.name}</h3>
-                <div className="desktop">
+                <div className="products-desktop">
                     <Paginator
                         pages={pages}
                         curPage={curPage}
@@ -121,7 +121,7 @@ function Products(props) {
             </ul>
 
             <section className="margin-top-1 margin-bottom-5">
-                <div className="mobile">
+                <div className="products-mobile">
                     <div className="row center">
                         <Paginator
                             pages={pages}
@@ -132,7 +132,7 @@ function Products(props) {
                         />
                     </div>
                 </div>
-                <div className="desktop">
+                <div className="products-desktop">
                     <div className="row center">
                         { (pages > 0)
                             ? <span>Page {curPage} of {pages}</span>
