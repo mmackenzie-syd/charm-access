@@ -68,6 +68,7 @@ function SearchScrn() {
     const handleSearch = (e) => {
         e.preventDefault();
         if (searchValue && searchValue !== '') {
+            clearSearchState(dispatch);
             history.push(`/search?searchValue=${searchValue}&page=${1}`);
         }
     }

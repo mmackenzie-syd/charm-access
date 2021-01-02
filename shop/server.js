@@ -172,12 +172,20 @@ router.get('/productsByCategory/:category/:page',  asyncHandler(async (req, res)
     }
 }));
 
-router.get('/search/:page/:searchString',  asyncHandler(async (req, res) => {
+router.get('/search/:page/:searchString',  asyncHandler(async (req, res, next) => {
     // paginate
     const { page, searchString } = req.params;
 
     console.log('page', page)
-    console.log('searchString', searchString)
+    console.log('searchString', searchString);
+
+    // and search method
+    // const arr = searchString.split(/\s+/);
+    // let andSearchString = `\"${arr[0].trim()}\"`;
+    // console.log('arr', arr)
+    // for (let i = 1; i < arr.length; i++) {
+    //     andSearchString = andSearchString + " " + `\"${arr[i].trim()}\"`;
+    // }
 
     const query = {$text: {$search: searchString}};
     const perPage = 8;
