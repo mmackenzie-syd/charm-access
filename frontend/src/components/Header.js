@@ -4,12 +4,9 @@ import {NavLink, Link, useLocation} from "react-router-dom";
 import SearchIcon from "../icons/SearchIcon";
 import CartIcon from "../icons/CartIcon";
 import {useSelector} from "react-redux";
-import Search from "./Search";
-import {ModalContext} from "../context/modalContext";
 import DownArrowIcon from "../icons/DownArrowIcon";
 
 function Header() {
-    let { handleModal } = React.useContext(ModalContext);
     const categoriesApi = useSelector(state => state.categoriesApi);
     const { data } = categoriesApi;
     const categories = data ? data.filter(category => category.slug !== 'shop') : [];
@@ -45,19 +42,7 @@ function Header() {
         }
     }
 
-    const closeDropdown = (e) => {
-        e.preventDefault();
-        if (document.getElementsByClassName("dropdown-container") !== null) {
-            const dropdownContent = document.getElementsByClassName("dropdown-container");
-            if (dropdownContent[0].style.display === "block") {
-                dropdownContent[0].style.display = "none";
-            } else {
-                dropdownContent[0].style.display = "block";
-            }
-        }
-    }
-
-    const myFunction = (e) => {
+    const handleDropdown = (e) => {
         e.preventDefault();
         if (document.getElementById("myDropdown") !== null) {
             document.getElementById("myDropdown").classList.toggle("show");
@@ -90,7 +75,7 @@ function Header() {
                                 >
                                     SHOP
                                 </NavLink>
-                                <div onClick={myFunction} className="dropbtn">
+                                <div onClick={handleDropdown} className="dropbtn">
                                     <DownArrowIcon
                                         className={'dropdown-arrow'}
                                         offset={'.4rem'}
@@ -136,12 +121,14 @@ function Header() {
                     <img alt="brand" className="header-img" src={`${process.env.PUBLIC_URL}/images/brand-mobile.png`}/>
                 </Link>
                 <ul className="nav">
-                    <li className="nav-item srch-icon-wrap" onClick={() => handleModal(<Search />)}>
-                        <SearchIcon
-                            className={"srch-icon"}
-                            width={'2.6rem'}
-                            height={'2.6rem'}
-                        />
+                    <li className="nav-item srch-icon-wrap">
+                        <NavLink to="/search/1" activeClassName='is-active'>
+                            <SearchIcon
+                                className={"srch-icon"}
+                                width={'2.6rem'}
+                                height={'2.6rem'}
+                            />
+                        </NavLink>
                     </li>
                     <li className="nav-item crt-icon-wrap">
                         <NavLink to="/cart" activeClassName='is-active'>
@@ -204,12 +191,14 @@ function Header() {
                     }
                 </ul>
             <ul className="nav">
-                <li className="nav-item srch-icon-wrap" onClick={() => handleModal(<Search />)}>
-                    <SearchIcon
-                        className={"srch-icon"}
-                        width={'2.6rem'}
-                        height={'2.6rem'}
-                    />
+                <li className="nav-item srch-icon-wrap">
+                    <NavLink to="/search/1" activeClassName='is-active'>
+                        <SearchIcon
+                            className={"srch-icon"}
+                            width={'2.6rem'}
+                            height={'2.6rem'}
+                        />
+                    </NavLink>
                 </li>
                 <li className="nav-item crt-icon-wrap">
                     <NavLink to="/cart" activeClassName='is-active'>

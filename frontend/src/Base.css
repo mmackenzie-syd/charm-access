@@ -62,7 +62,8 @@ p {
     line-height: 1.6;
 }
 
-input[type="email"] {
+input[type="email"],
+input[type="text"] {
     transition: border-color 0.2s ease;
     border: 1px solid #bbb;
     padding: 0px 16px;

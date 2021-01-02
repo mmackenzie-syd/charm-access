@@ -22,6 +22,7 @@ import EditCategories from "./screens/EditCategories";
 import EditProduct from "./screens/EditProduct";
 import ProtectedRoute from "./ProtectedRoute";
 import ResetPassword from "./screens/ResetPassword";
+import SearchScrn from "./screens/SearchScrn";
 
 function App() {
     // preload
@@ -37,6 +38,7 @@ function App() {
                         <Route path="/" component={Home} exact />
                         <Route path="/product/:category/:name" component={Product}/>
                         <Route path="/products/:category/:page" exact component={Products} />
+                        <Route path="/search/:page" component={SearchScrn} />
                         <Route path="/about" component={About} />
                         <Route path="/shipping" component={Shipping} />
                         <Route path="/cart" component={Cart} />
