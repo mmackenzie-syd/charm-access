@@ -86,7 +86,7 @@ function Products(props) {
                 </div>
             </section>
             <section className="row margin-bottom-1" style={{height: '5rem'}} >
-                <h3 className="">{category && category.name}</h3>
+                <h3>{category && category.name}</h3>
                 <div className="products-desktop">
                     <Paginator
                         pages={pages}

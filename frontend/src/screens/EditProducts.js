@@ -104,22 +104,22 @@ function EditProducts(props) {
     }
 
     return (
-        <div className="products">
-            <section className="row margin-bottom-2">
+        <main className="products">
+            <section className="row products-header">
                 <Breadcrumb list={list} show={showBreadcrumb}/>
-                <div className="collections__page-numbers">
+                <div className="products-header-page-numbers">
                     { (pages > 0)
                         ? <div>
                             <span>Page</span>
-                            <span className="fixed-width-ch">{curPage}</span>
+                            <span className="fixed-width-page-number">{curPage}</span>
                             <span>of {pages}</span>
                         </div>
                         : <span>&nbsp;</span>
                     }
                 </div>
             </section>
-            <section className="row margin-bottom-1 margin-top-1" style={{height: '5rem'}} >
-                <h3 className="">Products</h3>
+            <section className="row margin-bottom-1" style={{height: '5rem'}} >
+                <h3>Products</h3>
                 <div>
                     <Paginator
                         pages={pages}
@@ -179,13 +179,12 @@ function EditProducts(props) {
                                         </Link>
                                     </td>
                                     <td>
-                                        <button
-                                            className="products-table-link span-btn"
+                                        <span
+                                            className="products-table-link"
                                             onClick={e => handleDelete(_id)}
-                                            type="button"
                                         >
                                             Delete
-                                        </button>
+                                        </span>
                                     </td>
                                 </tr>);
                         })
@@ -206,7 +205,7 @@ function EditProducts(props) {
                         }
                     </div>
                     <button
-                        className="col-3 save-btn margin-left-1"
+                        className="col-3 btn btn-secondary"
                         type="button"
                         onClick={() => history.push('/dashboard/createproduct')}
                     >
@@ -214,7 +213,7 @@ function EditProducts(props) {
                     </button>
                 </div>
             </section>
-        </div>);
+        </main>);
 }
 
 export default EditProducts;

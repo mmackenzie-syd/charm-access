@@ -179,41 +179,49 @@ function Header() {
                             <li className="nav-item"><NavLink to="/about" activeClassName='is-active'>ABOUT US</NavLink></li>
                         </>
                     }
-                    {
-                        showDashboard &&
-                        <>
-                            <li className="site__nav-item">
-                                <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
-                            </li>
-                            <li>
-                                <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
-                            </li>
-                        </>
-                    }
                 </ul>
             <ul className="nav">
-                <li className="nav-item srch-icon-wrap">
-                    <NavLink to="/search/1" activeClassName='is-active'>
-                        <SearchIcon
-                            className={"srch-icon"}
-                            width={'2.6rem'}
-                            height={'2.6rem'}
-                        />
-                    </NavLink>
-                </li>
-                <li className="nav-item crt-icon-wrap">
-                    <NavLink to="/cart" activeClassName='is-active'>
-                        { addedIds && (addedIds.length !== 0) &&
-                            <div className="qty">{totalItems}</div>
-                        }
-                        <CartIcon
-                            className={"crt-icon"}
-                            width={'3.2rem'}
-                            height={'3.2rem'}
-                            offset={'-.1rem'}
-                        />
-                    </NavLink>
-                </li>
+                {
+                    showDashboard &&
+                    <>
+                        <li className="nav-item">
+                            <NavLink to="/dashboard/products/1" activeClassName='is-active'>PRODUCTS</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/dashboard/categories" activeClassName='is-active'>CATEGORIES</NavLink>
+                        </li>
+                        <li className="nav-item nav-item-last">
+                            <NavLink to="/dashboard/settings" activeClassName='is-active'>SETTINGS</NavLink>
+                        </li>
+                    </>
+                }
+                {
+                    !showDashboard &&
+                        <>
+                        <li className="nav-item srch-icon-wrap">
+                            <NavLink to="/search/1" activeClassName='is-active'>
+                                <SearchIcon
+                                    className={"srch-icon"}
+                                    width={'2.6rem'}
+                                    height={'2.6rem'}
+                                />
+                            </NavLink>
+                        </li>
+                        <li className="nav-item crt-icon-wrap">
+                            <NavLink to="/cart" activeClassName='is-active'>
+                                { addedIds && (addedIds.length !== 0) &&
+                                    <div className="qty">{totalItems}</div>
+                                }
+                                <CartIcon
+                                    className={"crt-icon"}
+                                    width={'3.2rem'}
+                                    height={'3.2rem'}
+                                    offset={'-.1rem'}
+                                />
+                            </NavLink>
+                        </li>
+                    </>
+                }
             </ul>
         </header>
         </div>

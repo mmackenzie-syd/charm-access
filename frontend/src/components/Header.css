@@ -43,6 +43,9 @@ a.is-active {
     height: 65px;
     line-height: 65px;
 }
+.nav-item-last {
+    padding-right: 0;
+}
 
 /* ---- dropdown --- */
 
