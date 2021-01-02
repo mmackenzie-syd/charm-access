@@ -1,3 +1,5 @@
+// names and slug must be unique
+
 const categories = [
         {
             slug: 'shop',
@@ -28,11 +30,7 @@ const categories = [
             name: 'Rings',
         },
         {
-            slug: 'headware',
-            name: 'Headwear',
-        },
-        {
-            slug: 'shop',
+            slug: 'shopAll',
             name: 'Shop All',
         }
 ];
