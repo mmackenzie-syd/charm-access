@@ -29,6 +29,10 @@
     margin-left: 0;
 }
 
+a.is-active {
+    color: #937cd4;
+    fill: #937cd4;
+}
 .nav-item {
     display: inline-block;
     font-weight: 400;
@@ -76,6 +80,7 @@
 
 .nav-item-dropdown-content a:hover {
     background-color: #ddd;
+    color: #937cd4;
 }
 
 .nav-item-dropdown:hover .nav-item-dropdown-content {

@@ -159,7 +159,7 @@ function Header() {
                         <>
                             <li className="nav-item nav-item-dropdown">
                                 <div className="nav-item-dropbtn">
-                                    <NavLink to="/products/shop/1" className={isShopActive}>SHOP</NavLink>
+                                    <NavLink to="/products/shop/1" className={'is-active'}>SHOP</NavLink>
                                 </div>
                                 <div className="nav-item-dropdown-content">
                                     {
@@ -167,6 +167,7 @@ function Header() {
                                             <NavLink
                                                 key={category._id}
                                                 to={`/products/${category.slug}/1`}
+                                                className={'is-active'}
                                             >
                                                 {category.name}
                                             </NavLink>
