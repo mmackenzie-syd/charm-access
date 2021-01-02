@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import './Settings.css';
-import {useHistory} from "react-router";
-import PlusIcon from "../icons/PlusIcon";
-import CrossIcon from "../icons/CrossIcon";
+import {resetCategories, resetProducts} from "../api/authApi";
 
-function ResetPassword(props) {
+function Settings() {
 
     const handleResetCategories = () => {
-
+        const result = resetCategories();
+        console.log('reset categories', result);
     }
 
     const handleResetProducts = () => {
-
+        const result = resetProducts();
+        console.log('reset products', result);
     }
 
     return (
@@ -44,4 +44,4 @@ function ResetPassword(props) {
         </div>);
 }
 
-export default ResetPassword;
+export default Settings;

@@ -30,6 +30,10 @@ const categories = [
         {
             slug: 'headware',
             name: 'Headwear',
+        },
+        {
+            slug: 'shop',
+            name: 'Shop All',
         }
 ];
 

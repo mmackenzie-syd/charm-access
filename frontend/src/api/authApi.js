@@ -49,3 +49,21 @@ export const saveCategories = async (categories) => {
     });
 }
 
+export const resetCategories = async () => {
+    const token = await UserService.getToken();
+    return Axios.get(uri + '/categories/seed', {
+        headers: {
+            'Authorization': token
+        }
+    });
+}
+
+export const resetProducts = async () => {
+    const token = await UserService.getToken();
+    return Axios.get(uri + '/products/seed', {
+        headers: {
+            'Authorization': token
+        }
+    });
+}
+
