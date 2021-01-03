@@ -14,7 +14,8 @@ const apiReducer = (name) => (state = {}, action) => {
             console.log('pay', action)
             return {...state, loading: false, data: action.payload, error: null}
         case `${name}_FAIL`:
-            return {...state, loading: false, error: action.payload}
+            console.log(`${name} error: `, action.payload)
+            return {...state, loading: false, error: {msg: `A ${name.toLowerCase()} error has occurred`}}
         case `${name}_NEW`:
             return {...state, loading: false, data: action.payload}
         case `${name}_CLEAR`:

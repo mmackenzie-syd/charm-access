@@ -8,9 +8,9 @@ import placeholder from './placeholder-grey.png';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {getProductsState} from "../state/apiActions";
-import Message from "../components/Message";
 
 function Products(props) {
+    let history = useHistory();
     const dispatch = useDispatch();
     const categoriesApi = useSelector(state => state.categoriesApi);
     const categorySlug = props.match.params.category;
@@ -20,10 +20,8 @@ function Products(props) {
     const productsApi = useSelector(state => state.productsApi);
     const { loading: isLoading, error, data } = productsApi;
 
-    const products = data ? data.products : [];
+    let products = data ? data.products : [];
     const pages = data ? data.pages : 0;
-
-    let history = useHistory();
 
     useEffect(() => {
         dispatch(getProductsState(categorySlug, curPage));
@@ -67,6 +65,10 @@ function Products(props) {
         }
     }
 
+    const handleClose = () => {
+        history.goBack();
+    }
+
     return (
         <main style={{height: fixedHeight}}>
             { isLoading &&
@@ -97,9 +99,15 @@ function Products(props) {
                     />
                 </div>
             </section>
+            { error && error.msg &&
+                <div className="api-message-box api-message-box-red margin-bottom-2">
+                    <span onClick={handleClose} className="api-message-box-close">&#10005;</span>
+                    { error.msg  }
+                </div>
+            }
             <ul className="grid grid-col-2-small grid-col-4-large">
                 {
-                    products && products.map(({ name, _id, thumbnail, price }, index) =>
+                    !error && products && products.map(({ name, _id, thumbnail, price }, index) =>
                         <li key={_id} className="full-width">
                             <div className="slide-img-wrap" >
                                 <Link to={`/product/${categorySlug}/${name}`}>
@@ -134,7 +142,7 @@ function Products(props) {
                 </div>
                 <div className="products-desktop">
                     <div className="row center">
-                        { (pages > 0)
+                        { (pages > 0) && !error
                             ? <span>Page {curPage} of {pages}</span>
                             : <span>&nbsp;</span>
                         }
