@@ -26,41 +26,40 @@ const findProductFromName = (name, products) => {
 function Product(props) {
     let history = useHistory();
     const dispatch = useDispatch();
+    const categorySlug = props.match.params.category;
+    const name = props.match.params.name;
+    //
     const [qty, setQty] = useState(1);
     const productsApi = useSelector(state => state.productsApi);
+    const searchApi = useSelector(state => state.searchApi);
     const categoriesApi = useSelector(state => state.categoriesApi);
-    let product;
-    let similarProducts = [];
-    let products = [];
-    let categorySlug;
-    let page;
-    const list = [];
+    const list = [{name: 'Home Page', url: '/'}];
     let showBreadcrumb = false;
     let category;
 
-    products = productsApi.data.products;
-    categorySlug = props.match.params.category;
-    const name = props.match.params.name;
+    const products = (categorySlug !== 'search')
+       ? productsApi.data.products
+       : searchApi.data.products;
+
     const index = products.findIndex(product => product.name === name);
 
-    product = products[index];
+    const product = products[index];
     if (categoriesApi && categoriesApi.data) {
-        category = categoriesApi.data.find(category => category.slug === categorySlug)
+        category = (categorySlug !== 'search')
+        ? categoriesApi.data.find(category => category.slug === categorySlug)
+        : { name: categorySlug, slug: categorySlug };
     }
 
     if (category && category.name) {
         if (product && product.name) {
-            list.push({name: 'Home Page', url: '/'});
             list.push({name: category.name, url: `/products/${categorySlug}/1`});
             list.push({name: product.name, url: ''});
             showBreadcrumb = true;
         }
     }
-    similarProducts = getSimilarProducts(index, products);
+    const similarProducts = getSimilarProducts(index, products);
 
-    const onQty = (value) => {
-       setQty(value);
-    };
+    const onQty = (value) => { setQty(value); };
 
     const handleAddToCart = () => {
         dispatch(addToCart(product._id, product, qty));

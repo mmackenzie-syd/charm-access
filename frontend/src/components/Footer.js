@@ -30,15 +30,15 @@ function Footer() {
                 </div>
                 <div className="row center social-icons">
                     <div className="follow-us">Follow us</div>
-                    <div className="social-icons-img-wrap">
+                    <a className="social-icons-img-wrap" href="https://www.facebook.com/">
                         <img alt="facebook" className="img" src={`${process.env.PUBLIC_URL}/images/facebook.png`} />
-                    </div>
-                    <div className="social-icons-img-wrap">
+                    </a>
+                    <a className="social-icons-img-wrap" href="https://www.instagram.com/">
                         <img alt="instagram" className="img" src={`${process.env.PUBLIC_URL}/images/instagram.png`} />
-                    </div>
-                    <div className="social-icons-img-wrap">
+                    </a>
+                    <a className="social-icons-img-wrap" href="https://www.youtube.com/">
                         <img alt="youtube" className="img" src={`${process.env.PUBLIC_URL}/images/youtube.png`} />
-                    </div>
+                    </a>
                 </div>
             </div>
             <div className="vendor footer-mobile">

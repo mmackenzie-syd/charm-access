@@ -16,17 +16,11 @@
 
 /* social media */
 
-.social-media {
-    margin-bottom: 2rem;
-}
+.social-media { margin-bottom: 2rem;}
 
-.social-media-phone {
-    margin-bottom: 2rem;
-}
+.social-media-phone { margin-bottom: 2rem; }
 
-.social-icons {
-    margin-right: 2rem;
-}
+.social-icons { margin-right: 2rem; }
 
 .social-icons-img-wrap {
     margin: 0 1.5rem 0 0;
@@ -35,8 +29,10 @@
     line-height: 1rem;
 }
 
-.social-icons-img-wrap:last-child {
-    margin-right: 0;
+.social-icons-img-wrap:last-child { margin-right: 0; }
+.social-icons-img-wrap:hover {
+    opacity: .6;
+    cursor: pointer;
 }
 
 .follow-us {

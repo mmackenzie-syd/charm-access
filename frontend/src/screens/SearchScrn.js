@@ -117,7 +117,7 @@ function SearchScrn(props) {
                     products && products.map(({ name, _id, thumbnail, price }, index) =>
                         <li key={_id} className="full-width">
                             <div className="slide-img-wrap" >
-                                <Link to={`/product/shop/${name}`}>
+                                <Link to={`/product/search/${name}`}>
                                     <img alt="placeholder" src={placeholder} />
                                     { !isLoading &&
                                     <img  alt={name} className="img-dull products-img fade-in" src={thumbnail} />
