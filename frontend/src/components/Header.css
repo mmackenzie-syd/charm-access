@@ -94,6 +94,11 @@ a.is-active {
     background-color: #ebe7f7;
 }
 
+.nav-item-dropdown-content a.is-active {
+    color: #937cd4;
+    fill: #937cd4;
+}
+
 /* icons */
 /* Search */
 
