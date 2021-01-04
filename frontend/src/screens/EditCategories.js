@@ -16,7 +16,8 @@ function EditCategories() {
         (async () => {
             try {
                 const { data } = await getCategories();
-                setCategories(data.slice(2));
+                console.log('data', data)
+                setCategories((data.slice(2)).slice(0,-1));
             } catch(error) {
                 setError(error);
             }
@@ -54,6 +55,10 @@ function EditCategories() {
                 name: 'New',
                 slug: 'new'
             });
+            newCategories.unshift(  {
+                name: 'Shop All',
+                slug: 'shopAll'
+            });
             const response = await saveCategories(newCategories);
             history.goBack();
         } catch(error) {
@@ -86,7 +91,7 @@ function EditCategories() {
                         />
                     </button>
                 </div>
-                <hr/>
+                <hr className="category-divider"/>
                 <ul>
                     {
                         categories && categories.map((item, index) => {

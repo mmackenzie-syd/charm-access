@@ -16,43 +16,8 @@
     display: block;
     float: left;
     color: #303030;
-    text-transform: capitalize;
 }
-.categories-header-btn {
-    color: #303030;
-    background-color: #ebf0f4;
-    display: inline-block;
-    padding: 5px 12px;
-    margin-bottom: 0;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 20px;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 0px;
-    float: right;
-    width: 100px;
-}
-.categories-header-btn:hover {
-    background-color: #ccc;
-}
-.categories-header-divider {
-    width: 100%;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    border-color: #ddd;
-    border: 0;
-}
+
 .categories-article-table {
     border: 1px solid #ddd;
     margin-bottom: 20px;
@@ -112,16 +77,6 @@
     text-decoration: underline;
 }
 
-.categories-btn {
-    width: 6rem;
-    height: 4rem;
-    border: 0;
-    background-color: #ccc;
-    border-radius: 3px;
-    margin-left: .6rem;
-    margin-bottom: 0;
-}
-
 .categories-btn:hover {
     opacity: .6;
     cursor: pointer;
@@ -145,4 +100,8 @@ input.category-article-control {
     width: 100%;
     font-size: 1.4rem;
     color: #4f4f4f;
+}
+
+.category-divider {
+    margin: 2.5rem 0;
 }
