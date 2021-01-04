@@ -69,13 +69,13 @@ function EditCategories() {
                 <div className="row top">
                     <input
                         type="text"
-                        className="product-article-control margin-bottom-0"
+                        className="category-article-control"
                         placeholder="Enter category..."
                         value={category}
                         onChange={e => setCategory(e.target.value)}
                     />
                     <button
-                        className="categories-btn"
+                        className="btn btn-secondary btn-category"
                         type="button"
                         onClick={handleAddCategory}
                     >
@@ -91,16 +91,16 @@ function EditCategories() {
                     {
                         categories && categories.map((item, index) => {
                             return (
-                            <li key={index} className="row top">
+                            <li key={index} className="row top margin-bottom-3">
                                 <input
                                     type="text"
-                                    className="product-article-control"
+                                    className="category-article-control"
                                     placeholder="Enter category..."
                                     value={item.name}
                                     onChange={e => handleCategories(index, e.target.value)}
                                 />
                                 <button
-                                    className="categories-btn"
+                                    className="btn btn-secondary btn-category"
                                     type="button"
                                     onClick={e => handleDelete(item.name)}
                                 >
@@ -116,14 +116,14 @@ function EditCategories() {
                 </ul>
                 <div className="row right">
                     <button
-                        className="cancel-btn"
+                        className="btn btn-secondary full-width"
                         onClick={() => history.goBack()}
                         type="button"
                     >
                         Cancel
                     </button>
                     <button
-                        className="save-btn"
+                        className="btn btn-primary full-width margin-left-1"
                         type="button"
                         onClick={handleSave}
                     >

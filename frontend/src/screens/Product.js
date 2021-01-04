@@ -110,7 +110,7 @@ function Product(props) {
                             src ={product.image}
                         />
                     </div>
-                    <div className="">
+                    <div>
                         <div>
                             <div className="product-desktop">
                                 <Breadcrumb list={list} show={showBreadcrumb}/>

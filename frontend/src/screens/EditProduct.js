@@ -115,30 +115,26 @@ function EditProduct(props) {
                     <h3>{id ? 'Edit' : 'Create'} Product</h3>
                     <div>
                         <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
-                            <LeftArrowIcon
-                                width={'1.2rem'}
-                                height={'1.2rem'}
-                                offset={'.3rem'}
-                            />
+                            <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                         </button>
                         <button className='btn btn-secondary btn-icon' onClick={getNext}>
-                            <RightArrowIcon
-                                width={'1.2rem'}
-                                height={'1.2rem'}
-                                offset={'.3rem'}
-                            />
+                            <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                         </button>
                     </div>
                 </div>
-                <form className="row top" onSubmit={submitHandler}>
-                    <div className="col-6 product__img-wrap">
-                        <img className="product__img" alt={name} src={image}/>
+                <form className="grid grid-col-2-large" onSubmit={submitHandler}>
+                    <div className="product-img-rel">
+                        <img
+                            className="product-img"
+                            alt={name}
+                            src={image}
+                        />
                         <div className="plus-img-btn">
                             <PhotoLoader />
                         </div>
                     </div>
-                    <div className="col-6 padding-left-3">
-                        <div className="">
+                    <div>
+                        <div>
                             <label>Product Name</label>
                             <input
                                 type="text"
@@ -200,14 +196,14 @@ function EditProduct(props) {
                         </div>
                         <div className="row">
                             <button
-                                className="cancel-btn btn-full-width"
+                                className="btn btn-secondary full-width"
                                 onClick={() => history.goBack()}
                                 type="button"
                             >
                                 Cancel
                             </button>
                             <button
-                                className="save-btn btn-full-width"
+                                className="btn btn-primary full-width margin-left-1"
                                 type="submit"
                             >
                                 Save

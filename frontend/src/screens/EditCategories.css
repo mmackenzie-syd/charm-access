@@ -131,3 +131,18 @@
     width: 1.2rem;
     height: 1.2rem;
 }
+
+.btn-category {
+    min-width: 4.6rem;
+    height: 4.6rem;
+    padding: 0;
+    margin-left: .5rem;
+}
+
+
+input.category-article-control {
+    margin: 0;
+    width: 100%;
+    font-size: 1.4rem;
+    color: #4f4f4f;
+}
