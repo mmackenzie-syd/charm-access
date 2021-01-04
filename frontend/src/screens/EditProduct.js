@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import './EditProduct.css';
 import LeftArrowIcon from "../icons/LeftArrowIcon";
@@ -9,12 +9,15 @@ import PlusIcon from "../icons/PlusIcon";
 import {createProduct, updateProduct} from "../api/authApi";
 import {getProduct} from "../api/unauthApi";
 import {getNextId, getPreviousId} from "../api/unauthApi";
-import PhotoLoader from "../components/PhotoLoader";
+import { PhotoLoader, saveImage } from "../components/PhotoLoaderResizer";
 
 function EditProduct(props) {
+    const imgRef = useRef(null);
     const history = useHistory();
     const id = props.match.params.id;
     const { data: categories } = useSelector(state => state.categoriesApi);
+
+    const [imageFileNames, setImageFileNames] = useState({});
 
     const [inventory, setInventory] = useState(1);
     const [name, setName] = useState('');
@@ -78,59 +81,66 @@ function EditProduct(props) {
         }
     }
 
+    const saveS3Image = () => {
 
-    const submitHandler = async (e) => {
-        e.preventDefault();
-        const product = {
-            name,
-            image,
-            thumbnail,
-            description,
-            price,
-            inventory,
-            category
-        };
-        if (id) {
-            try {
-                const { data } = await updateProduct(id, product);
-                history.goBack();
-            } catch(error) {
-                setError(error);
-            }
-        } else {
-            try {
-                const { data } = await createProduct(product);
-                history.goBack();
-            } catch(error) {
-                setError(error);
-            }
-        }
+        saveImage(imgRef, imageFileNames);
     }
 
+    const submitHandler = async (e) => {
+
+        // e.preventDefault();
+        // const product = {
+        //     name,
+        //     image,
+        //     thumbnail,
+        //     description,
+        //     price,
+        //     inventory,
+        //     category
+        // };
+        // if (id) {
+        //     try {
+        //         const { data } = await updateProduct(id, product);
+        //         history.goBack();
+        //     } catch(error) {
+        //         setError(error);
+        //     }
+        // } else {
+        //     try {
+        //         const { data } = await createProduct(product);
+        //         history.goBack();
+        //     } catch(error) {
+        //         setError(error);
+        //     }
+        // }
+    }
 
     return (
         <div className="product">
             <main className="product margin-bottom-5" style={{minHeight: '500px'}}>
                 <div className="row margin-top-1 margin-bottom-2" >
                     <h3>{id ? 'Edit' : 'Create'} Product</h3>
-                    <div>
-                        <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
-                            <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                        </button>
-                        <button className='btn btn-secondary btn-icon' onClick={getNext}>
-                            <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
-                        </button>
-                    </div>
+                    { id &&
+                        <div>
+                            <button className='btn btn-secondary btn-icon' onClick={getPrevious}>
+                                <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                            </button>
+                            <button className='btn btn-secondary btn-icon' onClick={getNext}>
+                                <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
+                            </button>
+                        </div>
+                    }
                 </div>
                 <form className="grid grid-col-2-large" onSubmit={submitHandler}>
-                    <div className="product-img-rel">
+                    <div className="product-img-rel cropper-hidden">
                         <img
                             className="product-img"
                             alt={name}
                             src={image}
+                            ref={imgRef}
                         />
                         <div className="plus-img-btn">
-                            <PhotoLoader />
+                            <PhotoLoader imgRef={imgRef} onFileLoad={filenames => setImageFileNames(filenames)}/>
                         </div>
                     </div>
                     <div>
@@ -204,10 +214,12 @@ function EditProduct(props) {
                             </button>
                             <button
                                 className="btn btn-primary full-width margin-left-1"
-                                type="submit"
+                                type="button"
+                                onClick={saveS3Image}
                             >
                                 Save
                             </button>
+
                         </div>
                     </div>
                 </form>

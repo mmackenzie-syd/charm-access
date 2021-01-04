@@ -182,3 +182,7 @@ label {
     top: 2rem;
     right: 2rem;
 }
+
+.overflow-hidden {
+    overflow: hidden;
+}
