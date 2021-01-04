@@ -26,14 +26,15 @@ const toS3Bucket = async (file) => {
     return upload.promise();
 };
 
-export const deleteImage = (photoKey) => {
-    S3.deleteObject({ Key: photoKey }, function (err, data) {
-        if (err) {
-            return alert("There was an error deleting your photo: ", err.message);
-        }
-        alert("Successfully deleted photo.");
-    });
-};
+// Not required
+// export const deleteImage = (photoKey) => {
+//     S3.deleteObject({ Key: photoKey }, function (err, data) {
+//         if (err) {
+//             return alert("There was an error deleting your photo: ", err.message);
+//         }
+//         alert("Successfully deleted photo.");
+//     });
+// };
 
 export const saveImage = (imgRef, filenames) => {
     const { thumbnail, standard } = filenames;

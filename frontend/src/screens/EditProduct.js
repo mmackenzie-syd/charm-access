@@ -83,36 +83,37 @@ function EditProduct(props) {
 
     const saveS3Image = () => {
 
-        saveImage(imgRef, imageFileNames);
+
     }
 
     const submitHandler = async (e) => {
-
-        // e.preventDefault();
-        // const product = {
-        //     name,
-        //     image,
-        //     thumbnail,
-        //     description,
-        //     price,
-        //     inventory,
-        //     category
-        // };
-        // if (id) {
-        //     try {
-        //         const { data } = await updateProduct(id, product);
-        //         history.goBack();
-        //     } catch(error) {
-        //         setError(error);
-        //     }
-        // } else {
-        //     try {
-        //         const { data } = await createProduct(product);
-        //         history.goBack();
-        //     } catch(error) {
-        //         setError(error);
-        //     }
-        // }
+        e.preventDefault();
+        saveImage(imgRef, imageFileNames);
+        const { standard, thumbnail } = imageFileNames;
+        const product = {
+            name,
+            image: standard,
+            thumbnail: thumbnail,
+            description,
+            price,
+            inventory,
+            category
+        };
+        if (id) {
+            try {
+                const { data } = await updateProduct(id, product);
+                history.goBack();
+            } catch(error) {
+                setError(error);
+            }
+        } else {
+            try {
+                const { data } = await createProduct(product);
+                history.goBack();
+            } catch(error) {
+                setError(error);
+            }
+        }
     }
 
     return (
@@ -214,8 +215,7 @@ function EditProduct(props) {
                             </button>
                             <button
                                 className="btn btn-primary full-width margin-left-1"
-                                type="button"
-                                onClick={saveS3Image}
+                                type="submit"
                             >
                                 Save
                             </button>
