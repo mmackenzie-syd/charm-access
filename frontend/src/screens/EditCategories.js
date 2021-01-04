@@ -16,7 +16,6 @@ function EditCategories() {
         (async () => {
             try {
                 const { data } = await getCategories();
-                console.log('data', data)
                 setCategories((data.slice(2)).slice(0,-1));
             } catch(error) {
                 setError(error);
