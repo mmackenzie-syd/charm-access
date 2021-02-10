@@ -32,7 +32,9 @@ function EditProducts(props) {
     };
 
     useEffect(() => {
-        init();
+        (async () => {
+            await init();
+        })();
     }, [dispatch, curPage]);
 
     let list = [];
@@ -68,7 +70,7 @@ function EditProducts(props) {
     const handleSubBtn = async (id, inventory) => {
         if ((inventory - 1) >= 0) {
             try {
-                const response = await updateInventory(id, inventory - 1);
+                await updateInventory(id, inventory - 1);
                 const product = products.find(product => (product._id === id));
                 product.inventory = inventory - 1;
                 setUpdateState(!updateState); // to trigger update
@@ -80,7 +82,7 @@ function EditProducts(props) {
 
     const handlePlusBtn = async (id, inventory) => {
         try {
-            const response = await updateInventory(id, inventory + 1);
+            await updateInventory(id, inventory + 1);
             const product = products.find(product => (product._id === id));
             product.inventory = inventory + 1;
             setUpdateState(!updateState); // to trigger update
@@ -96,7 +98,7 @@ function EditProducts(props) {
             if (curPage > Number(pages)) {
                 history.push('/dashboard/products/1'); // go back to first page if deleted all on this page
             } else {
-                init();
+                await init();
             }
         } catch(error) {
             setError(error);

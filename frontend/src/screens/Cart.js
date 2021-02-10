@@ -53,7 +53,6 @@ function Cart() {
                     { addedIds && addedIds.map( (id) => {
                         const { name, price, image } = productById[id];
                         const qty = quantityById[id];
-                        const subTotal = qty * Number(price);
                         return (
                             <div key={id} className="cart-grid">
                                 <div className="cart-item-img-wrap">

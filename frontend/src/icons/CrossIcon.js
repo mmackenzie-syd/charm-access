@@ -3,7 +3,6 @@ import React from "react";
 function CrossIcon(props) {
     const width = props.width || '2.4rem';
     const height = props.height || '2.4rem';
-    const offset = props.offset || 0;
     const className = props.className || '';
     return (
         <span className={className}>

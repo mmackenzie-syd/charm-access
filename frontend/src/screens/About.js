@@ -1,9 +1,5 @@
 import Breadcrumb from "../components/Breadcrumb";
 import React from "react";
-import LeftArrowIcon from "../icons/LeftArrowIcon";
-import RightArrowIcon from "../icons/RightArrowIcon";
-import Selector from "../components/Selector";
-import ArrivalsSlide from "../components/ArrivalsSlide";
 
 function About() {
     return (

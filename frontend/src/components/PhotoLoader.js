@@ -1,66 +1,34 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef } from 'react';
 import PlusIcon from "../icons/PlusIcon";
 
-import AWS_WRAPPER from '../services/AWS_WRAPPER';
-const { AWS, S3 } = AWS_WRAPPER;
-
-const ALBUM_NAME = process.env.REACT_APP_ALBUM_NAME;
-const BUCKET_NAME = process.env.REACT_APP_BUCKET_NAME;
-
-function PhotoLoader(props) {
+const PhotoLoader = (props) => {
+    const { imgRef, onFileLoad } = props;
     const fileRef = useRef(null);
-
-    const handleFileUpload = (e) => {
-        e.preventDefault();
-
+    const handleFileUpload = (event) => {
+        event.preventDefault();
         const files = fileRef.current.files;
         if (!files.length) {
             return alert("Please choose a file to upload first.");
         }
-        const file = files[0];
-        const fileName = file.name;
-        const albumPhotosKey = encodeURIComponent(ALBUM_NAME) + "/";
+        const file = event.target.files[0];
+        if (imgRef.current) {
+            imgRef.current.src = URL.createObjectURL(file);
+            const filename = file.name;
 
-        const photoKey = albumPhotosKey + fileName;
+            // Note that cropper converts files to png
 
-        // Use S3 ManagedUpload class as it supports multipart uploads
-        const upload = new AWS.S3.ManagedUpload({
-            params: {
-                Bucket: BUCKET_NAME,
-                Key: photoKey,
-                Body: file,
-                ACL: "public-read"
-            }
-        });
-
-        const deletePhoto = (photoKey) => {
-            S3.deleteObject({ Key: photoKey }, function(err, data) {
-                if (err) {
-                    return alert("There was an error deleting your photo: ", err.message);
-                }
-                alert("Successfully deleted photo.");
+            onFileLoad({
+                thumbnail: filename.substr(0, filename.lastIndexOf(".")) + "_thb.png", // cropper outputs image as png
+                standard: filename.substr(0, filename.lastIndexOf(".")) + ".png",
             });
         }
-
-        const promise = upload.promise();
-
-        promise.then(
-            function(data) {
-                alert("Successfully uploaded photo.");
-            },
-            function(err) {
-                return alert("There was an error uploading your photo: ", err);
-            }
-        );
     }
-
     // when called, triggers fileInput click function
     const triggerInputFile = () => {
         if (fileRef.current && fileRef.current.click) {
             fileRef.current.click()
         }
     }
-
     return (
         <>
             <input ref={fileRef} hidden type="file" accept="image/*" onChange={handleFileUpload} />
@@ -76,4 +44,3 @@ function PhotoLoader(props) {
 }
 
 export default PhotoLoader;
-

@@ -58,7 +58,7 @@ function EditCategories() {
                 name: 'Shop All',
                 slug: 'shopAll'
             });
-            const response = await saveCategories(newCategories);
+            await saveCategories(newCategories);
             history.goBack();
         } catch(error) {
             setError(error);

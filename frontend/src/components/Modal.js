@@ -1,4 +1,4 @@
-import React, {useContext, useRef} from "react";
+import { useContext, useRef } from "react";
 import { createPortal } from "react-dom";
 import { ModalContext } from "../context/modalContext";
 import './Modal.css';

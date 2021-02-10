@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import './SearchScrn.css';
-import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import Paginator from "../components/Paginator";
 import placeholder from './placeholder-grey.png';
@@ -19,7 +18,7 @@ function SearchScrn(props) {
     const curSearchValue = props.match.params.search;
 
     const searchApi = useSelector(state => state.searchApi);
-    const { loading: isLoading, error, data } = searchApi;
+    const { loading: isLoading, data } = searchApi;
 
     const products = data ? data.products : [];
     const pages = data ? data.pages : 0;
@@ -29,7 +28,7 @@ function SearchScrn(props) {
             dispatch(getSearchState(curSearchValue, curPage));
             setSearchValue(curSearchValue);
         }
-    }, [curPage, curSearchValue]);
+    }, [curPage, curSearchValue, dispatch]);
 
     const list = [{ name: 'Home Page', url: '/' }, { name: 'Search', url: '' }];
     let showBreadcrumb = false;
@@ -38,7 +37,7 @@ function SearchScrn(props) {
     const fixedHeight = (isLoading && !products) ? '700px' : 'auto';
 
     const handlePageClick = (page) => {
-       // history.push(`/products/${categorySlug}/${page}`);
+        history.push(`/search/${curSearchValue}/${page - 1}`);
     }
 
     const handleLeftPageClick = () => {

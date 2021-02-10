@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, { useReducer } from 'react';
 import './Settings.css';
 import {apiReducer, resetCategories, resetProducts} from "../api/authApi";
 
@@ -9,7 +9,7 @@ function Settings() {
     const handleResetCategories = async () => {
         try {
             dispatch({type: 'REQUEST'})
-            const result = await resetCategories();
+            await resetCategories();
             dispatch({type: 'SUCCESS', payload: 'Successfully reset category' });
         } catch (error) {
             dispatch({type: 'FAIL', payload: `Category ${error}`});
@@ -19,7 +19,7 @@ function Settings() {
     const handleResetProducts = async () => {
         try {
             dispatch({type: 'REQUEST'})
-            const result = await resetProducts();
+            await resetProducts();
             dispatch({type: 'SUCCESS', payload: 'Successfully reset products' });
         } catch (error) {
             dispatch({type: 'FAIL', payload: `Products ${error}`});

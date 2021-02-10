@@ -1,7 +1,7 @@
 import React from "react";
 import "./ArrivalsSlideDummy.css";
 
-export default () =>
+const ArrivalsSlideDummy = () =>
         <div className="arrivals-dummy fade-out">
             <ul className="grid grid-col-4-large" >
                 {
@@ -21,3 +21,5 @@ export default () =>
                 }
             </ul>
         </div>;
+
+export default ArrivalsSlideDummy;

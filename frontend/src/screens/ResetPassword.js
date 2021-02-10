@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './ResetPassword.css';
 import {useDispatch, useSelector} from "react-redux";
-import {reset, signin} from "../state/userActions";
+import {reset} from "../state/userActions";
 import {useHistory} from "react-router";
 
 function ResetPassword(props) {
     let history = useHistory();
     const dispatch = useDispatch();
-    const { status, loading, error } = useSelector(state => state.userApi);
+    const { status } = useSelector(state => state.userApi);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -15,7 +15,7 @@ function ResetPassword(props) {
         if (status === 'SUCCESS') {
             history.push('/dashboard/products/1');
         }
-    }, [status]);
+    }, [status, history]);
 
     const submitHandler = (e) => {
         e.preventDefault(); // so that form does not refresh when we click submit

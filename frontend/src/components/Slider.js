@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import Slide from "./Slide.js"
 
 function Slider(props) {
-    const { items, perSlide, displayImage: DisplayImage, width, event } = props;
+    const { items, perSlide, displayImage: DisplayImage, width } = props;
     const [slideWidth, setSlideWidth] = useState(2000);
     const [offset, setOffset] = useState(0);
     const [isSliding, setIsSliding] = useState(false);
@@ -44,6 +44,8 @@ function Slider(props) {
                 break;
             case 'RIGHT_CLICK':
                 handleRight();
+                break;
+            default:
                 break;
         }
 

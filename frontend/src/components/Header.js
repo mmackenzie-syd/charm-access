@@ -13,7 +13,7 @@ function Header() {
     const { data } = categoriesApi;
     const categories = data ? data.filter(category => category.slug !== 'shop') : [];
     const location = useLocation();
-    const isShopActive = location.pathname.includes('collections') ? 'is-active' : '';
+    const isShopActive = location.pathname.includes('collections') ? 'is-active sidebar-li-dropdown' : 'sidebar-li-dropdown';
 
     const cart = useSelector(state => state.cart);
     const { addedIds, quantityById } = cart;
@@ -73,14 +73,13 @@ function Header() {
             <div className="sticky header-mobile">
                 <header className="header row space-between">
                     <div id="mySidebar" className="sidebar">
-                        <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
+                        <button  className="btn-close" onClick={closeNav}>&times;</button>
                         <div className="">
                             <div className="dropdown">
                                 <div style={{width: '400px'}}>
                                     <NavLink
                                         to="/products/shop/1"
                                         className={isShopActive}
-                                        className={"sidebar-li-dropdown"}
                                         onClick={handleMobileNav}
                                     >
                                         SHOP

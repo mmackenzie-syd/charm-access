@@ -130,8 +130,10 @@ class UserService {
 
 const instance = new UserService();
 
-export default {
+const AWS_WRAPPER = {
     UserService: instance,
     AWS,
     S3
-}
+};
+
+export default AWS_WRAPPER;

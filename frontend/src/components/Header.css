@@ -11,7 +11,7 @@
 }
 
 .header {
-    max-width: 132rem;
+    max-width: 128rem; /* 132rem; */
     padding: 0 2rem;
     margin: 0 auto;
 }
@@ -187,12 +187,22 @@ a.is-active {
    opacity: .6;
 }
 
-.sidebar .closebtn {
+.sidebar .btn-close {
     position: absolute;
-    top: -1rem;
-    right: 0;
+    top: .5rem;
+    right: 1.5rem;
+    font-family: "Montserrat", sans-serif;
     font-size: 36px;
+    font-weight: 500;
+    background-color: #937cd4;
+    color: #fff;
+    border: 1px solid #937cd4;
 }
+.sidebar .btn-close:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+
 
 .openbtn {
     font-size: 16px;

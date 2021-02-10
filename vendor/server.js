@@ -89,7 +89,7 @@ router.put('/product/inventory/:id', asyncHandler(async (req, res) => {
     const product = await Product.findById(productId);
     if (product) {
         product.inventory = req.body.inventory;
-        const updatedProduct = product.save();
+        const updatedProduct = await product.save();
         res.send({ message: 'Product Updated', product: updatedProduct});
     } else {
         res.status(404).send({ message: 'Product Not Found'});
@@ -107,7 +107,7 @@ router.put('/product/:id', asyncHandler(async (req, res) => {
         product.description = req.body.description;
         product.image = req.body.image;
         product.thumbnail = req.body.thumbnail;
-        const updatedProduct = product.save();
+        const updatedProduct = await product.save();
         res.send({ message: 'Product Updated', product: updatedProduct});
     } else {
         res.status(404).send({ message: 'Product Not Found'});

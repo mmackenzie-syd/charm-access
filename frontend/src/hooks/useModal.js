@@ -1,8 +1,8 @@
 // custom React Hook for Modal window
 
-import React, { useState } from "react";
+import { useState } from "react";
 
-export default () => {
+const useModal = () => {
     // switch to open modal window
     let [isModal, setIsModal] = useState(false);
     // content of modal window (html/jsx string)
@@ -16,3 +16,5 @@ export default () => {
     };
     return { isModal, handleModal, modalContent };
 };
+
+export default useModal;

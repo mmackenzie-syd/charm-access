@@ -5,11 +5,11 @@ import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
 import {useSelector} from "react-redux";
 import Quantity from "../components/Quantity";
-import PlusIcon from "../icons/PlusIcon";
 import {createProduct, updateProduct} from "../api/authApi";
 import {getProduct} from "../api/unauthApi";
 import {getNextId, getPreviousId} from "../api/unauthApi";
-import { PhotoLoader, saveImage } from "../components/PhotoLoaderResizer";
+import PhotoLoader from "../components/PhotoLoader";
+import saveImage from "../services/saveImage";
 
 function EditProduct(props) {
     const imgRef = useRef(null);
@@ -23,10 +23,9 @@ function EditProduct(props) {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('/images/largeplaceholder.png');
-    const [thumbnail, setThumbnail] = useState('/images/placeholder.png');
+    const [thumbnail, setThumbnail] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         (async () => {
@@ -51,8 +50,9 @@ function EditProduct(props) {
                     setPrice(price);
                     setInventory(Number(inventory));
                     setCategory(category);
+
+                    console.log('thb', thumbnail)
             } catch(error) {
-                setError(error);
             }
         })();
         }, [id]);
@@ -81,37 +81,43 @@ function EditProduct(props) {
         }
     }
 
-    const saveS3Image = () => {
-
-
-    }
-
     const submitHandler = async (e) => {
         e.preventDefault();
-        saveImage(imgRef, imageFileNames);
-        const { standard, thumbnail } = imageFileNames;
-        const product = {
+        let product = {
             name,
-            image: standard,
-            thumbnail: thumbnail,
             description,
             price,
             inventory,
             category
         };
+        let shouldSaveImage = false;
+        if (imageFileNames.standard || imageFileNames.thumbnail) {
+            product.thumbnail = '/products/' + imageFileNames.thumbnail;
+            product.image = '/products/' + imageFileNames.standard;
+            shouldSaveImage = true;
+        } else {
+            product.thumbnail = thumbnail;
+            product.image = image;
+        }
+
         if (id) {
             try {
-                const { data } = await updateProduct(id, product);
-                history.goBack();
+                if (shouldSaveImage) {
+                    await saveImage(imgRef, imageFileNames);
+                    await updateProduct(id, product);
+                    history.goBack();
+                } else {
+                    await updateProduct(id, product);
+                    history.goBack();
+                }
             } catch(error) {
-                setError(error);
             }
         } else {
             try {
-                const { data } = await createProduct(product);
+                await saveImage(imgRef, imageFileNames);
+                await createProduct(product);
                 history.goBack();
             } catch(error) {
-                setError(error);
             }
         }
     }

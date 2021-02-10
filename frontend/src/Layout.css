@@ -1,6 +1,6 @@
 /* Layout */
 .wrap {
-    max-width: 132rem;
+    max-width: 128rem; /* 132rem; */
     padding: 0 2rem;
     margin: 0 auto;
 }
