@@ -11,6 +11,8 @@ import {getNextId, getPreviousId} from "../api/unauthApi";
 import PhotoLoader from "../components/PhotoLoader";
 import saveImage from "../services/saveImage";
 
+const defaultImage = '/images/largeplaceholder.png'
+
 function EditProduct(props) {
     const imgRef = useRef(null);
     const history = useHistory();
@@ -19,10 +21,14 @@ function EditProduct(props) {
 
     const [imageFileNames, setImageFileNames] = useState({});
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [validate, setValidate] = useState('');
+
     const [inventory, setInventory] = useState(1);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
-    const [image, setImage] = useState('/images/largeplaceholder.png');
+    const [image, setImage] = useState(defaultImage);
     const [thumbnail, setThumbnail] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('shop');
@@ -50,8 +56,6 @@ function EditProduct(props) {
                     setPrice(price);
                     setInventory(Number(inventory));
                     setCategory(category);
-
-                    console.log('thb', thumbnail)
             } catch(error) {
             }
         })();
@@ -81,10 +85,41 @@ function EditProduct(props) {
         }
     }
 
+    const isNumeric = (num) => {
+        return !isNaN(num)
+    }
+    const validateProduct = ({ image }) => {
+        if (name === '') {
+            setValidate('product name must be given');
+            return false;
+        }
+        if (description === '') {
+            setValidate('product description must be given');
+            return false;
+        }
+        if (price === '') {
+            setValidate('product price must be given');
+            return false;
+        }
+        if (!isNumeric(price)) {
+            setValidate('a valid number must be used for product');
+            return false;
+        }
+
+        if (image === defaultImage) {
+            setValidate('an image must be selected for the product');
+            return false;
+        }
+        return true;
+    }
+
     const submitHandler = async (e) => {
         e.preventDefault();
+
         let product = {
             name,
+            thumbnail,
+            image,
             description,
             price,
             inventory,
@@ -95,35 +130,54 @@ function EditProduct(props) {
             product.thumbnail = '/products/' + imageFileNames.thumbnail;
             product.image = '/products/' + imageFileNames.standard;
             shouldSaveImage = true;
-        } else {
-            product.thumbnail = thumbnail;
-            product.image = image;
+        }
+
+        if (!validateProduct(product)) {
+            return;
         }
 
         if (id) {
             try {
+                setLoading(true);
                 if (shouldSaveImage) {
                     await saveImage(imgRef, imageFileNames);
                     await updateProduct(id, product);
+                    setLoading(false);
                     history.goBack();
                 } else {
                     await updateProduct(id, product);
+                    setLoading(false);
                     history.goBack();
                 }
             } catch(error) {
+                setLoading(false);
+                setError(error.toString());
             }
         } else {
             try {
                 await saveImage(imgRef, imageFileNames);
                 await createProduct(product);
+                setLoading(false);
                 history.goBack();
             } catch(error) {
+                setLoading(false);
+                setError(error.toString());
             }
         }
     }
 
+    const handleClose = () => {
+       setValidate('');
+    }
+
     return (
         <div className="product">
+            { validate &&
+                <div className="validate-message-box validate-message-box-red margin-bottom-2">
+                    <span onClick={handleClose} className="validate-message-box-close">&#10005;</span>
+                    { validate  }
+                </div>
+            }
             <main className="product margin-bottom-5" style={{minHeight: '500px'}}>
                 <div className="row margin-top-1 margin-bottom-2" >
                     <h3>{id ? 'Edit' : 'Create'} Product</h3>
