@@ -22,7 +22,7 @@ function EditProduct(props) {
     const [imageFileNames, setImageFileNames] = useState({});
 
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
     const [validate, setValidate] = useState('');
 
     const [inventory, setInventory] = useState(1);
@@ -137,6 +137,7 @@ function EditProduct(props) {
         }
 
         if (id) {
+            // update an existing product
             try {
                 setLoading(true);
                 if (shouldSaveImage) {
@@ -151,9 +152,11 @@ function EditProduct(props) {
                 }
             } catch(error) {
                 setLoading(false);
-                setError(error.toString());
+                setError(true);
             }
         } else {
+            // add a new product
+            setLoading(true);
             try {
                 await saveImage(imgRef, imageFileNames);
                 await createProduct(product);
@@ -161,21 +164,33 @@ function EditProduct(props) {
                 history.goBack();
             } catch(error) {
                 setLoading(false);
-                setError(error.toString());
+                setError(true);
             }
         }
     }
 
     const handleClose = () => {
        setValidate('');
+       setError(false);
     }
 
     return (
         <div className="product">
+            { error &&
+                <div className="product-message-box product-message-box-red margin-bottom-2">
+                    <span onClick={handleClose} className="product-message-box-close">&#10005;</span>
+                    An error occurred saving the product. Try again or contact the administrator if the error persists.
+                </div>
+            }
             { validate &&
-                <div className="validate-message-box validate-message-box-red margin-bottom-2">
-                    <span onClick={handleClose} className="validate-message-box-close">&#10005;</span>
-                    { validate  }
+                <div className="product-message-box product-message-box-red margin-bottom-2">
+                    <span onClick={handleClose} className="product-message-box-close">&#10005;</span>
+                    Product Validate Error: { validate  }
+                </div>
+            }
+            { loading &&
+                <div className="loader-wrap" id="loader">
+                    <div className="loader"></div>
                 </div>
             }
             <main className="product margin-bottom-5" style={{minHeight: '500px'}}>

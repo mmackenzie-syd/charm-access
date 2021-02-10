@@ -187,7 +187,7 @@ label {
     overflow: hidden;
 }
 
-.validate-message-box {
+.product-message-box {
     position: relative;
     border: 2px solid #4f8d4f;
     width: 100%;
@@ -198,19 +198,49 @@ label {
     color: #4f8d4f;
 }
 
-.validate-message-box-red {
+.product-message-box-red {
     border: 2px solid #f15c4b;
     color: #f15c4b;
 }
 
-.validate-message-box-close {
+.product-message-box-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
 }
 
-.validate-message-box-close:hover {
+.product-message-box-close:hover {
     cursor: pointer;
     opacity: .6;
+}
+
+/* Loader */
+
+.loader {
+    border: 16px solid #ddd; /* 16px solid #f3f3f3; */
+    border-radius: 50%;
+    border-top: 16px solid #9886BA; /* 16px solid #3498db; */
+    width: 140px;/* 120px; */
+    height: 140px; /* 120px; */
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-wrap {
+    position: absolute;
+    left: 42%;
+    top: 400px;
+    z-index: 4000;
 }
 
