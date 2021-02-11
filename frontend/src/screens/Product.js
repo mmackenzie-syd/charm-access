@@ -160,7 +160,7 @@ function Product(props) {
                         similarProducts && (similarProducts.length === 4)
                             ? <section className="arrivals margin-top-4 product-desktop">
                                 <h3 className="margin-bottom-2">Similar Items</h3>
-                                <ArrivalsSlide items={similarProducts} />
+                                <ArrivalsSlide items={similarProducts} allItems={similarProducts}/>
                               </section>
                             : <div className="margin-bottom-5"></div>
                     }
