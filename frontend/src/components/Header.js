@@ -103,6 +103,12 @@ function Header() {
                                             </NavLink>
                                         ))
                                     }
+                                    <NavLink to='/products/new/1' onClick={handleMobileNav}>
+                                        New
+                                    </NavLink>
+                                    <NavLink to='/products/shop/1' onClick={handleMobileNav}>
+                                        Shop All
+                                    </NavLink>
                                 </div>
                             </div>
                             <NavLink
@@ -142,7 +148,7 @@ function Header() {
                         <li className="nav-item crt-icon-wrap">
                             <NavLink to="/cart" activeClassName='is-active'>
                                 { addedIds && (addedIds.length !== 0) &&
-                                <div className="qty">{totalItems}</div>
+                                    <div className="qty">{totalItems}</div>
                                 }
                                 <CartIcon
                                     className={"crt-icon"}
@@ -189,6 +195,12 @@ function Header() {
                                                 </NavLink>
                                             ))
                                         }
+                                        <NavLink to='/products/new/1' activeClassName='is-active'>
+                                            New
+                                        </NavLink>
+                                        <NavLink to='/products/shop/1' activeClassName='is-active'>
+                                            Shop All
+                                        </NavLink>
                                     </div>
                                 </li>
                                 <li className="nav-item"><NavLink to="/shipping" activeClassName='is-active'>SHIPPING & PAYMENT</NavLink></li>
