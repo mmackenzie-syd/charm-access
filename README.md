@@ -10,7 +10,7 @@ Authentication is required to access the private routes and also for uploading i
 
 The React App itself is hosted on a S3 bucket configured as a static website.
 
-The image uploading of product images to the S3 bucket is done using the AWS SDK. Image cropping and resizing is done client-side using the library [CropperJS](https://github.com/fengyuanchen/cropperjs).
+The uploading of product images to the S3 bucket is done using the AWS SDK. Image cropping and resizing is done client-side using the library [CropperJS](https://github.com/fengyuanchen/cropperjs).
 
 The styling of the App was based on the [Niche](https://gpsites.co/niche/) template of [Generate Press](https://generatepress.com/). The photos of the model are from the photographer/model [Alena Ozerova](https://www.instagram.com/taknebivaet/). The Jewellery photos were taken by myself using a mobile phone and a white background was added using [GIMP](https://www.gimp.org/). These are left over stock from a business, Charm Accessories, that ceased operating ten years ago. The name of the app, logo and colour scheme was also taken from this business.
 
