@@ -3,6 +3,8 @@
 #### URL
 http://charm-app.s3-website-ap-southeast-2.amazonaws.com/
 
+This is a re-usable Ecommerce Application built using React, Redux, ExpressJS and Mongo DB.
+
 
 
 #### Shop API Schematic Diagram
