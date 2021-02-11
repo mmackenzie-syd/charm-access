@@ -29,3 +29,5 @@ http://charm-app.s3-website-ap-southeast-2.amazonaws.com/
 ### Screenshots of App
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/home.png)
+
+![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/products.png)
