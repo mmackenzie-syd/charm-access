@@ -15,6 +15,7 @@ The styling of the App was based on the [Niche](https://gpsites.co/niche/) templ
 The three diagrams below describe the AWS configuation for the App.
 
 Mark Mackenzie 
+
 February 2021
 
 
