@@ -42,8 +42,6 @@ February 2021
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/Schematic/AWS-schematic-upload.png)
 
-## Desktop App
-
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/home.png)
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/products.png)
@@ -57,7 +55,5 @@ February 2021
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/edit-categories.png)
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/reset.png)
-
-## Mobile App
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/home-mobile.png)
