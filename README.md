@@ -8,7 +8,7 @@ The Express JS REST API is run on two AWS Lambda functions, one of which is for 
 
 Authentication is required to access the private routes and also for uploading images. This is done using the AWS Cognito service.
 
-The React App itself is hosted on a S3 bucket configured as a static website. The APP is designed to work on both Mobile and Desktop.
+The React App itself is hosted on a S3 bucket configured as a static website. The App is designed to work on both Mobile and Desktop.
 
 The uploading of product images to the S3 bucket is via the AWS SDK, which was added to the React code. Image cropping and resizing is done client-side using the library [CropperJS](https://github.com/fengyuanchen/cropperjs).
 
