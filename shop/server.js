@@ -140,7 +140,7 @@ router.get('/products/:page',  asyncHandler(async (req, res) => {
         res.status(404).send({ message: 'Products not found'});
     } else {
         // exec returns a promise from the chain
-        const products = await Product.find({}).sort({'createdAt': -1}).skip(perPage * (page - 1)).limit(perPage).exec();
+        const products = await Product.find({}).sort({'createdAt': -1}).skip(editProdPerPage * (page - 1)).limit(editProdPerPage).exec();
         res.json({ products, pages, page });
     }
 }));
