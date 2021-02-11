@@ -2,14 +2,6 @@
 
 const categories = [
         {
-            slug: 'shop',
-            name: 'Shop',
-        },
-        {
-            slug: 'new',
-            name: 'New',
-        },
-        {
             slug: 'necklaces',
             name: 'Necklaces',
         },
@@ -24,10 +16,6 @@ const categories = [
         {
             slug: 'earrings',
             name: 'Earrings',
-        },
-        {
-            slug: 'shopAll',
-            name: 'Shop All',
         }
 ];
 

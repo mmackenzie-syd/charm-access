@@ -105,3 +105,65 @@ input.category-article-control {
 .category-divider {
     margin: 2.5rem 0;
 }
+
+
+/* Message Box */
+
+.edit-categories-message-box {
+    position: relative;
+    border: 2px solid #4f8d4f;
+    width: 100%;
+    min-height: 4.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    color: #4f8d4f;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.edit-categories-message-box-red {
+    border: 2px solid #f15c4b;
+    color: #f15c4b;
+}
+
+.edit-categories-message-box-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.edit-categories-message-box-close:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+
+/* Loader */
+
+.edit-categories-loader {
+    border: 16px solid #ddd; /* 16px solid #f3f3f3; */
+    border-radius: 50%;
+    border-top: 16px solid #9886BA; /* 16px solid #3498db; */
+    width: 140px;/* 120px; */
+    height: 140px; /* 120px; */
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.edit-categories-loader-wrap {
+    position: absolute;
+    left: 42%;
+    top: 360px;
+    z-index: 4000;
+}

@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import './EditProducts.css';
-import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
 import { Link } from "react-router-dom";
 import Quantity from "../components/Quantity";
@@ -9,33 +8,45 @@ import Breadcrumb from "../components/Breadcrumb";
 import {deleteProduct, updateInventory} from "../api/authApi";
 import {getProducts} from "../api/unauthApi";
 
+const  errorReducer = (error, type) => {
+    switch (type) {
+        case 'LOAD_PAGE_ERROR':
+            return { loadPage: true}
+        case 'DELETE_ERROR':
+            return { deleteProduct: true }
+        case 'UPDATE_ERROR':
+            return { updateProduct: true }
+        case 'RESET':
+            return null
+        default:
+            return null;
+    }
+}
+
 function EditProducts(props) {
-    const dispatch = useDispatch();
     const curPage = Number(props.match.params.page);
-    const [error, setError] = useState(null);
+
     // toggle to re-render state
     const [updateState, setUpdateState] = useState(false);
-    // toggle to pull in data
+
+    const [success, setSuccess] = useState(false );
+    const [error, dispatch] = useReducer(errorReducer, null);
+
     const [data, setData] = useState([])
 
     const products = data ? data.products : [];
-    const pages = data ? data.pages : 0;
-
-    const init = async () => {
-        try {
-            const { data } = await getProducts(curPage);
-            setData(data);
-        } catch(error) {
-            console.log('error', error)
-            setError(error);
-        }
-    };
+    let pages = data ? data.pages : 0;
 
     useEffect(() => {
         (async () => {
-            await init();
+            try {
+                const { data } = await getProducts(curPage);
+                setData(data);
+            } catch(error) {
+                dispatch('LOAD_PAGE_ERROR');
+            }
         })();
-    }, [dispatch, curPage]);
+    }, [curPage]);
 
     let list = [];
     let showBreadcrumb = false;
@@ -75,7 +86,7 @@ function EditProducts(props) {
                 product.inventory = inventory - 1;
                 setUpdateState(!updateState); // to trigger update
             } catch(error) {
-                setError(error);
+                dispatch('UPDATE_ERROR');
             }
         }
     }
@@ -87,22 +98,32 @@ function EditProducts(props) {
             product.inventory = inventory + 1;
             setUpdateState(!updateState); // to trigger update
         } catch(error) {
-            setError(error);
+            dispatch('UPDATE_ERROR');
         }
+    }
+
+    const onCloseSuccess = async () => {
+        if (curPage > Number(pages)) {
+            history.push('/dashboard/products/1'); // go back to first page if deleted all on this page
+        } else {
+            const { data } = await getProducts(curPage);
+            setData(data);
+        }
+        setSuccess(false);
     }
 
     const handleDelete = async (id) => {
         try {
             const { data } = await deleteProduct(id);
-            const { pages } = data;
-            if (curPage > Number(pages)) {
-                history.push('/dashboard/products/1'); // go back to first page if deleted all on this page
-            } else {
-                await init();
-            }
+            pages = data.pages;
+            setSuccess(true);
         } catch(error) {
-            setError(error);
+          dispatch('DELETE_ERROR');
         }
+    }
+
+    const handleClose = () => {
+        dispatch('RESET');
     }
 
     return (
@@ -120,6 +141,27 @@ function EditProducts(props) {
                     }
                 </div>
             </section>
+            { success &&
+                <div className="edit-products-message-box">
+                    <span onClick={onCloseSuccess} className="edit-products-message-box-close">&#10005;</span>
+                    Product deleted
+                </div>
+            }
+            { error &&
+                <div className="edit-products-message-box edit-products-message-box-red">
+                    <span onClick={handleClose} className="edit-products-message-box-close">&#10005;</span>
+                    { error.deleteProduct &&
+                        'Failed to delete product. Contact Administrator.'
+                    }
+                    { error.updateProduct &&
+                        'Failed to update product. Contact Administrator.'
+                    }
+                    { error.loadPage &&
+                        'Failed to load page.'
+                    }
+                </div>
+            }
+
             <section className="row margin-bottom-1" style={{height: '5rem'}} >
                 <h3>Products</h3>
                 <div>

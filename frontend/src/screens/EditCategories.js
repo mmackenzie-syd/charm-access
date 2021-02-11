@@ -10,15 +10,16 @@ function EditCategories() {
     const history = useHistory();
     const [category, setCategory] = useState('')
     const [categories, setCategories] = useState([]);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
             try {
                 const { data } = await getCategories();
-                setCategories((data.slice(2)).slice(0,-1));
+                setCategories(data);
             } catch(error) {
-                setError(error);
+                setError(true);
             }
         })();
     }, []);
@@ -45,28 +46,36 @@ function EditCategories() {
 
     const handleSave = async () => {
         try {
+            setLoading(true);
             const newCategories = categories.map(({ name, slug }) => ({ name, slug }));
-            newCategories.unshift(  {
-                name: 'Shop',
-                slug: 'shop'
-            });
-            newCategories.unshift(  {
-                name: 'New',
-                slug: 'new'
-            });
-            newCategories.unshift(  {
-                name: 'Shop All',
-                slug: 'shopAll'
-            });
             await saveCategories(newCategories);
+            setLoading(false);
             history.goBack();
         } catch(error) {
-            setError(error);
+            setError(true);
+            setLoading(false);
         }
     }
 
+    const handleClose = () => {
+        setError(false);
+    }
+
     return (
+        <>
+            { error &&
+                <div className="edit-categories-message-box edit-categories-message-box-red margin-bottom-2">
+                    <span onClick={handleClose} className="edit-categories-message-box-close">&#10005;</span>
+                    An undefined error occurred. Try again or contact the administrator if the error persists.
+                </div>
+            }
             <div className="categories margin-bottom-5">
+
+                { loading &&
+                    <div className="edit-categories-loader-wrap">
+                        <div className="edit-categories-loader"></div>
+                    </div>
+                }
                 <header className="row categories-header space-between">
                     <h2 className="col-6">Categories</h2>
                 </header>
@@ -135,7 +144,9 @@ function EditCategories() {
                     </button>
 
                 </div>
-            </div>);
+            </div>
+      </>
+    );
 }
 
 export default EditCategories;
