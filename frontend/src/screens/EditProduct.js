@@ -189,8 +189,8 @@ function EditProduct(props) {
                 </div>
             }
             { loading &&
-                <div className="loader-wrap" id="loader">
-                    <div className="loader"></div>
+                <div className="edit-product-loader-wrap">
+                    <div className="edit-product-loader"></div>
                 </div>
             }
             <main className="product margin-bottom-5" style={{minHeight: '500px'}}>

@@ -3,11 +3,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const asyncHandler = require('express-async-handler');
-const createError = require('http-errors');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-
+const { perPage, editProdPerPage } = require('./config');
 // Middleware
 
 app.use(bodyParser.json());
@@ -131,10 +130,10 @@ router.get('/productId/previous/:id',  async (req, res) => {
 
 router.get('/products/:page',  asyncHandler(async (req, res) => {
     // paginate and return in descending order
-    const perPage = 4;
+    // used only by edit products page
     let { page } = req.params;
     const count = await Product.countDocuments({});
-    const pages = Math.ceil(count / perPage);
+    const pages = Math.ceil(count / editProdPerPage);
 
     if (pages === 0) {
         // no products with this category or page
@@ -151,7 +150,6 @@ router.get('/productsByCategory/:category/:page',  asyncHandler(async (req, res)
     const { page, category } = req.params;
     const query = ((category === 'shop') || (category === 'new')) ? {} : { category: { $eq: category } };
 
-    const perPage = 8;
     const count = await Product.countDocuments(query);
     const pages = Math.ceil(count / perPage);
 
@@ -185,7 +183,6 @@ router.get('/search/:page/:searchString',  asyncHandler(async (req, res, next) =
     // }
 
     const query = {$text: {$search: searchString}};
-    const perPage = 8;
     const count = await Product.countDocuments(query);
     const pages = Math.ceil(count / perPage);
 

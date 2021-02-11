@@ -1,6 +1,6 @@
 .reset-wrap {
     width: 50rem;
-    margin: 0 auto;
+    margin: 10rem auto;
 }
 
 .reset {
@@ -29,8 +29,9 @@
     background-color: #f15c4b;
     height: .2rem;
 }
+/* Message Box */
 
-.api-message-box {
+.settings-message-box {
     position: relative;
     border: 2px solid #4f8d4f;
     width: 100%;
@@ -39,20 +40,52 @@
     font-weight: 500;
     padding: 1rem 2rem;
     color: #4f8d4f;
+    margin-top: 3rem;
 }
 
-.api-message-box-red {
+.settings-message-box-red {
     border: 2px solid #f15c4b;
     color: #f15c4b;
 }
 
-.api-message-box-close {
+.settings-message-box-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
 }
 
-.api-message-box-close:hover {
+.settings-message-box-close:hover {
     cursor: pointer;
     opacity: .6;
 }
+
+/* Loader */
+
+.settings-loader {
+    border: 16px solid #ddd; /* 16px solid #f3f3f3; */
+    border-radius: 50%;
+    border-top: 16px solid #9886BA; /* 16px solid #3498db; */
+    width: 140px;/* 120px; */
+    height: 140px; /* 120px; */
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.settings-loader-wrap {
+    position: absolute;
+    left: 44%;
+    top: 380px;
+    z-index: 4000;
+}
+

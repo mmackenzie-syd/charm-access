@@ -1,18 +1,32 @@
 import React, { useReducer } from 'react';
 import './Settings.css';
-import {apiReducer, resetCategories, resetProducts} from "../api/authApi";
+import {resetCategories, resetProducts} from "../api/authApi";
 
+const  settingsReducer = (state, action) => {
+    switch (action.type) {
+        case 'REQUEST':
+            return {...state, loading: true}
+        case 'SUCCESS':
+            return {...state, loading: false, success: true, error: false}
+        case 'FAIL':
+            return {...state, loading: false, error: true}
+        case 'RESET':
+            return {}
+        default:
+            return state;
+    }
+}
 
 function Settings() {
-    const [state, dispatch] = useReducer(apiReducer, {});
+    const [state, dispatch] = useReducer(settingsReducer, {});
 
     const handleResetCategories = async () => {
         try {
             dispatch({type: 'REQUEST'})
             await resetCategories();
-            dispatch({type: 'SUCCESS', payload: 'Successfully reset category' });
+            dispatch({type: 'SUCCESS'});
         } catch (error) {
-            dispatch({type: 'FAIL', payload: `Category ${error}`});
+            dispatch({type: 'FAIL'});
         }
     }
 
@@ -20,9 +34,9 @@ function Settings() {
         try {
             dispatch({type: 'REQUEST'})
             await resetProducts();
-            dispatch({type: 'SUCCESS', payload: 'Successfully reset products' });
+            dispatch({type: 'SUCCESS'});
         } catch (error) {
-            dispatch({type: 'FAIL', payload: `Products ${error}`});
+            dispatch({type: 'FAIL'});
         }
     }
 
@@ -31,17 +45,23 @@ function Settings() {
     }
 
     return (
-        <div className="reset-wrap">
-                { state && state.data &&
-                    <div className="api-message-box">
-                        <span onClick={handleClose} className="api-message-box-close">&#10005;</span>
-                        { state.data  }
-                    </div>
-                }
-                { state && state.error &&
-                    <div className="api-message-box api-message-box-red">
-                        <span onClick={handleClose} className="api-message-box-close">&#10005;</span>
-                        { state.error  }
+        <>
+            { state && state.success &&
+                <div className="settings-message-box">
+                    <span onClick={handleClose} className="settings-message-box-close">&#10005;</span>
+                    System reset to default state
+                </div>
+            }
+            { state && state.error &&
+                <div className="settings-message-box settings-message-box-red">
+                    <span onClick={handleClose} className="settings-message-box-close">&#10005;</span>
+                    Failed to reset system to default state. Contact Administrator.
+                </div>
+            }
+            <div className="reset-wrap">
+                { state && state.loading &&
+                    <div className="settings-loader-wrap">
+                        <div className="settings-loader"></div>
                     </div>
                 }
                 <div className="reset">
@@ -72,6 +92,7 @@ function Settings() {
                     </div>
                 </div>
             </div>
+        </>
     );
 }
 

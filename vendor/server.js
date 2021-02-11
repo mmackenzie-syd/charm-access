@@ -9,7 +9,7 @@ const cors = require('cors');
 require('dotenv').config();
 const categoriesSeed = require('./categories');
 const productsSeed = require('./products');
-
+const { perPage } = require('./config');
 // Middleware
 
 app.use(bodyParser.json());

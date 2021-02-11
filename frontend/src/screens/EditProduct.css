@@ -187,6 +187,8 @@ label {
     overflow: hidden;
 }
 
+/* Message Box */
+
 .product-message-box {
     position: relative;
     border: 2px solid #4f8d4f;
@@ -216,7 +218,7 @@ label {
 
 /* Loader */
 
-.loader {
+.edit-product-loader {
     border: 16px solid #ddd; /* 16px solid #f3f3f3; */
     border-radius: 50%;
     border-top: 16px solid #9886BA; /* 16px solid #3498db; */
@@ -237,7 +239,7 @@ label {
     100% { transform: rotate(360deg); }
 }
 
-.loader-wrap {
+.edit-product-loader-wrap {
     position: absolute;
     left: 42%;
     top: 400px;
