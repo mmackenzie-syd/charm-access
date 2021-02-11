@@ -9,6 +9,8 @@ The Express JS REST API is run on two AWS Lambda functions, one of which is for 
 
 Authentication is required to access the private routes and also for uploading images. This is done using the AWS Cognito service.
 
+The React App itself is hosted on a S3 bucket configured as a static website.
+
 
 
 #### Shop API Schematic Diagram
