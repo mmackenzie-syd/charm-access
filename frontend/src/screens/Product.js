@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './Product.css';
 import Selector from "../components/Selector";
-import Loading from "../components/Loading";
 import Breadcrumb from "../components/Breadcrumb";
 import LeftArrowIcon from "../icons/LeftArrowIcon";
 import RightArrowIcon from "../icons/RightArrowIcon";
@@ -17,10 +16,6 @@ const getSimilarProducts = (curIndex, products) => {
     } else {
         return similarProducts.slice(0, 4);
     }
-}
-
-const findProductFromName = (name, products) => {
-
 }
 
 function Product(props) {
