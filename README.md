@@ -5,7 +5,7 @@ http://charm-app.s3-website-ap-southeast-2.amazonaws.com/
 
 This is a re-usable Ecommerce Application built using React, React-Hooks, Redux, ExpressJS and Mongo DB.
 
-The Express JS REST API is run on two AWS Lambda functions, one of which is for the private routes (Vendor) and the he other for the public routes (Shop). These are triggered using two API Gateways configured as proxy, which pass all the REST requests to each of the Lambda functions which then route to MongoDB using the Express JS router.
+The Express JS REST API is run on two AWS Lambda functions, one of which is for the private routes (Vendor) and the other for the public routes (Shop). These are triggered using two API Gateways configured as proxy, which pass all the REST requests to each of the Lambda functions which then route to MongoDB using the Express JS router.
 
 Authentication is required to access the private routes and also for uploading images. This is done using the AWS Cognito service.
 
