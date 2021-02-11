@@ -14,6 +14,9 @@ The styling of the App was based on the [Niche](https://gpsites.co/niche/) templ
 
 The three diagrams below describe the AWS configuation for the App.
 
+Mark Mackenzie 
+February 2021
+
 
 #### Shop API Schematic Diagram
 
@@ -36,7 +39,6 @@ The three diagrams below describe the AWS configuation for the App.
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/Schematic/AWS-schematic-upload.png)
 
-### Screenshots of App
 
 ![alt text](https://github.com/mmackenzie-syd/charm-access/blob/main/screenshots/gray/home.png)
 
