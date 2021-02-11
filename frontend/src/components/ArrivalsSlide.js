@@ -5,12 +5,12 @@ import {setProductsNew} from "../state/nonApiActions";
 
 const ArrivalsSlide = (props) => {
     const dispatch = useDispatch();
-    const { items: products } = props;
+    const { items: products, allItems } = props;
     const history = useHistory();
 
     const handleClick = (index) => {
         const name = products[index].name;
-        setProductsNew(products, dispatch);
+        setProductsNew(allItems, dispatch);
         history.push(`/product/new/${name}`)
     }
     return (

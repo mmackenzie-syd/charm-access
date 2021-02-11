@@ -73,7 +73,7 @@ function Slider(props) {
                         const itemsPerSlide = items.slice((slide - 1) * perSlide, slide * perSlide);
                         return(
                             <Slide x={(slide - 1) * slideWidth + offset * slideWidth} key={slide} i={slide} width={slideWidth} isSliding={isSliding}>
-                                <DisplayImage items={itemsPerSlide} />
+                                <DisplayImage items={itemsPerSlide} allItems={items}/>
                             </Slide>
                         );
                     })
