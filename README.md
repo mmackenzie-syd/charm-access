@@ -10,7 +10,7 @@ Authentication is required to access the private routes and also for uploading i
 
 The React App itself is hosted on a S3 bucket configured as a static website.
 
-The styling of the App was based on the [Niche](https://gpsites.co/niche/) template of [Generate Press](https://generatepress.com/). The photos of the model are from the photographer/model [Alena Ozerova](https://www.instagram.com/taknebivaet/).
+The styling of the App was based on the [Niche](https://gpsites.co/niche/) template of [Generate Press](https://generatepress.com/). The photos of the model are from the photographer/model [Alena Ozerova](https://www.instagram.com/taknebivaet/). The Jewellery photos are from a business no longer opearting.
 
 The three diagrams below describe the AWS configuation for the App.
 
