@@ -46,25 +46,27 @@ const imagesMobile = [
     },
 ];
 
-
 function Home() {
     let history = useHistory();
     const dispatch = useDispatch();
     const [width, setWidth] = useState(1000);
     const [emailFrom, setEmailFrom] = useState('');
-    const [arrivalsArrowState, setArrivalsArrowState] = useState('LEFT_ARROW_DISABLED');
-    const [categoriesArrowState, setCategoriesArrowState] = useState('LEFT_ARROW_DISABLED');
     const widthRef = useRef(null);
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
     const { data: categorySlides } = categorySlidesApi;
-    const categoriesPerSlide = 3;
-    const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi);
+
+    const arrivalSlidesApi = useSelector(state => state.arrivalSlidesApi)
     const { data: arrivalSlides } = arrivalSlidesApi;
 
+    const [categoriesIndex, setCategoriesIndex] = useState(0);
+    const [arrivalsIndex, setArrivalsIndex] = useState(0);
+
+    const categoriesPerSlide = 3;
     const arrivalsPerSlide = 4;
+    const maxArrivalsIndex = arrivalSlides ? arrivalSlides.length / arrivalsPerSlide - 1 : 1;
+    const maxCategoriesIndex = categorySlides? Math.ceil(categorySlides.length / categoriesPerSlide) - 1 : 1;
     let handleArrivalsEvent;
     let handleCategoryEvent;
-
 
     useEffect(() => {
         // detect window resize
@@ -98,34 +100,33 @@ function Home() {
     }
 
     const handleLeftArrivals = () => {
-        if (handleArrivalsEvent) {
-            const arrowState = handleArrivalsEvent('LEFT_CLICK');
-            setArrivalsArrowState(arrowState);
+        if (arrivalsIndex > 0) {
+            setArrivalsIndex(arrivalsIndex - 1);
+            handleArrivalsEvent('LEFT_CLICK');
         }
-
     }
 
     const handleRightArrivals = () => {
-        if (handleArrivalsEvent) {
-            const arrowState = handleArrivalsEvent('RIGHT_CLICK');
-            setArrivalsArrowState(arrowState);
+        if (arrivalsIndex < maxArrivalsIndex) {
+            setArrivalsIndex(arrivalsIndex + 1);
+            handleArrivalsEvent('RIGHT_CLICK');
         }
     }
 
     const handleLeftCategory = () => {
-        if (handleArrivalsEvent) {
-            const arrowState = handleCategoryEvent('LEFT_CLICK');
-            setCategoriesArrowState(arrowState);
+        if (categoriesIndex > 0) {
+            setCategoriesIndex(categoriesIndex - 1);
+            handleCategoryEvent('LEFT_CLICK');
         }
-
     }
 
     const handleRightCategory = () => {
-        if (handleArrivalsEvent) {
-            const arrowState = handleCategoryEvent('RIGHT_CLICK');
-            setCategoriesArrowState(arrowState);
+        if (categoriesIndex < maxCategoriesIndex) {
+            setCategoriesIndex(categoriesIndex + 1);
+            handleCategoryEvent('RIGHT_CLICK');
         }
     }
+
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -215,12 +216,12 @@ function Home() {
                   <h3 className="margin-bottom-2">New Arrivals</h3>
                   <div>
                       <button
-                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'LEFT_ARROW_DISABLED') ? 'btn-disabled' : ''}`}
+                          className={(arrivalsIndex === 0) ? 'btn btn-icon btn-secondary btn-disabled' : 'btn btn-icon btn-secondary'}
                           onClick={handleLeftArrivals}>
                           <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                       </button>
                       <button
-                          className={`btn btn-icon btn-secondary  ${(arrivalsArrowState === 'RIGHT_ARROW_DISABLED') ? 'btn-disabled' : ''}`}
+                          className={(arrivalsIndex === maxArrivalsIndex) ? 'btn btn-icon btn-secondary btn-disabled' : 'btn btn-icon btn-secondary'}
                           onClick={handleRightArrivals}>
                           <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                       </button>
@@ -271,12 +272,12 @@ function Home() {
                   <h3 className="margin-bottom-2">Shop By Category</h3>
                   <div>
                       <button
-                          className={`btn btn-icon btn-secondary  ${(categoriesArrowState === 'LEFT_ARROW_DISABLED') ? 'btn-disabled' : ''}`}
+                          className={(categoriesIndex === 0) ? 'btn btn-icon btn-secondary btn-disabled' : 'btn btn-icon btn-secondary'}
                           onClick={handleLeftCategory}>
                           <LeftArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                       </button>
                       <button
-                          className={`btn btn-icon btn-secondary  ${(categoriesArrowState === 'RIGHT_ARROW_DISABLED') ? 'btn-disabled' : ''}`}
+                          className={(categoriesIndex === maxCategoriesIndex) ? 'btn btn-icon btn-secondary btn-disabled' : 'btn btn-icon btn-secondary'}
                           onClick={handleRightCategory}>
                           <RightArrowIcon width={'1.2rem'} height={'1.2rem'} offset={'.3rem'}/>
                       </button>

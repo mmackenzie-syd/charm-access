@@ -48,14 +48,6 @@ function Slider(props) {
             default:
                 break;
         }
-
-        if (offset < 0) {
-            return 'LEFT_ARROW_DISABLED';
-        }
-        if (offset > maxOffset * slideWidth) {
-            return 'RIGHT_ARROW_DISABLED';
-        }
-        return '';
     }
 
     // set callbacks
