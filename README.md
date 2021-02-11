@@ -1,6 +1,5 @@
 # charm-access
 
-#### URL
 http://charm-app.s3-website-ap-southeast-2.amazonaws.com/
 
 This is a re-usable Ecommerce Application built using React, React-Hooks, Redux, ExpressJS and Mongo DB.
