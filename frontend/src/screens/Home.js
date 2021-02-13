@@ -162,7 +162,7 @@ function Home() {
                 </div>
             </div>
           </section>
-          <section className="banner margin-top-3 full-width banner-desktop">
+          <section className="banner margin-top-3 full-width banner-desktop" id="banner">
               <ImageGallery
                   items={images}
                   showNav={false}
