@@ -19,30 +19,30 @@ import {setProductsNew} from "../state/nonApiActions";
 const images = [
     {
         original: './images/banner1.jpg',
-        thumbnail: './images/banner1.jpg',
+      //  thumbnail: './images/banner1.jpg',
     },
     {
         original: './images/banner2.jpg',
-        thumbnail: './images/banner2.jpg',
+      //  thumbnail: './images/banner2.jpg',
     },
     {
         original: './images/banner3.jpg',
-        thumbnail: './images/banner3.jpg',
+       // thumbnail: './images/banner3.jpg',
     },
 ];
 
 const imagesMobile = [
     {
         original: './images/banner1-mobile.jpg',
-        thumbnail: './images/banner1-mobile.jpg',
+      //  thumbnail: './images/banner1-mobile.jpg',
     },
     {
         original: './images/banner2-mobile.jpg',
-        thumbnail: './images/banner2-mobile.jpg',
+      //  thumbnail: './images/banner2-mobile.jpg',
     },
     {
         original: './images/banner3-mobile.jpg',
-        thumbnail: './images/banner3-mobile.jpg',
+      //  thumbnail: './images/banner3-mobile.jpg',
     },
 ];
 

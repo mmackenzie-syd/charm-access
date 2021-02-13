@@ -45,6 +45,15 @@ function Product(props) {
         : { name: categorySlug, slug: categorySlug };
     }
 
+    if (!category) {
+        if (categorySlug === 'new') {
+            category = { name: 'New Arrivals'}
+        }
+        if (categorySlug === 'shop') {
+            category = { name: 'Shop All'}
+        }
+    }
+
     if (category && category.name) {
         if (product && product.name) {
             list.push({name: category.name, url: `/products/${categorySlug}/1`});

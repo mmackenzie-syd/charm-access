@@ -34,6 +34,14 @@ function Products(props) {
     if (categoriesApi && categoriesApi.data) {
         category = categoriesApi.data.find(category => category.slug === categorySlug)
     }
+    if (!category) {
+       if (categorySlug === 'new') {
+           category = { name: 'New Arrivals'}
+       }
+        if (categorySlug === 'shop') {
+            category = { name: 'Shop All'}
+        }
+    }
 
     if (category && category.name) {
         list.push({
