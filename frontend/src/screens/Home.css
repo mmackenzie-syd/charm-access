@@ -7,7 +7,7 @@
 
 .banner-caption {
     position: absolute;
-    bottom: 5%;
+    top: 50px;
     width: 90%;
     left: 5%;
     background: rgba(255, 255, 255, 0.8);

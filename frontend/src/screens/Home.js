@@ -168,7 +168,7 @@ function Home() {
               height: bannerHeight,
               backgroundColor: backgroundColor,
           }}>
-              <div>
+
                   <img
                       src="./images/banner1-low-res.jpg"
                       alt="low-res-banner"
@@ -178,8 +178,8 @@ function Home() {
                           opacity: imageLowResOpacity
                       }}
                   />
-              </div>
-              <div className="gallery-wrap">
+
+              <div className="gallery-wrap" style={{minWidth: '300px'}}>
                   <ImageGallery
                       items={images}
                       showNav={false}
@@ -190,16 +190,16 @@ function Home() {
                       showPlayButton={false}
                       slideInterval={7000}
                   />
-              </div>
-              <div className="banner-caption">
-                  <div className="banner-caption-brand">
-                      <img alt="brand" src="./images/brand_transp_purple.png"/>
-                  </div>
-                  <div className="">
-                      <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
-                  </div>
-                  <div className="row center banner-caption-button-wrap">
-                      <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
+                  <div className="banner-caption" style={{minWidth: '300px'}}>
+                      <div className="banner-caption-brand">
+                          <img alt="brand" src="./images/brand_transp_purple.png"/>
+                      </div>
+                      <div className="">
+                          <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
+                      </div>
+                      <div className="row center banner-caption-button-wrap">
+                          <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
+                      </div>
                   </div>
               </div>
           </section>
