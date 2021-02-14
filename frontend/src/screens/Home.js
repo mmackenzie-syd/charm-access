@@ -31,6 +31,8 @@ function Home() {
     const [backgroundColor, setBackgroundColor] = useState('#f7f7f7');
     const [emailFrom, setEmailFrom] = useState('');
 
+    const [bannerCaptionOpacity, setBannerCaptionOpacity] = useState('0');
+
     const widthRef = useRef(null);
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
     const { data: categorySlides } = categorySlidesApi;
@@ -124,6 +126,7 @@ function Home() {
         setBannerHeight('auto');
         setBackgroundColor('#fff');
         setImageLowResOpacity('1');
+        setBannerCaptionOpacity('1');
     }
     return (
       <main className="home margin-top-3">
@@ -162,7 +165,7 @@ function Home() {
                               opacity: imageLowResOpacity
                           }}
                       />
-                    <div className="banner-caption" style={{minWidth: '300px', zIndex: 200}}>
+                    <div className="banner-caption" style={{minWidth: '300px', zIndex: 200, opacity: bannerCaptionOpacity}}>
                         <div className="banner-caption-brand">
                             <img alt="brand" src="./images/brand_transp_purple.png"/>
                         </div>
