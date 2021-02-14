@@ -1,5 +1,4 @@
 import {
-    USER_FAIL,
     USER_REQUEST,
     USER_STATUS,
     USER_REMOVE,

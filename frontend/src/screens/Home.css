@@ -428,6 +428,7 @@
 
 #banner {
     min-height: 300px;
+    height: 600px;
     position: relative;
     -webkit-transition: background-color .5s ease;
     -moz-transition: background-color .5s ease;
@@ -441,5 +442,11 @@
     top: 0;
 }
 
+.low-res-banner {
+    -webkit-transition: opacity .5s ease;
+    -moz-transition: opacity .5s ease;
+    -o-transition: opacity .5s ease;
+    transition:opacity .5s ease;
+}
 
 

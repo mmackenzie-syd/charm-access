@@ -44,8 +44,9 @@ function Home() {
     let history = useHistory();
     const dispatch = useDispatch();
     const [width, setWidth] = useState(1000);
-    const [bannerHeight, setBannerHeight] = useState('540px');
-    const [backgroundColor, setBackgroundColor] = useState('#ddd');
+    const [bannerHeight, setBannerHeight] = useState('600px');
+    const [imageLowResOpacity, setImageLowResOpacity] = useState('0');
+    const [backgroundColor, setBackgroundColor] = useState('#f7f7f7');
     const [emailFrom, setEmailFrom] = useState('');
     const widthRef = useRef(null);
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
@@ -139,6 +140,7 @@ function Home() {
     const onloadBannerPlaceholder = () => {
         setBannerHeight('auto');
         setBackgroundColor('#fff');
+        setImageLowResOpacity('1');
     }
     return (
       <main className="home margin-top-3">
@@ -164,10 +166,18 @@ function Home() {
           </section>
           <section className="banner margin-top-3 full-width banner-desktop" id="banner" style={{
               height: bannerHeight,
-              backgroundColor: backgroundColor
+              backgroundColor: backgroundColor,
           }}>
               <div>
-                  <img src="./images/banner1-low-res.jpg" alt="low-res-banner"  onLoad={onloadBannerPlaceholder}/>
+                  <img
+                      src="./images/banner1-low-res.jpg"
+                      alt="low-res-banner"
+                      className="low-res-banner"
+                      onLoad={onloadBannerPlaceholder}
+                      style={{
+                          opacity: imageLowResOpacity
+                      }}
+                  />
               </div>
               <div className="gallery-wrap">
                   <ImageGallery

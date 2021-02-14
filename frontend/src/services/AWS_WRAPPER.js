@@ -12,8 +12,6 @@ const USER_POOL_ID = process.env.REACT_APP_USER_POOL_ID;
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const IDENTITY_POOL_ID = process.env.REACT_APP_IDENTITY_POOL_ID;
 
-console.log('region', REGION)
-
 const poolData = {
     UserPoolId: USER_POOL_ID,
     ClientId: CLIENT_ID,
