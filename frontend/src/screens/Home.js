@@ -19,30 +19,24 @@ import {setProductsNew} from "../state/nonApiActions";
 const images = [
     {
         original: './images/banner1.jpg',
-      //  thumbnail: './images/banner1.jpg',
     },
     {
         original: './images/banner2.jpg',
-      //  thumbnail: './images/banner2.jpg',
     },
     {
         original: './images/banner3.jpg',
-       // thumbnail: './images/banner3.jpg',
     },
 ];
 
 const imagesMobile = [
     {
         original: './images/banner1-mobile.jpg',
-      //  thumbnail: './images/banner1-mobile.jpg',
     },
     {
         original: './images/banner2-mobile.jpg',
-      //  thumbnail: './images/banner2-mobile.jpg',
     },
     {
         original: './images/banner3-mobile.jpg',
-      //  thumbnail: './images/banner3-mobile.jpg',
     },
 ];
 
@@ -163,16 +157,21 @@ function Home() {
             </div>
           </section>
           <section className="banner margin-top-3 full-width banner-desktop" id="banner">
-              <ImageGallery
-                  items={images}
-                  showNav={false}
-                  showThumbnails={false}
-                  showFullscreenButton={false}
-                  showBullets={true}
-                  autoPlay={true}
-                  showPlayButton={false}
-                  slideInterval={7000}
-              />
+              <div>
+                  <img src="./images/banner1-low-res.jpg" alt="low-res-banner" />
+              </div>
+              <div className="gallery-wrap">
+                  <ImageGallery
+                      items={images}
+                      showNav={false}
+                      showThumbnails={false}
+                      showFullscreenButton={false}
+                      showBullets={true}
+                      autoPlay={true}
+                      showPlayButton={false}
+                      slideInterval={7000}
+                  />
+              </div>
               <div className="banner-caption">
                   <div className="banner-caption-brand">
                       <img alt="brand" src="./images/brand_transp_purple.png"/>

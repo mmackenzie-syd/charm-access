@@ -428,9 +428,14 @@
 
 #banner {
     min-height: 300px;
+    position: relative;
 }
 
-
+.gallery-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 
 
 
