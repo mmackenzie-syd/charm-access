@@ -44,6 +44,8 @@ function Home() {
     let history = useHistory();
     const dispatch = useDispatch();
     const [width, setWidth] = useState(1000);
+    const [bannerHeight, setBannerHeight] = useState('540px');
+    const [backgroundColor, setBackgroundColor] = useState('#ddd');
     const [emailFrom, setEmailFrom] = useState('');
     const widthRef = useRef(null);
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
@@ -134,6 +136,10 @@ function Home() {
         history.push(`/product/new/${name}`)
     }
 
+    const onloadBannerPlaceholder = () => {
+        setBannerHeight('auto');
+        setBackgroundColor('#fff');
+    }
     return (
       <main className="home margin-top-3">
           <section className="banner margin-top-3 full-width banner-mobile">
@@ -156,9 +162,12 @@ function Home() {
                 </div>
             </div>
           </section>
-          <section className="banner margin-top-3 full-width banner-desktop" id="banner">
+          <section className="banner margin-top-3 full-width banner-desktop" id="banner" style={{
+              height: bannerHeight,
+              backgroundColor: backgroundColor
+          }}>
               <div>
-                  <img src="./images/banner1-low-res.jpg" alt="low-res-banner" />
+                  <img src="./images/banner1-low-res.jpg" alt="low-res-banner"  onLoad={onloadBannerPlaceholder}/>
               </div>
               <div className="gallery-wrap">
                   <ImageGallery
