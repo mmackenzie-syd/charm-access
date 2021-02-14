@@ -449,4 +449,16 @@
     transition:opacity .5s ease;
 }
 
+.low-res-banner-wrap {
+    position: relative;
+}
 
+.hide-bullets {
+    height: 4rem;
+    position: absolute;
+    top: 10rem;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
+    width: 100%;
+}

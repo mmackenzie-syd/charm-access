@@ -1,5 +1,8 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
+.image-gallery-bullets-container {
+}
+
 .image-gallery-bullets .image-gallery-bullet {
     box-shadow: none;
     border: 1px solid #fff;

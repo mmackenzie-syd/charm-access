@@ -16,29 +16,11 @@ import RightArrowIcon from "../icons/RightArrowIcon";
 import {Link} from "react-router-dom";
 import {setProductsNew} from "../state/nonApiActions";
 
-const images = [
-    {
-        original: './images/banner1.jpg',
-    },
-    {
-        original: './images/banner2.jpg',
-    },
-    {
-        original: './images/banner3.jpg',
-    },
-];
+const images = [{original: './images/banner1.jpg'}, {original: './images/banner2.jpg'},
+    {original: './images/banner3.jpg'}];
 
-const imagesMobile = [
-    {
-        original: './images/banner1-mobile.jpg',
-    },
-    {
-        original: './images/banner2-mobile.jpg',
-    },
-    {
-        original: './images/banner3-mobile.jpg',
-    },
-];
+const imagesMobile = [{original: './images/banner1-mobile.jpg'}, {original: './images/banner2-mobile.jpg'},
+    {original: './images/banner3-mobile.jpg'}];
 
 function Home() {
     let history = useHistory();
@@ -48,6 +30,7 @@ function Home() {
     const [imageLowResOpacity, setImageLowResOpacity] = useState('0');
     const [backgroundColor, setBackgroundColor] = useState('#f7f7f7');
     const [emailFrom, setEmailFrom] = useState('');
+
     const widthRef = useRef(null);
     const categorySlidesApi = useSelector(state => state.categorySlidesApi);
     const { data: categorySlides } = categorySlidesApi;
@@ -164,21 +147,33 @@ function Home() {
                 </div>
             </div>
           </section>
+          <section className="hide-bullets"></section>
           <section className="banner margin-top-3 full-width banner-desktop" id="banner" style={{
               height: bannerHeight,
               backgroundColor: backgroundColor,
           }}>
-
-                  <img
-                      src="./images/banner1-low-res.jpg"
-                      alt="low-res-banner"
-                      className="low-res-banner"
-                      onLoad={onloadBannerPlaceholder}
-                      style={{
-                          opacity: imageLowResOpacity
-                      }}
-                  />
-
+                <div className="low-res-banner-wrap">
+                      <img
+                          src="./images/banner1-low-res.jpg"
+                          alt="low-res-banner"
+                          className="low-res-banner"
+                          onLoad={onloadBannerPlaceholder}
+                          style={{
+                              opacity: imageLowResOpacity
+                          }}
+                      />
+                    <div className="banner-caption" style={{minWidth: '300px', zIndex: 200}}>
+                        <div className="banner-caption-brand">
+                            <img alt="brand" src="./images/brand_transp_purple.png"/>
+                        </div>
+                        <div className="">
+                            <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
+                        </div>
+                        <div className="row center banner-caption-button-wrap">
+                            <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
+                        </div>
+                    </div>
+                </div>
               <div className="gallery-wrap" style={{minWidth: '300px'}}>
                   <ImageGallery
                       items={images}
@@ -190,17 +185,6 @@ function Home() {
                       showPlayButton={false}
                       slideInterval={7000}
                   />
-                  <div className="banner-caption" style={{minWidth: '300px'}}>
-                      <div className="banner-caption-brand">
-                          <img alt="brand" src="./images/brand_transp_purple.png"/>
-                      </div>
-                      <div className="">
-                          <p className="banner-caption-txt">Beautiful and charming fashion accessories at an affordable price.</p>
-                      </div>
-                      <div className="row center banner-caption-button-wrap">
-                          <button className="btn btn-primary" onClick={handleShopNow}>Shop Now</button>
-                      </div>
-                  </div>
               </div>
           </section>
 
