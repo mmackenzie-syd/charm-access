@@ -10,7 +10,7 @@ Authentication is required to access the private routes and also for uploading i
 
 The React App itself is hosted on a S3 bucket configured as a static website. The App is designed to work on both Mobile and Desktop.
 
-The uploading of product images to the S3 bucket is via the AWS SDK, which was added to the React code. Image cropping and resizing was also client-side using the library [CropperJS](https://github.com/fengyuanchen/cropperjs).
+The uploading of product images to the S3 bucket is via the AWS SDK, which was added to the React code. Image cropping and resizing was also client-side using the library [CropperJS](https://github.com/fengyuanchen/cropperjs). Images are lazy-loaded, copied from the way instagram loads images.
 
 The styling of the App was based on the [Niche](https://gpsites.co/niche/) template of [Generate Press](https://generatepress.com/) but with a Carousel added to the home page using the library, [react-image-gallery](https://www.npmjs.com/package/react-image-gallery). The photos of the model are by the photographer [Alena Ozerova](https://www.instagram.com/taknebivaet/), who is also the model. The Jewellery photos were taken by myself using a mobile phone and a white background was added using [GIMP](https://www.gimp.org/). 
 
