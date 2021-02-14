@@ -7,7 +7,7 @@
 
 .banner-caption {
     position: absolute;
-    top: 50px;
+    bottom: 5%;
     width: 90%;
     left: 5%;
     background: rgba(255, 255, 255, 0.8);
@@ -282,7 +282,7 @@
     .mood-desktop { display: block; }
 
     .banner-caption {
-        top: 8%;
+        top: 10%;
         left: 0;
         width: 50%;
         background: transparent;
@@ -354,7 +354,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .banner-caption {
-        top: 10%;
+        top: 12%;
         width: 40%;
     }
 
